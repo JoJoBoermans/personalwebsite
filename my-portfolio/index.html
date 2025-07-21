@@ -191,6 +191,41 @@ color: white;
     margin: 0 auto;
     padding: 2rem 1rem;
 }
+.project-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.skill-badge {
+    display: inline-block;
+    background: linear-gradient(45deg, #4f46e5, #06b6d4);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0.25rem;
+}
+.progress-bar {
+    background: #e2e8f0;
+    border-radius: 1rem;
+    height: 1rem;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+.progress-fill {
+    background: linear-gradient(45deg, #4f46e5, #06b6d4);
+    height: 100%;
+    border-radius: 1rem;
+    transition: width 1s ease;
+}
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -229,10 +264,216 @@ color: white;
 </div>
 
 <div class="max-w-4xl mx-auto px-4 py-8">
-    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center border-b-2 border-blue-500 pb-4">
-        <i class="fas fa-laptop-code mr-3 text-blue-500"></i>
-        Huidige IT Ontwikkeling
-    </h2>
+    <!-- Current IT Development Section -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+            <i class="fas fa-laptop-code mr-3 text-blue-500"></i>
+            Huidige IT Ontwikkeling
+        </h2>
+        <p class="text-lg text-gray-700 text-center mb-8">
+            Als onderdeel van mijn IT Bootcamp bij BEE-Organisation ben ik bezig met het ontwikkelen van praktische vaardigheden 
+            in verschillende technologiegebieden. Hier is een overzicht van mijn huidige focus en voortgang.
+        </p>
+    </section>
+
+    <!-- Skills Progress Section -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">
+            <i class="fas fa-chart-line mr-3 text-green-500"></i>
+            Technische Vaardigheden - Voortgang
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="project-card">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fab fa-python mr-2 text-blue-600"></i>
+                    Python Development
+                </h3>
+                <p class="text-gray-600 mb-4">Sterke affiniteit ontdekt voor Python programmering tijdens bootcamp</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%"></div>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">75% - Intermediate niveau bereikt</p>
+                <div class="mt-4">
+                    <span class="skill-badge">Automatisatie Scripts</span>
+                    <span class="skill-badge">API Integraties</span>
+                    <span class="skill-badge">Data Processing</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-server mr-2 text-green-600"></i>
+                    Virtual Machines & Networks
+                </h3>
+                <p class="text-gray-600 mb-4">Hands-on ervaring met VM setup, configuratie en network management</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 70%"></div>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">70% - Praktische ervaring opgebouwd</p>
+                <div class="mt-4">
+                    <span class="skill-badge">VM Setup</span>
+                    <span class="skill-badge">Network Config</span>
+                    <span class="skill-badge">Troubleshooting</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-code mr-2 text-purple-600"></i>
+                    Front-end Development
+                </h3>
+                <p class="text-gray-600 mb-4">HTML, CSS, JavaScript en responsive design principes</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%"></div>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">65% - Basis tot intermediate</p>
+                <div class="mt-4">
+                    <span class="skill-badge">HTML5</span>
+                    <span class="skill-badge">CSS3</span>
+                    <span class="skill-badge">JavaScript</span>
+                    <span class="skill-badge">Responsive Design</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-database mr-2 text-orange-600"></i>
+                    Back-end & Database
+                </h3>
+                <p class="text-gray-600 mb-4">Server-side development en database management fundamentals</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 50%"></div>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">50% - Basis concepten onder de knie</p>
+                <div class="mt-4">
+                    <span class="skill-badge">SQL</span>
+                    <span class="skill-badge">API Development</span>
+                    <span class="skill-badge">Server Management</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Projects Section -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">
+            <i class="fas fa-tools mr-3 text-red-500"></i>
+            Lopende Projecten
+        </h2>
+
+        <div class="project-card">
+            <div class="flex items-start gap-4">
+                <div class="bg-blue-100 p-3 rounded-full">
+                    <i class="fas fa-robot text-2xl text-blue-600"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Python Automatisatie Suite</h3>
+                    <p class="text-gray-600 mb-4">Ontwikkeling van verschillende automatiseringstools voor bedrijfsprocessen</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-800 mb-2">File Management Tool</h4>
+                            <p class="text-blue-700">Automatische organisatie en backup van bestanden</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-green-800 mb-2">Data Processing Script</h4>
+                            <p class="text-green-700">CSV/Excel data cleaning en transformatie</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="flex items-start gap-4">
+                <div class="bg-green-100 p-3 rounded-full">
+                    <i class="fas fa-network-wired text-2xl text-green-600"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Virtual Lab Environment</h3>
+                    <p class="text-gray-600 mb-4">Opzetten van test omgeving met verschillende VM's voor leerprojecten</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span>Ubuntu Server VM configuratie</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span>Windows development environment</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-clock text-yellow-500"></i>
+                            <span>Network segmentatie en security (in ontwikkeling)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Goals Section -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">
+            <i class="fas fa-bullseye mr-3 text-purple-500"></i>
+            Leerdoelen & Toekomstige Projecten
+        </h2>
+        
+        <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <i class="fas fa-cloud text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Cloud Technologies</h3>
+                    <p class="text-gray-700">AWS/Azure certificering en cloud deployment</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-mobile-alt text-4xl text-green-600 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Mobile Development</h3>
+                    <p class="text-gray-700">React Native of Flutter voor app development</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-shield-alt text-4xl text-red-600 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Cybersecurity</h3>
+                    <p class="text-gray-700">Security fundamentals en ethical hacking basics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub & Version Control -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">
+            <i class="fab fa-github mr-3 text-gray-800"></i>
+            Version Control & Samenwerking
+        </h2>
+        
+        <div class="project-card">
+            <div class="text-center">
+                <i class="fab fa-git-alt text-6xl text-orange-600 mb-4"></i>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Git & GitHub Workflow</h3>
+                <p class="text-gray-600 mb-6">Leren werken met moderne development tools en collaborative workflows</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-gray-800 mb-2">Huidige Status</h4>
+                        <ul class="text-gray-600 space-y-1">
+                            <li>✓ Git basics onder de knie</li>
+                            <li>✓ GitHub repository management</li>
+                            <li>⏳ Branch strategies leren</li>
+                            <li>⏳ Pull request workflow</li>
+                        </ul>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-blue-800 mb-2">Komende Stappen</h4>
+                        <ul class="text-blue-700 space-y-1">
+                            <li>• Portfolio projecten op GitHub</li>
+                            <li>• Open source contributie</li>
+                            <li>• Code review participatie</li>
+                            <li>• CI/CD pipeline basics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <!-- Footer with Contact Information -->
@@ -297,6 +538,18 @@ document.addEventListener('click', function(event) {
         menu.classList.remove('show');
         document.querySelector('.mobile-menu-btn i').className = 'fas fa-bars';
     }
+});
+
+// Animate progress bars on page load
+window.addEventListener('load', function() {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    progressBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 500);
+    });
 });
 </script>
 
