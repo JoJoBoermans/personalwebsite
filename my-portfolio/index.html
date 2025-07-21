@@ -106,17 +106,115 @@ color: white;
     margin: 0 auto;
     padding: 2rem 1rem;
 }
+
+/* Mobile Navigation Styles */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.mobile-nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 50;
+}
+
+.mobile-nav-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    gap: 0;
+}
+
+.mobile-nav-menu ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    display: block;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-menu ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .nav ul {
+        display: none !important;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+    .nav {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 1rem 1.5rem;
+    }
+}
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 <nav class="nav py-4">
     <ul>
-       <li><a href="../index.html" class="hover:underline text-blue-400">Home</a></li>
+        <li><a href="../index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
         <li><a href="../achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
         <li><a href="../personal-bio/index.html"><i class="fas fa-user mr-2"></i>Personal Bio</a></li>
-        <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+        <li><a href="index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
         <li><a href="../cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
     </ul>
+    
+    <!-- Mobile hamburger button -->
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Mobile dropdown menu -->
+    <div class="mobile-nav-menu" id="mobile-nav-menu">
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
+            <li><a href="../achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
+            <li><a href="../personal-bio/index.html"><i class="fas fa-user mr-2"></i>Personal Bio</a></li>
+            <li><a href="index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+            <li><a href="../cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
+        </ul>
+    </div>
 </nav>
 
 <!-- Header Section -->
@@ -171,5 +269,32 @@ color: white;
     </div>
   </div>
 </footer>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const btn = document.querySelector('.mobile-menu-btn i');
+    
+    menu.classList.toggle('show');
+    
+    if (menu.classList.contains('show')) {
+        btn.className = 'fas fa-times';
+    } else {
+        btn.className = 'fas fa-bars';
+    }
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('mobile-nav-menu');
+    const btn = document.querySelector('.mobile-menu-btn');
+    
+    if (!menu.contains(event.target) && !btn.contains(event.target)) {
+        menu.classList.remove('show');
+        document.querySelector('.mobile-menu-btn i').className = 'fas fa-bars';
+    }
+});
+</script>
+
 </body>
 </html>
