@@ -38,13 +38,9 @@ color: white;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     position: relative;
-    display: flex;
-    padding: 1rem 1.5rem;
-    align-items: center;
-    justify-content: center;
 }
 .nav ul {
-    display: none !important;
+    display: flex;
     justify-content: center;
     align-items: center;
     list-style: none;
@@ -72,45 +68,6 @@ color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.p1 { 
-    text-align: center;
-    font-size: 1.2rem;
-    color: #333;
-    margin-top: 2rem;
-}
-.contact-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
-    backdrop-filter: blur(10px);
-}
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
-}
-.contact-item a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-.contact-item a:hover {
-    color: white;
-    text-decoration: underline;
-    transform: scale(1.05);
-}
-.welcome-section {
-    max-width: 4xl;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
 
 /* Mobile Navigation Styles */
 .mobile-menu-btn {
@@ -123,9 +80,9 @@ color: white;
     padding: 0.5rem;
     border-radius: 0.25rem;
     transition: all 0.3s ease;
-    position: absolute;          
-    right: 1.5rem;               
-    top: 50%;                    
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
     transform: translateY(-50%);
 }
 
@@ -177,25 +134,62 @@ color: white;
 .mobile-nav-menu ul li a:hover {
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    transform: none;
-    box-shadow: none;
 }
 
-/* Responsive Design */
+/* Responsive Design - Hide navigation ul on mobile */
 @media (max-width: 767px) {
-    .nav ul {
+    .nav > ul {
         display: none !important;
     }
     .mobile-menu-btn {
         display: block;
     }
     .nav {
-        position: relative;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
         padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+}
+
+.p1 { 
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 2rem;
+}
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+.contact-item a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.contact-item a:hover {
+    color: white;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+.welcome-section {
+    max-width: 4xl;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 }
 </style>
 </head>
@@ -286,6 +280,7 @@ function toggleMobileMenu() {
     
     menu.classList.toggle('show');
     
+    // Toggle between hamburger and X icon
     if (menu.classList.contains('show')) {
         btn.className = 'fas fa-times';
     } else {
