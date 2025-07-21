@@ -49,6 +49,10 @@ color: white;
         font-size: 1.2rem;
         color: #333;
     }
+
+.h1 {
+        text-align: center;
+        
 </style>
 
 </head>
