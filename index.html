@@ -1,18 +1,17 @@
-<!DOCTYPE html>
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joshua Boermans - Junior IT Professional
-</title>
+<title>Joshua Boermans - Junior IT Professional</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <style>
     h1 {    
-        color: rgba(255, 255, 255, 0.9);
+        color: rgba(255, 255, 255, 0.95);
         font-size: 2.5rem;
         font-weight: 700;
         text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 @media print {
 body { -webkit-print-color-adjust: exact; }
@@ -34,48 +33,166 @@ background: linear-gradient(45deg, #f59e0b, #ef4444);
 color: white;
 }
 .nav {
-    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
 }
 .nav ul li {
-        margin-right: 32px; /* Increase space between items */
-    }
-    nav ul li:last-child {
-        margin-right: 0; /* Remove margin from last item */
-    }
-        .li {
-        list-style-type: none;
-        margin-right: 80px;
-        padding: 50px;
-        margin: 50px;
-    }
+    margin: 0;
+    padding: 0;
+}
+.nav ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: block;
+}
+.nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 .p1 { 
-        text-align: center;
-        font-size: 1.2rem;
-        color: #333;
-    }
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 2rem;
+}
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+.contact-item a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.contact-item a:hover {
+    color: white;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+.welcome-section {
+    max-width: 4xl;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+.profile-image {
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 28rem;
+    object-fit: cover;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+.profile-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
 </style>
-
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
-<nav class="nav shadow-md py-4">
-<ul class="flex space-x-4 justify-center">
-  <li><a href="/" class="hover:underline text-blue-400">Home</a></li>
-  <li><a href="achievements-page/index.html" class="hover:underline text-blue-400">Achievements</a></li>
-  <li><a href="personal-bio/index.html" class="hover:underline text-blue-400">Personal Bio</a></li>
-  <li><a href="my-portfolio/index.html" class="hover:underline text-blue-400">My Portfolio</a></li>
-  <li><a href="cv-page/index.html" class="hover:underline text-blue-400">CV Page</a></li>
-</ul>
-
-  </nav>
+<nav class="nav py-4">
+    <ul>
+        <li><a href="/"><i class="fas fa-home mr-2"></i>Home</a></li>
+        <li><a href="achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
+        <li><a href="personal-bio/index.html"><i class="fas fa-user mr-2"></i>Personal Bio</a></li>
+        <li><a href="my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+        <li><a href="cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
+    </ul>
+</nav>
 
 <!-- Header Section -->
-<div class="gradient-bg text-white py-8 px-4">
-  <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-    <h1>Welkom Op Mijn Profiel, Neem Gerust Een Kijkje!</h1>
+<div class="gradient-bg text-white py-12 px-4">
+    <div class="welcome-section">
+        <h1>Welkom Op Mijn Profiel, Neem Gerust Een Kijkje!</h1>
+        <p class="p1">IT Professional in opleiding | Python & Virtualisatie Specialist</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+31 6 36546524</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:joshuaboermans@gmail.com">joshuaboermans@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Hoofddorp, Netherlands</span>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/joshuaboermans/" target="_blank" rel="noopener noreferrer">linkedin.com/in/joshuaboermans</a>
+            </div>
+        </div>
+        
+        <img src="foto-homepage.jpg" 
+             alt="Joshua Boermans Profile Photo" 
+             class="profile-image">
     </div>
-</body>
-    <br>
-<img src="foto-homepage.jpg" 
-     alt="foto-homepage.jpg" 
-     class="mt-6 mx-auto rounded-xl w-full max-w-md object-cover shadow-lg border-4 border-white">
+</div>
 
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">
+            <i class="fas fa-code mr-3 text-blue-500"></i>
+            Carrière Transitie naar IT
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            Van IT Sales naar IT Development - momenteel actief bezig met een intensieve IT Bootcamp 
+            bij BEE-Organisation waar ik me specialiseer in Python, Virtual Machines, en Network Management.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div class="bg-blue-50 p-6 rounded-lg">
+                <i class="fab fa-python text-4xl text-blue-600 mb-4"></i>
+                <h3 class="font-bold text-xl mb-2">Python Development</h3>
+                <p class="text-gray-600">Ontdekt sterke affiniteit voor Python programming</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg">
+                <i class="fas fa-server text-4xl text-green-600 mb-4"></i>
+                <h3 class="font-bold text-xl mb-2">Virtual Machines</h3>
+                <p class="text-gray-600">Hands-on ervaring met VM setup en beheer</p>
+            </div>
+            <div class="bg-purple-50 p-6 rounded-lg">
+                <i class="fas fa-network-wired text-4xl text-purple-600 mb-4"></i>
+                <h3 class="font-bold text-xl mb-2">Network Management</h3>
+                <p class="text-gray-600">Netwerk architectuur en troubleshooting</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
