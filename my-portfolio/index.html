@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<nav class="bg-white shadow-md py-4">
-<ul class="flex space-x-4 justify-center">
-      <li><a href="../home.html" class="hover:underline text-blue-400">Home</a></li>
-        <li><a href="../achievements-page/index.html" class="hover:underline text-blue-400">Achievements</a></li>
-        <li><a href="../personal-bio/index.html" class="hover:underline text-blue-400">Personal Bio</a></li>
-        <li><a href="../my-portfolio/index.html" class="hover:underline text-blue-400">My Portfolio</a></li>
-        <li><a href="../cv-page/index.html" class="hover:underline text-blue-400">CV Page</a></li>
-    </ul>
-  </nav>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joshua Boermans - My Portfolio</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <style>
+    h1 {    
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
 @media print {
 body { -webkit-print-color-adjust: exact; }
 * { box-sizing: border-box; }
@@ -36,13 +34,142 @@ background: linear-gradient(45deg, #f59e0b, #ef4444);
 color: white;
 }
 .nav {
-background-color: #f8f9fa;
-padding: 10px;   
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+.nav ul li {
+    margin: 0;
+    padding: 0;
+}
+.nav ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: block;
+}
+.nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.p1 { 
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 2rem;
+}
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+.contact-item a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.contact-item a:hover {
+    color: white;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+.welcome-section {
+    max-width: 4xl;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 }
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
+<nav class="nav py-4">
+    <ul>
+        <li><a href="http://www.joshuaboermans.com/"><i class="fas fa-home mr-2"></i>Home</a></li>
+        <li><a href="../achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
+        <li><a href="../personal-bio/index.html"><i class="fas fa-user mr-2"></i>Personal Bio</a></li>
+        <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+        <li><a href="../cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
+    </ul>
+</nav>
+
 <!-- Header Section -->
-<div class="gradient-bg text-white py-8 px-4">
-  <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-    
+<div class="gradient-bg text-white py-12 px-4">
+    <div class="welcome-section">
+        <h1>Mijn Portfolio - IT Projecten & Ontwikkeling</h1>
+        <p class="p1">Showcase van mijn technische vaardigheden en projecten</p>
+    </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center border-b-2 border-blue-500 pb-4">
+        <i class="fas fa-laptop-code mr-3 text-blue-500"></i>
+        Huidige IT Ontwikkeling
+    </h2>
+</div>
+
+<!-- Footer with Contact Information -->
+<footer class="gradient-bg text-white py-8 mt-12">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h3 class="text-xl font-bold mb-4">Contact Informatie</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-phone text-blue-200"></i>
+        <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">
+          +31 6 36546524
+        </a>
+      </div>
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-envelope text-blue-200"></i>
+        <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">
+          joshuaboermans@gmail.com
+        </a>
+      </div>
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-map-marker-alt text-blue-200"></i>
+        <span>Hoofddorp, Netherlands</span>
+      </div>
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fab fa-linkedin text-blue-200"></i>
+        <a href="https://www.linkedin.com/in/joshuaboermans/" 
+           target="_blank" 
+           class="hover:text-blue-200 transition-colors">
+          linkedin.com/in/joshuaboermans
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+</body>
+</html>
