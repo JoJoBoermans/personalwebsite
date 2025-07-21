@@ -59,11 +59,12 @@ color: white;
 <body class="bg-gray-50 text-gray-800 font-sans">
 <nav class="bg-white shadow-md py-4">
     <ul class="flex space-x-4 justify-center">
-        <li><a href="../My webpage/home.html" class="hover:underline text-blue-400">Home</a></li>
-        <li><a href="../My webpage/achievements page/index.html" class="hover:underline text-blue-400">Achievements</a></li>
-        <li><a href="../My webpage/Personal Bio/index.html" class="hover:underline text-blue-400">Personal Bio</a></li>
-        <li><a href="../My webpage/My Portfolio/index.html" class="hover:underline text-blue-400">My Portfolio</a></li>
-        <li><a href="../My webpage/cv page/index.html" class="hover:underline text-blue-400">CV Page</a></li>
+<li><a href="home.html">Home</a></li>
+<li><a href="achievements page/index.html">Achievements</a></li>
+<li><a href="Personal Bio/index.html">Personal Bio</a></li>
+<li><a href="My Portfolio/index.html">My Portfolio</a></li>
+<li><a href="cv page/index.html">CV Page</a></li>
+
     </ul>
   </nav>
 
