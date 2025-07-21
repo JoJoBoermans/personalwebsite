@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<nav class="bg-white shadow-md py-4">
-  <ul class="flex space-x-4 justify-center">
-    <li><a href="../index.html" class="hover:underline text-blue-400">Home</a></li>
-        <li><a href="../achievements-page/index.html" class="hover:underline text-blue-400">Achievements</a></li>
-        <li><a href="../personal-bio/index.html" class="hover:underline text-blue-400">Personal Bio</a></li>
-        <li><a href="../my-portfolio/index.html" class="hover:underline text-blue-400">My Portfolio</a></li>
-        <li><a href="../cv-page/index.html" class="hover:underline text-blue-400">CV Page</a></li>
-    </ul>
-  </nav>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joshua Boermans - Achievements</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <style>
+    h1 {    
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
 @media print {
 body { -webkit-print-color-adjust: exact; }
 * { box-sizing: border-box; }
@@ -35,9 +33,533 @@ color: white;
 background: linear-gradient(45deg, #f59e0b, #ef4444);
 color: white;
 }
+.nav {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+.nav ul li {
+    margin: 0;
+    padding: 0;
+}
+.nav ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: block;
+}
+.nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Navigation Styles */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.mobile-nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 50;
+}
+
+.mobile-nav-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    gap: 0;
+}
+
+.mobile-nav-menu ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    display: block;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-menu ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .nav ul {
+        display: none !important;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+    .nav {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 1rem 1.5rem;
+    }
+}
+
+.p1 { 
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 2rem;
+}
+.welcome-section {
+    max-width: 4xl;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+.achievement-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+.achievement-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.metric-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.metric-card:hover {
+    transform: scale(1.05);
+}
+.timeline-item {
+    border-left: 4px solid #4f46e5;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background: #4f46e5;
+    border-radius: 50%;
+}
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
+<nav class="nav py-4">
+    <ul>
+        <li><a href="../index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
+        <li><a href="index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
+        <li><a href="../personal-bio/index.html"><i class="fas fa-user mr-2"></i>Personal Bio</a></li>
+        <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+        <li><a href="../cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
+    </ul>
+    
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="mobile-nav-menu" id="mobile-nav-menu">
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
+            <li><a href="index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
+            <li><a href="../personal-bio/index.html"><i class="fas fa-user mr-2"></i>Personal Bio</a></li>
+            <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+            <li><a href="../cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
+        </ul>
+    </div>
+</nav>
+
 <!-- Header Section -->
-<div class="gradient-bg text-white py-8 px-4">
-  <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="gradient-bg text-white py-12 px-4">
+    <div class="welcome-section">
+        <h1>Mijn Prestaties & Mijlpalen</h1>
+        <p class="p1">Een Overzicht van Professionele Successen en Technische Doorbraken</p>
+    </div>
+</div>
+
+<div class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Key Metrics Overview -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+            <i class="fas fa-chart-line mr-3 text-blue-500"></i>
+            Kernprestaties in Cijfers
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="metric-card">
+                <i class="fas fa-euro-sign text-4xl mb-4"></i>
+                <h3 class="text-3xl font-bold mb-2">€200K+</h3>
+                <p>Totale omzetbijdrage</p>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-handshake text-4xl mb-4"></i>
+                <h3 class="text-3xl font-bold mb-2">50+</h3>
+                <p>Strategische partnerships</p>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-rocket text-4xl mb-4"></i>
+                <h3 class="text-3xl font-bold mb-2">5</h3>
+                <p>Startup ondersteuning</p>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-graduation-cap text-4xl mb-4"></i>
+                <h3 class="text-3xl font-bold mb-2">6</h3>
+                <p>Jaar IT-ervaring</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Achievements -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">
+            <i class="fas fa-building mr-3 text-green-500"></i>
+            Professionele Prestaties
+        </h2>
+        
+        <div class="achievement-card">
+            <div class="flex items-start gap-4">
+                <div class="bg-blue-100 p-3 rounded-full">
+                    <i class="fas fa-users text-2xl text-blue-600"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Co-Founder - UNIT (2024-2025)</h3>
+                    <p class="text-gray-600 mb-4">Strategische samenwerkingen en bedrijfsgroei in IT-sector</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-green-800 mb-2">
+                                <i class="fas fa-trophy mr-2"></i>Omzetprestatie
+                            </h4>
+                            <p class="text-green-700">€60.000 directe omzet gegenereerd door technische consultancy diensten</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-800 mb-2">
+                                <i class="fas fa-cogs mr-2"></i>Automatisering
+                            </h4>
+                            <p class="text-blue-700">40% efficiencyverbetering door implementatie van automatiseringsoplossingen</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="achievement-card">
+            <div class="flex items-start gap-4">
+                <div class="bg-purple-100 p-3 rounded-full">
+                    <i class="fas fa-shield-alt text-2xl text-purple-600"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Sales Development Representative - NCC Group (2023-2024)</h3>
+                    <p class="text-gray-600 mb-4">Software escrow services en code verificatie voor enterprise klanten</p>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span>Strategische partnerschappen opgebouwd met IT-juristen</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span>Technische due diligence voor software acquisities</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span>Code review en compliance assessments uitgevoerd</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="achievement-card">
+            <div class="flex items-start gap-4">
+                <div class="bg-orange-100 p-3 rounded-full">
+                    <i class="fas fa-store text-2xl text-orange-600"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Account Executive - Trusted Shops (2022)</h3>
+                    <p class="text-gray-600 mb-4">E-commerce technology consultant en web integration specialist</p>
+                    <div class="bg-orange-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-orange-800 mb-2">
+                            <i class="fas fa-rocket mr-2"></i>Belangrijkste Prestatie
+                        </h4>
+                        <p class="text-orange-700">€80.000 ARR gegenereerd door technische implementaties voor 30+ webshops</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Achievements -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">
+            <i class="fas fa-code mr-3 text-purple-500"></i>
+            Technische Prestaties
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="achievement-card">
+                <div class="text-center mb-4">
+                    <i class="fab fa-python text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800">Python Development</h3>
+                </div>
+                <p class="text-gray-600 text-center mb-4">Ontdekte sterke affiniteit voor Python programming tijdens IT Bootcamp</p>
+                <div class="space-y-2">
+                    <div class="bg-blue-50 p-3 rounded-lg text-center">
+                        <span class="text-blue-800 font-semibold">Automatisering scripts ontwikkeld</span>
+                    </div>
+                    <div class="bg-blue-50 p-3 rounded-lg text-center">
+                        <span class="text-blue-800 font-semibold">API integraties gerealiseerd</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="text-center mb-4">
+                    <i class="fas fa-server text-5xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800">Virtual Machines & Networks</h3>
+                </div>
+                <p class="text-gray-600 text-center mb-4">Hands-on ervaring met VM setup, configuratie en network management</p>
+                <div class="space-y-2">
+                    <div class="bg-green-50 p-3 rounded-lg text-center">
+                        <span class="text-green-800 font-semibold">VM architectuur ontworpen</span>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded-lg text-center">
+                        <span class="text-green-800 font-semibold">Network troubleshooting expertise</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Timeline -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">
+            <i class="fas fa-timeline mr-3 text-red-500"></i>
+            Carrière Tijdlijn
+        </h2>
+        
+        <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="timeline-item">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2025 - IT Bootcamp BEE-Organisation</h3>
+                <p class="text-gray-600 mb-2">Allround IT Development training - Front-end, Back-end, VMs, Network Management</p>
+                <div class="text-sm text-blue-600 font-semibold">Carrièretransitie naar pure IT-ontwikkeling</div>
+            </div>
+            
+            <div class="timeline-item">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2024-2025 - Co-Founder UNIT</h3>
+                <p class="text-gray-600 mb-2">Strategische samenwerkingen, business development, technische consultancy</p>
+                <div class="text-sm text-green-600 font-semibold">€60.000 omzet, 40% efficiencyverbetering</div>
+            </div>
+            
+            <div class="timeline-item">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2023-2024 - NCC Group (Software Escrow)</h3>
+                <p class="text-gray-600 mb-2">Technical Sales Development, software verificatie, enterprise partnerships</p>
+                <div class="text-sm text-purple-600 font-semibold">IT-juridische partnerschappen, compliance expertise</div>
+            </div>
+            
+            <div class="timeline-item">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2022 - Trusted Shops (E-commerce)</h3>
+                <p class="text-gray-600 mb-2">Account Executive, web integrations, e-commerce technology</p>
+                <div class="text-sm text-orange-600 font-semibold">€80.000 ARR, 30+ platform integraties</div>
+            </div>
+            
+            <div class="timeline-item">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2019-2022 - XcellerateLabs (Cloud-Native SaaS)</h3>
+                <p class="text-gray-600 mb-2">BDR/SDR & Team Lead, cloud-native startups, DevOps solutions</p>
+                <div class="text-sm text-blue-600 font-semibold">5 startup ondersteuning, €500.000+ funding</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Education -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">
+            <i class="fas fa-certificate mr-3 text-yellow-500"></i>
+            Certificeringen & Opleidingen
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="achievement-card text-center">
+                <i class="fas fa-robot text-4xl text-purple-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Generative AI</h3>
+                <p class="text-gray-600">Certificering in AI-toepassingen en implementatie</p>
+            </div>
+            
+            <div class="achievement-card text-center">
+                <i class="fas fa-cloud text-4xl text-blue-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Cloud Computing</h3>
+                <p class="text-gray-600">Application Migration en cloud architectuur</p>
+            </div>
+            
+            <div class="achievement-card text-center">
+                <i class="fas fa-chart-line text-4xl text-green-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Sales Strategies</h3>
+                <p class="text-gray-600">Moderne verkoopbenaderingen en technieken</p>
+            </div>
+            
+            <div class="achievement-card text-center">
+                <i class="fas fa-graduation-cap text-4xl text-red-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Bachelor Facility Management</h3>
+                <p class="text-gray-600">Haagse Hogeschool (2020)</p>
+            </div>
+            
+            <div class="achievement-card text-center">
+                <i class="fas fa-tools text-4xl text-orange-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">MBO4 Facilitair Leidinggevende</h3>
+                <p class="text-gray-600">MBO College Airport (2015)</p>
+            </div>
+            
+            <div class="achievement-card text-center">
+                <i class="fas fa-code text-4xl text-indigo-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">IT Bootcamp</h3>
+                <p class="text-gray-600">BEE-Organisation (2025) - In Progress</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Goals -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">
+            <i class="fas fa-bullseye mr-3 text-indigo-500"></i>
+            Toekomstige Doelen
+        </h2>
+        
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <i class="fas fa-laptop-code text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Junior Developer Rol</h3>
+                    <p class="text-gray-700">Interne training programma bij IT-bedrijf</p>
+                </div>
+                <div class="text-center">
+                    <i class="fab fa-python text-4xl text-green-600 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Python Specialisatie</h3>
+                    <p class="text-gray-700">Doorontwikkeling in Python development</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-network-wired text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Infrastructure Expertise</h3>
+                    <p class="text-gray-700">Verdere groei in VM's en network management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer with Contact Information -->
+<footer class="gradient-bg text-white py-8 mt-12">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h3 class="text-xl font-bold mb-4">Contact Informatie</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-phone text-blue-200"></i>
+        <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">
+          +31 6 36546524
+        </a>
+      </div>
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-envelope text-blue-200"></i>
+        <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">
+          joshuaboermans@gmail.com
+        </a>
+      </div>
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-map-marker-alt text-blue-200"></i>
+        <span>Hoofddorp, Netherlands</span>
+      </div>
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fab fa-linkedin text-blue-200"></i>
+        <a href="https://www.linkedin.com/in/joshuaboermans/" 
+           target="_blank" 
+           class="hover:text-blue-200 transition-colors">
+          linkedin.com/in/joshuaboermans
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const btn = document.querySelector('.mobile-menu-btn i');
+    
+    menu.classList.toggle('show');
+    
+    if (menu.classList.contains('show')) {
+        btn.className = 'fas fa-times';
+    } else {
+        btn.className = 'fas fa-bars';
+    }
+}
+
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('mobile-nav-menu');
+    const btn = document.querySelector('.mobile-menu-btn');
+    
+    if (!menu.contains(event.target) && !btn.contains(event.target)) {
+        menu.classList.remove('show');
+        document.querySelector('.mobile-menu-btn i').className = 'fas fa-bars';
+    }
+});
+</script>
+</body>
+</html>
