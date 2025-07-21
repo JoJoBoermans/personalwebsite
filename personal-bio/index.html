@@ -37,6 +37,7 @@ color: white;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: relative;
 }
 .nav ul {
     display: flex;
@@ -67,6 +68,107 @@ color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Mobile Navigation Styles */
+.mobile-menu-btn {
+    color: rgba(255, 255, 255, 0.9);
+    background: none;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.nav-desktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.mobile-nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 50;
+}
+
+.mobile-nav-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    gap: 0;
+}
+
+.mobile-nav-menu ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.mobile-nav-menu ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-weight: 500;
+    display: block;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-menu ul li:last-child a {
+    border-bottom: none;
+}
+
+.mobile-nav-menu ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: translateX(10px);
+}
+
+/* Responsive behavior */
+@media (min-width: 768px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+    .mobile-nav-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-desktop {
+        display: none;
+    }
+}
+
 .p1 { 
     text-align: center;
     font-size: 1.2rem;
@@ -117,13 +219,30 @@ color: white;
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 <nav class="nav py-4">
-    <ul>
+    <!-- Desktop Navigation -->
+    <ul class="nav-desktop">
         <li><a href="../index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
         <li><a href="../achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
         <li><a href="index.html"><i class="fas fa-user mr-2"></i>Personal Bio</a></li>
         <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
         <li><a href="../cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
     </ul>
+    
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars text-2xl"></i>
+    </button>
+    
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav-menu" id="mobile-nav-menu">
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
+            <li><a href="../achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
+            <li><a href="index.html"><i class="fas fa-user mr-2"></i>Personal Bio</a></li>
+            <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+            <li><a href="../cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
+        </ul>
+    </div>
 </nav>
 
 <!-- Header Section -->
@@ -331,4 +450,42 @@ color: white;
     </div>
   </div>
 </footer>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const btn = document.querySelector('.mobile-menu-btn i');
+    
+    menu.classList.toggle('show');
+    
+    // Toggle between hamburger and X icon
+    if (menu.classList.contains('show')) {
+        btn.className = 'fas fa-times text-2xl';
+    } else {
+        btn.className = 'fas fa-bars text-2xl';
+    }
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('mobile-nav-menu');
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    
+    if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+        if (menu.classList.contains('show')) {
+            menu.classList.remove('show');
+            document.querySelector('.mobile-menu-btn i').className = 'fas fa-bars text-2xl';
+        }
+    }
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+    link.addEventListener('click', function() {
+        const menu = document.getElementById('mobile-nav-menu');
+        menu.classList.remove('show');
+        document.querySelector('.mobile-menu-btn i').className = 'fas fa-bars text-2xl';
+    });
+});
+</script>
 </html>
