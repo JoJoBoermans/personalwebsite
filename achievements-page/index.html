@@ -37,6 +37,7 @@ color: white;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: relative;
 }
 .nav ul {
     display: flex;
@@ -79,6 +80,10 @@ color: white;
     padding: 0.5rem;
     border-radius: 0.25rem;
     transition: all 0.3s ease;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .mobile-menu-btn:hover {
@@ -131,20 +136,19 @@ color: white;
     color: white;
 }
 
-/* Responsive Design */
+/* Responsive Design - Hide navigation ul on mobile */
 @media (max-width: 767px) {
-    .nav ul {
+    .nav > ul {
         display: none !important;
     }
     .mobile-menu-btn {
         display: block;
     }
     .nav {
-        position: relative;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
         padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
@@ -210,10 +214,12 @@ color: white;
         <li><a href="../cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
     </ul>
     
+    <!-- Mobile hamburger button -->
     <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
         <i class="fas fa-bars"></i>
     </button>
     
+    <!-- Mobile dropdown menu -->
     <div class="mobile-nav-menu" id="mobile-nav-menu">
         <ul>
             <li><a href="../index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
@@ -544,6 +550,7 @@ function toggleMobileMenu() {
     
     menu.classList.toggle('show');
     
+    // Toggle between hamburger and X icon
     if (menu.classList.contains('show')) {
         btn.className = 'fas fa-times';
     } else {
@@ -551,6 +558,7 @@ function toggleMobileMenu() {
     }
 }
 
+// Close menu when clicking outside
 document.addEventListener('click', function(event) {
     const menu = document.getElementById('mobile-nav-menu');
     const btn = document.querySelector('.mobile-menu-btn');
