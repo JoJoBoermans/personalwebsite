@@ -37,9 +37,14 @@ color: white;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: relative;
+    display: flex;
+    padding: 1rem 1.5rem;
+    align-items: center;
+    justify-content: center;
 }
 .nav ul {
-    display: flex;
+    display: none !important;
     justify-content: center;
     align-items: center;
     list-style: none;
@@ -118,6 +123,10 @@ color: white;
     padding: 0.5rem;
     border-radius: 0.25rem;
     transition: all 0.3s ease;
+    position: absolute;          
+    right: 1.5rem;               
+    top: 50%;                    
+    transform: translateY(-50%);
 }
 
 .mobile-menu-btn:hover {
