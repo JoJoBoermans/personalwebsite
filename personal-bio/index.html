@@ -34,12 +34,10 @@ background: linear-gradient(45deg, #f59e0b, #ef4444);
 color: white;
 }
 .nav {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: relative;
 }
 .nav ul {
     display: flex;
@@ -160,34 +158,6 @@ color: white;
     color: #333;
     margin-top: 2rem;
 }
-.contact-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
-    backdrop-filter: blur(10px);
-}
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
-}
-.contact-item a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-.contact-item a:hover {
-    color: white;
-    text-decoration: underline;
-    transform: scale(1.05);
-}
 .welcome-section {
     max-width: 4xl;
     margin: 0 auto;
@@ -199,6 +169,49 @@ color: white;
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.passion-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.timeline-item {
+    border-left: 4px solid #4f46e5;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background: #4f46e5;
+    border-radius: 50%;
+}
+.quote-highlight {
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    font-style: italic;
+    font-size: 1.1rem;
+    text-align: center;
+    position: relative;
+}
+.quote-highlight::before {
+    content: '"';
+    font-size: 4rem;
+    position: absolute;
+    top: -1rem;
+    left: 1rem;
+    opacity: 0.3;
 }
 </style>
 </head>
@@ -246,152 +259,216 @@ color: white;
         </h2>
         <p class="text-lg text-gray-700 leading-relaxed mb-4">
             Hallo! Ik ben Joshua Boermans, een 29-jarige IT-professional uit Hoofddorp die momenteel een spannende carrièretransitie doormaakt. 
-            Na meer dan 5 jaar ervaring in IT-sales bij startups en multinationals, heb ik besloten om mijn passie voor technologie 
-            een stap verder te brengen door over te stappen naar IT-development.
+            Als klein jongetje was ik al gefascineerd door technologie - uren achtereen gamend en vol bewondering kijkend naar wat je allemaal 
+            met code kunt bereiken. Alleen dacht ik toen nooit dat dit mijn toekomst zou worden.
         </p>
         <p class="text-lg text-gray-700 leading-relaxed">
-            Wat begon als nieuwsgierigheid naar de technische kant van de producten die ik verkocht, is uitgegroeid tot een 
-            echte passie voor programmeren, systeembeheer en IT-innovatie. Ik geloof in levenslang leren en ben nu bezig 
-            met het opbouwen van mijn technische vaardigheden om deze nieuwe uitdaging aan te gaan.
+            Na meer dan 5 jaar ervaring in IT-sales bij innovatieve startups en multinationals, kreeg die oude passie voor technologie weer 
+            de overhand. Terwijl ik werkte voor vooruitstrevende bedrijven en hun technische oplossingen verkocht, merkte ik steeds meer dat 
+            mijn interesse lag bij de technologie zelf - hoe het werkt, hoe het gebouwd wordt, en vooral: hoe ik het zelf zou kunnen maken.
         </p>
     </section>
 
-    <!-- Career Journey -->
+    <!-- What Drives Me -->
+    <section class="passion-card">
+        <h2 class="text-3xl font-bold mb-6">
+            <i class="fas fa-fire mr-3"></i>
+            Wat Mij Drijft
+        </h2>
+        <p class="text-lg leading-relaxed mb-4">
+            Van nature ben ik een probleemoplosser. Wanneer ik aan het programmeren ben, ben ik constant bezig met creëren en uitdagingen tackelen. 
+            Sinds ik begonnen ben met mijn omscholing naar IT, merk ik dat ik elke ochtend enthousiaster wakker word - omdat ik uitkijk naar de 
+            mogelijkheid om iets te bouwen, een probleem op te lossen, of iets nieuws te leren.
+        </p>
+        <p class="text-lg leading-relaxed">
+            Die combinatie van analytisch denken en creatief bouwen geeft me een energie die ik nog nooit eerder heb ervaren.
+        </p>
+    </section>
+
+    <!-- What Makes Me Unique -->
     <section class="bio-section">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">
-            <i class="fas fa-road mr-3 text-green-500"></i>
-            Mijn Carrière Reis
+            <i class="fas fa-star mr-3 text-yellow-500"></i>
+            Wat Maakt Mij Uniek
         </h2>
-        <div class="space-y-4">
-            <div class="border-l-4 border-blue-500 pl-4">
-                <h3 class="text-xl font-bold text-gray-800">IT Sales Ervaring (2019-2025)</h3>
-                <p class="text-gray-700">
-                    Begonnen bij XcellerateLabs waar ik werkte met cloud-native startups, gevolgd door rollen bij 
-                    Trusted Shops (e-commerce security) en NCC Group (software escrow services). Als medeoprichter 
-                    van UNIT heb ik hands-on ervaring opgedaan met low-code development en business automation.
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Mijn reis door verschillende sectoren en culturen heeft me gevormd tot iemand die rustig en analytisch kan denken, 
+                    maar tegelijkertijd gedreven en gemotiveerd blijft. Door veel te hebben gereisd, sta ik altijd open voor nieuwe 
+                    ervaringen en uitdagingen - een eigenschap die perfect past bij de snel veranderende IT-wereld.
                 </p>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-blue-800 mb-2">Wat anderen over mij zeggen:</h4>
+                    <ul class="text-blue-700 space-y-1">
+                        <li>• Gedreven en doelbewust</li>
+                        <li>• Soms "te groot denkend" (wat ik als compliment zie!)</li>
+                        <li>• Analytisch maar toegankelijk</li>
+                    </ul>
+                </div>
             </div>
-            <div class="border-l-4 border-green-500 pl-4">
-                <h3 class="text-xl font-bold text-gray-800">IT Bootcamp (2025)</h3>
-                <p class="text-gray-700">
-                    Momenteel volg ik een intensieve IT-bootcamp bij BEE-Organisation waar ik me specialiseer in 
-                    front-end en back-end development, virtual machines, en network management. Het is hier dat ik 
-                    mijn sterke affiniteit voor Python en virtualisatie technologieën ontdekte.
-                </p>
+            <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-brain text-2xl text-purple-500"></i>
+                    <span class="font-semibold">Analytisch & Rustig</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-rocket text-2xl text-red-500"></i>
+                    <span class="font-semibold">Gedreven & Gemotiveerd</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-globe text-2xl text-green-500"></i>
+                    <span class="font-semibold">Wereldwijs & Open-minded</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-cogs text-2xl text-blue-500"></i>
+                    <span class="font-semibold">Technisch Aangelegd</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Personal Interests -->
+    <!-- Personal Passions -->
     <section class="bio-section">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">
             <i class="fas fa-heart mr-3 text-red-500"></i>
-            Persoonlijke Interesses
+            Mijn Passies Buiten Het Werk
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-blue-50 p-4 rounded-lg">
-                <i class="fas fa-bicycle text-3xl text-blue-600 mb-3"></i>
-                <h3 class="font-bold text-lg mb-2">Wielrennen</h3>
-                <p class="text-gray-600">Ik vind rust en uitdaging in het wielrennen. Het helpt me om gefocust te blijven en doelen te stellen, vaardigheden die ook waardevol zijn in mijn IT-carrière.</p>
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg">
+                <i class="fas fa-plane text-4xl text-blue-600 mb-4"></i>
+                <h3 class="font-bold text-xl mb-3 text-blue-800">Reizen</h3>
+                <p class="text-blue-700">
+                    Reizen voedt mijn nieuwsgierigheid en liefde voor het ontdekken van nieuwe dingen - dezelfde nieuwsgierigheid 
+                    die me drijft in programmeren. Het geeft me iets om naar uit te kijken en ik houd ervan nieuwe culturen en 
+                    ervaringen te ontdekken.
+                </p>
             </div>
-            <div class="bg-green-50 p-4 rounded-lg">
-                <i class="fas fa-tools text-3xl text-green-600 mb-3"></i>
-                <h3 class="font-bold text-lg mb-2">Klussen</h3>
-                <p class="text-gray-600">Het oplossen van praktische problemen thuis helpt me om analytisch te blijven denken - een vaardigheid die perfect aansluit bij programmeren en troubleshooting.</p>
-            </div>
-            <div class="bg-yellow-50 p-4 rounded-lg">
-                <i class="fas fa-guitar text-3xl text-yellow-600 mb-3"></i>
-                <h3 class="font-bold text-lg mb-2">Gitaar Spelen</h3>
-                <p class="text-gray-600">Muziek brengt creativiteit en discipline samen. Het helpt me om in balans te blijven en een andere vorm van logisch denken te ontwikkelen.</p>
-            </div>
-            <div class="bg-purple-50 p-4 rounded-lg">
-                <i class="fas fa-plane text-3xl text-purple-600 mb-3"></i>
-                <h3 class="font-bold text-lg mb-2">Reizen</h3>
-                <p class="text-gray-600">Het ontdekken van nieuwe culturen en plekken heeft me geleerd om adaptief en open-minded te zijn - essentiële eigenschappen in de snel veranderende IT-wereld.</p>
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg">
+                <i class="fas fa-guitar text-4xl text-purple-600 mb-4"></i>
+                <h3 class="font-bold text-xl mb-3 text-purple-800">Gitaar Spelen</h3>
+                <p class="text-purple-700">
+                    Gitaar spelen geeft me rust, verruimt mijn geest en houdt mijn creatieve kant levend. Muziek en code hebben 
+                    meer gemeen dan je zou denken - beide gaan over patronen, ritme, en het creëren van iets moois uit niets.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Goals & Aspirations -->
+    <!-- Biggest Challenge -->
     <section class="bio-section">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">
-            <i class="fas fa-bullseye mr-3 text-purple-500"></i>
-            Mijn Doelen & Ambities
+            <i class="fas fa-mountain mr-3 text-green-500"></i>
+            De Grootste Uitdaging Die Ik Overwon
         </h2>
-        <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
-            <p class="text-lg text-gray-700 leading-relaxed mb-4">
-                Mijn doel is om binnen de IT-sector een rol te vinden waar ik kan groeien van junior naar ervaren professional. 
-                Ik zoek specifiek naar bedrijven die interne trainingen aanbieden, omdat ik geloof dat dit de beste manier is 
-                om praktijkervaring op te doen terwijl ik mijn technische kennis verder ontwikkel.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                <div class="text-center">
-                    <i class="fab fa-python text-4xl text-blue-600 mb-2"></i>
-                    <h4 class="font-bold">Python Mastery</h4>
-                    <p class="text-sm text-gray-600">Verder ontwikkelen van mijn Python vaardigheden</p>
+        <div class="quote-highlight">
+            De moeilijkste beslissing in mijn carrière was om mijn angst te overwinnen en een drastische carrièreswitch te maken. 
+            Het betekende afscheid nemen van een succesvol salestraject om opnieuw te beginnen als junior in een compleet nieuw vakgebied.
+        </div>
+        <p class="text-gray-700 leading-relaxed">
+            Maar soms moet je een sprong in het diepe maken om te ontdekken wat je werkelijk kan bereiken. Die moed om mijn 
+            comfortzone te verlaten, heeft me geleerd dat groei altijd buiten je grenzen ligt. Het was eng, maar ook ongelooflijk 
+            bevrijdend om eindelijk te kiezen voor wat me werkelijk passioneerde.
+        </p>
+    </section>
+
+    <!-- Future Vision -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-telescope mr-3 text-indigo-500"></i>
+            Mijn Toekomstvisie
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-briefcase mr-2 text-blue-500"></i>Professioneel
+                </h3>
+                <div class="space-y-4">
+                    <div class="timeline-item">
+                        <h4 class="font-bold text-gray-800">2025: Junior Developer</h4>
+                        <p class="text-gray-600">Start als trainee developer met focus op Python en web development</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="font-bold text-gray-800">2027: System Specialist</h4>
+                        <p class="text-gray-600">Ontwikkeling naar infrastructure en network management expertise</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="font-bold text-gray-800">2029+: Technical Lead</h4>
+                        <p class="text-gray-600">Groei naar senior ontwikkelaar met leiderschapsverantwoordelijkheden</p>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <i class="fas fa-server text-4xl text-green-600 mb-2"></i>
-                    <h4 class="font-bold">Infrastructure</h4>
-                    <p class="text-sm text-gray-600">Expertise opbouwen in VM's en network management</p>
-                </div>
-                <div class="text-center">
-                    <i class="fas fa-graduation-cap text-4xl text-purple-600 mb-2"></i>
-                    <h4 class="font-bold">Continuous Learning</h4>
-                    <p class="text-sm text-gray-600">Blijven leren en groeien in de IT-sector</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-heart mr-2 text-red-500"></i>Persoonlijk
+                </h3>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg">
+                        <p class="text-gray-700">
+                            Ik wil een leven leiden waarbij ik elke dag enthousiast opsta, voldoende tijd heb voor familie en vrienden, 
+                            en waarbij mijn werk niet alleen een baan is, maar een passie die me blijft uitdagen en laten groeien.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 text-gray-700">
+                        <i class="fas fa-users text-green-500"></i>
+                        <span>Tijd voor familie en vrienden</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-gray-700">
+                        <i class="fas fa-smile text-yellow-500"></i>
+                        <span>Dagelijks enthousiasme</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-gray-700">
+                        <i class="fas fa-balance-scale text-blue-500"></i>
+                        <span>Werk-leven balans</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Values & Work Style -->
-    <section class="bio-section">
+    <!-- Why IT -->
+    <section class="passion-card">
+        <h2 class="text-3xl font-bold mb-6">
+            <i class="fas fa-code mr-3"></i>
+            Waarom IT?
+        </h2>
+        <p class="text-lg leading-relaxed mb-4">
+            IT fascineert me omdat het het domein is waar je het meest kunt leren - en als groot voorstander van levenslang leren, 
+            kan ik me geen betere plek voorstellen. Ik wil meer leren over technologie en de eindeloze mogelijkheden ervan, niet 
+            alleen voor mijn eigen ontwikkeling, maar om bij te dragen aan oplossingen die het dagelijks leven van mensen kunnen verbeteren.
+        </p>
+        <p class="text-lg leading-relaxed">
+            Wat begon als nieuwsgierigheid naar de technische kant van de producten die ik verkocht, is uitgegroeid tot een echte 
+            passie voor programmeren, systeembeheer en IT-innovatie. <strong>En dit is nog maar het begin van mijn verhaal.</strong>
+        </p>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="bio-section text-center">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">
             <i class="fas fa-handshake mr-3 text-blue-500"></i>
-            Mijn Werkstijl & Waarden
+            Laten We Samen Bouwen
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-                <h3 class="font-bold text-xl mb-3 text-gray-800">Sterke Punten</h3>
-                <ul class="space-y-2">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check-circle text-green-500"></i>
-                        <span>Sterke communicatieve vaardigheden door sales achtergrond</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check-circle text-green-500"></i>
-                        <span>Probleemoplossend vermogen en analytisch denken</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check-circle text-green-500"></i>
-                        <span>Business understanding gecombineerd met technische interesse</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-check-circle text-green-500"></i>
-                        <span>Zelfmotivatie en bereidheid om te leren</span>
-                    </li>
-                </ul>
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            Mijn verhaal gaat over transformatie, passie en de moed om je dromen na te jagen. Als je op zoek bent naar iemand 
+            die niet alleen technische vaardigheden meebrengt, maar ook een uniek perspectief, doorzettingsvermogen en een 
+            onuitputtelijke honger naar leren - dan zou ik graag met je in gesprek gaan.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <i class="fab fa-python text-3xl text-blue-600 mb-2"></i>
+                <h4 class="font-bold">Technische Passie</h4>
+                <p class="text-sm text-gray-600">Echte liefde voor programmeren en technologie</p>
             </div>
-            <div>
-                <h3 class="font-bold text-xl mb-3 text-gray-800">Kernwaarden</h3>
-                <ul class="space-y-2">
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <span>Integriteit en transparantie in alle communicatie</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <span>Continue verbetering en levenslang leren</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <span>Teamwork en kennisdeling</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <i class="fas fa-star text-yellow-500"></i>
-                        <span>Klantgerichtheid en kwaliteitslevering</span>
-                    </li>
-                </ul>
+            <div class="bg-green-50 p-4 rounded-lg">
+                <i class="fas fa-lightbulb text-3xl text-green-600 mb-2"></i>
+                <h4 class="font-bold">Business Inzicht</h4>
+                <p class="text-sm text-gray-600">Jaren ervaring in begrijpen van klantbehoeften</p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg">
+                <i class="fas fa-graduation-cap text-3xl text-purple-600 mb-2"></i>
+                <h4 class="font-bold">Leergierigheid</h4>
+                <p class="text-sm text-gray-600">Altijd bereid om nieuwe uitdagingen aan te gaan</p>
             </div>
         </div>
     </section>
