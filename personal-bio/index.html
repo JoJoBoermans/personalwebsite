@@ -14,8 +14,6 @@
         text-align: center;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
-
-
 @media print {
 body { -webkit-print-color-adjust: exact; }
 * { box-sizing: border-box; }
@@ -141,19 +139,18 @@ color: white;
 }
 
 .profile-image {
-     position: absolute;
-    right: 40px;
-    top: 30%;
-    transform: translateY(-50%);
+    position: absolute;
+    margin-top: 5.5rem;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 1rem;
-    width: 150px;
-    height: auto;
+    width: 100%;
+    max-width: 28rem;
+    object-fit: cover;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 4px solid rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
-    z-index: 100;
     float: right;
-    size: 55%;
 }
 
 .profile-image:hover {
@@ -164,35 +161,33 @@ color: white;
 
 .right-image {
     position: absolute;
-    right: 40px;
+    right: 20px;
     top: 150%;
     transform: translateY(-50%);
     border-radius: 1rem;
-    width: 150px;
+    width: 400px;
     height: auto;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 4px solid rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
     z-index: 100;
     float: right;
-    size: 55%;
    
 }
 
 .left-image {
     position: absolute;
-    left: 40px;
-    top: 230%;
+    left: 20px;
+    top: 20%;
     transform: translateY(-50%);
     border-radius: 1rem;
-    width: 150px;
+    width: 400px;
     height: auto;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 4px solid rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
     z-index: 100;
     float: left;
-    size: 55%;
    
 }
 
@@ -215,28 +210,22 @@ color: white;
         justify-content: center;
     }
     
-    .left-image {
-        float: none;
-        display: block;
-        margin: 2rem auto;
-        max-width: 16rem;
-        size: 5%;
+    .right-image {
+        right: 3000px;
     }
     
-     .right-image {
-        float: none;
-        display: block;
-        margin: 2rem auto;
-        max-width: 16rem;
-         size: 5%;
+     .left-image {
+       left: 3000px;
     }
 
     .profile-image {
         float: none;
+        position: relative;
         display: block;
         margin: 2rem auto;
-        max-width: 20rem;
-        size: 5%;
+        max-width:15rem;
+        top: 30px;
+        left: 10px
     }
 
     
@@ -328,15 +317,15 @@ color: white;
         <h1>Mijn Persoonlijke Verhaal</h1>
         <p class="p1">Van IT Sales naar IT Development - Een Reis van Groei en Ontdekking</p>
          
-        <img src="foto-bio.jpg" 
+        <img src="../foto-bio.jpg" 
              alt="Joshua Boermans Profile Photo" 
              class="profile-image">
 
-               <img src="foto-bio2.jpg" 
+               <img src="../foto-bio2.jpg" 
              alt="Joshua Boermans Profile Photo" 
              class="right-image">
 
-         <img src="foto-bio3.jpg" 
+         <img src="../foto-bio3.jpg" 
              alt="Joshua Boermans Profile Photo" 
              class="left-image">
     </div>
