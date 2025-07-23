@@ -585,6 +585,30 @@ document.addEventListener('click', function(event) {
         document.querySelector('.mobile-menu-btn i').className = 'fas fa-bars';
     }
 });
+
+    function handleZoomImages() {
+    const images = document.querySelectorAll('.profile-image, .right-image, .left-image');
+    const zoomLevel = window.devicePixelRatio || 1;
+    
+    images.forEach(img => {
+        if (zoomLevel > 1.10) {
+            img.style.display = 'none';
+        } else {
+            img.style.display = 'block';
+        }
+    });
+}
+
+// Listen for zoom changes
+window.addEventListener('resize', handleZoomImages);
+window.addEventListener('load', handleZoomImages);
+
+// Better zoom detection with debouncing
+let zoomTimer;
+window.addEventListener('resize', function() {
+    clearTimeout(zoomTimer);
+    zoomTimer = setTimeout(handleZoomImages, 100);
+});
 </script>
     
 </body>
