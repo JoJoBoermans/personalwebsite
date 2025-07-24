@@ -13,11 +13,16 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
         .container {
@@ -40,6 +45,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -47,6 +53,7 @@
             font-weight: 700;
             color: #2d5a2d;
             text-decoration: none;
+            z-index: 101;
         }
 
         .nav-links {
@@ -78,6 +85,39 @@
         .nav-appointment:hover {
             transform: translateY(-2px);
             color: white !important;
+        }
+
+        /* Hamburger Menu */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            z-index: 101;
+        }
+
+        .nav-toggle span {
+            width: 28px;
+            height: 3px;
+            background: #2d5a2d;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
         }
 
         /* Page Header */
@@ -114,6 +154,8 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
             margin: 0.5rem;
+            min-width: 200px;
+            text-align: center;
         }
 
         .cta-button:hover {
@@ -279,16 +321,12 @@
         }
 
         .natural-image {
-            background: linear-gradient(135deg, #a8d5a8 0%, #7db87d 100%);
-            height: 400px;
+            max-width: 100%;
+            height: auto;
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 2rem;
+            display: block;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            object-fit: cover;
         }
 
         /* Pricing Section */
@@ -441,6 +479,8 @@
             transition: transform 0.3s ease;
             display: inline-block;
             margin: 0.5rem;
+            min-width: 200px;
+            text-align: center;
         }
 
         .booking-btn:hover {
@@ -477,46 +517,123 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Mobile Navigation */
             .nav-links {
                 display: none;
+                position: absolute;
+                right: 0;
+                top: 60px;
+                background: linear-gradient(135deg, #a8d5a8 0%, #e8f5e8 100%);
+                flex-direction: column;
+                width: 250px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+                border-radius: 0 0 15px 15px;
+                overflow: hidden;
+                z-index: 99;
+                padding: 1rem 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 0.8rem 1.5rem;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.5rem;
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .natural-content {
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+
+            .addon-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 3rem 0;
             }
 
             .page-header h1 {
                 font-size: 2.2rem;
+                line-height: 1.2;
             }
 
             .page-header p {
                 font-size: 1.1rem;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
+            .section-title {
+                font-size: 2rem;
             }
 
-            .natural-content {
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 3rem;
+            }
+
+            /* Stack all grids to single column */
+            .services-grid,
+            .natural-content,
+            .addon-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
             .natural-image {
-                height: 250px;
+                margin-bottom: 2rem;
+                max-height: 250px;
             }
 
-            .pricing-table th,
-            .pricing-table td {
-                padding: 1rem;
-                font-size: 0.95rem;
+            .service-card {
+                padding: 2rem;
             }
 
-            .addon-grid {
-                grid-template-columns: 1fr;
+            .service-icon {
+                font-size: 3rem;
+            }
+
+            .addon-card {
+                padding: 2rem;
             }
 
             .cta-button,
             .booking-btn {
                 display: block;
                 margin: 1rem auto;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                max-width: 300px;
+            }
+
+            .booking-cta {
+                padding: 4rem 0;
             }
 
             .booking-cta h2 {
@@ -526,6 +643,130 @@
             .booking-cta p {
                 font-size: 1.1rem;
             }
+
+            /* Mobile-optimized pricing table */
+            .pricing-table th,
+            .pricing-table td {
+                padding: 1rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .pricing-table td:first-child {
+                font-size: 1rem;
+            }
+
+            .pricing-table td:last-child {
+                font-size: 1.1rem;
+            }
+
+            .pricing-note {
+                padding: 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .service-card,
+            .addon-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                font-size: 2.8rem;
+            }
+
+            .addon-icon {
+                font-size: 2.5rem;
+            }
+
+            .cta-button,
+            .booking-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+                max-width: 280px;
+            }
+
+            .natural-text h2 {
+                font-size: 1.6rem;
+            }
+
+            .natural-image {
+                max-height: 200px;
+            }
+
+            .booking-cta h2 {
+                font-size: 1.8rem;
+            }
+
+            .footer-cta h3 {
+                font-size: 1.4rem;
+            }
+
+            /* Extra mobile optimization for pricing table */
+            .pricing-table th,
+            .pricing-table td {
+                padding: 0.8rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .pricing-table td:first-child {
+                font-size: 0.9rem;
+            }
+
+            .pricing-table td:last-child {
+                font-size: 1rem;
+            }
+
+            .pricing-note {
+                padding: 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Ultra-small screens optimization */
+        @media (max-width: 360px) {
+            .pricing-container {
+                margin: 0 -10px;
+                border-radius: 15px;
+            }
+
+            /* Hide middle column on very small screens for better readability */
+            .pricing-table td:nth-child(2),
+            .pricing-table th:nth-child(2) {
+                display: none;
+            }
+
+            .pricing-table {
+                table-layout: fixed;
+            }
+
+            .pricing-table td:first-child {
+                width: 70%;
+            }
+
+            .pricing-table td:last-child {
+                width: 30%;
+            }
         }
     </style>
 </head>
@@ -534,11 +775,16 @@
     <header>
         <nav class="container">
             <a href="../startpagina/index.html" class="logo">🐾 Fluffy & Fresh</a>
-            <ul class="nav-links">
+            <div class="nav-toggle" id="nav-toggle" aria-label="Menu" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="../startpagina/index.html">Home</a></li>
-                <li><a href="../diensten/index.html">Diensten</a></li>
+                <li><a href="../diensten/index.html" class="active">Diensten</a></li>
                 <li><a href="../contact/index.html">Contact</a></li>
-                <li><a href="../../index.html">Joshuaboermans.com</a><li>
+                <li><a href="../../index.html">Joshuaboermans.com</a></li>
             </ul>
         </nav>
     </header>
@@ -548,7 +794,7 @@
         <div class="container">
             <h1>Onze Liefdevolle Diensten</h1>
             <p>Bij Fluffy & Fresh staat het welzijn van jouw hond centraal. Ontdek ons complete aanbod van professionele verzorgingsdiensten, allemaal uitgevoerd met 100% natuurlijke producten en oneindig veel liefde. Van een ontspannende wasbeurt tot een stijlvolle knipbeurt - wij zorgen ervoor dat jouw trouwe viervoeter er fantastisch uitziet én zich geweldig voelt.</p>
-            <a href="contact.html#contact-form" class="cta-button">Maak Direct een Afspraak</a>
+            <a href="../contact/index.html#contact-form" class="cta-button">Maak Direct een Afspraak</a>
             <a href="tel:026-1234567" class="cta-button cta-secondary">Bel Nu: 026 - 123 4567</a>
         </div>
     </section>
@@ -618,6 +864,8 @@
         </div>
     </section>
 
+   
+
     <!-- Natural Products Section -->
     <section class="natural-products">
         <div class="container">
@@ -640,9 +888,8 @@
                     </ul>
                 </div>
                 <img src="../fotos/foto5.jpg" 
-             alt="Hier komt een afbeelding van een hond die wordt gewassen met natuurlijke producten" 
+             alt="Een hond wordt liefdevol gewassen met natuurlijke producten bij Fluffy & Fresh" 
              class="natural-image">
-                </div>
             </div>
         </div>
     </section>
@@ -786,28 +1033,60 @@
         </div>
     </section>
 
-    <!-- Booking CTA -->
-    <section class="booking-cta">
-        <div class="container">
-            <h2>Klaar om jouw Hond te Verwennen?</h2>
-            <p>Geef jouw trouwe viervoeter de liefdevolle verzorging die hij verdient. Boek vandaag nog een afspraak bij Fluffy & Fresh en ervaar het verschil van natuurlijke, professionele hondenverzorging in een stressvrije omgeving.</p>
-            <a href="contact.html#contact-form" class="booking-btn">Maak een Afspraak</a>
-            <a href="tel:026-1234567" class="booking-btn secondary">Bel Direct: 026 - 123 4567</a>
-        </div>
-    </section>
+   
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-cta">
-                <h3>Vragen over Onze Diensten?</h3>
-                <p style="margin-bottom: 2rem;">Neem contact met ons op voor persoonlijk advies en prijsinformatie!</p>
+                <h2>Klaar Om Jouw Hond Te Verwennen?</h2>
+                <p style="margin-bottom: 2rem;">Geef jouw trouwe viervoeter de liefdevolle verzorging die hij verdient.<br>
+                     <br>
+                     Boek vandaag nog een afspraak bij Fluffy & Fresh en ervaar het verschil van natuurlijke,<br> professionele hondenverzorging in een stressvrije omgeving.</p>
+        
                 <a href="tel:026-1234567" class="cta-button">Bel Direct: 026 - 123 4567</a>
-                <a href="contact.html" class="cta-button cta-secondary">Alle Contactgegevens</a>
+                <a href="../contact/index.html" class="cta-button cta-secondary">Alle Contactgegevens</a>
+                <a href="../contact/index.html#contact-form" class="booking-btn">Maak een Afspraak</a>
             </div>
             <p>&copy; 2025 Fluffy & Fresh Hondentrimsalon Arnhem. Alle rechten voorbehouden.</p>
             <p style="margin-top: 0.5rem; font-size: 0.9rem;">Natuurlijke verzorging • Liefdevolle aandacht • Professionele service</p>
         </div>
     </footer>
+
+    <script>
+        // Hamburger menu functionaliteit
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            navToggle.classList.toggle('active');
+        });
+
+        // Keyboard toegankelijkheid
+        navToggle.addEventListener('keydown', function(e) {
+            if(e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                navLinks.classList.toggle('open');
+                navToggle.classList.toggle('active');
+            }
+        });
+
+        // Sluit menu bij klikken op links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Sluit menu bij klikken buiten navigatie
+        document.addEventListener('click', function(e) {
+            if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
