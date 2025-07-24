@@ -657,14 +657,6 @@ frameworks, en ontwikkelingsmethodologieën. Hands-on projecten en real-world ap
 </div>
 </section>
 
-    <!-- Design Credit Banner -->
-<div class="fixed bottom-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-tl-lg shadow-lg z-50">
-  <p class="text-xs flex items-center gap-2">
-    <i class="fas fa-code"></i>
-    <span>Ontworpen door Joshua Boermans</span>
-  </p>
-</div>
-
 <!-- Call to Action -->
 <section class="mb-8">
 <div class="gradient-bg text-white rounded-lg shadow-lg p-8 text-center">
@@ -683,32 +675,13 @@ in te zetten bij een vooruitstrevend bedrijf dat investeert in talent ontwikkeli
 </section>
 </div>
 
-<script>
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-nav-menu');
-    const btn = document.querySelector('.mobile-menu-btn i');
-    
-    menu.classList.toggle('show');
-    
-    // Toggle between hamburger and X icon
-    if (menu.classList.contains('show')) {
-        btn.className = 'fas fa-times';
-    } else {
-        btn.className = 'fas fa-bars';
-    }
-}
-
-// Close menu when clicking outside
-document.addEventListener('click', function(event) {
-    const menu = document.getElementById('mobile-nav-menu');
-    const btn = document.querySelector('.mobile-menu-btn');
-    
-    if (!menu.contains(event.target) && !btn.contains(event.target)) {
-        menu.classList.remove('show');
-        document.querySelector('.mobile-menu-btn i').className = 'fas fa-bars';
-    }
-});
-</script>
+        <!-- Design Credit Banner -->
+<div class="fixed bottom-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-tl-lg shadow-lg z-50">
+  <p class="text-xs flex items-center gap-2">
+    <i class="fas fa-code"></i>
+    <span>Ontworpen door Joshua Boermans</span>
+  </p>
+</div>
 
 <!-- Footer with Contact Information -->
 <footer class="gradient-bg text-white py-8 mt-12">
@@ -763,6 +736,34 @@ document.addEventListener('click', function(event) {
     
   </div>
 </footer>
+
+    
     
 </body>
 </html>
+<script>
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById('mobile-nav-menu');
+    const btn = document.querySelector('.mobile-menu-btn');
+    
+    if (!menu.contains(event.target) && !btn.contains(event.target)) {
+        menu.classList.remove('show');
+        document.querySelector('.mobile-menu-btn i').className = 'fas fa-bars';
+    }
+});
+
+    function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const btn = document.querySelector('.mobile-menu-btn i');
+    
+    menu.classList.toggle('show');
+    
+    // Toggle between hamburger and X icon
+    if (menu.classList.contains('show')) {
+        btn.className = 'fas fa-times';
+    } else {
+        btn.className = 'fas fa-bars';
+    }
+}
+    </script>
