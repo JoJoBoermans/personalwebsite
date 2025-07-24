@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluffy & Fresh - Hondentrimsalon Arnhem | Natuurlijke Vachtverzorging</title>
+    <meta name="description" content="Fluffy & Fresh hondentrimsalon in Arnhem. Professionele vachtverzorging met natuurlijke producten. Wassen, knippen en verzorgen met liefdevolle aandacht.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #a8d5a8 0%, #e8f5e8 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d5a2d;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2d5a2d;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #d4a574;
+        }
+
+        .nav-appointment {
+            background: #d4a574;
+            color: white !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-appointment:hover {
+            transform: translateY(-2px);
+            color: white !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #2d5a2d;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4a574 0%, #c19660 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.6);
+        }
+
+        .cta-secondary {
+            background: linear-gradient(135deg, #a8d5a8 0%, #7db87d 100%);
+            box-shadow: 0 4px 15px rgba(168, 213, 168, 0.4);
+        }
+
+        .cta-secondary:hover {
+            box-shadow: 0 6px 20px rgba(168, 213, 168, 0.6);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 4rem 0;
+            background-color: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2d5a2d;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: #f8fdf8;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #e8f5e8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(168, 213, 168, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            color: #2d5a2d;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            background: linear-gradient(135deg, #f8fdf8 0%, #e8f5e8 100%);
+            padding: 4rem 0;
+        }
+
+        .why-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .why-text h2 {
+            color: #2d5a2d;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .why-text p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .features {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .features li {
+            color: #2d5a2d;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            position: relative;
+            padding-left: 2.5rem;
+            font-size: 1rem;
+        }
+
+        .features li::before {
+            content: "🐾";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .why-image {
+            background: linear-gradient(135deg, #d4a574 0%, #c19660 100%);
+            height: 350px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 0;
+            background-color: #ffffff;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: #f8fdf8;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #a8d5a8;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            color: #2d5a2d;
+            font-weight: 600;
+        }
+
+        /* Tips Section */
+        .tips {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f8fdf8 100%);
+            padding: 4rem 0;
+        }
+
+        .tips-content {
+            text-align: center;
+        }
+
+        .tip-highlight {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 2px solid #a8d5a8;
+        }
+
+        .tip-highlight h3 {
+            color: #2d5a2d;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 0;
+            background-color: #ffffff;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            color: #2d5a2d;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item strong {
+            color: #2d5a2d;
+            min-width: 100px;
+        }
+
+        .opening-hours {
+            background: #f8fdf8;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #e8f5e8;
+        }
+
+        .opening-hours h3 {
+            color: #2d5a2d;
+            margin-bottom: 1.5rem;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e8f5e8;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2d5a2d 0%, #1a3d1a 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-cta {
+            margin-bottom: 2rem;
+        }
+
+        .footer-cta h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .why-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 1rem auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🐾 Fluffy & Fresh</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#diensten">Diensten</a></li>
+                <li><a href="#waarom">Waarom Wij</a></li>
+                <li><a href="#ervaringen">Ervaringen</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="nav-appointment">Afspraak Maken</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Welkom bij Fluffy & Fresh</h1>
+            <p class="hero-subtitle">
+                Dé hondentrimsalon in Arnhem waar jouw trouwe viervoeter centraal staat. 
+                Professionele verzorging met 100% natuurlijke producten en oneindig veel liefde. 
+                Van een frisse wasbeurt tot een stijlvolle knipbeurt - wij maken van elke hond een stralende verschijning!
+            </p>
+            <a href="#contact" class="cta-button">Maak Direct een Afspraak</a>
+            <a href="tel:026-1234567" class="cta-button cta-secondary">Bel Nu: 026 - 123 4567</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="diensten">
+        <div class="container">
+            <h2 class="section-title">Onze Liefdevolle Diensten</h2>
+            <p class="section-subtitle">
+                Bij Fluffy & Fresh krijgt elke hond de persoonlijke aandacht die hij verdient. 
+                Ontdek ons complete aanbod voor een gezonde, glanzende vacht.
+            </p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🛁</div>
+                    <h3>Wassen & Verzorgen</h3>
+                    <p>Een ontspannende wasbeurt met natuurlijke, huidvriendelijke shampoos en conditioners. Inclusief nagels knippen, oren reinigen en een grondige gezondheidscheck van huid en vacht.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>Knippen & Stylen</h3>
+                    <p>Vakkundige knipbeurten volgens rasstandaard of volledig naar jouw wensen. Van hygiënische trims tot complete make-overs - altijd met respect voor het comfort van jouw hond.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌿</div>
+                    <h3>Natuurlijke Verzorging</h3>
+                    <p>Wij geloven in de kracht van de natuur. Alle onze producten zijn 100% natuurlijk, vrij van schadelijke chemicaliën en perfect afgestemd op de gevoelige huid van honden.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose" id="waarom">
+        <div class="container">
+            <div class="why-content">
+                <div class="why-text">
+                    <h2>Waarom Fluffy & Fresh de Beste Keuze Is</h2>
+                    <p>Bij Fluffy & Fresh draait alles om het welzijn en de tevredenheid van jouw hond. Onze ervaren trimsters zorgen ervoor dat elke hond zich volledig op zijn gemak voelt tijdens de behandeling.</p>
+                    
+                    <p>Gelegen in het hart van Arnhem, zijn wij dé specialist voor hondenverzorging in de regio. Onze salon biedt een rustige, stressvrije omgeving waar jouw trouwe viervoeter kan ontspannen en genieten van de verwennerij.</p>
+                    
+                    <ul class="features">
+                        <li>Ervaren en gecertificeerde trimsters met hart voor honden</li>
+                        <li>Uitsluitend natuurlijke, diervriendelijke verzorgingsproducten</li>
+                        <li>Persoonlijke aandacht en maatwerk voor elke hond</li>
+                        <li>Stressvrije, rustige salon omgeving</li>
+                        <li>Flexibele afspraaktijden die bij jou passen</li>
+                        <li>Gratis advies over thuisverzorging</li>
+                    </ul>
+                </div>
+                <div class="why-image">
+                    <p>🐕‍🦺 Hier komt een foto van<br>een gelukkige hond die<br>geniet van onze<br>liefdevolle verzorging 🐕‍🦺</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="ervaringen">
+        <div class="container">
+            <h2 class="section-title">Wat Onze Klanten Zeggen</h2>
+            <p class="section-subtitle">
+                De ervaringen van andere hondeneigenaren uit Arnhem en omgeving spreken voor zich!
+            </p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Onze Luna komt altijd vrolijk terug van Fluffy & Fresh! De vacht is prachtig en ze ruikt heerlijk. Het team heeft zoveel geduld en liefde voor de dieren. Echt een aanrader voor iedereen in Arnhem!"
+                    </p>
+                    <p class="testimonial-author">— Marieke S., Arnhem</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Eindelijk een trimsalon waar mijn bange Jack Russell zich op zijn gemak voelt! De natuurlijke producten zijn fantastisch en het resultaat is altijd perfect. Geweldige service!"
+                    </p>
+                    <p class="testimonial-author">— Bas V., Oosterbeek</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "De beste trimsalon in de regio! Mijn Golden Retriever ziet er weer fantastisch uit en de tips voor thuisverzorging zijn super nuttig. Professioneel en betaalbaar!"
+                    </p>
+                    <p class="testimonial-author">— Sophie K., Velp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips">
+        <div class="container">
+            <div class="tips-content">
+                <h2 class="section-title">Inspiratie & Verzorgingstips</h2>
+                <p class="section-subtitle">
+                    Onze experts delen graag hun kennis voor een gezonde, glanzende vacht thuis.
+                </p>
+                <div class="tip-highlight">
+                    <h3>💡 Tip van de Maand</h3>
+                    <p>Regelmatig borstelen voorkomt klitten en houdt de vacht gezond en glanzend. Vooral tijdens de rui is dit extra belangrijk. Vraag tijdens je bezoek gerust om persoonlijk advies voor jouw hond!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Afspraken</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Neem Contact Op</h3>
+                    <div class="contact-item">
+                        <strong>📞 Telefoon:</strong>
+                        <span>026 - 123 4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📧 Email:</strong>
+                        <span>info@fluffyandfresh.nl</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📍 Adres:</strong>
+                        <span>Hondenstraat 123<br>6811 AB Arnhem</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>🚗 Parkeren:</strong>
+                        <span>Gratis parkeerplaatsen direct voor de deur</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>🌐 Social Media:</strong>
+                        <span>Volg ons op Instagram en Facebook voor dagelijkse foto's en tips!</span>
+                    </div>
+                </div>
+                
+                <div class="opening-hours">
+                    <h3>Openingstijden</h3>
+                    <div class="hours-item">
+                        <span>Maandag</span>
+                        <span>Gesloten</span>
+                    </div>
+                    <div class="hours-item">
+                        <span>Dinsdag - Vrijdag</span>
+                        <span>9:00 - 17:00</span>
+                    </div>
+                    <div class="hours-item">
+                        <span>Zaterdag</span>
+                        <span>9:00 - 16:00</span>
+                    </div>
+                    <div class="hours-item">
+                        <span>Zondag</span>
+                        <span>10:00 - 15:00</span>
+                    </div>
+                    <p style="margin-top: 1.5rem; color: #666; font-size: 0.9rem;">
+                        <em>Alle behandelingen uitsluitend op afspraak. Bel of mail voor beschikbaarheid en persoonlijk advies.</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-cta">
+                <h3>Klaar om jouw hond te laten stralen?</h3>
+                <p style="margin-bottom: 2rem;">Geef jouw trouwe viervoeter de Fluffy & Fresh ervaring!</p>
+                <a href="tel:026-1234567" class="cta-button">Bel Direct: 026 - 123 4567</a>
+                <a href="#contact" class="cta-button cta-secondary">Online Afspraak Maken</a>
+            </div>
+            <p>&copy; 2025 Fluffy & Fresh Hondentrimsalon Arnhem. Alle rechten voorbehouden.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Natuurlijke verzorging • Liefdevolle aandacht • Professionele service</p>
+        </div>
+    </footer>
+</body>
+</html>
