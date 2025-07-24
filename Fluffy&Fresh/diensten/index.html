@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onze Diensten</title>
+    <meta name="description" content="Ontdek alle diensten van Fluffy & Fresh hondentrimsalon in Arnhem. Wassen, knippen, verzorgen met natuurlijke producten. Transparante prijzen en professionele service.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #a8d5a8 0%, #e8f5e8 100%);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2d5a2d;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2d5a2d;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #d4a574;
+        }
+
+        .nav-appointment {
+            background: #d4a574;
+            color: white !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-appointment:hover {
+            transform: translateY(-2px);
+            color: white !important;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: #2d5a2d;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4a574 0%, #c19660 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.6);
+        }
+
+        .cta-secondary {
+            background: linear-gradient(135deg, #a8d5a8 0%, #7db87d 100%);
+            box-shadow: 0 4px 15px rgba(168, 213, 168, 0.4);
+        }
+
+        .cta-secondary:hover {
+            box-shadow: 0 6px 20px rgba(168, 213, 168, 0.6);
+        }
+
+        /* Section Styling */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2d5a2d;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Main Services Grid */
+        .main-services {
+            padding: 4rem 0;
+            background-color: #ffffff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: #f8fdf8;
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            border: 3px solid #e8f5e8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #a8d5a8 0%, #d4a574 100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(168, 213, 168, 0.3);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            color: #2d5a2d;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .service-features li {
+            color: #2d5a2d;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #a8d5a8;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Natural Products Section */
+        .natural-products {
+            background: linear-gradient(135deg, #f8fdf8 0%, #e8f5e8 100%);
+            padding: 5rem 0;
+        }
+
+        .natural-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .natural-text h2 {
+            color: #2d5a2d;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .natural-text p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .natural-benefits {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .natural-benefits li {
+            color: #2d5a2d;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .natural-benefits li::before {
+            content: "🌿";
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .natural-image {
+            background: linear-gradient(135deg, #a8d5a8 0%, #7db87d 100%);
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 5rem 0;
+            background-color: #ffffff;
+        }
+
+        .pricing-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #f8fdf8;
+            border-radius: 25px;
+            border: 3px solid #e8f5e8;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pricing-table th {
+            background: linear-gradient(135deg, #a8d5a8 0%, #7db87d 100%);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-align: left;
+        }
+
+        .pricing-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid #e8f5e8;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pricing-table td:first-child {
+            color: #2d5a2d;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .pricing-table td:nth-child(2) {
+            color: #666;
+        }
+
+        .pricing-table td:last-child {
+            text-align: right;
+            color: #d4a574;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .pricing-note {
+            background: #e8f5e8;
+            padding: 2rem;
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Add-on Services */
+        .addon-services {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f8fdf8 100%);
+            padding: 4rem 0;
+        }
+
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .addon-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid #e8f5e8;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .addon-card:hover {
+            transform: translateY(-5px);
+            border-color: #a8d5a8;
+            box-shadow: 0 10px 30px rgba(168, 213, 168, 0.2);
+        }
+
+        .addon-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .addon-card h4 {
+            color: #2d5a2d;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .addon-price {
+            color: #d4a574;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .addon-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Booking CTA */
+        .booking-cta {
+            background: linear-gradient(135deg, #d4a574 0%, #c19660 100%);
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .booking-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .booking-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .booking-btn {
+            background: white;
+            color: #2d5a2d;
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        .booking-btn:hover {
+            transform: translateY(-3px);
+            color: #2d5a2d;
+        }
+
+        .booking-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .booking-btn.secondary:hover {
+            background: white;
+            color: #2d5a2d;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2d5a2d 0%, #1a3d1a 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-cta {
+            margin-bottom: 2rem;
+        }
+
+        .footer-cta h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .page-header p {
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .natural-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .natural-image {
+                height: 250px;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .addon-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button,
+            .booking-btn {
+                display: block;
+                margin: 1rem auto;
+            }
+
+            .booking-cta h2 {
+                font-size: 2.2rem;
+            }
+
+            .booking-cta p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">🐾 Fluffy & Fresh</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="diensten.html">Diensten</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              <li><a href="../../index.html">Joshuaboermans.com></a>li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Onze Liefdevolle Diensten</h1>
+            <p>Bij Fluffy & Fresh staat het welzijn van jouw hond centraal. Ontdek ons complete aanbod van professionele verzorgingsdiensten, allemaal uitgevoerd met 100% natuurlijke producten en oneindig veel liefde. Van een ontspannende wasbeurt tot een stijlvolle knipbeurt - wij zorgen ervoor dat jouw trouwe viervoeter er fantastisch uitziet én zich geweldig voelt.</p>
+            <a href="contact.html#contact-form" class="cta-button">Maak Direct een Afspraak</a>
+            <a href="tel:026-1234567" class="cta-button cta-secondary">Bel Nu: 026 - 123 4567</a>
+        </div>
+    </section>
+
+    <!-- Main Services -->
+    <section class="main-services">
+        <div class="container">
+            <h2 class="section-title">Onze Hoofddiensten</h2>
+            <p class="section-subtitle">
+                Elke hond is uniek en verdient persoonlijke aandacht. Daarom bieden wij verschillende diensten aan, 
+                allemaal afgestemd op de specifieke behoeften van jouw trouwe viervoeter.
+            </p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">🛁</span>
+                    <h3>Wassen & Verzorgen</h3>
+                    <p>Een complete verwenbeurt voor jouw hond met natuurlijke, huidvriendelijke producten. Inclusief grondige reiniging, verzorging van oren en nagels, en een uitgebreide gezondheidscheck van huid en vacht.</p>
+                    <ul class="service-features">
+                        <li>Natuurlijke shampoo en conditioner</li>
+                        <li>Oren reinigen en controleren</li>
+                        <li>Nagels knippen en vijlen</li>
+                        <li>Huid- en vachtcontrole</li>
+                        <li>Professioneel afdrogen en borstelen</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">✂️</span>
+                    <h3>Knippen & Stylen</h3>
+                    <p>Vakkundige knipbeurten door ervaren trimsters, volgens rasstandaard of volledig naar jouw wensen. Wij zorgen ervoor dat jouw hond er prachtig uitziet en zich comfortabel voelt.</p>
+                    <ul class="service-features">
+                        <li>Professionele trimtechnieken</li>
+                        <li>Rasspecifieke knipstijlen</li>
+                        <li>Hygiënische knippen</li>
+                        <li>Creatieve styling op maat</li>
+                        <li>Seizoensgebonden aanpassingen</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🌟</span>
+                    <h3>Complete Behandeling</h3>
+                    <p>De ultieme verwenervaring: een combinatie van wassen, knippen en uitgebreide verzorging. Perfect voor honden die de volledige Fluffy & Fresh ervaring verdienen.</p>
+                    <ul class="service-features">
+                        <li>Alle wash & care behandelingen</li>
+                        <li>Professioneel knippen en stylen</li>
+                        <li>Speciale vachtverzorging</li>
+                        <li>Wellness massage (optioneel)</li>
+                        <li>Natuurlijke hondenvriendelijke parfum</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🐾</span>
+                    <h3>Puppy Wenbeurt</h3>
+                    <p>Speciaal voor puppies tot 6 maanden: een zachte kennismaking met de trimsalon. Spelenderwijs wennen aan wassen, föhnen, borstelen en nagels knippen in een stressvrije omgeving.</p>
+                    <ul class="service-features">
+                        <li>Zachte introductie tot trimmen</li>
+                        <li>Positieve ervaring opbouwen</li>
+                        <li>Kortere behandeltijd</li>
+                        <li>Extra geduld en aandacht</li>
+                        <li>Basis nagel- en oorverzorging</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Natural Products Section -->
+    <section class="natural-products">
+        <div class="container">
+            <div class="natural-content">
+                <div class="natural-text">
+                    <h2>100% Natuurlijke Producten</h2>
+                    <p>Bij Fluffy & Fresh geloven we sterk in de kracht van de natuur. Daarom gebruiken we uitsluitend natuurlijke, biologisch afbreekbare producten die vriendelijk zijn voor de gevoelige huid van honden én voor het milieu.</p>
+                    
+                    <p>Al onze shampoos, conditioners en verzorgingsproducten zijn vrij van schadelijke chemicaliën zoals sulfaten, parabenen en kunstmatige kleurstoffen. In plaats daarvan vertrouwen we op de helende kracht van natuurlijke ingrediënten zoals aloë vera, kamille, kokosnootolie en essentiële oliën.</p>
+
+                    <ul class="natural-benefits">
+                        <li>Geen agressieve chemicaliën of sulfaten</li>
+                        <li>pH-neutraal en huidvriendelijk</li>
+                        <li>Hypoallergeen voor gevoelige honden</li>
+                        <li>Biologisch afbreekbaar en milieuvriendelijk</li>
+                        <li>Verrijkt met natuurlijke vitamines en mineralen</li>
+                        <li>Langdurige bescherming en verzorging</li>
+                        <li>Geschikt voor alle vachttypes</li>
+                        <li>Aanbevolen door dierenartsen</li>
+                    </ul>
+                </div>
+                <div class="natural-image">
+                    <p>🌿 Hier komt een foto van<br>onze natuurlijke<br>verzorgingsproducten:<br>shampoos, conditioners<br>en speciale behandelingen 🌿</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Transparante Prijzen</h2>
+            <p class="section-subtitle">
+                Onze prijzen zijn afhankelijk van de grootte, het vachttype en de conditie van jouw hond. 
+                Hieronder vind je onze indicatieve prijsranges voor een duidelijk beeld van onze tarieven.
+            </p>
+            
+            <div class="pricing-container">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Dienst</th>
+                            <th>Hondengrootte</th>
+                            <th>Vanaf Prijs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Wassen & Verzorgen</td>
+                            <td>Klein (tot 10kg)</td>
+                            <td>€ 29,-</td>
+                        </tr>
+                        <tr>
+                            <td>Wassen & Verzorgen</td>
+                            <td>Middel (10-25kg)</td>
+                            <td>€ 39,-</td>
+                        </tr>
+                        <tr>
+                            <td>Wassen & Verzorgen</td>
+                            <td>Groot (boven 25kg)</td>
+                            <td>€ 49,-</td>
+                        </tr>
+                        <tr>
+                            <td>Knippen & Stylen</td>
+                            <td>Klein (tot 10kg)</td>
+                            <td>€ 45,-</td>
+                        </tr>
+                        <tr>
+                            <td>Knippen & Stylen</td>
+                            <td>Middel (10-25kg)</td>
+                            <td>€ 59,-</td>
+                        </tr>
+                        <tr>
+                            <td>Knippen & Stylen</td>
+                            <td>Groot (boven 25kg)</td>
+                            <td>€ 75,-</td>
+                        </tr>
+                        <tr>
+                            <td>Complete Behandeling</td>
+                            <td>Klein (tot 10kg)</td>
+                            <td>€ 69,-</td>
+                        </tr>
+                        <tr>
+                            <td>Complete Behandeling</td>
+                            <td>Middel (10-25kg)</td>
+                            <td>€ 89,-</td>
+                        </tr>
+                        <tr>
+                            <td>Complete Behandeling</td>
+                            <td>Groot (boven 25kg)</td>
+                            <td>€ 109,-</td>
+                        </tr>
+                        <tr>
+                            <td>Puppy Wenbeurt</td>
+                            <td>Alle maten (tot 6 maanden)</td>
+                            <td>€ 25,-</td>
+                        </tr>
+                        <tr>
+                            <td>Alleen Nagels Knippen</td>
+                            <td>Alle maten</td>
+                            <td>€ 12,50</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pricing-note">
+                    <strong>Belangrijke informatie over onze prijzen:</strong><br>
+                    De bovenstaande prijzen zijn indicatief en kunnen variëren afhankelijk van de vachtconditie (klitten, vervilting), het gedrag van de hond en de extra benodigde tijd. Een toeslag kan worden berekend bij extreme vervuiling of ernstige klitten. Voor een exacte prijsopgave adviseren wij een gratis consult. Alle behandelingen worden uitgevoerd met natuurlijke producten zonder extra kosten.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add-on Services -->
+    <section class="addon-services">
+        <div class="container">
+            <h2 class="section-title">Extra Diensten & Verwennerij</h2>
+            <p class="section-subtitle">
+                Maak de behandeling compleet met onze extra diensten en speciale verzorgingsopties 
+                voor een nog luxere ervaring voor jouw hond.
+            </p>
+            
+            <div class="addon-grid">
+                <div class="addon-card">
+                    <div class="addon-icon">🦷</div>
+                    <h4>Tandverzorging</h4>
+                    <div class="addon-price">+ €12,-</div>
+                    <p>Professionele tandenreiniging met hondenvriendelijke tandpasta voor een frisse adem en gezonde tanden.</p>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">💆</div>
+                    <h4>Wellness Massage</h4>
+                    <div class="addon-price">+ €18,-</div>
+                    <p>Ontspannende massage die de doorbloeding bevordert, stress vermindert en het welzijn van je hond verhoogt.</p>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">🌸</div>
+                    <h4>Natuurlijke Parfum</h4>
+                    <div class="addon-price">+ €10,-</div>
+                    <p>Hondenvriendelijke geurspray met natuurlijke ingrediënten voor een langdurig frisse, subtiele geur.</p>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">🎀</div>
+                    <h4>Styling Accessoires</h4>
+                    <div class="addon-price">+ €8,-</div>
+                    <p>Mooie bandana's, strikjes of andere accessoires om de nieuwe look helemaal compleet te maken.</p>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">🏠</div>
+                    <h4>Ophaal- & Brengservice</h4>
+                    <div class="addon-price">+ €20,-</div>
+                    <p>Wij halen jouw hond op en brengen hem/haar terug naar huis (binnen Arnhem en directe omgeving).</p>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">📞</div>
+                    <h4>Spoedbehandeling</h4>
+                    <div class="addon-price">+ €15,-</div>
+                    <p>Voor urgente gevallen bieden wij spoedbehandelingen aan binnen 24-48 uur na contact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA -->
+    <section class="booking-cta">
+        <div class="container">
+            <h2>Klaar om jouw Hond te Verwennen?</h2>
+            <p>Geef jouw trouwe viervoeter de liefdevolle verzorging die hij verdient. Boek vandaag nog een afspraak bij Fluffy & Fresh en ervaar het verschil van natuurlijke, professionele hondenverzorging in een stressvrije omgeving.</p>
+            <a href="contact.html#contact-form" class="booking-btn">Maak een Afspraak</a>
+            <a href="tel:026-1234567" class="booking-btn secondary">Bel Direct: 026 - 123 4567</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-cta">
+                <h3>Vragen over Onze Diensten?</h3>
+                <p style="margin-bottom: 2rem;">Neem contact met ons op voor persoonlijk advies en prijsinformatie!</p>
+                <a href="tel:026-1234567" class="cta-button">Bel Direct: 026 - 123 4567</a>
+                <a href="contact.html" class="cta-button cta-secondary">Alle Contactgegevens</a>
+            </div>
+            <p>&copy; 2025 Fluffy & Fresh Hondentrimsalon Arnhem. Alle rechten voorbehouden.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Natuurlijke verzorging • Liefdevolle aandacht • Professionele service</p>
+        </div>
+    </footer>
+</body>
+</html>
