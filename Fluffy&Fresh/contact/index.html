@@ -13,11 +13,16 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: #333;
             background-color: #ffffff;
+            overflow-x: hidden;
         }
 
         .container {
@@ -40,6 +45,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -47,6 +53,7 @@
             font-weight: 700;
             color: #2d5a2d;
             text-decoration: none;
+            z-index: 101;
         }
 
         .nav-links {
@@ -78,6 +85,39 @@
         .nav-appointment:hover {
             transform: translateY(-2px);
             color: white !important;
+        }
+
+        /* Hamburger Menu */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            z-index: 101;
+        }
+
+        .nav-toggle span {
+            width: 28px;
+            height: 3px;
+            background: #2d5a2d;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
         }
 
         /* Page Header */
@@ -113,6 +153,8 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
             margin: 0.5rem;
+            min-width: 200px;
+            text-align: center;
         }
 
         .cta-button:hover {
@@ -153,11 +195,16 @@
             font-size: 1.1rem;
             font-weight: 500;
             transition: transform 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            min-width: 200px;
+            justify-content: center;
         }
 
         .quick-item:hover {
             transform: translateY(-3px);
             color: white;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .quick-icon {
@@ -408,16 +455,17 @@
         }
 
         .map-placeholder {
-            background: linear-gradient(135deg, #d4a574 0%, #c19660 100%);
             height: 350px;
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 2rem;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(168, 213, 168, 0.1);
+        }
+
+        .map-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
         }
 
         /* FAQ Section */
@@ -479,6 +527,8 @@
             font-size: 1.1rem;
             transition: transform 0.3s ease;
             display: inline-block;
+            min-width: 200px;
+            text-align: center;
         }
 
         .emergency-btn:hover {
@@ -504,23 +554,95 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+        @media (max-width: 900px) {
+            .container {
+                padding: 0 15px;
             }
 
-            .page-header h1 {
-                font-size: 2.2rem;
+            /* Mobile Navigation */
+            .nav-links {
+                display: none;
+                position: absolute;
+                right: 0;
+                top: 60px;
+                background: linear-gradient(135deg, #a8d5a8 0%, #e8f5e8 100%);
+                flex-direction: column;
+                width: 250px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+                border-radius: 0 0 15px 15px;
+                overflow: hidden;
+                z-index: 99;
+                padding: 1rem 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 0.8rem 1.5rem;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.5rem;
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-toggle {
+                display: flex;
             }
 
             .contact-grid,
             .location-content {
-                grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .quick-contact-content {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 2.5rem 0;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+                line-height: 1.2;
+            }
+
+            .page-header p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            /* Stack all grids to single column */
+            .contact-grid,
+            .location-content {
+                grid-template-columns: 1fr;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .info-card {
+                padding: 1.5rem;
             }
 
             .quick-contact-content {
@@ -528,13 +650,171 @@
                 gap: 1.5rem;
             }
 
+            .quick-item {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+                padding: 1rem;
+            }
+
             .faq-grid {
                 grid-template-columns: 1fr;
             }
 
-            .cta-button {
+            .faq-item {
+                padding: 1.5rem;
+            }
+
+            .cta-button,
+            .emergency-btn {
                 display: block;
                 margin: 1rem auto;
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+                max-width: 300px;
+            }
+
+            .map-placeholder {
+                height: 250px;
+                margin-top: 2rem;
+            }
+
+            .location-features {
+                margin-top: 1.5rem;
+            }
+
+            /* Center content on mobile */
+            .info-card h3 {
+                justify-content: center;
+            }
+
+            .info-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .hours-table td:last-child {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .info-card {
+                padding: 1.2rem;
+            }
+
+            .quick-item {
+                font-size: 1rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .quick-icon {
+                font-size: 1.8rem;
+            }
+
+            .faq-item {
+                padding: 1.2rem;
+            }
+
+            .faq-item h3 {
+                font-size: 1.1rem;
+            }
+
+            .emergency-contact h2 {
+                font-size: 1.5rem;
+            }
+
+            .emergency-contact p {
+                font-size: 1rem;
+            }
+
+            .footer-cta h3 {
+                font-size: 1.4rem;
+            }
+
+            .map-placeholder {
+                height: 200px;
+            }
+
+            /* Form optimizations for small screens */
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .submit-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            .cta-button,
+            .emergency-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+                max-width: 280px;
+            }
+        }
+
+        /* Ultra-small screens */
+        @media (max-width: 360px) {
+            .quick-contact-content {
+                padding: 0 10px;
+            }
+
+            .quick-item {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .contact-form,
+            .info-card,
+            .faq-item {
+                margin: 0 -5px;
+                border-radius: 15px;
+            }
+
+            .hours-table td {
+                padding: 0.6rem 0;
+                font-size: 0.9rem;
+            }
+
+            .social-links {
+                justify-content: center;
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -542,13 +822,18 @@
 <body>
     <!-- Header -->
     <header>
-       <nav class="container">
+        <nav class="container">
             <a href="../startpagina/index.html" class="logo">🐾 Fluffy & Fresh</a>
-            <ul class="nav-links">
+            <div class="nav-toggle" id="nav-toggle" aria-label="Menu" tabindex="0">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="../startpagina/index.html">Home</a></li>
                 <li><a href="../diensten/index.html">Diensten</a></li>
-                <li><a href="../contact/index.html">Contact</a></li>
-                <li><a href="../../index.html">Joshuaboermans.com</a><li>
+                <li><a href="../contact/index.html" class="active">Contact</a></li>
+                <li><a href="../../index.html">Joshuaboermans.com</a></li>
             </ul>
         </nav>
     </header>
@@ -558,28 +843,7 @@
         <div class="container">
             <h1>Contact & Afspraak Maken</h1>
             <p>Heb je vragen over onze diensten, wil je een afspraak maken of advies over de vachtverzorging van jouw hond? We staan klaar om je te helpen! Neem gerust contact met ons op.</p>
-            <a href="#contact-form" class="cta-button">Maak een Afspraak</a>
             <a href="tel:026-1234567" class="cta-button cta-secondary">Bel Direct: 026 - 123 4567</a>
-        </div>
-    </section>
-
-    <!-- Quick Contact -->
-    <section class="quick-contact">
-        <div class="container">
-            <div class="quick-contact-content">
-                <a href="tel:026-1234567" class="quick-item">
-                    <span class="quick-icon">📞</span>
-                    <span>Direct Bellen: 026 - 123 4567</span>
-                </a>
-                <a href="mailto:info@fluffyandfresh.nl" class="quick-item">
-                    <span class="quick-icon">📧</span>
-                    <span>Email: info@fluffyandfresh.nl</span>
-                </a>
-                <a href="#location" class="quick-item">
-                    <span class="quick-icon">📍</span>
-                    <span>Hondenstraat 123, Arnhem</span>
-                </a>
-            </div>
         </div>
     </section>
 
@@ -791,16 +1055,17 @@
                         <li>Aparte ingang voor angstige honden</li>
                     </ul>
                 </div>
+
                 <div class="map-placeholder">
-                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5785.492553577911!2d5.4151098!3d53.1744461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c8dddbb70e0fa7%3A0x63a006827a52a342!2sHondenstraat%2C%20Harlingen!5e1!3m2!1snl!2snl!4v1753361874167!5m2!1snl!2snl" 
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5785.492553577911!2d5.4151098!3d53.1744461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c8dddbb70e0fa7%3A0x63a006827a52a342!2sHondenstraat%2C%20Harlingen!5e1!3m2!1snl!2snl!4v1753361874167!5m2!1snl!2snl" 
                     width="100%" 
                     height="100%" 
                     style="border:0;" 
                     allowfullscreen="" 
                     loading="lazy" 
-                    title="Google Maps"
+                    title="Google Maps - Fluffy & Fresh Locatie"
                     referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -810,7 +1075,7 @@
     <section class="faq-section">
         <div class="container">
             <h2 class="section-title">Veelgestelde Vragen</h2>
-            <p class="section-subtitle" style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 3rem;">
+            <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 3rem;">
                 Hieronder vind je antwoorden op de meest gestelde vragen over onze diensten en afspraken.
             </p>
             
@@ -848,15 +1113,6 @@
         </div>
     </section>
 
-    <!-- Emergency Contact -->
-    <section class="emergency-contact">
-        <div class="container">
-            <h2>Dringende Afspraak Nodig?</h2>
-            <p>Voor spoedgevallen of last-minute afspraken kun je ons direct bellen. We doen ons best om altijd een oplossing te vinden!</p>
-            <a href="tel:026-1234567" class="emergency-btn">Bel Direct: 026 - 123 4567</a>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -870,5 +1126,82 @@
             <p style="margin-top: 0.5rem; font-size: 0.9rem;">Natuurlijke verzorging • Liefdevolle aandacht • Professionele service</p>
         </div>
     </footer>
+
+    <script>
+        // Hamburger menu functionaliteit
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('open');
+            navToggle.classList.toggle('active');
+        });
+
+        // Keyboard toegankelijkheid
+        navToggle.addEventListener('keydown', function(e) {
+            if(e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                navLinks.classList.toggle('open');
+                navToggle.classList.toggle('active');
+            }
+        });
+
+        // Sluit menu bij klikken op links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Sluit menu bij klikken buiten navigatie
+        document.addEventListener('click', function(e) {
+            if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('open');
+                navToggle.classList.remove('active');
+            }
+        });
+
+        // Form enhancement
+        const form = document.querySelector('.contact-form');
+        const submitBtn = document.querySelector('.submit-btn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const requiredFields = form.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#ff6b6b';
+                } else {
+                    field.style.borderColor = '#a8d5a8';
+                }
+            });
+            
+            if (isValid) {
+                submitBtn.textContent = 'Versturen...';
+                submitBtn.disabled = true;
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    alert('Bedankt voor je aanvraag! We nemen binnen 24 uur contact met je op.');
+                    form.reset();
+                    submitBtn.textContent = 'Verstuur Afspraakverzoek';
+                    submitBtn.disabled = false;
+                }, 1500);
+            } else {
+                alert('Vul alle verplichte velden in.');
+            }
+        });
+
+        // Set minimum date to today
+        const dateInput = document.getElementById('datum');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    </script>
 </body>
 </html>
