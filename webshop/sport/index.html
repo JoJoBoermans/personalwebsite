@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport & Fitness - Webshop</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .product-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .category-badge {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+        .price-tag {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .star-rating {
+            color: #fbbf24;
+        }
+        .filter-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+        }
+        .product-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Sport Banner Styling */
+        .sport-banner {
+            background: linear-gradient(135deg, #059669 0%, #0ea5e9 100%);
+            animation: sportPulse 3s infinite;
+        }
+        @keyframes sportPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+        
+        /* Featured Product Styling */
+        .featured-badge {
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .featured-card {
+            border: 2px solid #f59e0b;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+        
+        /* New Badge */
+        .new-badge {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Popular badge */
+        .popular-badge {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Discount Badge */
+        .discount-badge {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            transform: rotate(-12deg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Savings highlight */
+        .savings-amount {
+            color: #059669;
+            font-weight: 700;
+        }
+        
+        /* Sport category specific styling */
+        .fitness-badge {
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+        }
+        
+        .outdoor-badge {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+        
+        .team-sports-badge {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        }
+        
+        .water-sports-badge {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between py-2 text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-4">
+                    <span><i class="fas fa-phone mr-1"></i> 0800-1234567</span>
+                    <span><i class="fas fa-envelope mr-1"></i> info@webshop.nl</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                    <span><i class="fas fa-shield-alt mr-1"></i> 30 dagen retour</span>
+                </div>
+            </div>
+            
+            <!-- Main Header -->
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-blue-600 mr-8">
+                        <i class="fas fa-store mr-2"></i>BetrouwbareShop
+                    </h1>
+                </div>
+                
+                <div class="flex-1 max-w-xl mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Zoek naar sportartikelen..." 
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-user mr-1"></i> Account
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 relative">
+                        <i class="fas fa-shopping-cart mr-1"></i> Winkelwagen
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="py-3 border-t">
+                <ul class="flex space-x-8">
+                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="nav-link text-gray-700 hover:text-blue-600">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="nav-link text-gray-700 hover:text-blue-600">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-blue-600">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="nav-link active text-gray-700 hover:text-blue-600">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="nav-link text-gray-700 hover:text-blue-600">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-blue-600">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4">
+            <nav class="text-sm">
+                <a href="#" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2 text-gray-500">/</span>
+                <span class="text-gray-700">Sport & Fitness</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Sport Banner -->
+    <div class="sport-banner text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-2">
+                <i class="fas fa-dumbbell mr-3"></i>Sport & Fitness
+            </h2>
+            <p class="text-xl mb-4">Bereik je doelen met premium sportuitrusting</p>
+            <div class="flex justify-center items-center space-x-8 text-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-shipping-fast mr-2"></i>
+                    <span>Snelle levering</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-medal mr-2"></i>
+                    <span>Premium kwaliteit</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-headset mr-2"></i>
+                    <span>Expert advies</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-undo mr-2"></i>
+                    <span>30 dagen retour</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex gap-8">
+            <!-- Sidebar Filters -->
+            <aside class="w-64 filter-section rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-filter mr-2"></i>Filters
+                </h2>
+                
+                <!-- Sport Category Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Sportcategorieën</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Fitness & Krachttraining (42)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Hardlopen & Atletiek (38)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Teamsport (29)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Watersport (18)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Outdoor & Camping (34)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Yoga & Pilates (15)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Brand Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Merken</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Nike (35)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Adidas (31)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Puma (24)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Under Armour (18)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Reebok (16)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Product Type Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Producttype</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Sportkleding (68)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Sportschoenen (45)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Fitnessapparatuur (32)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Accessoires (41)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Prijs</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">€0 - €50 (56)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">€50 - €150 (73)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">€150 - €300 (42)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">€300+ (15)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Size Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Maten</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">XS</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">S</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">M</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">L</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">XL</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">XXL</span>
+                        </label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="flex-1">
+                <!-- Page Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                            <i class="fas fa-running mr-2 text-green-600"></i>Sport & Fitness
+                        </h1>
+                        <p class="text-gray-600">186 sportproducten beschikbaar</p>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <label class="text-sm text-gray-600">Sorteer op:</label>
+                        <select class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>Populariteit</option>
+                            <option>Nieuwste eerst</option>
+                            <option>Prijs (laag-hoog)</option>
+                            <option>Prijs (hoog-laag)</option>
+                            <option>Beste beoordeling</option>
+                            <option>Hoogste korting</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Sport Categories -->
+                <div class="grid grid-cols-4 gap-4 mb-8">
+                    <div class="fitness-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
+                        <i class="fas fa-dumbbell text-2xl mb-2 block"></i>
+                        <span class="text-sm font-medium">Fitness</span>
+                    </div>
+                    <div class="outdoor-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
+                        <i class="fas fa-mountain text-2xl mb-2 block"></i>
+                        <span class="text-sm font-medium">Outdoor</span>
+                    </div>
+                    <div class="team-sports-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
+                        <i class="fas fa-futbol text-2xl mb-2 block"></i>
+                        <span class="text-sm font-medium">Teamsport</span>
+                    </div>
+                    <div class="water-sports-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
+                        <i class="fas fa-swimmer text-2xl mb-2 block"></i>
+                        <span class="text-sm font-medium">Watersport</span>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Featured Product -->
+                    <div class="product-card featured-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80" alt="Nike Air Max 270 Hardloopschoenen">
+                            <span class="absolute top-2 left-2 featured-badge text-white px-2 py-1 rounded text-xs font-bold">FEATURED</span>
+                            <span class="absolute top-2 right-2 new-badge text-white px-2 py-1 rounded text-xs font-bold">NIEUW</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Nike Air Max 270 Hardloopschoenen</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-sm">(234 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€139,99</span>
+                                </div>
+                                <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-2 text-xs text-green-600 font-semibold">
+                                <i class="fas fa-truck mr-1"></i>Gratis verzending
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regular Products -->
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1506629905607-d9b1ba5b9827?auto=format&fit=crop&w=400&q=80" alt="Adidas Tiro Training Pak">
+                            <span class="absolute top-2 right-2 popular-badge text-white px-2 py-1 rounded text-xs font-bold">POPULAIR</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Adidas Tiro Training Pak</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-sm">(156 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€79,99</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=400&q=80" alt="Verstelbare Dumbbells 20kg">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-25%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Verstelbare Dumbbells 20kg</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-sm">(89 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€149,99</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€199,99</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €50!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1571019613914-85f342c1d34e?auto=format&fit=crop&w=400&q=80" alt="Under Armour HeatGear Shirt">
+                            <span class="absolute top-2 right-2 new-badge text-white px-2 py-1 rounded text-xs font-bold">NIEUW</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Under Armour HeatGear Shirt</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-sm">(67 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€34,99</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="Premium Yogamat 6mm">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Premium Yogamat 6mm</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-sm">(203 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€39,99</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1571019613914-85f342c1d34e?auto=format&fit=crop&w=400&q=80" alt="Resistance Bands Set">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-15%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Resistance Bands Set</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-sm">(124 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€21,24</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€24,99</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €3,75!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=400&q=80" alt="Puma Voetbalschoenen">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Puma Future 7.1 Voetbalschoenen</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-sm">(178 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€89,99</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1571019613914-85f342c1d34e?auto=format&fit=crop&w=400&q=80" alt="Reebok CrossFit Schoenen">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-30%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Reebok Nano X2 CrossFit Schoenen</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-sm">(94 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€97,99</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€139,99</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €42!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-8">
+                    <button class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition">
+                        <i class="fas fa-plus mr-2"></i>Meer sportproducten laden
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">
+                        <i class="fas fa-store mr-2"></i>BetrouwbareShop
+                    </h3>
+                    <p class="text-gray-300 mb-4">Uw vertrouwde partner voor sportartikelen en meer.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Klantenservice</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                        <li><a href="#" class="hover:text-white">Veelgestelde vragen</a></li>
+                        <li><a href="#" class="hover:text-white">Retourneren</a></li>
+                        <li><a href="#" class="hover:text-white">Garantie</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Informatie</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Over ons</a></li>
+                        <li><a href="#" class="hover:text-white">Leveringsvoorwaarden</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy beleid</a></li>
+                        <li><a href="#" class="hover:text-white">Algemene voorwaarden</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Betalingsmogelijkheden</h4>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-sm font-semibold">VISA</div>
+                        <div class="bg-white text-red-600 px-2 py-1 rounded text-sm font-semibold">MC</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-sm font-semibold">PayPal</div>
+                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-sm font-semibold">iDEAL</div>
+                    </div>
+                    <div class="flex items-center text-green-400">
+                        <i class="fas fa-lock mr-2"></i>
+                        <span class="text-sm">SSL Beveiligd</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 BetrouwbareShop. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add click handlers for sport category badges
+        document.querySelectorAll('.fitness-badge, .outdoor-badge, .team-sports-badge, .water-sports-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                console.log('Sport category clicked:', this.textContent.trim());
+                // Add filter logic here
+            });
+        });
+
+        // Enhanced product card hover effects
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+                this.style.boxShadow = '0 12px 30px rgba(0,0,0,0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            });
+        });
+
+        // Filter checkbox interactions
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                console.log('Filter changed:', this.parentElement.textContent.trim());
+                // Add actual filter logic here
+            });
+        });
+    </script>
+</body>
+</html>

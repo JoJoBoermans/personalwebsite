@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aanbiedingen - Webshop</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .product-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .category-badge {
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+        }
+        .price-tag {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .star-rating {
+            color: #fbbf24;
+        }
+        .filter-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+        }
+        .product-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Deal Banner Styling */
+        .deal-banner {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+        
+        .countdown-timer {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        }
+        
+        /* Flash Deal Styling */
+        .flash-deal {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            animation: flash 1.5s infinite alternate;
+        }
+        @keyframes flash {
+            0% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        .flash-deal-card {
+            border: 2px solid #fbbf24;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+        
+        /* Discount Badge */
+        .discount-badge {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            transform: rotate(-12deg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Savings highlight */
+        .savings-amount {
+            color: #059669;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between py-2 text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-4">
+                    <span><i class="fas fa-phone mr-1"></i> 0800-1234567</span>
+                    <span><i class="fas fa-envelope mr-1"></i> info@webshop.nl</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                    <span><i class="fas fa-shield-alt mr-1"></i> 30 dagen retour</span>
+                </div>
+            </div>
+            
+            <!-- Main Header -->
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-blue-600 mr-8">
+                        <i class="fas fa-store mr-2"></i>BetrouwbareShop
+                    </h1>
+                </div>
+                
+                <div class="flex-1 max-w-xl mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Zoek naar aanbiedingen..." 
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-user mr-1"></i> Account
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 relative">
+                        <i class="fas fa-shopping-cart mr-1"></i> Winkelwagen
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="py-3 border-t">
+                <ul class="flex space-x-8">
+                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="nav-link text-gray-700 hover:text-blue-600">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="nav-link text-gray-700 hover:text-blue-600">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-blue-600">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="nav-link text-gray-700 hover:text-blue-600">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="nav-link active text-gray-700 hover:text-blue-600">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-blue-600">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4">
+            <nav class="text-sm">
+                <a href="#" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2 text-gray-500">/</span>
+                <span class="text-gray-700">Aanbiedingen</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Deal Banner -->
+    <div class="deal-banner text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-2">
+                <i class="fas fa-fire mr-3"></i>MEGA SALE - Tot 70% Korting!
+            </h2>
+            <p class="text-xl mb-4">Profiteer nu van onze beste deals van het jaar</p>
+            <div class="countdown-timer inline-flex items-center space-x-4 px-6 py-3 rounded-lg text-white">
+                <span class="text-sm">Actie eindigt over:</span>
+                <div class="flex space-x-2">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold" id="days">02</div>
+                        <div class="text-xs">DAGEN</div>
+                    </div>
+                    <div class="text-2xl font-bold">:</div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold" id="hours">14</div>
+                        <div class="text-xs">UREN</div>
+                    </div>
+                    <div class="text-2xl font-bold">:</div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold" id="minutes">32</div>
+                        <div class="text-xs">MIN</div>
+                    </div>
+                    <div class="text-2xl font-bold">:</div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold" id="seconds">45</div>
+                        <div class="text-xs">SEC</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex gap-8">
+            <!-- Sidebar Filters -->
+            <aside class="w-64 filter-section rounded-lg p-6">
+                <h2 class="text-xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-filter mr-2"></i>Filters
+                </h2>
+                
+                <!-- Discount Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Korting</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">50% of meer (18)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">30-50% korting (34)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">20-30% korting (52)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">10-20% korting (67)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Deal Type Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Type Aanbieding</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2" checked>
+                            <span class="text-sm">Flash Deals (12)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Dagdeals (25)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Weekaanbiedingen (31)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Uitverkoop (18)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Categorieën</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Elektronica (45)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Mode & Kleding (38)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Huis & Tuin (29)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">Sport & Fitness (22)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Prijs</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">€0 - €50 (42)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">€50 - €200 (58)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">€200 - €500 (34)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span class="text-sm">€500+ (18)</span>
+                        </label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="flex-1">
+                <!-- Page Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                            <i class="fas fa-tags mr-2 text-red-600"></i>Beste Aanbiedingen
+                        </h1>
+                        <p class="text-gray-600">152 producten in de aanbieding</p>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <label class="text-sm text-gray-600">Sorteer op:</label>
+                        <select class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>Hoogste korting</option>
+                            <option>Laagste prijs</option>
+                            <option>Einddatum aanbieding</option>
+                            <option>Populariteit</option>
+                            <option>Beste beoordeling</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Deal Categories -->
+                <div class="grid grid-cols-4 gap-4 mb-8">
+                    <div class="flash-deal rounded-lg p-4 text-black text-center cursor-pointer hover:opacity-90">
+                        <i class="fas fa-bolt text-2xl mb-2 block"></i>
+                        <span class="text-sm font-medium">Flash Deals</span>
+                    </div>
+                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
+                        <i class="fas fa-clock text-2xl mb-2 block"></i>
+                        <span class="text-sm font-medium">Dagdeals</span>
+                    </div>
+                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
+                        <i class="fas fa-calendar-week text-2xl mb-2 block"></i>
+                        <span class="text-sm font-medium">Weekdeals</span>
+                    </div>
+                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
+                        <i class="fas fa-fire text-2xl mb-2 block"></i>
+                        <span class="text-sm font-medium">Uitverkoop</span>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Flash Deal Product -->
+                    <div class="product-card flash-deal-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://picsum.photos/id/10/400/300" alt="Samsung Galaxy A54 Flash Deal">
+                            <span class="absolute top-2 left-2 flash-deal text-black px-2 py-1 rounded text-xs font-bold">FLASH</span>
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">-65%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Samsung Galaxy A54</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-sm">(89 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-red-600">€199</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€569</span>
+                                </div>
+                                <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-2 text-xs text-red-600 font-semibold">
+                                <i class="fas fa-clock mr-1"></i>Nog <span id="flash-timer">4u 23m</span>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €370!
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Regular Deal Products -->
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://picsum.photos/id/20/400/300" alt="Lenovo IdeaPad 3">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-40%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Lenovo IdeaPad 3</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-sm">(156 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€479</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€799</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €320!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://picsum.photos/id/30/400/300" alt="JBL Tune 760NC">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-55%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">JBL Tune 760NC</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-sm">(203 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€89</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€199</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €110!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://picsum.photos/id/40/400/300" alt="Nike Sportshirt Set">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-30%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Nike Sportshirt Set</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-sm">(67 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€34,99</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€49,99</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €15!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://picsum.photos/id/50/400/300" alt="Philips Blender HR3655">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-45%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Philips Blender HR3655</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-sm">(342 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€79</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€149</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €70!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://picsum.photos/id/60/400/300" alt="Fitness Halter Set">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-25%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Fitness Halter Set</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-sm">(156 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€149</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€199</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €50!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://picsum.photos/id/70/400/300" alt="Design Fauteuil">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-35%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Design Fauteuil</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-sm">(94 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€389</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€599</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €210!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <div class="product-image h-48 relative">
+                            <img src="https://picsum.photos/id/80/400/300" alt="Canon EOS M50 Mark II">
+                            <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-50%</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Canon EOS M50 Mark II</h3>
+                            <div class="flex items-center mb-2">
+                                <div class="star-rating text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-sm">(78 reviews)</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">€449</span>
+                                    <span class="text-sm text-gray-500 line-through ml-2">€899</span>
+                                </div>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <div class="mt-1 text-xs savings-amount">
+                                <i class="fas fa-piggy-bank mr-1"></i>Je bespaart €450!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-8">
+                    <button class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition">
+                        <i class="fas fa-plus mr-2"></i>Meer aanbiedingen laden
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">
+                        <i class="fas fa-store mr-2"></i>BetrouwbareShop
+                    </h3>
+                    <p class="text-gray-300 mb-4">Uw vertrouwde partner voor elektronische apparaten en meer.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Klantenservice</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                        <li><a href="#" class="hover:text-white">Veelgestelde vragen</a></li>
+                        <li><a href="#" class="hover:text-white">Retourneren</a></li>
+                        <li><a href="#" class="hover:text-white">Garantie</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Informatie</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Over ons</a></li>
+                        <li><a href="#" class="hover:text-white">Leveringsvoorwaarden</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy beleid</a></li>
+                        <li><a href="#" class="hover:text-white">Algemene voorwaarden</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Betalingsmogelijkheden</h4>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-sm font-semibold">VISA</div>
+                        <div class="bg-white text-red-600 px-2 py-1 rounded text-sm font-semibold">MC</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-sm font-semibold">PayPal</div>
+                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-sm font-semibold">iDEAL</div>
+                    </div>
+                    <div class="flex items-center text-green-400">
+                        <i class="fas fa-lock mr-2"></i>
+                        <span class="text-sm">SSL Beveiligd</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 BetrouwbareShop. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer voor Deal Banner
+        function updateCountdown() {
+            // Set end time (2 days, 14 hours, 32 minutes, 45 seconds from now)
+            const now = new Date().getTime();
+            const endTime = now + (2 * 24 * 60 * 60 * 1000) + (14 * 60 * 60 * 1000) + (32 * 60 * 1000) + (45 * 1000);
+            
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                }
+            }, 1000);
+        }
+        
+        // Flash Deal Timer
+        function updateFlashTimer() {
+            let flashHours = 4;
+            let flashMinutes = 23;
+            
+            const flashTimer = setInterval(() => {
+                flashMinutes--;
+                if (flashMinutes < 0) {
+                    flashMinutes = 59;
+                    flashHours--;
+                }
+                
+                if (flashHours < 0) {
+                    clearInterval(flashTimer);
+                    document.getElementById('flash-timer').textContent = 'AFGELOPEN';
+                    return;
+                }
+                
+                document.getElementById('flash-timer').textContent = 
+                    `${flashHours}u ${flashMinutes.toString().padStart(2, '0')}m`;
+            }, 60000); // Update every minute
+        }
+        
+        // Initialize timers
+        updateCountdown();
+        updateFlashTimer();
+        
+        // Add click handlers for category badges
+        document.querySelectorAll('.category-badge, .flash-deal').forEach(badge => {
+            badge.addEventListener('click', function() {
+                // Add filter logic here
+                console.log('Filter clicked:', this.textContent.trim());
+            });
+        });
+    </script>
+</body>
+</html>

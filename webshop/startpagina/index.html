@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrustShop - Betrouwbare Online Winkel</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .trust-badge {
+            transition: transform 0.3s ease;
+        }
+        
+        .trust-badge:hover {
+            transform: translateY(-2px);
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .star-rating {
+            color: #fbbf24;
+        }
+        
+        .security-icon {
+            color: #10b981;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Bar -->
+            <div class="flex justify-between items-center py-2 text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-4">
+                    <span><i class="fas fa-phone mr-1"></i> +31 20 123 4567</span>
+                    <span><i class="fas fa-envelope mr-1"></i> info@trustshop.nl</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                    <span><i class="fas fa-shield-alt security-icon mr-1"></i> 100% Veilig Betalen</span>
+                </div>
+            </div>
+            
+            <!-- Main Header -->
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <h1 class="text-3xl font-bold text-indigo-600">TrustShop</h1>
+                    <span class="ml-2 text-sm text-green-600 font-medium"><i class="fas fa-certificate mr-1"></i> Gecertificeerd</span>
+                </div>
+                
+                <div class="flex-1 max-w-lg mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Zoek naar producten..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-indigo-600">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fas fa-heart text-xl"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fas fa-user text-xl"></i></a>
+                    <a href="#" class="relative text-gray-600 hover:text-indigo-600">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="pb-4">
+                 <ul class="flex space-x-8">
+                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="nav-link active text-gray-700 hover:text-blue-600">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="nav-link text-gray-700 hover:text-blue-600">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-blue-600">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="nav-link text-gray-700 hover:text-blue-600">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="nav-link text-gray-700 hover:text-blue-600">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-blue-600">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-5xl font-bold mb-6">Betrouwbaar Online Winkelen</h2>
+                    <p class="text-xl mb-8 text-indigo-100">Ontdek onze uitgebreide collectie met de beste prijzen en snelle levering. Al meer dan 50.000 tevreden klanten!</p>
+                    <div class="flex space-x-4 mb-8">
+                        <button class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Shop Nu</button>
+                        <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-300">Meer Info</button>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <div class="flex items-center">
+                            <div class="star-rating text-2xl mr-2">★★★★★</div>
+                            <span class="text-indigo-100">4.8/5 (2.847 beoordelingen)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-white bg-opacity-10 rounded-2xl p-8 backdrop-blur">
+                        <h3 class="text-2xl font-bold mb-6">Waarom TrustShop?</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center">
+                                <i class="fas fa-shield-alt text-3xl mb-2"></i>
+                                <p class="font-semibold">100% Veilig</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-truck text-3xl mb-2"></i>
+                                <p class="font-semibold">Snelle Verzending</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-undo text-3xl mb-2"></i>
+                                <p class="font-semibold">30 Dagen Retour</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-headset text-3xl mb-2"></i>
+                                <p class="font-semibold">24/7 Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="bg-white py-8 border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center items-center space-x-12">
+                <div class="trust-badge text-center">
+                    <i class="fas fa-certificate text-green-500 text-2xl mb-2"></i>
+                    <p class="text-sm font-medium text-gray-700">SSL Certificaat</p>
+                </div>
+                <div class="trust-badge text-center">
+                    <i class="fab fa-cc-visa text-blue-600 text-2xl mb-2"></i>
+                    <p class="text-sm font-medium text-gray-700">Veilig Betalen</p>
+                </div>
+                <div class="trust-badge text-center">
+                    <i class="fas fa-medal text-yellow-500 text-2xl mb-2"></i>
+                    <p class="text-sm font-medium text-gray-700">Webshop Keurmerk</p>
+                </div>
+                <div class="trust-badge text-center">
+                    <i class="fas fa-users text-indigo-500 text-2xl mb-2"></i>
+                    <p class="text-sm font-medium text-gray-700">50K+ Klanten</p>
+                </div>
+                <div class="trust-badge text-center">
+                    <i class="fas fa-shipping-fast text-green-500 text-2xl mb-2"></i>
+                    <p class="text-sm font-medium text-gray-700">Gratis Verzending</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Shop per Categorie</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="h-32 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-laptop text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-gray-800">Elektronica</h3>
+                        <p class="text-gray-600 text-sm">1.245 producten</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="h-32 bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-tshirt text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-gray-800">Mode</h3>
+                        <p class="text-gray-600 text-sm">2.847 producten</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="h-32 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                        <i class="fas fa-home text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-gray-800">Huis & Tuin</h3>
+                        <p class="text-gray-600 text-sm">987 producten</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="h-32 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-white text-4xl"></i>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h3 class="font-semibold text-gray-800">Sport</h3>
+                        <p class="text-gray-600 text-sm">654 producten</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Populaire Producten</h2>
+                <p class="text-gray-600">Ontdek onze meest verkochte en best beoordeelde producten</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="product-card bg-white rounded-xl overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-gray-400 text-5xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">Smartphone Pro Max</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="star-rating text-sm mr-2">★★★★★</div>
+                            <span class="text-gray-600 text-sm">(124 reviews)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-indigo-600">€899</span>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-xl overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-headphones text-gray-400 text-5xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">Wireless Koptelefoon</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="star-rating text-sm mr-2">★★★★☆</div>
+                            <span class="text-gray-600 text-sm">(87 reviews)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-indigo-600">€149</span>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-xl overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-watch text-gray-400 text-5xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">Smartwatch Elite</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="star-rating text-sm mr-2">★★★★★</div>
+                            <span class="text-gray-600 text-sm">(203 reviews)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-indigo-600">€299</span>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card bg-white rounded-xl overflow-hidden">
+                    <div class="h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-camera text-gray-400 text-5xl"></i>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">Digital Camera 4K</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="star-rating text-sm mr-2">★★★★☆</div>
+                            <span class="text-gray-600 text-sm">(56 reviews)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-indigo-600">€599</span>
+                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Wat Klanten Zeggen</h2>
+                <p class="text-gray-600">Lees de ervaringen van onze tevreden klanten</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-lg">M</div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-800">Maria van der Berg</h4>
+                            <div class="star-rating text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Fantastische service! Mijn bestelling werd snel geleverd en de kwaliteit is uitstekend. Zeker een aanrader!"</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg">J</div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-800">Jan Janssen</h4>
+                            <div class="star-rating text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Uitstekende klantenservice. Toen ik een vraag had, werd deze direct beantwoord. Heel professioneel!"</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg">S</div>
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-800">Sophie de Wit</h4>
+                            <div class="star-rating text-sm">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Makkelijk bestellen, veilige betaling en razendsnelle levering. Al meerdere keren besteld, altijd tevreden!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="bg-indigo-600 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Blijf op de Hoogte</h2>
+            <p class="text-indigo-100 mb-8">Ontvang als eerste nieuws over nieuwe producten en exclusieve aanbiedingen</p>
+            <div class="max-w-md mx-auto flex">
+                <input type="email" placeholder="Uw e-mailadres" class="flex-1 px-4 py-3 rounded-l-lg border-0 focus:ring-2 focus:ring-white">
+                <button class="bg-white text-indigo-600 px-8 py-3 rounded-r-lg font-semibold hover:bg-gray-100 transition duration-300">
+                    Aanmelden
+                </button>
+            </div>
+            <p class="text-indigo-100 text-sm mt-4">
+                <i class="fas fa-lock mr-1"></i>
+                Uw privacy is bij ons veilig. Geen spam, uitschrijven altijd mogelijk.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-indigo-400">TrustShop</h3>
+                    <p class="text-gray-300 mb-4">Uw betrouwbare online partner voor kwaliteitsproducten tegen de beste prijzen.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Klantenservice</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                        <li><a href="#" class="hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white">Verzending & Retour</a></li>
+                        <li><a href="#" class="hover:text-white">Garantie</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Informatie</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-white">Over Ons</a></li>
+                        <li><a href="#" class="hover:text-white">Algemene Voorwaarden</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Beleid</a></li>
+                        <li><a href="#" class="hover:text-white">Cookie Beleid</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <div><i class="fas fa-map-marker-alt mr-2"></i> Hoofdstraat 123, 1234 AB Amsterdam</div>
+                        <div><i class="fas fa-phone mr-2"></i> +31 20 123 4567</div>
+                        <div><i class="fas fa-envelope mr-2"></i> info@trustshop.nl</div>
+                        <div><i class="fas fa-clock mr-2"></i> Ma-Vr: 9:00-18:00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2024 TrustShop. Alle rechten voorbehouden.</p>
+                <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                    <span class="text-gray-400">Veilig betalen met:</span>
+                    <i class="fab fa-cc-visa text-2xl text-blue-600"></i>
+                    <i class="fab fa-cc-mastercard text-2xl text-red-600"></i>
+                    <i class="fab fa-paypal text-2xl text-blue-500"></i>
+                    <i class="fas fa-university text-2xl text-green-600"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
