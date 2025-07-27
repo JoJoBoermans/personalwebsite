@@ -42,32 +42,54 @@
         .security-icon {
             color: #10b981;
         }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Hide scrollbar when menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-sm border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Top Bar -->
-            <div class="flex justify-between items-center py-2 text-sm text-gray-600 border-b">
-                <div class="flex items-center space-x-4">
+            <!-- Top Bar - Simplified for mobile -->
+            <div class="flex flex-wrap justify-between items-center py-2 text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-2 sm:space-x-4">
                     <span><i class="fas fa-phone mr-1"></i> +31 20 123 4567</span>
-                    <span><i class="fas fa-envelope mr-1"></i> info@trustshop.nl</span>
+                    <span class="hidden sm:inline"><i class="fas fa-envelope mr-1"></i> info@trustshop.nl</span>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <span><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span class="hidden sm:inline"><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
                     <span><i class="fas fa-shield-alt security-icon mr-1"></i> 100% Veilig Betalen</span>
                 </div>
             </div>
             
             <!-- Main Header -->
             <div class="flex justify-between items-center py-4">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-indigo-600 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                
+                <!-- Logo -->
                 <div class="flex items-center">
-                    <h1 class="text-3xl font-bold text-indigo-600">TrustShop</h1>
-                    <span class="ml-2 text-sm text-green-600 font-medium"><i class="fas fa-certificate mr-1"></i> Gecertificeerd</span>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-indigo-600">TrustShop</h1>
+                    <span class="ml-2 text-xs sm:text-sm text-green-600 font-medium"><i class="fas fa-certificate mr-1"></i> Gecertificeerd</span>
                 </div>
                 
-                <div class="flex-1 max-w-lg mx-8">
+                <!-- Desktop Search Bar (hidden on mobile) -->
+                <div class="hidden md:flex-1 md:max-w-lg md:mx-8">
                     <div class="relative">
                         <input type="text" placeholder="Zoek naar producten..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
                         <button class="absolute right-2 top-2 text-gray-400 hover:text-indigo-600">
@@ -76,9 +98,19 @@
                     </div>
                 </div>
                 
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fas fa-heart text-xl"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-indigo-600"><i class="fas fa-user text-xl"></i></a>
+                <!-- Icons -->
+                <div class="flex items-center space-x-3 sm:space-x-6">
+                    <!-- Mobile Search Toggle -->
+                    <button id="mobile-search-toggle" class="md:hidden text-gray-600 hover:text-indigo-600">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    
+                    <a href="#" class="hidden sm:inline-block text-gray-600 hover:text-indigo-600">
+                        <i class="fas fa-heart text-xl"></i>
+                    </a>
+                    <a href="#" class="hidden sm:inline-block text-gray-600 hover:text-indigo-600">
+                        <i class="fas fa-user text-xl"></i>
+                    </a>
                     <a href="#" class="relative text-gray-600 hover:text-indigo-600">
                         <i class="fas fa-shopping-cart text-xl"></i>
                         <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
@@ -86,9 +118,19 @@
                 </div>
             </div>
             
-            <!-- Navigation -->
-            <nav class="pb-4">
-                 <ul class="flex space-x-8">
+            <!-- Mobile Search Input (initially hidden) -->
+            <div id="mobile-search-input" class="md:hidden pb-4 hidden">
+                <div class="relative">
+                    <input type="text" placeholder="Zoek naar producten..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    <button class="absolute right-2 top-2 text-gray-400 hover:text-indigo-600">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:block pb-4">
+                <ul class="flex space-x-8">
                     <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
                     <li><a href="../elektronica/index.html" class="nav-link active text-gray-700 hover:text-blue-600">Elektronica</a></li>
                     <li><a href="../mode/index.html" class="nav-link text-gray-700 hover:text-blue-600">Mode</a></li>
@@ -101,43 +143,67 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-indigo-900 bg-opacity-95 z-50 hidden flex flex-col mobile-menu">
+        <div class="flex justify-end p-4">
+            <button id="close-mobile-menu" class="text-white text-3xl focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center">
+            <nav class="text-center">
+                <ul class="space-y-6">
+                    <li><a href="../startpagina/index.html" class="text-white text-2xl hover:text-indigo-200 block py-2">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="text-white text-2xl hover:text-indigo-200 block py-2">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="text-white text-2xl hover:text-indigo-200 block py-2">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="text-white text-2xl hover:text-indigo-200 block py-2">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="text-white text-2xl hover:text-indigo-200 block py-2">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="text-white text-2xl hover:text-indigo-200 block py-2">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="text-white text-2xl hover:text-indigo-200 block py-2">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="p-6 flex justify-center space-x-8">
+            <a href="#" class="text-white hover:text-indigo-200"><i class="fas fa-heart text-xl"></i></a>
+            <a href="#" class="text-white hover:text-indigo-200"><i class="fas fa-user text-xl"></i></a>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-16">
+    <section class="gradient-bg text-white py-10 sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-5xl font-bold mb-6">Betrouwbaar Online Winkelen</h2>
-                    <p class="text-xl mb-8 text-indigo-100">Ontdek onze uitgebreide collectie met de beste prijzen en snelle levering. Al meer dan 50.000 tevreden klanten!</p>
-                    <div class="flex space-x-4 mb-8">
-                        <button class="bg-white text-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Shop Nu</button>
-                        <button class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-300">Meer Info</button>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">Betrouwbaar Online Winkelen</h2>
+                    <p class="text-lg mb-6 sm:mb-8 text-indigo-100">Ontdek onze uitgebreide collectie met de beste prijzen en snelle levering. Al meer dan 50.000 tevreden klanten!</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-6 sm:mb-8 justify-center lg:justify-start">
+                        <button class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">Shop Nu</button>
+                        <button class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition duration-300">Meer Info</button>
                     </div>
-                    <div class="flex items-center space-x-6">
-                        <div class="flex items-center">
-                            <div class="star-rating text-2xl mr-2">★★★★★</div>
-                            <span class="text-indigo-100">4.8/5 (2.847 beoordelingen)</span>
-                        </div>
+                    <div class="flex items-center justify-center lg:justify-start">
+                        <div class="star-rating text-xl sm:text-2xl mr-2">★★★★★</div>
+                        <span class="text-indigo-100 text-sm sm:text-base">4.8/5 (2.847 beoordelingen)</span>
                     </div>
                 </div>
-                <div class="text-center">
-                    <div class="bg-white bg-opacity-10 rounded-2xl p-8 backdrop-blur">
-                        <h3 class="text-2xl font-bold mb-6">Waarom TrustShop?</h3>
+                <div class="text-center mt-6 lg:mt-0">
+                    <div class="bg-white bg-opacity-10 rounded-2xl p-6 sm:p-8 backdrop-blur">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Waarom TrustShop?</h3>
                         <div class="grid grid-cols-2 gap-4">
                             <div class="text-center">
-                                <i class="fas fa-shield-alt text-3xl mb-2"></i>
-                                <p class="font-semibold">100% Veilig</p>
+                                <i class="fas fa-shield-alt text-2xl sm:text-3xl mb-2"></i>
+                                <p class="font-semibold text-sm sm:text-base">100% Veilig</p>
                             </div>
                             <div class="text-center">
-                                <i class="fas fa-truck text-3xl mb-2"></i>
-                                <p class="font-semibold">Snelle Verzending</p>
+                                <i class="fas fa-truck text-2xl sm:text-3xl mb-2"></i>
+                                <p class="font-semibold text-sm sm:text-base">Snelle Verzending</p>
                             </div>
                             <div class="text-center">
-                                <i class="fas fa-undo text-3xl mb-2"></i>
-                                <p class="font-semibold">30 Dagen Retour</p>
+                                <i class="fas fa-undo text-2xl sm:text-3xl mb-2"></i>
+                                <p class="font-semibold text-sm sm:text-base">30 Dagen Retour</p>
                             </div>
                             <div class="text-center">
-                                <i class="fas fa-headset text-3xl mb-2"></i>
-                                <p class="font-semibold">24/7 Support</p>
+                                <i class="fas fa-headset text-2xl sm:text-3xl mb-2"></i>
+                                <p class="font-semibold text-sm sm:text-base">24/7 Support</p>
                             </div>
                         </div>
                     </div>
@@ -147,72 +213,72 @@
     </section>
 
     <!-- Trust Indicators -->
-    <section class="bg-white py-8 border-b">
+    <section class="bg-white py-6 sm:py-8 border-b">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-center items-center space-x-12">
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-4">
                 <div class="trust-badge text-center">
-                    <i class="fas fa-certificate text-green-500 text-2xl mb-2"></i>
-                    <p class="text-sm font-medium text-gray-700">SSL Certificaat</p>
+                    <i class="fas fa-certificate text-green-500 text-xl sm:text-2xl mb-2"></i>
+                    <p class="text-xs sm:text-sm font-medium text-gray-700">SSL Certificaat</p>
                 </div>
                 <div class="trust-badge text-center">
-                    <i class="fab fa-cc-visa text-blue-600 text-2xl mb-2"></i>
-                    <p class="text-sm font-medium text-gray-700">Veilig Betalen</p>
+                    <i class="fab fa-cc-visa text-blue-600 text-xl sm:text-2xl mb-2"></i>
+                    <p class="text-xs sm:text-sm font-medium text-gray-700">Veilig Betalen</p>
                 </div>
                 <div class="trust-badge text-center">
-                    <i class="fas fa-medal text-yellow-500 text-2xl mb-2"></i>
-                    <p class="text-sm font-medium text-gray-700">Webshop Keurmerk</p>
+                    <i class="fas fa-medal text-yellow-500 text-xl sm:text-2xl mb-2"></i>
+                    <p class="text-xs sm:text-sm font-medium text-gray-700">Webshop Keurmerk</p>
                 </div>
                 <div class="trust-badge text-center">
-                    <i class="fas fa-users text-indigo-500 text-2xl mb-2"></i>
-                    <p class="text-sm font-medium text-gray-700">50K+ Klanten</p>
+                    <i class="fas fa-users text-indigo-500 text-xl sm:text-2xl mb-2"></i>
+                    <p class="text-xs sm:text-sm font-medium text-gray-700">50K+ Klanten</p>
                 </div>
                 <div class="trust-badge text-center">
-                    <i class="fas fa-shipping-fast text-green-500 text-2xl mb-2"></i>
-                    <p class="text-sm font-medium text-gray-700">Gratis Verzending</p>
+                    <i class="fas fa-shipping-fast text-green-500 text-xl sm:text-2xl mb-2"></i>
+                    <p class="text-xs sm:text-sm font-medium text-gray-700">Gratis Verzending</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Product Categories -->
-    <section class="py-16">
+    <section class="py-10 sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Shop per Categorie</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-gray-800">Shop per Categorie</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
                 <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-                    <div class="h-32 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                        <i class="fas fa-laptop text-white text-4xl"></i>
+                    <div class="h-24 sm:h-32 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-laptop text-white text-3xl sm:text-4xl"></i>
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-semibold text-gray-800">Elektronica</h3>
-                        <p class="text-gray-600 text-sm">1.245 producten</p>
+                    <div class="p-3 sm:p-4 text-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base">Elektronica</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">1.245 producten</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-                    <div class="h-32 bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center">
-                        <i class="fas fa-tshirt text-white text-4xl"></i>
+                    <div class="h-24 sm:h-32 bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-tshirt text-white text-3xl sm:text-4xl"></i>
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-semibold text-gray-800">Mode</h3>
-                        <p class="text-gray-600 text-sm">2.847 producten</p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-                    <div class="h-32 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
-                        <i class="fas fa-home text-white text-4xl"></i>
-                    </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-semibold text-gray-800">Huis & Tuin</h3>
-                        <p class="text-gray-600 text-sm">987 producten</p>
+                    <div class="p-3 sm:p-4 text-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base">Mode</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">2.847 producten</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-                    <div class="h-32 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
-                        <i class="fas fa-dumbbell text-white text-4xl"></i>
+                    <div class="h-24 sm:h-32 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                        <i class="fas fa-home text-white text-3xl sm:text-4xl"></i>
                     </div>
-                    <div class="p-4 text-center">
-                        <h3 class="font-semibold text-gray-800">Sport</h3>
-                        <p class="text-gray-600 text-sm">654 producten</p>
+                    <div class="p-3 sm:p-4 text-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base">Huis & Tuin</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">987 producten</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="h-24 sm:h-32 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                        <i class="fas fa-dumbbell text-white text-3xl sm:text-4xl"></i>
+                    </div>
+                    <div class="p-3 sm:p-4 text-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base">Sport</h3>
+                        <p class="text-gray-600 text-xs sm:text-sm">654 producten</p>
                     </div>
                 </div>
             </div>
@@ -220,80 +286,80 @@
     </section>
 
     <!-- Featured Products -->
-    <section class="bg-gray-100 py-16">
+    <section class="bg-gray-100 py-10 sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Populaire Producten</h2>
-                <p class="text-gray-600">Ontdek onze meest verkochte en best beoordeelde producten</p>
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2 sm:mb-4">Populaire Producten</h2>
+                <p class="text-gray-600 text-sm sm:text-base">Ontdek onze meest verkochte en best beoordeelde producten</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 <div class="product-card bg-white rounded-xl overflow-hidden">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-mobile-alt text-gray-400 text-5xl"></i>
+                    <div class="h-40 sm:h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-gray-400 text-4xl sm:text-5xl"></i>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2">Smartphone Pro Max</h3>
+                        <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Smartphone Pro Max</h3>
                         <div class="flex items-center mb-2">
                             <div class="star-rating text-sm mr-2">★★★★★</div>
-                            <span class="text-gray-600 text-sm">(124 reviews)</span>
+                            <span class="text-gray-600 text-xs sm:text-sm">(124 reviews)</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-indigo-600">€899</span>
-                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                            <span class="text-xl sm:text-2xl font-bold text-indigo-600">€899</span>
+                            <button class="bg-indigo-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
                                 <i class="fas fa-cart-plus"></i>
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="product-card bg-white rounded-xl overflow-hidden">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-headphones text-gray-400 text-5xl"></i>
+                    <div class="h-40 sm:h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-headphones text-gray-400 text-4xl sm:text-5xl"></i>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2">Wireless Koptelefoon</h3>
+                        <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Wireless Koptelefoon</h3>
                         <div class="flex items-center mb-2">
                             <div class="star-rating text-sm mr-2">★★★★☆</div>
-                            <span class="text-gray-600 text-sm">(87 reviews)</span>
+                            <span class="text-gray-600 text-xs sm:text-sm">(87 reviews)</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-indigo-600">€149</span>
-                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                            <span class="text-xl sm:text-2xl font-bold text-indigo-600">€149</span>
+                            <button class="bg-indigo-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
                                 <i class="fas fa-cart-plus"></i>
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="product-card bg-white rounded-xl overflow-hidden">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-watch text-gray-400 text-5xl"></i>
+                    <div class="h-40 sm:h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-watch text-gray-400 text-4xl sm:text-5xl"></i>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2">Smartwatch Elite</h3>
+                        <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Smartwatch Elite</h3>
                         <div class="flex items-center mb-2">
                             <div class="star-rating text-sm mr-2">★★★★★</div>
-                            <span class="text-gray-600 text-sm">(203 reviews)</span>
+                            <span class="text-gray-600 text-xs sm:text-sm">(203 reviews)</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-indigo-600">€299</span>
-                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                            <span class="text-xl sm:text-2xl font-bold text-indigo-600">€299</span>
+                            <button class="bg-indigo-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
                                 <i class="fas fa-cart-plus"></i>
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="product-card bg-white rounded-xl overflow-hidden">
-                    <div class="h-48 bg-gray-200 flex items-center justify-center">
-                        <i class="fas fa-camera text-gray-400 text-5xl"></i>
+                    <div class="h-40 sm:h-48 bg-gray-200 flex items-center justify-center">
+                        <i class="fas fa-camera text-gray-400 text-4xl sm:text-5xl"></i>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-semibold text-gray-800 mb-2">Digital Camera 4K</h3>
+                        <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Digital Camera 4K</h3>
                         <div class="flex items-center mb-2">
                             <div class="star-rating text-sm mr-2">★★★★☆</div>
-                            <span class="text-gray-600 text-sm">(56 reviews)</span>
+                            <span class="text-gray-600 text-xs sm:text-sm">(56 reviews)</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-indigo-600">€599</span>
-                            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
+                            <span class="text-xl sm:text-2xl font-bold text-indigo-600">€599</span>
+                            <button class="bg-indigo-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300">
                                 <i class="fas fa-cart-plus"></i>
                             </button>
                         </div>
@@ -304,59 +370,59 @@
     </section>
 
     <!-- Customer Reviews -->
-    <section class="py-16">
+    <section class="py-10 sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Wat Klanten Zeggen</h2>
-                <p class="text-gray-600">Lees de ervaringen van onze tevreden klanten</p>
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2 sm:mb-4">Wat Klanten Zeggen</h2>
+                <p class="text-gray-600 text-sm sm:text-base">Lees de ervaringen van onze tevreden klanten</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-md p-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
+                <div class="bg-white rounded-xl shadow-md p-4 sm:p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-lg">M</div>
-                        <div class="ml-4">
-                            <h4 class="font-semibold text-gray-800">Maria van der Berg</h4>
-                            <div class="star-rating text-sm">★★★★★</div>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg">M</div>
+                        <div class="ml-3 sm:ml-4">
+                            <h4 class="font-semibold text-gray-800 text-sm sm:text-base">Maria van der Berg</h4>
+                            <div class="star-rating text-xs sm:text-sm">★★★★★</div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic">"Fantastische service! Mijn bestelling werd snel geleverd en de kwaliteit is uitstekend. Zeker een aanrader!"</p>
+                    <p class="text-gray-600 italic text-sm sm:text-base">"Fantastische service! Mijn bestelling werd snel geleverd en de kwaliteit is uitstekend. Zeker een aanrader!"</p>
                 </div>
-                <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="bg-white rounded-xl shadow-md p-4 sm:p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg">J</div>
-                        <div class="ml-4">
-                            <h4 class="font-semibold text-gray-800">Jan Janssen</h4>
-                            <div class="star-rating text-sm">★★★★★</div>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg">J</div>
+                        <div class="ml-3 sm:ml-4">
+                            <h4 class="font-semibold text-gray-800 text-sm sm:text-base">Jan Janssen</h4>
+                            <div class="star-rating text-xs sm:text-sm">★★★★★</div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic">"Uitstekende klantenservice. Toen ik een vraag had, werd deze direct beantwoord. Heel professioneel!"</p>
+                    <p class="text-gray-600 italic text-sm sm:text-base">"Uitstekende klantenservice. Toen ik een vraag had, werd deze direct beantwoord. Heel professioneel!"</p>
                 </div>
-                <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="bg-white rounded-xl shadow-md p-4 sm:p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg">S</div>
-                        <div class="ml-4">
-                            <h4 class="font-semibold text-gray-800">Sophie de Wit</h4>
-                            <div class="star-rating text-sm">★★★★★</div>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-lg">S</div>
+                        <div class="ml-3 sm:ml-4">
+                            <h4 class="font-semibold text-gray-800 text-sm sm:text-base">Sophie de Wit</h4>
+                            <div class="star-rating text-xs sm:text-sm">★★★★★</div>
                         </div>
                     </div>
-                    <p class="text-gray-600 italic">"Makkelijk bestellen, veilige betaling en razendsnelle levering. Al meerdere keren besteld, altijd tevreden!"</p>
+                    <p class="text-gray-600 italic text-sm sm:text-base">"Makkelijk bestellen, veilige betaling en razendsnelle levering. Al meerdere keren besteld, altijd tevreden!"</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Newsletter -->
-    <section class="bg-indigo-600 py-12">
+    <section class="bg-indigo-600 py-8 sm:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">Blijf op de Hoogte</h2>
-            <p class="text-indigo-100 mb-8">Ontvang als eerste nieuws over nieuwe producten en exclusieve aanbiedingen</p>
-            <div class="max-w-md mx-auto flex">
-                <input type="email" placeholder="Uw e-mailadres" class="flex-1 px-4 py-3 rounded-l-lg border-0 focus:ring-2 focus:ring-white">
-                <button class="bg-white text-indigo-600 px-8 py-3 rounded-r-lg font-semibold hover:bg-gray-100 transition duration-300">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-4">Blijf op de Hoogte</h2>
+            <p class="text-indigo-100 mb-4 sm:mb-8 text-sm sm:text-base">Ontvang als eerste nieuws over nieuwe producten en exclusieve aanbiedingen</p>
+            <div class="max-w-md mx-auto flex flex-col sm:flex-row">
+                <input type="email" placeholder="Uw e-mailadres" class="flex-1 px-4 py-3 rounded-lg sm:rounded-l-lg sm:rounded-r-none border-0 focus:ring-2 focus:ring-white mb-2 sm:mb-0">
+                <button class="bg-white text-indigo-600 px-6 sm:px-8 py-3 rounded-lg sm:rounded-r-lg sm:rounded-l-none font-semibold hover:bg-gray-100 transition duration-300">
                     Aanmelden
                 </button>
             </div>
-            <p class="text-indigo-100 text-sm mt-4">
+            <p class="text-indigo-100 text-xs sm:text-sm mt-4">
                 <i class="fas fa-lock mr-1"></i>
                 Uw privacy is bij ons veilig. Geen spam, uitschrijven altijd mogelijk.
             </p>
@@ -364,12 +430,12 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
+    <footer class="bg-gray-800 text-white py-8 sm:py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4 text-indigo-400">TrustShop</h3>
-                    <p class="text-gray-300 mb-4">Uw betrouwbare online partner voor kwaliteitsproducten tegen de beste prijzen.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="sm:col-span-2 md:col-span-1">
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4 text-indigo-400">TrustShop</h3>
+                    <p class="text-gray-300 mb-4 text-sm sm:text-base">Uw betrouwbare online partner voor kwaliteitsproducten tegen de beste prijzen.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
@@ -379,7 +445,7 @@
                 </div>
                 <div>
                     <h4 class="font-semibold mb-4">Klantenservice</h4>
-                    <ul class="space-y-2 text-gray-300">
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
                         <li><a href="#" class="hover:text-white">Contact</a></li>
                         <li><a href="#" class="hover:text-white">FAQ</a></li>
                         <li><a href="#" class="hover:text-white">Verzending & Retour</a></li>
@@ -388,7 +454,7 @@
                 </div>
                 <div>
                     <h4 class="font-semibold mb-4">Informatie</h4>
-                    <ul class="space-y-2 text-gray-300">
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
                         <li><a href="#" class="hover:text-white">Over Ons</a></li>
                         <li><a href="#" class="hover:text-white">Algemene Voorwaarden</a></li>
                         <li><a href="#" class="hover:text-white">Privacy Beleid</a></li>
@@ -397,7 +463,7 @@
                 </div>
                 <div>
                     <h4 class="font-semibold mb-4">Contact Info</h4>
-                    <div class="space-y-2 text-gray-300">
+                    <div class="space-y-2 text-gray-300 text-sm sm:text-base">
                         <div><i class="fas fa-map-marker-alt mr-2"></i> Hoofdstraat 123, 1234 AB Amsterdam</div>
                         <div><i class="fas fa-phone mr-2"></i> +31 20 123 4567</div>
                         <div><i class="fas fa-envelope mr-2"></i> info@trustshop.nl</div>
@@ -405,17 +471,64 @@
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400">© 2024 TrustShop. Alle rechten voorbehouden.</p>
-                <div class="flex items-center space-x-4 mt-4 md:mt-0">
-                    <span class="text-gray-400">Veilig betalen met:</span>
-                    <i class="fab fa-cc-visa text-2xl text-blue-600"></i>
-                    <i class="fab fa-cc-mastercard text-2xl text-red-600"></i>
-                    <i class="fab fa-paypal text-2xl text-blue-500"></i>
-                    <i class="fas fa-university text-2xl text-green-600"></i>
+            <div class="border-t border-gray-700 mt-6 md:mt-8 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm sm:text-base text-center md:text-left mb-4 md:mb-0">© 2024 TrustShop. Alle rechten voorbehouden.</p>
+                <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                    <span class="text-gray-400 text-sm">Veilig betalen met:</span>
+                    <div class="flex items-center space-x-2 sm:space-x-4">
+                        <i class="fab fa-cc-visa text-xl sm:text-2xl text-blue-600"></i>
+                        <i class="fab fa-cc-mastercard text-xl sm:text-2xl text-red-600"></i>
+                        <i class="fab fa-paypal text-xl sm:text-2xl text-blue-500"></i>
+                        <i class="fas fa-university text-xl sm:text-2xl text-green-600"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            // Mobile search functionality
+            const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('active');
+                document.body.classList.add('menu-open');
+            });
+            
+            // Close mobile menu
+            closeMobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                setTimeout(function() {
+                    mobileMenu.classList.add('hidden');
+                }, 300); // Match the transition duration
+                document.body.classList.remove('menu-open');
+            });
+            
+            // Toggle mobile search
+            mobileSearchToggle.addEventListener('click', function() {
+                mobileSearchInput.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking outside (optional)
+            document.addEventListener('click', function(event) {
+                // Only if the menu is open and the click is outside the menu content
+                if (!mobileMenu.classList.contains('hidden') && 
+                    !mobileMenuButton.contains(event.target) && 
+                    !mobileMenu.contains(event.target)) {
+                    closeMobileMenu.click();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
