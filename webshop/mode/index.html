@@ -62,6 +62,11 @@
             border: 2px solid #e2e8f0;
             transition: all 0.2s;
             cursor: pointer;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .size-badge:hover {
             background: #ec4899;
@@ -76,8 +81,8 @@
         
         /* Color Swatches */
         .color-swatch {
-            width: 20px;
-            height: 20px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             border: 2px solid #e5e7eb;
             cursor: pointer;
@@ -92,10 +97,18 @@
             border-width: 3px;
         }
         
+        /* Mobile adjustments for color swatches */
+        @media (max-width: 640px) {
+            .color-swatch {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        
         /* Product Color Swatches */
         .product-color-swatch {
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             border: 1px solid #d1d5db;
             cursor: pointer;
@@ -124,73 +137,177 @@
         .mode-header-icon {
             color: #ec4899;
         }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Mobile filter overlay */
+        .filter-overlay {
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .filter-overlay.active {
+            transform: translateY(0);
+        }
+        
+        /* Hide scrollbar when overlay is open */
+        body.overlay-open {
+            overflow: hidden;
+        }
+        
+        /* Mobile category scroll */
+        .category-scroll {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        
+        .category-scroll::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        /* Mobile size grid adjustments */
+        @media (max-width: 640px) {
+            .size-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+        }
+        
+        /* Mobile color grid adjustments */
+        @media (max-width: 640px) {
+            .color-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-lg">
-        <div class="container mx-auto px-4">
-            <!-- Top Bar -->
-            <div class="flex items-center justify-between py-2 text-sm text-gray-600 border-b">
-                <div class="flex items-center space-x-4">
-                    <span><i class="fas fa-phone mr-1"></i> 0800-1234567</span>
-                    <span><i class="fas fa-envelope mr-1"></i> info@webshop.nl</span>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Bar - Simplified for mobile -->
+            <div class="flex flex-wrap justify-between items-center py-2 text-xs sm:text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span><i class="fas fa-phone mr-1" aria-hidden="true"></i> 0800-1234567</span>
+                    <span class="hidden sm:inline"><i class="fas fa-envelope mr-1" aria-hidden="true"></i> info@allgoodsmarket.nl</span>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <span><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
-                    <span><i class="fas fa-shield-alt mr-1"></i> 30 dagen retour</span>
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span class="hidden sm:inline"><i class="fas fa-truck mr-1" aria-hidden="true"></i> Gratis verzending vanaf €50</span>
+                    <span><i class="fas fa-shield-alt mr-1" aria-hidden="true"></i> 30 dagen retour</span>
                 </div>
             </div>
             
             <!-- Main Header -->
             <div class="flex items-center justify-between py-4">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-gray-600 hover:text-pink-600 focus:outline-none mr-3" aria-label="Menu openen">
+                    <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
+                </button>
+                
+                <!-- Logo -->
                 <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-blue-600 mr-8">
-                        <i class="fas fa-store mr-2"></i>BetrouwbareShop
+                    <h1 class="text-xl sm:text-2xl font-bold text-pink-600">
+                        <i class="fas fa-store mr-1 sm:mr-2" aria-hidden="true"></i>AllGoodsMarket
                     </h1>
                 </div>
                 
-                <div class="flex-1 max-w-xl mx-8">
+                <!-- Desktop Search Bar (hidden on mobile) -->
+                <div class="hidden lg:flex-1 lg:max-w-xl lg:mx-8">
                     <div class="relative">
                         <input type="text" placeholder="Zoek naar kleding & mode..." 
-                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600">
-                            <i class="fas fa-search"></i>
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                               aria-label="Zoeken">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-pink-600" aria-label="Zoeken">
+                            <i class="fas fa-search" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
                 
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="text-gray-600 hover:text-blue-600">
-                        <i class="fas fa-user mr-1"></i> Account
+                <!-- Icons -->
+                <div class="flex items-center space-x-3 sm:space-x-6">
+                    <!-- Mobile Search Toggle -->
+                    <button id="mobile-search-toggle" class="lg:hidden text-gray-600 hover:text-pink-600" aria-label="Zoeken tonen">
+                        <i class="fas fa-search text-xl" aria-hidden="true"></i>
+                    </button>
+                    
+                    <a href="#" class="hidden sm:inline-block text-gray-600 hover:text-pink-600">
+                        <i class="fas fa-user mr-1" aria-hidden="true"></i> <span class="hidden md:inline">Account</span>
                     </a>
-                    <a href="#" class="text-gray-600 hover:text-blue-600 relative">
-                        <i class="fas fa-shopping-cart mr-1"></i> Winkelwagen
-                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    <a href="#" class="text-gray-600 hover:text-pink-600 relative">
+                        <i class="fas fa-shopping-cart mr-1" aria-hidden="true"></i> 
+                        <span class="hidden sm:inline">Winkelwagen</span>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" aria-label="3 items in winkelwagen">3</span>
                     </a>
                 </div>
             </div>
             
-            <!-- Navigation -->
-            <nav class="py-3 border-t">
+            <!-- Mobile Search Input (initially hidden) -->
+            <div id="mobile-search-input" class="lg:hidden pb-4 hidden">
+                <div class="relative">
+                    <input type="text" placeholder="Zoek naar kleding & mode..." 
+                           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 text-base"
+                           aria-label="Zoeken">
+                    <button class="absolute right-2 top-3 text-gray-400 hover:text-pink-600" aria-label="Zoeken">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block py-3 border-t">
                 <ul class="flex space-x-8">
-                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
-                    <li><a href="../elektronica/index.html" class="nav-link text-gray-700 hover:text-blue-600">Elektronica</a></li>
-                    <li><a href="../mode/index.html" class="nav-link active text-gray-700 hover:text-blue-600">Mode</a></li>
-                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-blue-600">Huis & Tuin</a></li>
-                    <li><a href="../sport/index.html" class="nav-link text-gray-700 hover:text-blue-600">Sport</a></li>
-                    <li><a href="../aanbiedingen/index.html" class="nav-link text-gray-700 hover:text-blue-600">Aanbiedingen</a></li>
-                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-blue-600">Contact</a></li>
+                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-pink-600">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="nav-link text-gray-700 hover:text-pink-600">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="nav-link active text-gray-700 hover:text-pink-600">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-pink-600">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="nav-link text-gray-700 hover:text-pink-600">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="nav-link text-gray-700 hover:text-pink-600">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-pink-600">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-pink-900 bg-opacity-95 z-50 hidden flex flex-col mobile-menu lg:hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-mobile-menu" class="text-white text-3xl focus:outline-none" aria-label="Menu sluiten">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center">
+            <nav class="text-center">
+                <ul class="space-y-6">
+                    <li><a href="../startpagina/index.html" class="text-white text-2xl hover:text-pink-200 block py-2">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="text-white text-2xl hover:text-pink-200 block py-2">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="text-white text-2xl hover:text-pink-200 block py-2">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="text-white text-2xl hover:text-pink-200 block py-2">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="text-white text-2xl hover:text-pink-200 block py-2">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="text-white text-2xl hover:text-pink-200 block py-2">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="text-white text-2xl hover:text-pink-200 block py-2">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="p-6 flex justify-center space-x-8">
+            <a href="#" class="text-white hover:text-pink-200" aria-label="Account"><i class="fas fa-user text-xl" aria-hidden="true"></i></a>
+            <a href="#" class="text-white hover:text-pink-200" aria-label="Winkelwagen"><i class="fas fa-shopping-cart text-xl" aria-hidden="true"></i></a>
+        </div>
+    </div>
+
     <!-- Breadcrumb -->
     <div class="bg-gray-100 py-3">
-        <div class="container mx-auto px-4">
-            <nav class="text-sm">
-                <a href="#" class="text-blue-600 hover:underline">Home</a>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm" aria-label="Kruimelpad">
+                <a href="#" class="text-pink-600 hover:underline">Home</a>
                 <span class="mx-2 text-gray-500">/</span>
                 <span class="text-gray-700">Mode & Kleding</span>
             </nav>
@@ -198,12 +315,12 @@
     </div>
 
     <!-- Main Content -->
-    <div class="container mx-auto px-4 py-8">
-        <div class="flex gap-8">
-            <!-- Sidebar Filters -->
-            <aside class="w-64 filter-section rounded-lg p-6">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Desktop Sidebar Filters -->
+            <aside class="hidden lg:block w-64 filter-section rounded-lg p-6">
                 <h2 class="text-xl font-bold mb-6 text-gray-800">
-                    <i class="fas fa-filter mr-2"></i>Filters
+                    <i class="fas fa-filter mr-2" aria-hidden="true"></i>Filters
                 </h2>
                 
                 <!-- Gender Filter -->
@@ -211,19 +328,19 @@
                     <h3 class="font-semibold mb-3 text-gray-700">Geslacht</h3>
                     <div class="space-y-2">
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Dames (156)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Heren (124)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Kinderen (89)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Unisex (34)</span>
                         </label>
                     </div>
@@ -234,27 +351,27 @@
                     <h3 class="font-semibold mb-3 text-gray-700">Categorieën</h3>
                     <div class="space-y-2">
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2" checked>
+                            <input type="checkbox" class="mr-2 h-4 w-4" checked>
                             <span class="text-sm">T-shirts & Tops (67)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Jeans & Broeken (45)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Jurken & Rokken (38)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Jassen & Coats (29)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Schoenen (52)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Accessoires (41)</span>
                         </label>
                     </div>
@@ -264,18 +381,18 @@
                 <div class="mb-6">
                     <h3 class="font-semibold mb-3 text-gray-700">Maat</h3>
                     <div class="grid grid-cols-4 gap-2">
-                        <button class="size-badge text-xs px-2 py-1 rounded">XS</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded">S</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded selected">M</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded">L</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded">XL</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded">XXL</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded">36</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded">38</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded">40</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded">42</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded">44</button>
-                        <button class="size-badge text-xs px-2 py-1 rounded">46</button>
+                        <button class="size-badge text-xs rounded">XS</button>
+                        <button class="size-badge text-xs rounded">S</button>
+                        <button class="size-badge text-xs rounded selected">M</button>
+                        <button class="size-badge text-xs rounded">L</button>
+                        <button class="size-badge text-xs rounded">XL</button>
+                        <button class="size-badge text-xs rounded">XXL</button>
+                        <button class="size-badge text-xs rounded">36</button>
+                        <button class="size-badge text-xs rounded">38</button>
+                        <button class="size-badge text-xs rounded">40</button>
+                        <button class="size-badge text-xs rounded">42</button>
+                        <button class="size-badge text-xs rounded">44</button>
+                        <button class="size-badge text-xs rounded">46</button>
                     </div>
                 </div>
 
@@ -303,27 +420,27 @@
                     <h3 class="font-semibold mb-3 text-gray-700">Merken</h3>
                     <div class="space-y-2">
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Nike (42)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Adidas (38)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">H&M (35)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Zara (29)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Levi's (25)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Tommy Hilfiger (22)</span>
                         </label>
                     </div>
@@ -334,23 +451,23 @@
                     <h3 class="font-semibold mb-3 text-gray-700">Materiaal</h3>
                     <div class="space-y-2">
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Katoen (80)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Polyester (55)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Wol (20)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Leer (15)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Zijde (8)</span>
                         </label>
                     </div>
@@ -361,19 +478,19 @@
                     <h3 class="font-semibold mb-3 text-gray-700">Prijs</h3>
                     <div class="space-y-2">
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">€0 - €25 (58)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">€25 - €50 (67)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">€50 - €100 (45)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">€100+ (34)</span>
                         </label>
                     </div>
@@ -383,83 +500,92 @@
             <!-- Main Content Area -->
             <main class="flex-1">
                 <!-- Page Header -->
-                <div class="flex items-center justify-between mb-6">
-                    <div>
-                        <h1 class="text-3xl font-bold text-gray-800 mb-2">
-                            <i class="fas fa-tshirt mr-2 mode-header-icon"></i>Mode & Kleding
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 sm:mb-6">
+                    <div class="mb-4 sm:mb-0">
+                        <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
+                            <i class="fas fa-tshirt mr-2 mode-header-icon" aria-hidden="true"></i>Mode & Kleding
                         </h1>
-                        <p class="text-gray-600">204 producten gevonden</p>
+                        <p class="text-gray-600 text-sm sm:text-base">204 producten gevonden</p>
                     </div>
                     
-                    <div class="flex items-center space-x-4">
-                        <label class="text-sm text-gray-600">Sorteer op:</label>
-                        <select class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option>Populariteit</option>
-                            <option>Prijs: laag naar hoog</option>
-                            <option>Prijs: hoog naar laag</option>
-                            <option>Nieuwste eerst</option>
-                            <option>Beste beoordeling</option>
-                            <option>Trending</option>
-                        </select>
+                    <div class="flex items-center space-x-2 sm:space-x-4">
+                        <!-- Mobile Filter Button -->
+                        <button id="mobile-filter-button" class="lg:hidden bg-pink-600 text-white px-4 py-2 rounded-lg">
+                            <i class="fas fa-filter mr-2" aria-hidden="true"></i>Filters
+                        </button>
+                        
+                        <div class="flex items-center space-x-2">
+                            <label for="sort-select" class="text-sm text-gray-600 hidden sm:inline">Sorteer op:</label>
+                            <select id="sort-select" class="border rounded px-2 sm:px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500">
+                                <option>Populariteit</option>
+                                <option>Prijs: laag naar hoog</option>
+                                <option>Prijs: hoog naar laag</option>
+                                <option>Nieuwste eerst</option>
+                                <option>Beste beoordeling</option>
+                                <option>Trending</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Product Categories -->
-                <div class="grid grid-cols-6 gap-4 mb-8">
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-tshirt text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">T-shirts</span>
-                    </div>
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-user-tie text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Jeans</span>
-                    </div>
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-female text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Jurken</span>
-                    </div>
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-shoe-prints text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Schoenen</span>
-                    </div>
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-hat-cowboy text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Accessoires</span>
-                    </div>
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-coat-arms text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Jassen</span>
+                <!-- Product Categories - Horizontal scroll on mobile -->
+                <div class="mb-6 sm:mb-8">
+                    <div class="flex lg:grid lg:grid-cols-6 gap-3 sm:gap-4 overflow-x-auto category-scroll pb-2">
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] sm:min-w-[120px] lg:min-w-0">
+                            <i class="fas fa-tshirt text-xl sm:text-2xl mb-1 sm:mb-2 block" aria-hidden="true"></i>
+                            <span class="text-xs sm:text-sm font-medium">T-shirts</span>
+                        </div>
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] sm:min-w-[120px] lg:min-w-0">
+                            <i class="fas fa-user-tie text-xl sm:text-2xl mb-1 sm:mb-2 block" aria-hidden="true"></i>
+                            <span class="text-xs sm:text-sm font-medium">Jeans</span>
+                        </div>
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] sm:min-w-[120px] lg:min-w-0">
+                            <i class="fas fa-female text-xl sm:text-2xl mb-1 sm:mb-2 block" aria-hidden="true"></i>
+                            <span class="text-xs sm:text-sm font-medium">Jurken</span>
+                        </div>
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] sm:min-w-[120px] lg:min-w-0">
+                            <i class="fas fa-shoe-prints text-xl sm:text-2xl mb-1 sm:mb-2 block" aria-hidden="true"></i>
+                            <span class="text-xs sm:text-sm font-medium">Schoenen</span>
+                        </div>
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] sm:min-w-[120px] lg:min-w-0">
+                            <i class="fas fa-hat-cowboy text-xl sm:text-2xl mb-1 sm:mb-2 block" aria-hidden="true"></i>
+                            <span class="text-xs sm:text-sm font-medium">Accessoires</span>
+                        </div>
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] sm:min-w-[120px] lg:min-w-0">
+                            <i class="fas fa-coat-arms text-xl sm:text-2xl mb-1 sm:mb-2 block" aria-hidden="true"></i>
+                            <span class="text-xs sm:text-sm font-medium">Jassen</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Products Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                     <!-- Product Card 1 -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48 relative">
-                            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80" alt="Nike Dri-FIT T-shirt">
+                        <div class="product-image h-40 sm:h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80" alt="Nike Dri-FIT T-shirt" loading="lazy">
                             <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-25%</span>
                             <span class="absolute top-2 left-2 trending text-white px-2 py-1 rounded text-xs font-bold">TRENDING</span>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">Nike Dri-FIT T-shirt</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Nike Dri-FIT T-shirt</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★★</div>
-                                <span class="text-gray-500 text-sm">(142 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(142)</span>
                             </div>
-                            <div class="flex items-center space-x-2 mb-2">
-                                <div class="product-color-swatch" style="background-color: #000000"></div>
-                                <div class="product-color-swatch" style="background-color: #ffffff; border: 1px solid #d1d5db;"></div>
-                                <div class="product-color-swatch" style="background-color: #dc2626"></div>
+                            <div class="flex items-center space-x-1 sm:space-x-2 mb-2">
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #000000"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #ffffff; border: 1px solid #d1d5db;"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #dc2626"></div>
                                 <span class="text-xs text-gray-500">+3 kleuren</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€29,99</span>
-                                    <span class="text-sm text-gray-500 line-through ml-2">€39,99</span>
+                                    <span class="text-xs sm:text-sm text-gray-500 line-through ml-1 sm:ml-2">€39,99</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                                    <i class="fas fa-cart-plus"></i>
+                                <button class="bg-pink-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-pink-700 transition">
+                                    <i class="fas fa-cart-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -467,27 +593,27 @@
 
                     <!-- Product Card 2 -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48 relative">
-                            <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=400&q=80" alt="Levi's 501 Original Jeans">
+                        <div class="product-image h-40 sm:h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=400&q=80" alt="Levi's 501 Original Jeans" loading="lazy">
                             <span class="absolute top-2 left-2 new-arrival text-white px-2 py-1 rounded text-xs font-bold">NIEUW</span>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">Levi's 501 Original Jeans</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Levi's 501 Original Jeans</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★★</div>
-                                <span class="text-gray-500 text-sm">(89 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(89)</span>
                             </div>
-                            <div class="flex items-center space-x-2 mb-2">
-                                <div class="product-color-swatch" style="background-color: #1e3a8a"></div>
-                                <div class="product-color-swatch" style="background-color: #000000"></div>
+                            <div class="flex items-center space-x-1 sm:space-x-2 mb-2">
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #1e3a8a"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #000000"></div>
                                 <span class="text-xs text-gray-500">2 kleuren</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€89,99</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                                    <i class="fas fa-cart-plus"></i>
+                                <button class="bg-pink-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-pink-700 transition">
+                                    <i class="fas fa-cart-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -495,27 +621,27 @@
 
                     <!-- Product Card 3 -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48">
-                            <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=400&q=80" alt="Zara Zomerjurk">
+                        <div class="product-image h-40 sm:h-48">
+                            <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=400&q=80" alt="Zara Zomerjurk" loading="lazy">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">Elegante Zomerjurk</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Elegante Zomerjurk</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★☆</div>
-                                <span class="text-gray-500 text-sm">(203 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(203)</span>
                             </div>
-                            <div class="flex items-center space-x-2 mb-2">
-                                <div class="product-color-swatch" style="background-color: #ec4899"></div>
-                                <div class="product-color-swatch" style="background-color: #16a34a"></div>
-                                <div class="product-color-swatch" style="background-color: #2563eb"></div>
+                            <div class="flex items-center space-x-1 sm:space-x-2 mb-2">
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #ec4899"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #16a34a"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #2563eb"></div>
                                 <span class="text-xs text-gray-500">+2 kleuren</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€45,99</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                                    <i class="fas fa-cart-plus"></i>
+                                <button class="bg-pink-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-pink-700 transition">
+                                    <i class="fas fa-cart-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -523,29 +649,29 @@
 
                     <!-- Product Card 4 -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48 relative">
-                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=80" alt="Adidas Ultraboost 22">
+                        <div class="product-image h-40 sm:h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=80" alt="Adidas Ultraboost 22" loading="lazy">
                             <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-15%</span>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">Adidas Ultraboost 22</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Adidas Ultraboost 22</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★★</div>
-                                <span class="text-gray-500 text-sm">(67 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(67)</span>
                             </div>
-                            <div class="flex items-center space-x-2 mb-2">
-                                <div class="product-color-swatch" style="background-color: #000000"></div>
-                                <div class="product-color-swatch" style="background-color: #ffffff; border: 1px solid #d1d5db;"></div>
-                                <div class="product-color-swatch" style="background-color: #6b7280"></div>
+                            <div class="flex items-center space-x-1 sm:space-x-2 mb-2">
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #000000"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #ffffff; border: 1px solid #d1d5db;"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #6b7280"></div>
                                 <span class="text-xs text-gray-500">+4 kleuren</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€169,99</span>
-                                    <span class="text-sm text-gray-500 line-through ml-2">€199,99</span>
+                                    <span class="text-xs sm:text-sm text-gray-500 line-through ml-1 sm:ml-2">€199,99</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                                    <i class="fas fa-cart-plus"></i>
+                                <button class="bg-pink-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-pink-700 transition">
+                                    <i class="fas fa-cart-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -553,27 +679,27 @@
 
                     <!-- Product Card 5 -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48">
-                            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=400&q=80" alt="H&M Oversized Hoodie">
+                        <div class="product-image h-40 sm:h-48">
+                            <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=400&q=80" alt="H&M Oversized Hoodie" loading="lazy">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">H&M Oversized Hoodie</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">H&M Oversized Hoodie</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★☆</div>
-                                <span class="text-gray-500 text-sm">(342 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(342)</span>
                             </div>
-                            <div class="flex items-center space-x-2 mb-2">
-                                <div class="product-color-swatch" style="background-color: #6b7280"></div>
-                                <div class="product-color-swatch" style="background-color: #000000"></div>
-                                <div class="product-color-swatch" style="background-color: #dc2626"></div>
+                            <div class="flex items-center space-x-1 sm:space-x-2 mb-2">
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #6b7280"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #000000"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #dc2626"></div>
                                 <span class="text-xs text-gray-500">+5 kleuren</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€34,99</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                                    <i class="fas fa-cart-plus"></i>
+                                <button class="bg-pink-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-pink-700 transition">
+                                    <i class="fas fa-cart-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -581,29 +707,29 @@
 
                     <!-- Product Card 6 -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48 relative">
-                            <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?auto=format&fit=crop&w=400&q=80" alt="Tommy Hilfiger Polo">
+                        <div class="product-image h-40 sm:h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?auto=format&fit=crop&w=400&q=80" alt="Tommy Hilfiger Polo" loading="lazy">
                             <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-30%</span>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">Tommy Hilfiger Polo</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Tommy Hilfiger Polo</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★☆</div>
-                                <span class="text-gray-500 text-sm">(156 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(156)</span>
                             </div>
-                            <div class="flex items-center space-x-2 mb-2">
-                                <div class="product-color-swatch" style="background-color: #1e3a8a"></div>
-                                <div class="product-color-swatch" style="background-color: #ffffff; border: 1px solid #d1d5db;"></div>
-                                <div class="product-color-swatch" style="background-color: #dc2626"></div>
+                            <div class="flex items-center space-x-1 sm:space-x-2 mb-2">
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #1e3a8a"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #ffffff; border: 1px solid #d1d5db;"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #dc2626"></div>
                                 <span class="text-xs text-gray-500">+3 kleuren</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€55,99</span>
-                                    <span class="text-sm text-gray-500 line-through ml-2">€79,99</span>
+                                    <span class="text-xs sm:text-sm text-gray-500 line-through ml-1 sm:ml-2">€79,99</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                                    <i class="fas fa-cart-plus"></i>
+                                <button class="bg-pink-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-pink-700 transition">
+                                    <i class="fas fa-cart-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -611,26 +737,26 @@
 
                     <!-- Product Card 7 -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48">
-                            <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80" alt="Calvin Klein Jeans">
+                        <div class="product-image h-40 sm:h-48">
+                            <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=400&q=80" alt="Calvin Klein Jeans" loading="lazy">
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">Calvin Klein Jeans</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Calvin Klein Jeans</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★★</div>
-                                <span class="text-gray-500 text-sm">(94 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(94)</span>
                             </div>
-                            <div class="flex items-center space-x-2 mb-2">
-                                <div class="product-color-swatch" style="background-color: #1e3a8a"></div>
-                                <div class="product-color-swatch" style="background-color: #000000"></div>
+                            <div class="flex items-center space-x-1 sm:space-x-2 mb-2">
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #1e3a8a"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #000000"></div>
                                 <span class="text-xs text-gray-500">2 kleuren</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€119,99</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                                    <i class="fas fa-cart-plus"></i>
+                                <button class="bg-pink-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-pink-700 transition">
+                                    <i class="fas fa-cart-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -638,27 +764,27 @@
 
                     <!-- Product Card 8 -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48 relative">
-                            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80" alt="Vintage Leren Jas">
+                        <div class="product-image h-40 sm:h-48 relative">
+                            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80" alt="Vintage Leren Jas" loading="lazy">
                             <span class="absolute top-2 left-2 new-arrival text-white px-2 py-1 rounded text-xs font-bold">NIEUW</span>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">Vintage Leren Jas</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Vintage Leren Jas</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★★</div>
-                                <span class="text-gray-500 text-sm">(78 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(78)</span>
                             </div>
-                            <div class="flex items-center space-x-2 mb-2">
-                                <div class="product-color-swatch" style="background-color: #000000"></div>
-                                <div class="product-color-swatch" style="background-color: #92400e"></div>
+                            <div class="flex items-center space-x-1 sm:space-x-2 mb-2">
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #000000"></div>
+                                <div class="product-color-swatch w-4 h-4 sm:w-5 sm:h-5" style="background-color: #92400e"></div>
                                 <span class="text-xs text-gray-500">2 kleuren</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€249,99</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                                    <i class="fas fa-cart-plus"></i>
+                                <button class="bg-pink-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-pink-700 transition">
+                                    <i class="fas fa-cart-plus" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -666,34 +792,237 @@
                 </div>
 
                 <!-- Load More Button -->
-                <div class="text-center mt-8">
+                <div class="text-center mt-6 sm:mt-8">
                     <button class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition">
-                        <i class="fas fa-plus mr-2"></i>Meer producten laden
+                        <i class="fas fa-plus mr-2" aria-hidden="true"></i>Meer producten laden
                     </button>
                 </div>
             </main>
         </div>
     </div>
 
+    <!-- Mobile Filter Overlay -->
+    <div id="filter-overlay" class="fixed inset-0 bg-white z-50 hidden filter-overlay lg:hidden">
+        <div class="flex flex-col h-full">
+            <!-- Filter Header -->
+            <div class="flex items-center justify-between p-4 border-b bg-pink-600 text-white">
+                <h2 class="text-xl font-bold">
+                    <i class="fas fa-filter mr-2" aria-hidden="true"></i>Filters
+                </h2>
+                <button id="close-filter-overlay" class="text-white text-2xl" aria-label="Filters sluiten">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            
+            <!-- Filter Content -->
+            <div class="flex-1 overflow-y-auto p-4">
+                <!-- Gender Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Geslacht</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Dames (156)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Heren (124)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Kinderen (89)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Unisex (34)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Categorieën</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5" checked>
+                            <span class="text-base">T-shirts & Tops (67)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Jeans & Broeken (45)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Jurken & Rokken (38)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Jassen & Coats (29)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Schoenen (52)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Accessoires (41)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Size Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Maat</h3>
+                    <div class="size-grid grid grid-cols-4 gap-2">
+                        <button class="size-badge text-sm px-3 py-2 rounded">XS</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded">S</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded selected">M</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded">L</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded">XL</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded">XXL</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded">36</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded">38</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded">40</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded">42</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded">44</button>
+                        <button class="size-badge text-sm px-3 py-2 rounded">46</button>
+                    </div>
+                </div>
+
+                <!-- Color Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Kleur</h3>
+                    <div class="color-grid grid grid-cols-6 gap-2">
+                        <div class="color-swatch w-6 h-6" style="background-color: #000000" title="Zwart"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #ffffff; border-color: #d1d5db;" title="Wit"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #6b7280" title="Grijs"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #dc2626" title="Rood"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #2563eb" title="Blauw"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #16a34a" title="Groen"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #ca8a04" title="Geel"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #ec4899" title="Roze"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #7c3aed" title="Paars"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #ea580c" title="Oranje"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #0891b2" title="Turquoise"></div>
+                        <div class="color-swatch w-6 h-6" style="background-color: #92400e" title="Bruin"></div>
+                    </div>
+                </div>
+
+                <!-- Brand Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Merken</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Nike (42)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Adidas (38)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">H&M (35)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Zara (29)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Levi's (25)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Tommy Hilfiger (22)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Material Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Materiaal</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Katoen (80)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Polyester (55)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Wol (20)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Leer (15)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Zijde (8)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Prijs</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">€0 - €25 (58)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">€25 - €50 (67)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">€50 - €100 (45)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">€100+ (34)</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Actions -->
+            <div class="p-4 border-t bg-gray-50">
+                <div class="flex space-x-4">
+                    <button class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-lg font-semibold">
+                        Wis filters
+                    </button>
+                    <button id="apply-filters" class="flex-1 bg-pink-600 text-white py-3 rounded-lg font-semibold">
+                        Toon resultaten
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-12">
-        <div class="container mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
+    <footer class="bg-gray-800 text-white mt-8 sm:mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="sm:col-span-2 md:col-span-1">
                     <h3 class="font-bold text-lg mb-4">
-                        <i class="fas fa-store mr-2"></i>BetrouwbareShop
+                        <i class="fas fa-store mr-2" aria-hidden="true"></i>AllGoodsMarket
                     </h3>
-                    <p class="text-gray-300 mb-4">Uw vertrouwde partner voor mode, elektronica en meer.</p>
+                    <p class="text-gray-300 mb-4 text-sm sm:text-base">Uw vertrouwde partner voor mode, elektronica en meer.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 
                 <div>
                     <h4 class="font-semibold mb-4">Klantenservice</h4>
-                    <ul class="space-y-2 text-gray-300">
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
                         <li><a href="#" class="hover:text-white">Contact</a></li>
                         <li><a href="#" class="hover:text-white">Veelgestelde vragen</a></li>
                         <li><a href="#" class="hover:text-white">Retourneren</a></li>
@@ -703,7 +1032,7 @@
                 
                 <div>
                     <h4 class="font-semibold mb-4">Informatie</h4>
-                    <ul class="space-y-2 text-gray-300">
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
                         <li><a href="#" class="hover:text-white">Over ons</a></li>
                         <li><a href="#" class="hover:text-white">Leveringsvoorwaarden</a></li>
                         <li><a href="#" class="hover:text-white">Privacy beleid</a></li>
@@ -714,90 +1043,191 @@
                 <div>
                     <h4 class="font-semibold mb-4">Betalingsmogelijkheden</h4>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-sm font-semibold">VISA</div>
-                        <div class="bg-white text-red-600 px-2 py-1 rounded text-sm font-semibold">MC</div>
-                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-sm font-semibold">PayPal</div>
-                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-sm font-semibold">iDEAL</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">VISA</div>
+                        <div class="bg-white text-red-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">MC</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">PayPal</div>
+                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">iDEAL</div>
                     </div>
                     <div class="flex items-center text-green-400">
-                        <i class="fas fa-lock mr-2"></i>
+                        <i class="fas fa-lock mr-2" aria-hidden="true"></i>
                         <span class="text-sm">SSL Beveiligd</span>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; 2024 BetrouwbareShop. Alle rechten voorbehouden.</p>
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300">
+                <p class="text-sm sm:text-base">&copy; 2025 AllGoodsMarket. Alle rechten voorbehouden.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Size badge selection functionality
-        document.querySelectorAll('.size-badge').forEach(badge => {
-            badge.addEventListener('click', function() {
-                // Remove selected class from all badges
-                document.querySelectorAll('.size-badge').forEach(b => b.classList.remove('selected'));
-                // Add selected class to clicked badge
-                this.classList.add('selected');
-                console.log('Size selected:', this.textContent.trim());
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            // Mobile search functionality
+            const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            
+            // Mobile filter functionality
+            const mobileFilterButton = document.getElementById('mobile-filter-button');
+            const filterOverlay = document.getElementById('filter-overlay');
+            const closeFilterOverlay = document.getElementById('close-filter-overlay');
+            const applyFilters = document.getElementById('apply-filters');
+            
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('active');
+                document.body.classList.add('overlay-open');
             });
-        });
-
-        // Color swatch selection functionality
-        document.querySelectorAll('.color-swatch').forEach(swatch => {
-            swatch.addEventListener('click', function() {
-                // Remove selected class from all swatches
-                document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
-                // Add selected class to clicked swatch
-                this.classList.add('selected');
-                console.log('Color selected:', this.title || this.style.backgroundColor);
+            
+            // Close mobile menu
+            closeMobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                setTimeout(function() {
+                    mobileMenu.classList.add('hidden');
+                }, 300); // Match the transition duration
+                document.body.classList.remove('overlay-open');
             });
-        });
-
-        // Product color swatch functionality
-        document.querySelectorAll('.product-color-swatch').forEach(swatch => {
-            swatch.addEventListener('click', function() {
-                console.log('Product color clicked:', this.style.backgroundColor);
-                // Here you could implement color variant switching
+            
+            // Toggle mobile search
+            mobileSearchToggle.addEventListener('click', function() {
+                mobileSearchInput.classList.toggle('hidden');
             });
-        });
-
-        // Category badge clicks
-        document.querySelectorAll('.category-badge').forEach(badge => {
-            badge.addEventListener('click', function() {
-                console.log('Category clicked:', this.textContent.trim());
-                // Here you could implement category filtering
+            
+            // Toggle mobile filter overlay
+            mobileFilterButton.addEventListener('click', function() {
+                filterOverlay.classList.remove('hidden');
+                filterOverlay.classList.add('active');
+                document.body.classList.add('overlay-open');
             });
-        });
-
-        // Filter checkbox functionality
-        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                const filterType = this.closest('.mb-6').querySelector('h3').textContent;
-                const filterValue = this.nextElementSibling.textContent;
-                console.log('Filter changed:', filterType, '-', filterValue, ':', this.checked);
-                // Here you could implement actual filtering logic
+            
+            // Close filter overlay
+            closeFilterOverlay.addEventListener('click', function() {
+                filterOverlay.classList.remove('active');
+                setTimeout(function() {
+                    filterOverlay.classList.add('hidden');
+                }, 300); // Match the transition duration
+                document.body.classList.remove('overlay-open');
             });
-        });
-
-        // Add to cart functionality
-        document.querySelectorAll('.product-card button').forEach(button => {
-            button.addEventListener('click', function() {
-                const productName = this.closest('.product-card').querySelector('h3').textContent;
-                console.log('Added to cart:', productName);
+            
+            // Apply filters and close overlay
+            applyFilters.addEventListener('click', function() {
+                // Here you would typically apply the filter logic
+                closeFilterOverlay.click();
+            });
+            
+            // Close overlays when clicking outside (optional)
+            document.addEventListener('click', function(event) {
+                // For mobile menu
+                if (!mobileMenu.classList.contains('hidden') && 
+                    !mobileMenuButton.contains(event.target) && 
+                    !mobileMenu.contains(event.target)) {
+                    closeMobileMenu.click();
+                }
                 
-                // Visual feedback
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i>';
-                this.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-                this.classList.add('bg-green-600');
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.classList.remove('bg-green-600');
-                    this.classList.add('bg-blue-600', 'hover:bg-blue-700');
-                }, 1000);
+                // For filter overlay - only if clicking on backdrop
+                if (!filterOverlay.classList.contains('hidden') && 
+                    event.target === filterOverlay) {
+                    closeFilterOverlay.click();
+                }
+            });
+            
+            // Handle window resize: restore layout on desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) { // Tailwind's lg breakpoint
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        closeMobileMenu.click();
+                    }
+                    
+                    // Close filter overlay if open
+                    if (!filterOverlay.classList.contains('hidden')) {
+                        closeFilterOverlay.click();
+                    }
+
+                    // Hide mobile search input if it's open and desktop view
+                    if (!mobileSearchInput.classList.contains('hidden')) {
+                        mobileSearchInput.classList.add('hidden');
+                    }
+                }
+            });
+
+            // Size badge selection functionality
+            document.querySelectorAll('.size-badge').forEach(badge => {
+                badge.addEventListener('click', function() {
+                    // Find the container (either in desktop sidebar or mobile overlay)
+                    const container = this.closest('.mb-6, .size-grid');
+                    // Remove selected class from all badges in the same container
+                    container.querySelectorAll('.size-badge').forEach(b => b.classList.remove('selected'));
+                    // Add selected class to clicked badge
+                    this.classList.add('selected');
+                    console.log('Size selected:', this.textContent.trim());
+                });
+            });
+
+            // Color swatch selection functionality
+            document.querySelectorAll('.color-swatch').forEach(swatch => {
+                swatch.addEventListener('click', function() {
+                    // Find the container (either in desktop sidebar or mobile overlay)
+                    const container = this.closest('.mb-6, .color-grid');
+                    // Remove selected class from all swatches in the same container
+                    container.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+                    // Add selected class to clicked swatch
+                    this.classList.add('selected');
+                    console.log('Color selected:', this.title || this.style.backgroundColor);
+                });
+            });
+
+            // Product color swatch functionality
+            document.querySelectorAll('.product-color-swatch').forEach(swatch => {
+                swatch.addEventListener('click', function() {
+                    console.log('Product color clicked:', this.style.backgroundColor);
+                    // Here you could implement color variant switching
+                });
+            });
+
+            // Category badge clicks
+            document.querySelectorAll('.category-badge').forEach(badge => {
+                badge.addEventListener('click', function() {
+                    console.log('Category clicked:', this.textContent.trim());
+                    // Here you could implement category filtering
+                });
+            });
+
+            // Filter checkbox functionality
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const filterSection = this.closest('.mb-6, .space-y-3');
+                    const filterType = filterSection.querySelector('h3').textContent;
+                    const filterValue = this.nextElementSibling.textContent.trim();
+                    console.log('Filter changed:', filterType, '-', filterValue, ':', this.checked);
+                    // Here you could implement actual filtering logic
+                });
+            });
+
+            // Add to cart functionality
+            document.querySelectorAll('.product-card button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.closest('.product-card').querySelector('h3').textContent;
+                    console.log('Added to cart:', productName);
+                    
+                    // Visual feedback
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>';
+                    this.classList.remove('bg-pink-600', 'hover:bg-pink-700');
+                    this.classList.add('bg-green-600');
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.classList.remove('bg-green-600');
+                        this.classList.add('bg-pink-600', 'hover:bg-pink-700');
+                    }, 1000);
+                });
             });
         });
     </script>
