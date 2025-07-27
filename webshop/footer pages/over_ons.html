@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over Ons - AllGoodsMarket</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+        }
+        
+        /* About Banner Styling */
+        .about-banner {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            animation: aboutPulse 3s infinite;
+        }
+        @keyframes aboutPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.96; }
+        }
+        
+        /* Value Cards Styling */
+        .value-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Team Card Styling */
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+        
+        .team-photo img {
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+        .team-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Timeline Styling */
+        .timeline-item {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #1e40af);
+        }
+        .timeline-item:last-child::before {
+            height: 50%;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            left: -10px;
+            top: 0;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+        
+        /* Stat Number Animation */
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Hide scrollbar when overlay is open */
+        body.overlay-open {
+            overflow: hidden;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Bar - Simplified for mobile -->
+            <div class="flex flex-wrap justify-between items-center py-2 text-xs sm:text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span><i class="fas fa-phone mr-1"></i> 0800-1234567</span>
+                    <span class="hidden sm:inline"><i class="fas fa-envelope mr-1"></i> info@allgoodsmarket.nl</span>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span class="hidden sm:inline"><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                    <span><i class="fas fa-shield-alt mr-1"></i> 30 dagen retour</span>
+                </div>
+            </div>
+            
+            <!-- Main Header -->
+            <div class="flex items-center justify-between py-4">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none mr-3" aria-label="Menu openen">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <h1 class="text-xl sm:text-2xl font-bold text-blue-600">
+                        <i class="fas fa-store mr-1 sm:mr-2"></i>AllGoodsMarket
+                    </h1>
+                </div>
+                
+                <!-- Desktop Search Bar (hidden on mobile) -->
+                <div class="hidden lg:flex-1 lg:max-w-xl lg:mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Zoek naar producten..." 
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               aria-label="Zoeken">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Icons -->
+                <div class="flex items-center space-x-3 sm:space-x-6">
+                    <!-- Mobile Search Toggle -->
+                    <button id="mobile-search-toggle" class="lg:hidden text-gray-600 hover:text-blue-600" aria-label="Zoeken tonen">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    
+                    <a href="#" class="hidden sm:inline-block text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-user mr-1"></i> <span class="hidden md:inline">Account</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 relative">
+                        <i class="fas fa-shopping-cart mr-1"></i> 
+                        <span class="hidden sm:inline">Winkelwagen</span>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" aria-label="3 items in winkelwagen">3</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Search Input (initially hidden) -->
+            <div id="mobile-search-input" class="lg:hidden pb-4 hidden">
+                <div class="relative">
+                    <input type="text" placeholder="Zoek naar producten..." 
+                           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+                           aria-label="Zoeken">
+                    <button class="absolute right-2 top-3 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block py-3 border-t">
+                <ul class="flex space-x-8">
+                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="nav-link text-gray-700 hover:text-blue-600">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="nav-link text-gray-700 hover:text-blue-600">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-blue-600">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="nav-link text-gray-700 hover:text-blue-600">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="nav-link text-gray-700 hover:text-blue-600">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-blue-600">Contact</a></li>
+                    <li><a href="index.html" class="nav-link active text-gray-700 hover:text-blue-600">Over Ons</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-900 bg-opacity-95 z-50 hidden flex flex-col mobile-menu lg:hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-mobile-menu" class="text-white text-3xl focus:outline-none" aria-label="Menu sluiten">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center">
+            <nav class="text-center">
+                <ul class="space-y-6">
+                    <li><a href="../startpagina/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Contact</a></li>
+                    <li><a href="index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Over Ons</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="p-6 flex justify-center space-x-8">
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Account"><i class="fas fa-user text-xl"></i></a>
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Winkelwagen"><i class="fas fa-shopping-cart text-xl"></i></a>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm" aria-label="Kruimelpad">
+                <a href="../startpagina/index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2 text-gray-500">/</span>
+                <span class="text-gray-700">Over Ons</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- About Banner -->
+    <div class="about-banner text-white py-6 sm:py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
+                <i class="fas fa-users mr-2 sm:mr-3"></i>Over AllGoodsMarket
+            </h2>
+            <p class="text-lg sm:text-xl mb-4">Jouw vertrouwde partner voor online winkelen</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-8 text-xs sm:text-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>Betrouwbaarheid</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-shipping-fast mr-2"></i>
+                    <span>Snelle levering</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-headset mr-2"></i>
+                    <span>Persoonlijke klantenservice</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-leaf mr-2"></i>
+                    <span>Duurzaam & maatschappelijk</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <!-- Our Story Section -->
+        <section class="mb-8 sm:mb-12">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-book-open mr-3 text-blue-600"></i>Ons Verhaal
+            </h2>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    AllGoodsMarket is ontstaan uit een simpele maar krachtige visie: het bieden van een breed assortiment aan kwaliteitsproducten, gemakkelijk toegankelijk voor iedereen, tegen eerlijke prijzen. Wat begon als een klein project in 2018, is uitgegroeid tot een bloeiende online bestemming waar klanten terechtkunnen voor alles van de nieuwste elektronica tot stijlvolle mode en praktische huis- en tuinartikelen.
+                </p>
+                <p class="text-gray-700 leading-relaxed">
+                    Wij geloven dat online winkelen meer moet zijn dan alleen transacties. Het moet een ervaring zijn die is gebouwd op vertrouwen, gemak en uitstekende service. Daarom zetten we ons elke dag in om ons aanbod te verbeteren, onze processen te optimaliseren en een klantenservice te bieden die echt het verschil maakt.
+                </p>
+            </div>
+        </section>
+
+        <!-- Mission & Vision Section -->
+        <section class="mb-8 sm:mb-12">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fas fa-bullseye mr-3 text-blue-600"></i>Onze Missie & Visie
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <div class="value-card rounded-xl p-6 sm:p-8 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-rocket text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-xl mb-2">Onze Missie</h3>
+                    <p class="text-gray-600">
+                        Het leveren van een divers aanbod aan hoogwaardige producten die het dagelijks leven van onze klanten verrijken, ondersteund door een naadloze winkelervaring en uitzonderlijke service.
+                    </p>
+                </div>
+                <div class="value-card rounded-xl p-6 sm:p-8 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lightbulb text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-xl mb-2">Onze Visie</h3>
+                    <p class="text-gray-600">
+                        Uitgroeien tot de meest vertrouwde en geliefde online winkelbestemming, bekend om ons innovatieve aanbod, duurzame praktijken en de sterke band met onze gemeenschap.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values Section -->
+        <section class="mb-12 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center">
+                <i class="fas fa-heart mr-3 text-blue-600"></i>Onze Kernwaarden
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto">
+                <div class="value-card rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Vertrouwen</h3>
+                    <p class="text-gray-600 text-sm">Eerlijkheid en transparantie staan bij ons altijd voorop in alles wat we doen.</p>
+                </div>
+                <div class="value-card rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lightbulb text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Innovatie</h3>
+                    <p class="text-gray-600 text-sm">Wij blijven vernieuwen in assortiment, service en duurzaamheid om jou de beste ervaring te bieden.</p>
+                </div>
+                <div class="value-card rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Duurzaamheid</h3>
+                    <p class="text-gray-600 text-sm">We kiezen bewust voor milieuvriendelijke oplossingen en partners om onze planeet te beschermen.</p>
+                </div>
+                <div class="value-card rounded-xl p-6 text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Klantgericht</h3>
+                    <p class="text-gray-600 text-sm">Jouw tevredenheid is onze hoogste prioriteit en drijft alles wat we doen.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="bg-white rounded-2xl shadow-lg p-8 sm:p-12 mb-12 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-8">
+                <i class="fas fa-chart-line mr-3 text-blue-600"></i>
+                AllGoodsMarket in Cijfers
+            </h2>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                <div class="text-center">
+                    <div class="stat-number" data-target="500000">500K+</div>
+                    <p class="text-gray-600 font-medium">Tevreden Klanten</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number" data-target="50000">50K+</div>
+                    <p class="text-gray-600 font-medium">Producten</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number" data-target="1000000">1M+</div>
+                    <p class="text-gray-600 font-medium">Bestellingen</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number" data-target="98">98%</div>
+                    <p class="text-gray-600 font-medium">Klanttevredenheid</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our History Timeline -->
+        <section class="mb-12 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-history mr-3 text-blue-600"></i>
+                Onze Geschiedenis
+            </h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="timeline-item">
+                    <div class="timeline-year">2018</div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Oprichting van AllGoodsMarket</h3>
+                        <p class="text-gray-600">
+                            AllGoodsMarket werd opgericht door Jeroen van Dijk, met als doel een betrouwbare allround webshop te bieden voor Nederlandse consumenten.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2019</div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Eerste 10.000 klanten</h3>
+                        <p class="text-gray-600">
+                            We bereikten onze eerste 10.000 tevreden klanten, breidden ons assortiment uit en begonnen samen te werken met duurzame partners.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Webshop vernieuwd</h3>
+                        <p class="text-gray-600">
+                            Volledige vernieuwing van de webshop met snellere verzending en introductie van live chat-support voor een betere klantervaring.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Mijlpalen bereikt</h3>
+                        <p class="text-gray-600">
+                            Meer dan 500.000 tevreden klanten, 1 miljoen verwerkte orders en een 9.3 klantwaardering maken ons een van de toonaangevende online retailers van Nederland.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Team -->
+        <section class="mb-12 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6">
+                <i class="fas fa-user-friends text-blue-600 mr-2"></i>
+                Maak kennis met ons team
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="team-card bg-white rounded-lg shadow-lg p-6 text-center">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jeroen van Dijk" class="w-24 h-24 rounded-full mx-auto mb-4 shadow-lg object-cover">
+                    <h3 class="font-semibold text-gray-800 mb-1">Jeroen van Dijk</h3>
+                    <p class="text-blue-600 text-sm mb-2">Oprichter & CEO</p>
+                    <p class="text-gray-600 text-sm">Met passie voor innovatie en klantbeleving bouwt Jeroen dagelijks aan een betere webshopervaring.</p>
+                </div>
+                <div class="team-card bg-white rounded-lg shadow-lg p-6 text-center">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sanne Meijer" class="w-24 h-24 rounded-full mx-auto mb-4 shadow-lg object-cover">
+                    <h3 class="font-semibold text-gray-800 mb-1">Sanne Meijer</h3>
+                    <p class="text-blue-600 text-sm mb-2">Klantenservice Manager</p>
+                    <p class="text-gray-600 text-sm">Sanne zorgt ervoor dat elke klant zich gehoord voelt en altijd met een glimlach geholpen wordt.</p>
+                </div>
+                <div class="team-card bg-white rounded-lg shadow-lg p-6 text-center">
+                    <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Mehmet Yildiz" class="w-24 h-24 rounded-full mx-auto mb-4 shadow-lg object-cover">
+                    <h3 class="font-semibold text-gray-800 mb-1">Mehmet Yildiz</h3>
+                    <p class="text-blue-600 text-sm mb-2">Logistiek & IT Manager</p>
+                    <p class="text-gray-600 text-sm">Mehmet zorgt voor een vlekkeloze bezorging en de nieuwste technische snufjes op onze webshop.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="mb-12 sm:mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-award mr-3 text-blue-600"></i>Waarom AllGoodsMarket?
+            </h2>
+            <div class="max-w-3xl mx-auto">
+                <ul class="space-y-4 text-gray-700">
+                    <li class="flex items-start">
+                        <i class="fas fa-box-open text-blue-500 text-xl mr-4 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <span class="font-semibold">Breed en divers assortiment:</span> Van gadgets tot tuinmeubelen, wij hebben het allemaal onder één dak.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-tags text-green-500 text-xl mr-4 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <span class="font-semibold">Scherpe prijzen:</span> Wij streven ernaar om u de beste deals te bieden, zonder in te leveren op kwaliteit.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-truck-loading text-yellow-500 text-xl mr-4 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <span class="font-semibold">Snelle en betrouwbare levering:</span> Uw bestelling wordt snel en zorgvuldig bij u thuisbezorgd.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-headset text-purple-500 text-xl mr-4 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <span class="font-semibold">Uitstekende klantenservice:</span> Ons team staat altijd klaar om u te helpen met al uw vragen.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-lock text-red-500 text-xl mr-4 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <span class="font-semibold">Veilig en gemakkelijk winkelen:</span> Wij zorgen voor een veilige betaalomgeving en een gebruiksvriendelijke website.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sustainability & Social Responsibility -->
+        <section class="rounded-xl p-8 bg-white shadow text-center mb-12 sm:mb-16">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                <i class="fas fa-leaf text-green-600 mr-2"></i>
+                Duurzaam & maatschappelijk ondernemen
+            </h2>
+            <p class="text-gray-700 mb-6 max-w-xl mx-auto">
+                Wij zijn er niet alleen voor onze klanten, maar ook voor de wereld om ons heen. We kiezen bewust voor gerecyclede verpakkingen, groene stroom en steunen lokale goede doelen. Samen maken we verschil!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center mb-8">
+                <div class="flex-1 flex flex-col items-center">
+                    <i class="fas fa-recycle text-3xl text-green-500 mb-2"></i>
+                    <p class="text-gray-700 text-sm">100% recyclebare verpakkingen</p>
+                </div>
+                <div class="flex-1 flex flex-col items-center">
+                    <i class="fas fa-bolt text-3xl text-yellow-400 mb-2"></i>
+                    <p class="text-gray-700 text-sm">Webshop draait op groene energie</p>
+                </div>
+                <div class="flex-1 flex flex-col items-center">
+                    <i class="fas fa-hands-helping text-3xl text-blue-400 mb-2"></i>
+                    <p class="text-gray-700 text-sm">Elk jaar donaties aan lokale initiatieven</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <div class="contact-section rounded-lg p-6 sm:p-8 text-center">
+            <div class="max-w-2xl mx-auto">
+                <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-comments mr-2 text-blue-600"></i>
+                    Laten we in contact komen!
+                </h3>
+                <p class="text-gray-600 mb-6">Heb je vragen over ons bedrijf of wil je samenwerken? We horen graag van je!</p>
+                
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="../contact/index.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium">
+                        <i class="fas fa-envelope mr-2"></i>Neem contact op
+                    </a>
+                    <a href="../startpagina/index.html" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition font-medium">
+                        <i class="fas fa-shopping-basket mr-2"></i>Begin met winkelen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-8 sm:mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="sm:col-span-2 md:col-span-1">
+                    <h3 class="font-bold text-lg mb-4">
+                        <i class="fas fa-store mr-2" aria-hidden="true"></i>AllGoodsMarket
+                    </h3>
+                    <p class="text-gray-300 mb-4 text-sm sm:text-base">Uw vertrouwde partner voor online winkelen.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                
+               <div>
+                    <h4 class="font-semibold mb-4">Klantenservice</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../contact/index.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="../footer pages/veelgesteldevragen.html" class="hover:text-white">Veelgestelde vragen</a></li>
+                        <li><a href="../footer pages/retourneren.html" class="hover:text-white">Retourneren</a></li>
+                        <li><a href="../footer pages/garantie.html" class="hover:text-white">Garantie</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Informatie</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../footer pages/over_ons.html" class="hover:text-white">Over ons</a></li>
+                        <li><a href="../footer pages/leveringsvoorwaarden.html" class="hover:text-white">Leveringsvoorwaarden</a></li>
+                        <li><a href="../footer pages/privacy_beleid.html" class="hover:text-white">Privacy beleid</a></li>
+                        <li><a href="../footer pages/algemene_voorwaarden.html" class="hover:text-white text-blue-400">Algemene voorwaarden</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Betalingsmogelijkheden</h4>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">VISA</div>
+                        <div class="bg-white text-red-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">MC</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">PayPal</div>
+                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">iDEAL</div>
+                    </div>
+                    <div class="flex items-center text-green-400">
+                        <i class="fas fa-lock mr-2" aria-hidden="true"></i>
+                        <span class="text-sm">SSL Beveiligd</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300">
+                <p class="text-sm sm:text-base">&copy; 2025 AllGoodsMarket. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            // Mobile search functionality
+            const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('active');
+                document.body.classList.add('overlay-open');
+            });
+            
+            // Close mobile menu
+            closeMobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                setTimeout(function() {
+                    mobileMenu.classList.add('hidden');
+                }, 300); // Match the transition duration
+                document.body.classList.remove('overlay-open');
+            });
+            
+            // Toggle mobile search
+            mobileSearchToggle.addEventListener('click', function() {
+                mobileSearchInput.classList.toggle('hidden');
+            });
+            
+            // Close overlays when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.classList.contains('hidden') && 
+                    !mobileMenuButton.contains(event.target) && 
+                    !mobileMenu.contains(event.target)) {
+                    closeMobileMenu.click();
+                }
+            });
+            
+            // Handle window resize: restore layout on desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) { // Tailwind's lg breakpoint
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        closeMobileMenu.click();
+                    }
+                    
+                    // Hide mobile search if open
+                    if (!mobileSearchInput.classList.contains('hidden')) {
+                        mobileSearchInput.classList.add('hidden');
+                    }
+                }
+            });
+            
+            // Enhanced hover effects for team cards
+            document.querySelectorAll('.team-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                    this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                    this.style.boxShadow = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

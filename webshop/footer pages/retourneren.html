@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retourneren - AllGoodsMarket</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+        }
+        
+        /* Return Banner Styling */
+        .return-banner {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            animation: returnPulse 3s infinite;
+        }
+        @keyframes returnPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+        
+        /* Service Cards */
+        .service-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid #3b82f6;
+        }
+        .service-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .warning-card {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .success-card {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-left: 4px solid #059669;
+        }
+        
+        .error-card {
+            background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+            border-left: 4px solid #dc2626;
+        }
+        
+        /* Process Steps */
+        .process-step {
+            position: relative;
+        }
+        
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 2px;
+            height: calc(100% - 30px);
+            background: #e5e7eb;
+            z-index: 1;
+        }
+        
+        .process-step:last-child::before {
+            display: none;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Return Form Styling */
+        .form-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-error {
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+        
+        /* FAQ Styling */
+        .faq-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .faq-item:hover {
+            background-color: #f8fafc;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.open {
+            max-height: 300px;
+            padding-bottom: 0.75rem;
+            padding-top: 0.5rem;
+        }
+        
+        .faq-item .fa-chevron-right {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .fa-chevron-right {
+            transform: rotate(90deg);
+        }
+        
+        /* Mobile adjustments */
+        @media (max-width: 640px) {
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
+            }
+            
+            .process-step::before {
+                left: 25px;
+            }
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Hide scrollbar when menu is open */
+        body.overlay-open {
+            overflow: hidden;
+        }
+        
+        /* Extra small screen adjustments */
+        @media (max-width: 360px) {
+            .service-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+            
+            .step-number {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            
+            .process-step::before {
+                left: 22px;
+            }
+            
+            .social-link {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Bar - Simplified for mobile -->
+            <div class="flex flex-wrap justify-between items-center py-2 text-xs sm:text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span><i class="fas fa-phone mr-1"></i> 0800-1234567</span>
+                    <span class="hidden sm:inline"><i class="fas fa-envelope mr-1"></i> info@allgoodsmarket.nl</span>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span class="hidden sm:inline"><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                    <span><i class="fas fa-shield-alt mr-1"></i> 30 dagen retour</span>
+                </div>
+            </div>
+            
+            <!-- Main Header -->
+            <div class="flex items-center justify-between py-4">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none mr-3" aria-label="Menu openen">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <h1 class="text-xl sm:text-2xl font-bold text-blue-600">
+                        <i class="fas fa-store mr-1 sm:mr-2"></i>AllGoodsMarket
+                    </h1>
+                </div>
+                
+                <!-- Desktop Search Bar (hidden on mobile) -->
+                <div class="hidden lg:flex-1 lg:max-w-xl lg:mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Zoek naar producten..." 
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               aria-label="Zoeken">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Icons -->
+                <div class="flex items-center space-x-3 sm:space-x-6">
+                    <!-- Mobile Search Toggle -->
+                    <button id="mobile-search-toggle" class="lg:hidden text-gray-600 hover:text-blue-600" aria-label="Zoeken tonen">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    
+                    <a href="#" class="hidden sm:inline-block text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-user mr-1"></i> <span class="hidden md:inline">Account</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 relative">
+                        <i class="fas fa-shopping-cart mr-1"></i> 
+                        <span class="hidden sm:inline">Winkelwagen</span>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" aria-label="3 items in winkelwagen">3</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Search Input (initially hidden) -->
+            <div id="mobile-search-input" class="lg:hidden pb-4 hidden">
+                <div class="relative">
+                    <input type="text" placeholder="Zoek naar producten..." 
+                           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+                           aria-label="Zoeken">
+                    <button class="absolute right-2 top-3 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block py-3 border-t">
+                <ul class="flex space-x-8">
+                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="nav-link text-gray-700 hover:text-blue-600">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="nav-link text-gray-700 hover:text-blue-600">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-blue-600">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="nav-link text-gray-700 hover:text-blue-600">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="nav-link text-gray-700 hover:text-blue-600">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-blue-600">Contact</a></li>
+                    <li><a href="../garantie/index.html" class="nav-link text-gray-700 hover:text-blue-600">Garantie</a></li>
+                    <li><a href="../retourneren/index.html" class="nav-link active text-gray-700 hover:text-blue-600">Retourneren</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-900 bg-opacity-95 z-50 hidden flex flex-col mobile-menu lg:hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-mobile-menu" class="text-white text-3xl focus:outline-none" aria-label="Menu sluiten">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center">
+            <nav class="text-center">
+                <ul class="space-y-6">
+                    <li><a href="../startpagina/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Contact</a></li>
+                    <li><a href="../garantie/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Garantie</a></li>
+                    <li><a href="../retourneren/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Retourneren</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="p-6 flex justify-center space-x-8">
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Account"><i class="fas fa-user text-xl"></i></a>
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Winkelwagen"><i class="fas fa-shopping-cart text-xl"></i></a>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm" aria-label="Kruimelpad">
+                <a href="../startpagina/index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2 text-gray-500">/</span>
+                <span class="text-gray-700">Retourneren</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Return Banner -->
+    <div class="return-banner text-white py-6 sm:py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
+                <i class="fas fa-undo-alt mr-2 sm:mr-3"></i>Retourneren & Herroepingsrecht
+            </h2>
+            <p class="text-lg sm:text-xl mb-4">Bij AllGoodsMarket staat klanttevredenheid voorop. Retourneren is eenvoudig en gratis!</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-8 text-xs sm:text-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-calendar-check mr-2"></i>
+                    <span>30 dagen bedenktijd</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-shipping-fast mr-2"></i>
+                    <span>Gratis retour</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-euro-sign mr-2"></i>
+                    <span>Geld-terug garantie</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <!-- Service Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8">
+            <div class="service-card bg-white rounded-lg shadow-md p-5 sm:p-6 text-center">
+                <div class="service-icon mx-auto mb-3 sm:mb-4" aria-hidden="true">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3 class="text-base sm:text-lg font-semibold mb-2">30 Dagen Bedenktijd</h3>
+                <p class="text-gray-600 text-sm sm:text-base mb-2">
+                    Vanaf de dag van ontvangst heeft u 30 dagen de tijd om uw aankoop te retourneren of omruilen.
+                </p>
+                <div class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    <i class="fas fa-check mr-1"></i>Wettelijk recht
+                </div>
+            </div>
+
+            <div class="service-card bg-white rounded-lg shadow-md p-5 sm:p-6 text-center">
+                <div class="service-icon mx-auto mb-3 sm:mb-4" aria-hidden="true">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3 class="text-base sm:text-lg font-semibold mb-2">Gratis Retourlabel</h3>
+                <p class="text-gray-600 text-sm sm:text-base mb-2">
+                    Wij verstrekken altijd een gratis retourlabel. U hoeft geen verzendkosten te betalen voor retouren.
+                </p>
+                <div class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    <i class="fas fa-gift mr-1"></i>Altijd gratis
+                </div>
+            </div>
+
+            <div class="service-card bg-white rounded-lg shadow-md p-5 sm:p-6 text-center">
+                <div class="service-icon mx-auto mb-3 sm:mb-4" aria-hidden="true">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h3 class="text-base sm:text-lg font-semibold mb-2">Snelle Terugbetaling</h3>
+                <p class="text-gray-600 text-sm sm:text-base mb-2">
+                    Na ontvangst van uw retour krijgt u binnen 3 werkdagen het volledige bedrag teruggestort.
+                </p>
+                <div class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    <i class="fas fa-bolt mr-1"></i>Binnen 3 werkdagen
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Retourvoorwaarden -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
+                    <i class="fas fa-info-circle mr-2 text-blue-600" aria-hidden="true"></i>Retourvoorwaarden
+                </h2>
+                
+                <p class="text-gray-700 mb-4 text-sm sm:text-base">
+                    Bij AllGoodsMarket streven we ernaar dat u volledig tevreden bent met uw aankoop. Mocht een product toch niet aan uw verwachtingen voldoen, dan heeft u het recht om uw bestelling binnen <strong>30 dagen na ontvangst</strong> zonder opgave van reden te retourneren.
+                </p>
+                
+                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm sm:text-base mb-4">
+                    <li>U heeft 30 dagen na ontvangst van uw bestelling om te retourneren.</li>
+                    <li>Retourneren is altijd gratis.</li>
+                    <li>Het product dient, indien redelijkerwijs mogelijk, in originele staat en verpakking te zijn.</li>
+                    <li>U ontvangt binnen 3 werkdagen na verwerking uw geld terug.</li>
+                    <li>Ook sale-producten mogen retour, met uitzondering van hygiëne-artikelen en gepersonaliseerde producten.</li>
+                </ul>
+
+                <div class="info-card rounded-lg p-4">
+                    <h3 class="font-semibold text-gray-800 mb-2 text-base sm:text-lg">Belangrijke punten:</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm sm:text-base">
+                        <li>Bewaar altijd uw aankoopbewijs; dit is nodig voor garantieclaims</li>
+                        <li>Neem bij defecten zo snel mogelijk contact met ons op</li>
+                        <li>De garantie is alleen geldig voor de oorspronkelijke koper</li>
+                        <li>Bij garantieclaims worden geen verzendkosten in rekening gebracht</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Terugbetalingen & Ruilen -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
+                    <i class="fas fa-euro-sign mr-2 text-blue-600" aria-hidden="true"></i>Terugbetaling
+                </h2>
+                
+                <p class="text-gray-700 mb-4 text-sm sm:text-base">
+                    Na ontvangst en controle storten wij het volledige aankoopbedrag terug op uw rekening. Dit gebeurt op de volgende manier:
+                </p>
+                
+                <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm sm:text-base mb-4">
+                    <li>Na ontvangst en controle storten wij het volledige aankoopbedrag terug op uw rekening.</li>
+                    <li>Terugbetaling vindt plaats via dezelfde betaalmethode als waarmee u heeft betaald.</li>
+                    <li>U ontvangt een bevestiging zodra uw retour is verwerkt.</li>
+                    <li>Het volledige aankoopbedrag (inclusief eventuele standaard verzendkosten voor de heenzending) wordt terugbetaald.</li>
+                </ul>
+
+                <div class="info-card rounded-lg p-4">
+                    <i class="fas fa-clock text-blue-500 mr-2"></i>
+                    <span class="text-gray-700">Terugbetaling uiterlijk binnen 3 werkdagen na ontvangst van uw retour.</span>
+                </div>
+                
+                <h3 class="font-semibold text-gray-800 mt-6 mb-3 text-base sm:text-lg">Ruilen</h3>
+                <p class="text-gray-700 mb-4 text-sm sm:text-base">
+                    Wilt u een product ruilen voor een andere maat, kleur of een ander artikel? Meld dan uw retour aan via ons retourportaal en geef aan dat u wilt ruilen. U kunt dan het gewenste nieuwe product bestellen. Zodra wij uw retour hebben ontvangen en verwerkt, storten wij het aankoopbedrag van het geretourneerde product terug.
+                </p>
+                <div class="success-card rounded-lg p-3">
+                    <div class="flex items-center text-green-700">
+                        <i class="fas fa-exchange-alt mr-2"></i>
+                        <span class="text-sm font-medium">Ruilen is de snelste manier om een nieuw product te ontvangen.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Retourformulier -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
+                    <i class="fas fa-clipboard-list mr-2 text-blue-600" aria-hidden="true"></i>Retour Aanmelden
+                </h2>
+                
+                <div id="return-success-message" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6 hidden" role="alert">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span class="font-medium">Retour succesvol aangemeld!</span>
+                    </div>
+                    <p class="text-sm mt-1">U ontvangt binnen 24 uur een retourlabel per e-mail.</p>
+                </div>
+                
+                <form id="return-form" class="space-y-4 sm:space-y-6">
+                    <div>
+                        <label for="orderNumber" class="block text-sm font-medium text-gray-700 mb-2">Bestelnummer *</label>
+                        <input type="text" id="orderNumber" name="orderNumber" required 
+                               placeholder="Bijv. AG-2024-001234"
+                               class="w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none form-input text-sm sm:text-base">
+                        <span class="error-message text-red-600 text-xs hidden">Bestelnummer is verplicht</span>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">E-mailadres *</label>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="uw.email@voorbeeld.nl"
+                               class="w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none form-input text-sm sm:text-base">
+                        <span class="error-message text-red-600 text-xs hidden">Geldig e-mailadres is verplicht</span>
+                    </div>
+
+                    <div>
+                        <label for="returnReason" class="block text-sm font-medium text-gray-700 mb-2">Reden voor retour *</label>
+                        <select id="returnReason" name="returnReason" required 
+                                class="w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none form-input text-sm sm:text-base">
+                            <option value="">Kies een reden</option>
+                            <option value="size">Verkeerde maat/grootte</option>
+                            <option value="color">Verkeerde kleur</option>
+                            <option value="quality">Kwaliteit valt tegen</option>
+                            <option value="defect">Product defect</option>
+                            <option value="description">Niet zoals beschreven</option>
+                            <option value="damaged">Beschadigd ontvangen</option>
+                            <option value="changed-mind">Toch niet nodig</option>
+                            <option value="other">Anders</option>
+                        </select>
+                        <span class="error-message text-red-600 text-xs hidden">Selecteer een reden</span>
+                    </div>
+
+                    <div>
+                        <label for="returnType" class="block text-sm font-medium text-gray-700 mb-2">Wat wilt u? *</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="radio" name="returnType" value="refund" class="mr-2" required>
+                                <span class="text-sm sm:text-base">Geld terug</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="returnType" value="exchange" class="mr-2">
+                                <span class="text-sm sm:text-base">Omruilen voor ander product</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="returnType" value="size-exchange" class="mr-2">
+                                <span class="text-sm sm:text-base">Omruilen voor andere maat/kleur</span>
+                            </label>
+                        </div>
+                        <span class="error-message text-red-600 text-xs hidden">Selecteer wat u wilt</span>
+                    </div>
+
+                    <div id="exchange-details" class="hidden">
+                        <label for="exchangeDetails" class="block text-sm font-medium text-gray-700 mb-2">Omruil details</label>
+                        <textarea id="exchangeDetails" name="exchangeDetails" rows="3" 
+                                  placeholder="Beschrijf waarmee u het product wilt omruilen (maat, kleur, ander product)..."
+                                  class="w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none form-input resize-vertical text-sm sm:text-base"></textarea>
+                    </div>
+
+                    <div>
+                        <label for="returnComments" class="block text-sm font-medium text-gray-700 mb-2">Aanvullende opmerkingen</label>
+                        <textarea id="returnComments" name="returnComments" rows="4" 
+                                  placeholder="Eventuele aanvullende informatie over uw retour..."
+                                  class="w-full px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:outline-none form-input resize-vertical text-sm sm:text-base"></textarea>
+                    </div>
+
+                    <div class="flex items-start">
+                        <input type="checkbox" id="returnConditions" name="returnConditions" required class="mr-2 h-4 w-4 sm:h-5 sm:w-5 mt-1">
+                        <label for="returnConditions" class="text-sm sm:text-base text-gray-600">
+                            Ik ga akkoord met de <a href="#return-conditions" class="text-blue-600 hover:underline">retourvoorwaarden</a> *
+                        </label>
+                        <span class="error-message text-red-600 text-xs hidden ml-2">Akkoord met voorwaarden is verplicht</span>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 sm:py-4 px-6 rounded-lg hover:bg-blue-700 transition font-semibold text-base sm:text-lg">
+                        <i class="fas fa-paper-plane mr-2" aria-hidden="true"></i>Retour Aanmelden
+                    </button>
+                </form>
+            </div>
+
+            <!-- Retourprocedure -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
+                    <i class="fas fa-list-ol mr-2 text-blue-600" aria-hidden="true"></i>Hoe werkt retourneren?
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="process-step flex items-start">
+                        <div class="step-number mr-4 sm:mr-6 flex-shrink-0">1</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold mb-2">Aanmelden</h3>
+                            <p class="text-gray-600 text-sm sm:text-base mb-2">
+                                Log in op uw account, ga naar 'Mijn bestellingen' en kies voor 'Retourneren'. Geen account? Vul het formulier hiernaast in of neem contact op met onze klantenservice.
+                            </p>
+                            <div class="success-card rounded-lg p-3">
+                                <div class="flex items-center text-green-700">
+                                    <i class="fas fa-clock mr-2"></i>
+                                    <span class="text-sm font-medium">Binnen 24 uur retourlabel per e-mail</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="process-step flex items-start">
+                        <div class="step-number mr-4 sm:mr-6 flex-shrink-0">2</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold mb-2">Retourlabel ontvangen</h3>
+                            <p class="text-gray-600 text-sm sm:text-base mb-2">
+                                U ontvangt direct per e-mail een gratis retourlabel en instructies.
+                            </p>
+                            <div class="info-card rounded-lg p-3">
+                                <div class="flex items-center text-blue-700">
+                                    <i class="fas fa-print mr-2"></i>
+                                    <span class="text-sm font-medium">Print het label uit en plak het op het pakket</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="process-step flex items-start">
+                        <div class="step-number mr-4 sm:mr-6 flex-shrink-0">3</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold mb-2">Verpakken & versturen</h3>
+                            <p class="text-gray-600 text-sm sm:text-base mb-2">
+                                Verpak het product zorgvuldig en plak het retourlabel op het pakket. Lever het pakket in bij een PostNL-punt.
+                            </p>
+                            <div class="warning-card rounded-lg p-3">
+                                <div class="flex items-center text-yellow-700">
+                                    <i class="fas fa-box mr-2"></i>
+                                    <span class="text-sm font-medium">Gebruik bij voorkeur de originele verpakking</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="process-step flex items-start">
+                        <div class="step-number mr-4 sm:mr-6 flex-shrink-0">4</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold mb-2">Bevestiging & terugbetaling</h3>
+                            <p class="text-gray-600 text-sm sm:text-base mb-2">
+                                Wij houden u op de hoogte per e-mail. Na ontvangst ontvangt u binnen enkele dagen uw geld terug.
+                            </p>
+                            <div class="info-card rounded-lg p-3">
+                                <div class="flex items-center text-blue-700">
+                                    <i class="fas fa-euro-sign mr-2"></i>
+                                    <span class="text-sm font-medium">Terugbetaling binnen 3 werkdagen na ontvangst</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wat Valt Onder de Retourvoorwaarden -->
+        <div id="return-conditions" class="bg-white rounded-lg shadow-md p-6 mt-8">
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-file-contract mr-2 text-blue-600" aria-hidden="true"></i>Uitzonderingen op het Retourrecht
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-green-700">
+                        <i class="fas fa-check-circle mr-2"></i>Dit kunt u retourneren
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3 text-sm"></i>
+                            <div>
+                                <span class="font-medium text-sm sm:text-base">Alle producten binnen 30 dagen</span>
+                                <p class="text-xs sm:text-sm text-gray-600">Vanaf de dag van ontvangst</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3 text-sm"></i>
+                            <div>
+                                <span class="font-medium text-sm sm:text-base">Ongebruikte producten</span>
+                                <p class="text-xs sm:text-sm text-gray-600">In originele staat en verpakking</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3 text-sm"></i>
+                            <div>
+                                <span class="font-medium text-sm sm:text-base">Kleding met labels</span>
+                                <p class="text-xs sm:text-sm text-gray-600">Hygiëne-etiketten moeten intact zijn</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3 text-sm"></i>
+                            <div>
+                                <span class="font-medium text-sm sm:text-base">Elektronische apparaten</span>
+                                <p class="text-xs sm:text-sm text-gray-600">Compleet met alle accessoires</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-3 text-sm"></i>
+                            <div>
+                                <span class="font-medium text-sm sm:text-base">Defecte producten</span>
+                                <p class="text-xs sm:text-sm text-gray-600">Ook na de 30 dagen periode</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-red-700">
+                        <i class="fas fa-times-circle mr-2"></i>Dit kunt u niet retourneren
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-times text-red-600 mt-1 mr-3 text-sm"></i>
+                            <div>
+                                <span class="font-medium text-sm sm:text-base">Hygiëne artikelen</span>
+                                <p class="text-xs sm:text-sm text-gray-600">Ondergoed, badkleding, oordopjes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-times text-red-600 mt-1 mr-3 text-sm"></i>
+                            <div>
+                                <span class="font-medium text-sm sm:text-base">Gebruikte cosmetica</span>
+                                <p class="text-xs sm:text-sm text-gray-600">Geopende parfums, crèmes, etc.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-times text-red-600 mt-1 mr-3 text-sm"></i>
+                            <div>
+                                <span class="font-medium text-sm sm:text-base">Op maat gemaakte producten</span>
+                                <p class="text-xs sm:text-sm text-gray-600">Speciaal voor u aangepaste items</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-times text-red-600 mt-1 mr-3 text-sm"></i>
+                            <div>
+                                <span class="font-medium text-sm sm:text-base">Bederfelijke waren</span>
+                                <p class="text-xs sm:text-sm text-gray-600">Voedsel, bloemen, planten</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-times text-red-600 mt-1 mr-3 text-sm"></i>
+                            <div>
+                                <span class="font-medium text-sm sm:text-base">Digitale downloads</span>
+                                <p class="text-xs sm:text-sm text-gray-600">Software, e-books, muziek</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-semibold text-gray-800 mb-2">Belangrijke informatie:</h4>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+                    <li>De retourperiode van 30 dagen begint op de dag van ontvangst</li>
+                    <li>U draagt geen verzendkosten voor retouren</li>
+                    <li>Terugbetaling vindt plaats binnen 3 werkdagen na ontvangst</li>
+                    <li>Bij omruiling betaalt u eventuele prijsverschillen bij</li>
+                    <li>Beschadigde verpakkingen kunnen leiden tot korting op terugbetaling</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="bg-white rounded-lg shadow-md p-6 mt-8">
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-question-circle mr-2 text-orange-600" aria-hidden="true"></i>Veelgestelde Vragen over Retourneren
+            </h2>
+            
+            <div class="space-y-3">
+                <div class="faq-item p-3 rounded-lg border" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-gray-800 text-sm sm:text-base">Hoe lang duurt het voordat ik mijn geld terug heb?</span>
+                        <i class="fas fa-chevron-right text-gray-400" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600 text-sm mt-2">
+                        <p>Wij betalen binnen 3 werkdagen na verwerking van uw retour terug. Maximaal binnen 5 werkdagen staat het bedrag op uw rekening.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item p-3 rounded-lg border" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-gray-800 text-sm sm:text-base">Kan ik sale-producten ook retourneren?</span>
+                        <i class="fas fa-chevron-right text-gray-400" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600 text-sm mt-2">
+                        <p>Ja, afgeprijsde producten mogen retour. Uitzonderingen zijn hygiëneproducten en gepersonaliseerde artikelen.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item p-3 rounded-lg border" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-gray-800 text-sm sm:text-base">Wat als het product beschadigd is aangekomen?</span>
+                        <i class="fas fa-chevron-right text-gray-400" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600 text-sm mt-2">
+                        <p>Neem direct contact op met onze klantenservice en stuur foto's mee. We lossen het snel voor u op.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item p-3 rounded-lg border" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-gray-800 text-sm sm:text-base">Zijn er kosten verbonden aan retourneren?</span>
+                        <i class="fas fa-chevron-right text-gray-400" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600 text-sm mt-2">
+                        <p>Nee, retourneren is bij AllGoodsMarket altijd gratis binnen de retourtermijn.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item p-3 rounded-lg border" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-gray-800 text-sm sm:text-base">Kan ik mijn artikel ruilen?</span>
+                        <i class="fas fa-chevron-right text-gray-400" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600 text-sm mt-2">
+                        <p>Ja, u kunt bij het aanmelden van de retour aangeven dat u wilt ruilen. We sturen het gewenste artikel na ontvangst direct op.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item p-3 rounded-lg border" onclick="toggleFAQ(this)">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-gray-800 text-sm sm:text-base">Moet ik de originele verpakking bewaren?</span>
+                        <i class="fas fa-chevron-right text-gray-400" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer text-gray-600 text-sm mt-2">
+                        <p>Het is handig om de originele verpakking te bewaren, maar niet verplicht. Zorg er wel voor dat het product goed beschermd is tijdens verzending. Voor elektronische apparaten adviseren wij de originele verpakking te gebruiken.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <a href="../contact/index.html" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition text-sm sm:text-base font-semibold">
+                    <i class="fas fa-envelope mr-2"></i>Meer vragen? Neem contact op
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-8 sm:mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="sm:col-span-2 md:col-span-1">
+                    <h3 class="font-bold text-lg mb-4">
+                        <i class="fas fa-store mr-2" aria-hidden="true"></i>AllGoodsMarket
+                    </h3>
+                    <p class="text-gray-300 mb-4 text-sm sm:text-base">Uw vertrouwde partner voor online winkelen.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                
+              <div>
+                    <h4 class="font-semibold mb-4">Klantenservice</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../contact/index.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="../footer pages/veelgesteldevragen.html" class="hover:text-white">Veelgestelde vragen</a></li>
+                        <li><a href="../footer pages/retourneren.html" class="hover:text-white">Retourneren</a></li>
+                        <li><a href="../footer pages/garantie.html" class="hover:text-white">Garantie</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Informatie</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../footer pages/over_ons.html" class="hover:text-white">Over ons</a></li>
+                        <li><a href="../footer pages/leveringsvoorwaarden.html" class="hover:text-white">Leveringsvoorwaarden</a></li>
+                        <li><a href="../footer pages/privacy_beleid.html" class="hover:text-white">Privacy beleid</a></li>
+                        <li><a href="../footer pages/algemene_voorwaarden.html" class="hover:text-white text-blue-400">Algemene voorwaarden</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Betalingsmogelijkheden</h4>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">VISA</div>
+                        <div class="bg-white text-red-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">MC</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">PayPal</div>
+                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">iDEAL</div>
+                    </div>
+                    <div class="flex items-center text-green-400">
+                        <i class="fas fa-lock mr-2" aria-hidden="true"></i>
+                        <span class="text-sm">SSL Beveiligd</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300">
+                <p class="text-sm sm:text-base">&copy; 2024 AllGoodsMarket. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            // Mobile search functionality
+            const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            
+            // Toggle mobile menu
+            if (mobileMenuButton && mobileMenu && closeMobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('active');
+                    document.body.classList.add('overlay-open');
+                });
+                
+                closeMobileMenu.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    setTimeout(function() {
+                        mobileMenu.classList.add('hidden');
+                    }, 300); // Match the transition duration
+                    document.body.classList.remove('overlay-open');
+                });
+            }
+            
+            // Toggle mobile search
+            if (mobileSearchToggle && mobileSearchInput) {
+                mobileSearchToggle.addEventListener('click', function() {
+                    mobileSearchInput.classList.toggle('hidden');
+                });
+            }
+            
+            // Close overlays when clicking outside
+            document.addEventListener('click', function(event) {
+                if (mobileMenu && !mobileMenu.classList.contains('hidden') && 
+                    mobileMenuButton && !mobileMenuButton.contains(event.target) && 
+                    !mobileMenu.contains(event.target)) {
+                    closeMobileMenu.click();
+                }
+            });
+            
+            // Handle window resize: restore layout on desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) {
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        closeMobileMenu.click();
+                    }
+                    
+                    if (mobileSearchInput && !mobileSearchInput.classList.contains('hidden')) {
+                        mobileSearchInput.classList.add('hidden');
+                    }
+                }
+            });
+            
+            // Return type change handler
+            const returnTypeRadios = document.querySelectorAll('input[name="returnType"]');
+            const exchangeDetails = document.getElementById('exchange-details');
+            
+            if (returnTypeRadios && exchangeDetails) {
+                returnTypeRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'exchange' || this.value === 'size-exchange') {
+                            exchangeDetails.classList.remove('hidden');
+                        } else {
+                            exchangeDetails.classList.add('hidden');
+                        }
+                    });
+                });
+            }
+            
+            // Return form validation and submission
+            const returnForm = document.getElementById('return-form');
+            if (returnForm) {
+                returnForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    let isValid = true;
+                    const formData = new FormData(this);
+                    
+                    // Clear previous errors
+                    document.querySelectorAll('.error-message').forEach(msg => {
+                        msg.classList.add('hidden');
+                    });
+                    document.querySelectorAll('.form-error').forEach(input => {
+                        input.classList.remove('form-error');
+                    });
+                    
+                    // Validate required fields
+                    const requiredFields = [
+                        { name: 'orderNumber', message: 'Bestelnummer is verplicht' },
+                        { name: 'email', message: 'Geldig e-mailadres is verplicht' },
+                        { name: 'returnReason', message: 'Selecteer een reden' },
+                        { name: 'returnConditions', message: 'Akkoord met voorwaarden is verplicht' }
+                    ];
+                    
+                    // Check return type
+                    const returnTypeChecked = Array.from(document.querySelectorAll('input[name="returnType"]')).some(radio => radio.checked);
+                    if (!returnTypeChecked) {
+                        const returnTypeError = document.querySelector('input[name="returnType"]').closest('div').querySelector('.error-message');
+                        if (returnTypeError) {
+                            returnTypeError.classList.remove('hidden');
+                            isValid = false;
+                        }
+                    }
+                    
+                    requiredFields.forEach(field => {
+                        const input = document.querySelector(`[name="${field.name}"]`);
+                        const errorMsg = input.parentElement.querySelector('.error-message') || 
+                                      input.closest('div').querySelector('.error-message');
+                        
+                        if (field.name === 'returnConditions') {
+                            if (!input.checked) {
+                                errorMsg.textContent = field.message;
+                                errorMsg.classList.remove('hidden');
+                                isValid = false;
+                            }
+                        } else if (!formData.get(field.name) || formData.get(field.name).trim() === '') {
+                            input.classList.add('form-error');
+                            errorMsg.textContent = field.message;
+                            errorMsg.classList.remove('hidden');
+                            isValid = false;
+                        }
+                    });
+                    
+                    // Email validation
+                    const email = formData.get('email');
+                    if (email && !isValidEmail(email)) {
+                        const emailInput = document.querySelector('[name="email"]');
+                        const errorMsg = emailInput.parentElement.querySelector('.error-message');
+                        emailInput.classList.add('form-error');
+                        errorMsg.textContent = 'Voer een geldig e-mailadres in';
+                        errorMsg.classList.remove('hidden');
+                        isValid = false;
+                    }
+                    
+                    if (isValid) {
+                        // Show success message
+                        document.getElementById('return-success-message').classList.remove('hidden');
+                        this.reset();
+                        
+                        // Hide exchange details
+                        document.getElementById('exchange-details').classList.add('hidden');
+                        
+                        // Scroll to top of form
+                        document.getElementById('return-form').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        });
+
+        // Email validation helper
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // FAQ toggle functionality
+        function toggleFAQ(element) {
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('i.fa-chevron-right');
+            
+            // Toggle active state
+            element.classList.toggle('active');
+            
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-item.active').forEach(openFaq => {
+                    if (openFaq !== element) {
+                        openFaq.classList.remove('active');
+                        openFaq.querySelector('.faq-answer').classList.remove('open');
+                    }
+                });
+                
+                // Open clicked FAQ
+                answer.classList.add('open');
+            }
+        }
+    </script>
+</body>
+</html>

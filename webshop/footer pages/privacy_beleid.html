@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacybeleid - BetrouwbareShop</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .product-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .category-badge {
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+        }
+        .price-tag {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .star-rating {
+            color: #fbbf24;
+        }
+        .filter-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+        }
+        .product-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Deal Banner Styling */
+        .deal-banner {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+        
+        .countdown-timer {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        }
+        
+        /* Flash Deal Styling */
+        .flash-deal {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            animation: flash 1.5s infinite alternate;
+        }
+        @keyframes flash {
+            0% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        .flash-deal-card {
+            border: 2px solid #fbbf24;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+        
+        /* Discount Badge */
+        .discount-badge {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            transform: rotate(-12deg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Savings highlight */
+        .savings-amount {
+            color: #059669;
+            font-weight: 700;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Hide scrollbar when menu is open */
+        body.overlay-open {
+            overflow: hidden;
+        }
+        
+        /* Mobile filter overlay */
+        .filter-overlay {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .filter-overlay.active {
+            transform: translateX(0);
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 640px) {
+            .countdown-timer {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .countdown-timer .flex {
+                justify-content: center;
+            }
+            
+            .category-badge, .flash-deal {
+                padding: 0.75rem;
+            }
+            
+            .category-badge i, .flash-deal i {
+                font-size: 1.25rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .product-card .p-4 {
+                padding: 0.75rem;
+            }
+        }
+
+        /* Extra small screen adjustments */
+        @media (max-width: 360px) {
+            .product-image {
+                height: 180px;
+            }
+            
+            .countdown-timer {
+                padding: 0.75rem;
+            }
+            
+            .countdown-timer .text-2xl {
+                font-size: 1.25rem;
+            }
+            
+            .social-link {
+                padding: 0.5rem;
+            }
+        }
+        
+        /* Privacy Policy specific styles */
+        .privacy-banner {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            animation: privacyPulse 3s infinite;
+        }
+        @keyframes privacyPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+        
+        .section-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            border-radius: 0.375rem;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #dc2626;
+            border-radius: 0.375rem;
+        }
+        
+        .toc-item {
+            transition: all 0.2s ease;
+        }
+        
+        .toc-item:hover {
+            background-color: #eff6ff;
+            padding-left: 0.5rem;
+        }
+        
+        .toc-item.active {
+            background-color: #dbeafe;
+            border-left: 3px solid #3b82f6;
+            padding-left: 0.5rem;
+        }
+        
+        /* Table styling */
+        .privacy-table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .privacy-table th {
+            background-color: #f3f4f6;
+        }
+        
+        .privacy-table th, .privacy-table td {
+            padding: 0.75rem 1rem;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .privacy-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Bar -->
+            <div class="flex flex-wrap justify-between items-center py-2 text-xs sm:text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span><i class="fas fa-phone mr-1"></i> 0800-1234567</span>
+                    <span class="hidden sm:inline"><i class="fas fa-envelope mr-1"></i> info@allgoodsmarket.nl</span>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span class="hidden sm:inline"><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                    <span><i class="fas fa-shield-alt mr-1"></i> 30 dagen retour</span>
+                </div>
+            </div>
+            
+            <!-- Main Header -->
+            <div class="flex items-center justify-between py-4">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none mr-3" aria-label="Menu openen">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <h1 class="text-xl sm:text-2xl font-bold text-blue-600">
+                        <i class="fas fa-store mr-1 sm:mr-2"></i>AllGoodsMarket
+                    </h1>
+                </div>
+                
+                <!-- Desktop Search Bar (hidden on mobile) -->
+                <div class="hidden lg:flex-1 lg:max-w-xl lg:mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Zoek naar producten..." 
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               aria-label="Zoeken">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Icons -->
+                <div class="flex items-center space-x-3 sm:space-x-6">
+                    <!-- Mobile Search Toggle -->
+                    <button id="mobile-search-toggle" class="lg:hidden text-gray-600 hover:text-blue-600" aria-label="Zoeken tonen">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    
+                    <a href="#" class="hidden sm:inline-block text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-user mr-1"></i> <span class="hidden md:inline">Account</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 relative">
+                        <i class="fas fa-shopping-cart mr-1"></i> 
+                        <span class="hidden sm:inline">Winkelwagen</span>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" aria-label="3 items in winkelwagen">3</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Search Input (initially hidden) -->
+            <div id="mobile-search-input" class="lg:hidden pb-4 hidden">
+                <div class="relative">
+                    <input type="text" placeholder="Zoek naar producten..." 
+                           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+                           aria-label="Zoeken">
+                    <button class="absolute right-2 top-3 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block py-3 border-t">
+                <ul class="flex space-x-8">
+                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="nav-link text-gray-700 hover:text-blue-600">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="nav-link text-gray-700 hover:text-blue-600">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-blue-600">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="nav-link text-gray-700 hover:text-blue-600">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="nav-link text-gray-700 hover:text-blue-600">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-blue-600">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-900 bg-opacity-95 z-50 hidden flex flex-col mobile-menu lg:hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-mobile-menu" class="text-white text-3xl focus:outline-none" aria-label="Menu sluiten">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center">
+            <nav class="text-center">
+                <ul class="space-y-6">
+                    <li><a href="../startpagina/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="p-6 flex justify-center space-x-8">
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Account"><i class="fas fa-user text-xl"></i></a>
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Winkelwagen"><i class="fas fa-shopping-cart text-xl"></i></a>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm" aria-label="Kruimelpad">
+                <a href="../startpagina/index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2 text-gray-500">/</span>
+                <span class="text-gray-700">Privacybeleid</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Privacy Banner -->
+    <div class="privacy-banner text-white py-6 sm:py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-2">
+                <i class="fas fa-shield-alt mr-3"></i>Privacybeleid
+            </h2>
+            <p class="text-lg mb-4">Uw privacy en gegevensbescherming zijn onze prioriteit</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-8 text-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-lock mr-2"></i>
+                    <span>100% Veilig & Vertrouwelijk</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-certificate mr-2"></i>
+                    <span>AVG Compliant</span>
+                </div>
+                <div class="bg-blue-700 text-white px-3 py-1 rounded-full text-xs inline-block">
+                    <i class="fas fa-calendar-alt mr-1"></i>Laatst bijgewerkt: 15 juli 2024
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
+            <!-- Table of Contents (Sidebar) -->
+            <aside class="w-full lg:w-64 filter-section rounded-lg p-4 sm:p-6 lg:sticky lg:top-6 lg:self-start">
+                <h2 class="text-lg font-bold mb-4 text-gray-800">
+                    <i class="fas fa-list mr-2"></i>Inhoudsopgave
+                </h2>
+                
+                <nav class="space-y-2">
+                    <a href="#inleiding" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        1. Inleiding
+                    </a>
+                    <a href="#welke-gegevens" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        2. Welke gegevens verzamelen wij?
+                    </a>
+                    <a href="#waarom-verzamelen" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        3. Waarom verzamelen wij gegevens?
+                    </a>
+                    <a href="#hoe-gebruiken" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        4. Hoe gebruiken wij uw gegevens?
+                    </a>
+                    <a href="#delen-gegevens" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        5. Delen van gegevens
+                    </a>
+                    <a href="#cookies" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        6. Cookies en tracking
+                    </a>
+                    <a href="#beveiliging" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        7. Gegevensbeveiliging
+                    </a>
+                    <a href="#rechten" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        8. Uw rechten
+                    </a>
+                    <a href="#bewaarperiode" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        9. Bewaarperiode
+                    </a>
+                    <a href="#wijzigingen" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        10. Wijzigingen
+                    </a>
+                    <a href="#contact" class="toc-item block py-2 px-3 rounded text-sm text-gray-700 hover:text-blue-600">
+                        11. Contact
+                    </a>
+                </nav>
+                
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg border">
+                    <h3 class="font-semibold text-gray-800 mb-2">
+                        <i class="fas fa-question-circle mr-2 text-blue-600"></i>Vragen over privacy?
+                    </h3>
+                    <p class="text-sm text-gray-600 mb-3">Neem direct contact op met onze privacy officer.</p>
+                    <a href="mailto:privacy@allgoodsmarket.nl" class="text-blue-600 hover:underline text-sm font-medium">
+                        <i class="fas fa-envelope mr-1"></i>privacy@allgoodsmarket.nl
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="flex-1">
+                <!-- Introduction Section -->
+                <section id="inleiding" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-info-circle mr-2 text-blue-600"></i>1. Inleiding
+                    </h1>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-4">
+                            Welkom bij AllGoodsMarket. Wij respecteren uw privacy en zijn toegewijd aan het beschermen van uw persoonlijke gegevens. Dit privacybeleid legt uit hoe wij uw persoonlijke informatie verzamelen, gebruiken, delen en beschermen wanneer u onze website bezoekt of gebruik maakt van onze diensten.
+                        </p>
+                        
+                        <div class="info-box p-4 rounded-lg mb-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-lightbulb mr-2 text-blue-600"></i>Belangrijk om te weten
+                            </h3>
+                            <p class="text-sm text-gray-700">
+                                Dit privacybeleid is van toepassing op alle diensten die worden aangeboden door AllGoodsMarket B.V., gevestigd te Amsterdam, Nederland. Door gebruik te maken van onze website en diensten, gaat u akkoord met de voorwaarden van dit privacybeleid.
+                            </p>
+                        </div>
+                        
+                        <p class="text-gray-700">
+                            Wij houden ons aan de Algemene Verordening Gegevensbescherming (AVG) en andere toepasselijke privacywetgeving. Als u vragen heeft over dit beleid, kunt u altijd contact met ons opnemen via de contactgegevens onderaan deze pagina.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Data Collection Section -->
+                <section id="welke-gegevens" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-database mr-2 text-green-600"></i>2. Welke gegevens verzamelen wij?
+                    </h2>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            Wij verzamelen verschillende soorten gegevens om u de best mogelijke service te kunnen bieden:
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="border rounded-lg p-4">
+                                <h3 class="font-semibold text-gray-800 mb-3">
+                                    <i class="fas fa-user mr-2 text-blue-600"></i>Persoonlijke gegevens
+                                </h3>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Voor- en achternaam</li>
+                                    <li>• E-mailadres</li>
+                                    <li>• Telefoonnummer</li>
+                                    <li>• Geboortedatum (indien relevant)</li>
+                                    <li>• Geslacht (optioneel)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4">
+                                <h3 class="font-semibold text-gray-800 mb-3">
+                                    <i class="fas fa-home mr-2 text-green-600"></i>Adresgegevens
+                                </h3>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Straatnaam en huisnummer</li>
+                                    <li>• Postcode en woonplaats</li>
+                                    <li>• Land</li>
+                                    <li>• Factuuradres (indien afwijkend)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4">
+                                <h3 class="font-semibold text-gray-800 mb-3">
+                                    <i class="fas fa-shopping-cart mr-2 text-purple-600"></i>Bestelgegevens
+                                </h3>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Bestelde producten</li>
+                                    <li>• Bestelgeschiedenis</li>
+                                    <li>• Betaalgegevens</li>
+                                    <li>• Leveringsvoorkeuren</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4">
+                                <h3 class="font-semibold text-gray-800 mb-3">
+                                    <i class="fas fa-chart-line mr-2 text-orange-600"></i>Technische gegevens
+                                </h3>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• IP-adres</li>
+                                    <li>• Browsertype en -versie</li>
+                                    <li>• Besturingssysteem</li>
+                                    <li>• Pagina's die u bezoekt</li>
+                                    <li>• Klik- en scrollgedrag</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="warning-box p-4 rounded-lg">
+                            <h3 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>Gevoelige gegevens
+                            </h3>
+                            <p class="text-sm text-gray-700">
+                                Wij verzamelen geen gevoelige persoonlijke gegevens zoals informatie over uw gezondheid, politieke overtuigingen, religieuze of filosofische opvattingen, tenzij dit expliciet noodzakelijk is voor onze dienstverlening en u hiervoor uitdrukkelijke toestemming heeft gegeven.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Purpose Section -->
+                <section id="waarom-verzamelen" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-question-circle mr-2 text-blue-600"></i>3. Waarom verzamelen wij gegevens?
+                    </h2>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            Wij verzamelen uw gegevens uitsluitend voor legitieme bedrijfsdoeleinden:
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4 p-4 bg-blue-50 rounded-lg">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-shopping-bag text-blue-600 text-xl mt-1"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-2">Orderverwerking en levering</h3>
+                                    <p class="text-sm text-gray-700">
+                                        Om uw bestellingen te kunnen verwerken, betaling af te handelen en producten bij u te kunnen bezorgen. Dit omvat communicatie over uw bestelling, leveringsupdates en eventuele problemen.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4 p-4 bg-green-50 rounded-lg">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-headset text-green-600 text-xl mt-1"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-2">Klantenservice</h3>
+                                    <p class="text-sm text-gray-700">
+                                        Om u te kunnen helpen bij vragen, klachten of problemen. Dit helpt ons om snelle en effectieve ondersteuning te bieden en uw klanttevredenheid te waarborgen.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4 p-4 bg-purple-50 rounded-lg">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-chart-bar text-purple-600 text-xl mt-1"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-2">Website verbetering</h3>
+                                    <p class="text-sm text-gray-700">
+                                        Om onze website en diensten te verbeteren door te analyseren hoe bezoekers onze site gebruiken. Dit helpt ons om de gebruikerservaring te optimaliseren.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4 p-4 bg-yellow-50 rounded-lg">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-envelope text-yellow-600 text-xl mt-1"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-2">Marketing (met toestemming)</h3>
+                                    <p class="text-sm text-gray-700">
+                                        Om u te informeren over nieuwe producten, aanbiedingen en nieuws, maar alleen als u hiervoor toestemming heeft gegeven. U kunt zich altijd afmelden voor marketing e-mails.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Data Usage Section -->
+                <section id="hoe-gebruiken" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-cogs mr-2 text-purple-600"></i>4. Hoe gebruiken wij uw gegevens?
+                    </h2>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            Wij gebruiken uw gegevens op verschillende manieren om onze diensten te leveren en te verbeteren. Alle gegevensverwerking gebeurt conform de AVG en andere toepasselijke wetgeving.
+                        </p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200 rounded-lg privacy-table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Doel</th>
+                                        <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gegevens</th>
+                                        <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rechtsgrond</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-sm font-medium text-gray-900">Account aanmaken</td>
+                                        <td class="text-sm text-gray-700">Naam, e-mail, wachtwoord</td>
+                                        <td class="text-sm text-gray-700">Contractuele verplichting</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-medium text-gray-900">Bestelling verwerken</td>
+                                        <td class="text-sm text-gray-700">Contactgegevens, betaalgegevens</td>
+                                        <td class="text-sm text-gray-700">Contractuele verplichting</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-medium text-gray-900">Klantenservice</td>
+                                        <td class="text-sm text-gray-700">Contactgegevens, bestelgeschiedenis</td>
+                                        <td class="text-sm text-gray-700">Gerechtvaardigd belang</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-medium text-gray-900">Nieuwsbrief</td>
+                                        <td class="text-sm text-gray-700">E-mailadres, voorkeuren</td>
+                                        <td class="text-sm text-gray-700">Toestemming</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-medium text-gray-900">Website analyse</td>
+                                        <td class="text-sm text-gray-700">Technische gegevens, cookies</td>
+                                        <td class="text-sm text-gray-700">Gerechtvaardigd belang</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="warning-box p-4 rounded-lg mt-6">
+                            <h3 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-shield-alt mr-2 text-red-600"></i>Belangrijke principes
+                            </h3>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Wij gebruiken uw gegevens nooit voor andere doeleinden dan hierboven beschreven</li>
+                                <li>• Wij verkopen uw gegevens nooit aan derden</li>
+                                <li>• Wij verwerken alleen de gegevens die noodzakelijk zijn voor het beoogde doel</li>
+                                <li>• Wij bewaren uw gegevens niet langer dan noodzakelijk</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Data Sharing Section -->
+                <section id="delen-gegevens" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-share-alt mr-2 text-orange-600"></i>5. Delen van gegevens
+                    </h2>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            Wij delen uw persoonlijke gegevens alleen in specifieke situaties en altijd met de nodige zorgvuldigheid:
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-blue-500 pl-4">
+                                <h3 class="font-semibold text-gray-800 mb-2">
+                                    <i class="fas fa-truck mr-2 text-blue-600"></i>Logistieke partners
+                                </h3>
+                                <p class="text-sm text-gray-700 mb-2">
+                                    Voor het bezorgen van uw bestellingen delen wij noodzakelijke gegevens met onze bezorgpartners zoals PostNL, DHL en UPS. Dit betreft alleen uw naam, adres en contactgegevens.
+                                </p>
+                                <p class="text-xs text-gray-600">Rechtsgrond: Contractuele verplichting</p>
+                            </div>
+                            
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <h3 class="font-semibold text-gray-800 mb-2">
+                                    <i class="fas fa-credit-card mr-2 text-green-600"></i>Betaalservice providers
+                                </h3>
+                                <p class="text-sm text-gray-700 mb-2">
+                                    Voor het verwerken van betalingen werken wij samen met betrouwbare betaalservice providers zoals Mollie, Adyen en PayPal. Zij verwerken alleen de voor de betaling noodzakelijke gegevens.
+                                </p>
+                                <p class="text-xs text-gray-600">Rechtsgrond: Contractuele verplichting</p>
+                            </div>
+                            
+                            <div class="border-l-4 border-purple-500 pl-4">
+                                <h3 class="font-semibold text-gray-800 mb-2">
+                                    <i class="fas fa-cloud mr-2 text-purple-600"></i>IT-dienstverleners
+                                </h3>
+                                <p class="text-sm text-gray-700 mb-2">
+                                    Voor het hosten van onze website en het beheren van onze systemen werken wij met IT-dienstverleners. Zij hebben toegang tot gegevens uitsluitend voor technische ondersteuning.
+                                </p>
+                                <p class="text-xs text-gray-600">Rechtsgrond: Gerechtvaardigd belang</p>
+                            </div>
+                            
+                            <div class="border-l-4 border-red-500 pl-4">
+                                <h3 class="font-semibold text-gray-800 mb-2">
+                                    <i class="fas fa-gavel mr-2 text-red-600"></i>Wettelijke verplichtingen
+                                </h3>
+                                <p class="text-sm text-gray-700 mb-2">
+                                    In bepaalde gevallen zijn wij wettelijk verplicht om gegevens te delen met autoriteiten, bijvoorbeeld bij een gerechtelijk bevel of voor belastingdoeleinden.
+                                </p>
+                                <p class="text-xs text-gray-600">Rechtsgrond: Wettelijke verplichting</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box p-4 rounded-lg mt-6">
+                            <h3 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-globe mr-2 text-blue-600"></i>Internationale overdrachten
+                            </h3>
+                            <p class="text-sm text-gray-700">
+                                Wij dragen uw gegevens alleen over naar landen buiten de EU/EER als deze landen een adequaat beschermingsniveau bieden of als er passende waarborgen zijn getroffen, zoals standaard contractuele clausules.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Cookies Section -->
+                <section id="cookies" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-cookie-bite mr-2 text-yellow-600"></i>6. Cookies en tracking
+                    </h2>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            Onze website maakt gebruik van cookies en vergelijkbare technologieën om de functionaliteit te verbeteren en inzicht te krijgen in het gebruik van onze website:
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="border rounded-lg p-4 bg-green-50">
+                                <h3 class="font-semibold text-gray-800 mb-3">
+                                    <i class="fas fa-check-circle mr-2 text-green-600"></i>Noodzakelijke cookies
+                                </h3>
+                                <p class="text-sm text-gray-700 mb-2">
+                                    Deze cookies zijn essentieel voor het functioneren van onze website.
+                                </p>
+                                <ul class="text-xs text-gray-600 space-y-1">
+                                    <li>• Sessie cookies voor inloggen</li>
+                                    <li>• Winkelwagen cookies</li>
+                                    <li>• Beveiligingscookies</li>
+                                </ul>
+                                <p class="text-xs text-green-700 mt-2 font-medium">Toestemming: Niet vereist</p>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4 bg-blue-50">
+                                <h3 class="font-semibold text-gray-800 mb-3">
+                                    <i class="fas fa-chart-line mr-2 text-blue-600"></i>Analytische cookies
+                                </h3>
+                                <p class="text-sm text-gray-700 mb-2">
+                                    Helpen ons begrijpen hoe bezoekers onze website gebruiken.
+                                </p>
+                                <ul class="text-xs text-gray-600 space-y-1">
+                                    <li>• Google Analytics</li>
+                                    <li>• Hotjar (heatmaps)</li>
+                                    <li>• Eigen statistieken</li>
+                                </ul>
+                                <p class="text-xs text-blue-700 mt-2 font-medium">Toestemming: Vereist</p>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4 bg-purple-50">
+                                <h3 class="font-semibold text-gray-800 mb-3">
+                                    <i class="fas fa-bullseye mr-2 text-purple-600"></i>Marketing cookies
+                                </h3>
+                                <p class="text-sm text-gray-700 mb-2">
+                                    Voor gepersonaliseerde advertenties en marketing.
+                                </p>
+                                <ul class="text-xs text-gray-600 space-y-1">
+                                    <li>• Facebook Pixel</li>
+                                    <li>• Google Ads</li>
+                                    <li>• Retargeting pixels</li>
+                                </ul>
+                                <p class="text-xs text-purple-700 mt-2 font-medium">Toestemming: Vereist</p>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4 bg-yellow-50">
+                                <h3 class="font-semibold text-gray-800 mb-3">
+                                    <i class="fas fa-user-cog mr-2 text-yellow-600"></i>Functionele cookies
+                                </h3>
+                                <p class="text-sm text-gray-700 mb-2">
+                                    Voor extra functionaliteiten en gebruikersvoorkeuren.
+                                </p>
+                                <ul class="text-xs text-gray-600 space-y-1">
+                                    <li>• Taalvoorkeuren</li>
+                                    <li>• Chatbot cookies</li>
+                                    <li>• Video player cookies</li>
+                                </ul>
+                                <p class="text-xs text-yellow-700 mt-2 font-medium">Toestemming: Vereist</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box p-4 rounded-lg">
+                            <h3 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-cog mr-2 text-blue-600"></i>Uw cookie-instellingen beheren
+                            </h3>
+                            <p class="text-sm text-gray-700 mb-3">
+                                U kunt uw cookie-voorkeuren op elk moment wijzigen. U kunt ook uw browserinstellingen aanpassen om cookies te weigeren of om een melding te ontvangen wanneer cookies worden verzonden. Houd er rekening mee dat sommige delen van de website mogelijk niet correct functioneren als cookies zijn uitgeschakeld.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700 transition">
+                                    <i class="fas fa-cog mr-1"></i>Cookie-instellingen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Security Section -->
+                <section id="beveiliging" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-lock mr-2 text-red-600"></i>7. Gegevensbeveiliging
+                    </h2>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            De beveiliging van uw persoonlijke gegevens is van het grootste belang voor ons. Wij hebben uitgebreide technische en organisatorische maatregelen getroffen om uw gegevens te beschermen:
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="space-y-4">
+                                <h3 class="font-semibold text-gray-800 text-lg">
+                                    <i class="fas fa-shield-alt mr-2 text-blue-600"></i>Technische maatregelen
+                                </h3>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fas fa-certificate text-green-600 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">SSL/TLS Encryptie</h4>
+                                            <p class="text-sm text-gray-600">Alle gegevensoverdracht is beveiligd met 256-bit SSL-encryptie</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fas fa-server text-blue-600 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Beveiligde servers</h4>
+                                            <p class="text-sm text-gray-600">Gegevens worden opgeslagen op beveiligde servers in Europa</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fas fa-key text-purple-600 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Toegangscontrole</h4>
+                                            <p class="text-sm text-gray-600">Strenge toegangscontroles en authenticatie voor medewerkers</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <h3 class="font-semibold text-gray-800 text-lg">
+                                    <i class="fas fa-users mr-2 text-green-600"></i>Organisatorische maatregelen
+                                </h3>
+                                
+                                <div class="space-y-3">
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fas fa-graduation-cap text-blue-600 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Medewerkerstraining</h4>
+                                            <p class="text-sm text-gray-600">Regelmatige training over gegevensbescherming en privacy</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fas fa-file-contract text-green-600 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Geheimhoudingsverklaringen</h4>
+                                            <p class="text-sm text-gray-600">Alle medewerkers tekenen geheimhoudingsverklaringen</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-3">
+                                        <i class="fas fa-eye text-purple-600 mt-1"></i>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Monitoring</h4>
+                                            <p class="text-sm text-gray-600">Continue monitoring van systemen en toegang tot gegevens</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="warning-box p-4 rounded-lg">
+                            <h3 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-exclamation-triangle mr-2 text-red-600"></i>Datalek procedure
+                            </h3>
+                            <p class="text-sm text-gray-700">
+                                Mocht er ondanks alle voorzorgsmaatregelen toch een datalek optreden, dan hebben wij procedures om dit binnen 72 uur te melden bij de Autoriteit Persoonsgegevens en, indien nodig, betrokkenen te informeren. Wij nemen datalekken zeer serieus en doen er alles aan om deze te voorkomen.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Rights Section -->
+                <section id="rechten" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-balance-scale mr-2 text-green-600"></i>8. Uw rechten
+                    </h2>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            Onder de AVG heeft u verschillende rechten betreffende uw persoonlijke gegevens:
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-eye text-blue-600 text-xl mt-1"></i>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-gray-800 mb-2">Recht op inzage</h3>
+                                        <p class="text-sm text-gray-700">
+                                            U heeft het recht om te weten welke persoonlijke gegevens wij van u verwerken. U kunt een overzicht opvragen van alle gegevens die wij van u hebben.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-edit text-green-600 text-xl mt-1"></i>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-gray-800 mb-2">Recht op rectificatie</h3>
+                                        <p class="text-sm text-gray-700">
+                                            Als uw gegevens onjuist of onvolledig zijn, heeft u het recht om deze te laten corrigeren of aanvullen.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-trash text-red-600 text-xl mt-1"></i>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-gray-800 mb-2">Recht op vergetelheid</h3>
+                                        <p class="text-sm text-gray-700">
+                                            In bepaalde gevallen heeft u het recht om uw gegevens te laten wissen. Dit kan bijvoorbeeld als de gegevens niet langer nodig zijn voor het oorspronkelijke doel.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-pause text-orange-600 text-xl mt-1"></i>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-gray-800 mb-2">Recht op beperking</h3>
+                                        <p class="text-sm text-gray-700">
+                                            U kunt vragen om de verwerking van uw gegevens te beperken, bijvoorbeeld als u betwist dat de gegevens juist zijn.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-download text-purple-600 text-xl mt-1"></i>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-gray-800 mb-2">Recht op overdraagbaarheid</h3>
+                                        <p class="text-sm text-gray-700">
+                                            U heeft het recht om uw gegevens in een gestructureerd, gangbaar en machineleesbaar formaat te ontvangen en over te dragen aan een andere organisatie.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-ban text-gray-600 text-xl mt-1"></i>
+                                    <div class="flex-1">
+                                        <h3 class="font-semibold text-gray-800 mb-2">Recht van bezwaar</h3>
+                                        <p class="text-sm text-gray-700">
+                                            U heeft het recht om bezwaar te maken tegen de verwerking van uw gegevens, met name voor direct marketing doeleinden.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box p-4 rounded-lg mt-6">
+                            <h3 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-clock mr-2 text-blue-600"></i>Hoe lang duurt het?
+                            </h3>
+                            <p class="text-sm text-gray-700">
+                                Wij behandelen uw verzoeken binnen één maand na ontvangst. In complexe gevallen kunnen wij deze termijn met maximaal twee maanden verlengen. U ontvangt altijd een bevestiging van ontvangst van uw verzoek.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Retention Section -->
+                <section id="bewaarperiode" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-calendar-alt mr-2 text-blue-600"></i>9. Bewaarperiode
+                    </h2>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            Wij bewaren uw persoonlijke gegevens niet langer dan noodzakelijk voor de doeleinden waarvoor zij zijn verzameld. De bewaarperiodes variëren per type gegevens:
+                        </p>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200 rounded-lg privacy-table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type gegevens</th>
+                                        <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bewaarperiode</th>
+                                        <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Reden</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-sm font-medium text-gray-900">Accountgegevens</td>
+                                        <td class="text-sm text-gray-700">Tot sluiting account + 1 jaar</td>
+                                        <td class="text-sm text-gray-700">Klantenservice en garanties</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-medium text-gray-900">Bestelgegevens</td>
+                                        <td class="text-sm text-gray-700">7 jaar</td>
+                                        <td class="text-sm text-gray-700">Boekhoudkundige verplichting</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-medium text-gray-900">Betaalgegevens</td>
+                                        <td class="text-sm text-gray-700">13 maanden</td>
+                                        <td class="text-sm text-gray-700">Fraudepreventie</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-medium text-gray-900">Marketing toestemming</td>
+                                        <td class="text-sm text-gray-700">Tot intrekking</td>
+                                        <td class="text-sm text-gray-700">Toestemming gebaseerd</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-medium text-gray-900">Website analytics</td>
+                                        <td class="text-sm text-gray-700">26 maanden</td>
+                                        <td class="text-sm text-gray-700">Google Analytics standaard</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Changes Section -->
+                <section id="wijzigingen" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-sync-alt mr-2 text-purple-600"></i>10. Wijzigingen in dit privacybeleid
+                    </h2>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            Wij kunnen dit privacybeleid van tijd tot tijd bijwerken om nieuwe ontwikkelingen, wettelijke wijzigingen of verbeteringen in onze dienstverlening te reflecteren. Wij informeren u altijd over belangrijke wijzigingen.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4 p-4 bg-blue-50 rounded-lg">
+                                <i class="fas fa-bell text-blue-600 text-xl mt-1"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800 mb-2">Hoe wordt u geïnformeerd?</h3>
+                                    <ul class="text-sm text-gray-700 space-y-1">
+                                        <li>• E-mail notificatie bij belangrijke wijzigingen</li>
+                                        <li>• Melding op onze website</li>
+                                        <li>• Pop-up bij uw volgende bezoek (voor significante wijzigingen)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box p-4 rounded-lg mt-6">
+                            <h3 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-history mr-2 text-blue-600"></i>Versiegeschiedenis
+                            </h3>
+                            <div class="text-sm text-gray-700 space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span>Versie 2.0 - Huidige versie</span>
+                                    <span class="text-gray-500">15 juli 2024</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span>Versie 1.0 - Eerste publicatie</span>
+                                    <span class="text-gray-500">1 januari 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-envelope mr-2 text-green-600"></i>11. Contact over privacy
+                    </h2>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-6">
+                            Heeft u vragen over dit privacybeleid, wilt u gebruik maken van uw rechten, of heeft u een klacht over onze gegevensverwerking? Neem dan contact met ons op:
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div class="border rounded-lg p-4">
+                                <h3 class="font-semibold text-gray-800 mb-3">
+                                    <i class="fas fa-user-shield mr-2 text-blue-600"></i>Privacy Officer
+                                </h3>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p><strong>Naam:</strong> Drs. J. van der Berg</p>
+                                    <p><strong>E-mail:</strong> <a href="mailto:privacy@allgoodsmarket.nl" class="text-blue-600 hover:underline">privacy@allgoodsmarket.nl</a></p>
+                                    <p><strong>Telefoon:</strong> 020-1234567</p>
+                                    <p><strong>Reactietijd:</strong> Binnen 3 werkdagen</p>
+                                </div>
+                            </div>
+                            
+                            <div class="border rounded-lg p-4">
+                                <h3 class="font-semibold text-gray-800 mb-3">
+                                    <i class="fas fa-building mr-2 text-green-600"></i>Bedrijfsgegevens
+                                </h3>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p><strong>AllGoodsMarket B.V.</strong></p>
+                                    <p>Voorbeeldstraat 123</p>
+                                    <p>1234 AB Amsterdam</p>
+                                    <p><strong>KvK:</strong> 12345678</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="warning-box p-4 rounded-lg mb-6">
+                            <h3 class="font-semibold text-gray-800 mb-2">
+                                <i class="fas fa-gavel mr-2 text-red-600"></i>Klacht indienen bij de toezichthouder
+                            </h3>
+                            <p class="text-sm text-gray-700 mb-3">
+                                Als u niet tevreden bent met hoe wij uw privacy-gerelateerde verzoek hebben behandeld, heeft u het recht om een klacht in te dienen bij de Autoriteit Persoonsgegevens.
+                            </p>
+                            <div class="text-sm text-gray-700">
+                                <p><strong>Autoriteit Persoonsgegevens</strong></p>
+                                <p>Postbus 93374, 2509 AJ Den Haag</p>
+                                <p>Website: <a href="https://autoriteitpersoonsgegevens.nl" class="text-blue-600 hover:underline" target="_blank">autoriteitpersoonsgegevens.nl</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-8 sm:mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="sm:col-span-2 md:col-span-1">
+                    <h3 class="font-bold text-lg mb-4">
+                        <i class="fas fa-store mr-2" aria-hidden="true"></i>AllGoodsMarket
+                    </h3>
+                    <p class="text-gray-300 mb-4 text-sm sm:text-base">Uw vertrouwde partner voor online winkelen.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                
+              <div>
+                    <h4 class="font-semibold mb-4">Klantenservice</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../contact/index.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="../footer pages/veelgesteldevragen.html" class="hover:text-white">Veelgestelde vragen</a></li>
+                        <li><a href="../footer pages/retourneren.html" class="hover:text-white">Retourneren</a></li>
+                        <li><a href="../footer pages/garantie.html" class="hover:text-white">Garantie</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Informatie</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../footer pages/over_ons.html" class="hover:text-white">Over ons</a></li>
+                        <li><a href="../footer pages/leveringsvoorwaarden.html" class="hover:text-white">Leveringsvoorwaarden</a></li>
+                        <li><a href="../footer pages/privacy_beleid.html" class="hover:text-white">Privacy beleid</a></li>
+                        <li><a href="../footer pages/algemene_voorwaarden.html" class="hover:text-white text-blue-400">Algemene voorwaarden</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Betalingsmogelijkheden</h4>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">VISA</div>
+                        <div class="bg-white text-red-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">MC</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">PayPal</div>
+                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">iDEAL</div>
+                    </div>
+                    <div class="flex items-center text-green-400">
+                        <i class="fas fa-lock mr-2" aria-hidden="true"></i>
+                        <span class="text-sm">SSL Beveiligd</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300">
+                <p class="text-sm sm:text-base">&copy; 2024 AllGoodsMarket. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            // Mobile search functionality
+            const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            
+            // Table of Contents functionality
+            const tocItems = document.querySelectorAll('.toc-item');
+            const sections = document.querySelectorAll('section[id]');
+            
+            // Toggle mobile menu
+            if (mobileMenuButton && mobileMenu && closeMobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('active');
+                    document.body.classList.add('overlay-open');
+                });
+                
+                closeMobileMenu.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    setTimeout(function() {
+                        mobileMenu.classList.add('hidden');
+                    }, 300); // Match the transition duration
+                    document.body.classList.remove('overlay-open');
+                });
+            }
+            
+            // Toggle mobile search
+            if (mobileSearchToggle && mobileSearchInput) {
+                mobileSearchToggle.addEventListener('click', function() {
+                    mobileSearchInput.classList.toggle('hidden');
+                });
+            }
+            
+            // Table of Contents smooth scrolling
+            tocItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active state
+                        tocItems.forEach(tocItem => tocItem.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Scroll spy for table of contents
+            function updateActiveSection() {
+                let currentSection = '';
+                const scrollPosition = window.scrollY + 150; // Offset for header
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = section.id;
+                    }
+                });
+                
+                // Update active TOC item
+                tocItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${currentSection}`) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+            
+            // Listen for scroll events
+            window.addEventListener('scroll', updateActiveSection);
+            
+            // Initialize active section
+            updateActiveSection();
+            
+            // Close overlays when clicking outside
+            document.addEventListener('click', function(event) {
+                if (mobileMenu && !mobileMenu.classList.contains('hidden') && 
+                    mobileMenuButton && !mobileMenuButton.contains(event.target) && 
+                    !mobileMenu.contains(event.target)) {
+                    closeMobileMenu.click();
+                }
+            });
+            
+            // Handle window resize: restore layout on desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) { // Tailwind's lg breakpoint
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        closeMobileMenu.click();
+                    }
+                    
+                    // Hide mobile search if open
+                    if (mobileSearchInput && !mobileSearchInput.classList.contains('hidden')) {
+                        mobileSearchInput.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veelgestelde Vragen - AllGoodsMarket</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+        }
+        
+        /* FAQ Banner Styling */
+        .faq-banner {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            animation: faqPulse 3s infinite;
+        }
+        @keyframes faqPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+        
+        /* FAQ Accordion Styling */
+        .faq-item {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .faq-item.active {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 1px #3b82f6;
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .faq-question:hover {
+            background-color: #f8fafc;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer.active {
+            max-height: 500px;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-icon.rotated {
+            transform: rotate(180deg);
+        }
+        
+        /* Category Filter Styling */
+        .category-filter {
+            transition: all 0.2s;
+        }
+        .category-filter:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .category-filter.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+        }
+        
+        /* Search Styling */
+        .search-highlight {
+            background-color: #fef3c7;
+            padding: 1px 2px;
+            border-radius: 2px;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Hide scrollbar when overlay is open */
+        body.overlay-open {
+            overflow: hidden;
+        }
+        
+        /* Contact Card Styling */
+        .contact-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9;
+        }
+        
+        /* Help Category Icons */
+        .help-category {
+            transition: all 0.3s ease;
+        }
+        .help-category:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Bar - Simplified for mobile -->
+            <div class="flex flex-wrap justify-between items-center py-2 text-xs sm:text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span><i class="fas fa-phone mr-1"></i> 0800-1234567</span>
+                    <span class="hidden sm:inline"><i class="fas fa-envelope mr-1"></i> info@allgoodsmarket.nl</span>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span class="hidden sm:inline"><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                    <span><i class="fas fa-shield-alt mr-1"></i> 30 dagen retour</span>
+                </div>
+            </div>
+            
+            <!-- Main Header -->
+            <div class="flex items-center justify-between py-4">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none mr-3" aria-label="Menu openen">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <h1 class="text-xl sm:text-2xl font-bold text-blue-600">
+                        <i class="fas fa-store mr-1 sm:mr-2"></i>AllGoodsMarket
+                    </h1>
+                </div>
+                
+                <!-- Desktop Search Bar (hidden on mobile) -->
+                <div class="hidden lg:flex-1 lg:max-w-xl lg:mx-8">
+                    <div class="relative">
+                        <input type="text" id="desktop-search" placeholder="Zoek in veelgestelde vragen..." 
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               aria-label="Zoeken">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Icons -->
+                <div class="flex items-center space-x-3 sm:space-x-6">
+                    <!-- Mobile Search Toggle -->
+                    <button id="mobile-search-toggle" class="lg:hidden text-gray-600 hover:text-blue-600" aria-label="Zoeken tonen">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    
+                    <a href="#" class="hidden sm:inline-block text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-user mr-1"></i> <span class="hidden md:inline">Account</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 relative">
+                        <i class="fas fa-shopping-cart mr-1"></i> 
+                        <span class="hidden sm:inline">Winkelwagen</span>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" aria-label="3 items in winkelwagen">3</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Search Input (initially hidden) -->
+            <div id="mobile-search-input" class="lg:hidden pb-4 hidden">
+                <div class="relative">
+                    <input type="text" id="mobile-search" placeholder="Zoek in veelgestelde vragen..." 
+                           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+                           aria-label="Zoeken">
+                    <button class="absolute right-2 top-3 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block py-3 border-t">
+                <ul class="flex space-x-8">
+                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="nav-link text-gray-700 hover:text-blue-600">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="nav-link text-gray-700 hover:text-blue-600">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-blue-600">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="nav-link text-gray-700 hover:text-blue-600">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="nav-link text-gray-700 hover:text-blue-600">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-blue-600">Contact</a></li>
+                    <li><a href="index.html" class="nav-link active text-gray-700 hover:text-blue-600">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-900 bg-opacity-95 z-50 hidden flex flex-col mobile-menu lg:hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-mobile-menu" class="text-white text-3xl focus:outline-none" aria-label="Menu sluiten">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center">
+            <nav class="text-center">
+                <ul class="space-y-6">
+                    <li><a href="../startpagina/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Contact</a></li>
+                    <li><a href="index.html" class="text-white text-2xl hover:text-blue-200 block py-2">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="p-6 flex justify-center space-x-8">
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Account"><i class="fas fa-user text-xl"></i></a>
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Winkelwagen"><i class="fas fa-shopping-cart text-xl"></i></a>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm" aria-label="Kruimelpad">
+                <a href="../startpagina/index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2 text-gray-500">/</span>
+                <span class="text-gray-700">Veelgestelde Vragen</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- FAQ Banner -->
+    <div class="faq-banner text-white py-6 sm:py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
+                <i class="fas fa-question-circle mr-2 sm:mr-3"></i>Veelgestelde Vragen
+            </h2>
+            <p class="text-lg sm:text-xl mb-4">Vind snel antwoorden op je vragen</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-8 text-xs sm:text-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span>24/7 beschikbaar</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-search mr-2"></i>
+                    <span>Zoekfunctie</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-headset mr-2"></i>
+                    <span>Persoonlijke hulp</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-lightbulb mr-2"></i>
+                    <span>Handige tips</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <!-- Help Categories -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
+            <div class="help-category bg-white rounded-lg p-6 text-center shadow-md cursor-pointer" data-category="bestellen">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-shopping-cart text-2xl text-blue-600"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-2">Bestellen</h3>
+                <p class="text-sm text-gray-600">Vragen over het bestelproces</p>
+            </div>
+            
+            <div class="help-category bg-white rounded-lg p-6 text-center shadow-md cursor-pointer" data-category="verzending">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-truck text-2xl text-green-600"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-2">Verzending</h3>
+                <p class="text-sm text-gray-600">Informatie over levering</p>
+            </div>
+            
+            <div class="help-category bg-white rounded-lg p-6 text-center shadow-md cursor-pointer" data-category="retour">
+                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-undo text-2xl text-orange-600"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-2">Retourneren</h3>
+                <p class="text-sm text-gray-600">Producten terugsturen</p>
+            </div>
+            
+            <div class="help-category bg-white rounded-lg p-6 text-center shadow-md cursor-pointer" data-category="betaling">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-credit-card text-2xl text-purple-600"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 mb-2">Betaling</h3>
+                <p class="text-sm text-gray-600">Betaalmethoden en veiligheid</p>
+            </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center">
+            <button class="category-filter active px-4 py-2 rounded-full text-sm font-medium border border-gray-300" data-category="alle">
+                <i class="fas fa-list mr-1"></i>Alle vragen
+            </button>
+            <button class="category-filter px-4 py-2 rounded-full text-sm font-medium border border-gray-300" data-category="bestellen">
+                <i class="fas fa-shopping-cart mr-1"></i>Bestellen
+            </button>
+            <button class="category-filter px-4 py-2 rounded-full text-sm font-medium border border-gray-300" data-category="verzending">
+                <i class="fas fa-truck mr-1"></i>Verzending
+            </button>
+            <button class="category-filter px-4 py-2 rounded-full text-sm font-medium border border-gray-300" data-category="betaling">
+                <i class="fas fa-credit-card mr-1"></i>Betaling
+            </button>
+            <button class="category-filter px-4 py-2 rounded-full text-sm font-medium border border-gray-300" data-category="retour">
+                <i class="fas fa-undo mr-1"></i>Retourneren
+            </button>
+        </div>
+
+        <!-- Search Results Counter -->
+        <div id="search-results" class="hidden mb-4 text-center">
+            <p class="text-gray-600"><span id="results-count">0</span> resultaten gevonden</p>
+            <button id="clear-search" class="text-blue-600 hover:underline text-sm">
+                <i class="fas fa-times mr-1"></i>Zoekresultaten wissen
+            </button>
+        </div>
+
+        <!-- FAQ Items -->
+        <div class="max-w-3xl mx-auto">
+            <!-- Bestellen Category -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-shopping-cart mr-2 text-blue-600"></i>Bestellen
+                </h2>
+                
+                <div class="faq-item bg-white rounded-lg mb-4 shadow-sm" data-category="bestellen">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base pr-4">
+                            <i class="fas fa-shopping-cart mr-2 text-blue-600"></i>
+                            Hoe kan ik een bestelling plaatsen?
+                        </h3>
+                        <i class="fas fa-chevron-down faq-icon text-gray-400"></i>
+                    </div>
+                    <div class="faq-answer px-4 sm:px-6 pb-0">
+                        <div class="pb-4 sm:pb-6 border-t border-gray-100 pt-4">
+                            <p class="text-gray-600 mb-4">Het plaatsen van een bestelling bij AllGoodsMarket is eenvoudig:</p>
+                            <div class="space-y-2">
+                                <div class="flex items-start">
+                                    <span class="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">1</span>
+                                    <p class="text-gray-600">Zoek het gewenste product via de zoekbalk of blader door onze categorieën</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">2</span>
+                                    <p class="text-gray-600">Klik op het product voor meer details en kies eventuele opties (maat, kleur)</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">3</span>
+                                    <p class="text-gray-600">Voeg het product toe aan je winkelwagen</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">4</span>
+                                    <p class="text-gray-600">Ga naar je winkelwagen en klik op "Afrekenen"</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">5</span>
+                                    <p class="text-gray-600">Vul je gegevens in en kies een betaalmethode</p>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center text-sm font-semibold mr-3 mt-0.5">6</span>
+                                    <p class="text-gray-600">Bevestig je bestelling</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg mb-4 shadow-sm" data-category="bestellen">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base pr-4">
+                            <i class="fas fa-edit mr-2 text-blue-600"></i>
+                            Kan ik mijn bestelling nog wijzigen of annuleren?
+                        </h3>
+                        <i class="fas fa-chevron-down faq-icon text-gray-400"></i>
+                    </div>
+                    <div class="faq-answer px-4 sm:px-6 pb-0">
+                        <div class="pb-4 sm:pb-6 border-t border-gray-100 pt-4">
+                            <p class="text-gray-600 mb-4">Het wijzigen of annuleren van je bestelling hangt af van de status:</p>
+                            <div class="space-y-4">
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                                    <h4 class="font-semibold text-green-800 mb-2">
+                                        <i class="fas fa-check-circle mr-2"></i>Bestelling nog niet verwerkt
+                                    </h4>
+                                    <p class="text-green-700">Je kunt je bestelling gratis wijzigen of annuleren via je account of door contact op te nemen met onze klantenservice.</p>
+                                </div>
+                                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                                    <h4 class="font-semibold text-yellow-800 mb-2">
+                                        <i class="fas fa-clock mr-2"></i>Bestelling in behandeling
+                                    </h4>
+                                    <p class="text-yellow-700">Neem direct contact op met onze klantenservice. Mogelijk kunnen we je bestelling nog aanpassen.</p>
+                                </div>
+                                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                                    <h4 class="font-semibold text-red-800 mb-2">
+                                        <i class="fas fa-shipping-fast mr-2"></i>Bestelling verzonden
+                                    </h4>
+                                    <p class="text-red-700">Wijzigen is niet meer mogelijk. Je kunt het product retourneren na ontvangst binnen 30 dagen.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verzending Category -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-truck mr-2 text-green-600"></i>Verzending
+                </h2>
+                
+                <div class="faq-item bg-white rounded-lg mb-4 shadow-sm" data-category="verzending">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base pr-4">
+                            <i class="fas fa-truck mr-2 text-green-600"></i>
+                            Wat zijn de verzendkosten?
+                        </h3>
+                        <i class="fas fa-chevron-down faq-icon text-gray-400"></i>
+                    </div>
+                    <div class="faq-answer px-4 sm:px-6 pb-0">
+                        <div class="pb-4 sm:pb-6 border-t border-gray-100 pt-4">
+                            <p class="text-gray-600 mb-4">Voor bestellingen boven de €50 is de verzending gratis. Voor bestellingen onder de €50 rekenen wij €4,95 verzendkosten binnen Nederland.</p>
+                            <div class="p-4 bg-green-50 rounded-lg">
+                                <p class="text-green-800 text-sm">
+                                    <i class="fas fa-gift mr-2"></i>
+                                    <strong>Tip:</strong> Door iets extra's te bestellen om boven de €50 te komen, kun je vaak geld besparen op verzendkosten!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg mb-4 shadow-sm" data-category="verzending">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base pr-4">
+                            <i class="fas fa-clock mr-2 text-green-600"></i>
+                            Hoe lang duurt de verzending?
+                        </h3>
+                        <i class="fas fa-chevron-down faq-icon text-gray-400"></i>
+                    </div>
+                    <div class="faq-answer px-4 sm:px-6 pb-0">
+                        <div class="pb-4 sm:pb-6 border-t border-gray-100 pt-4">
+                            <p class="text-gray-600 mb-4">De levertijd hangt af van het product en je locatie:</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-blue-800 mb-2">
+                                        <i class="fas fa-home mr-2"></i>Nederland
+                                    </h4>
+                                    <ul class="space-y-1 text-blue-700 text-sm">
+                                        <li>• Standaard: 1-2 werkdagen</li>
+                                        <li>• Express: Volgende werkdag</li>
+                                        <li>• Avondlevering: Mogelijk</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg">
+                                    <h4 class="font-semibold text-purple-800 mb-2">
+                                        <i class="fas fa-globe-europe mr-2"></i>Europa
+                                    </h4>
+                                    <ul class="space-y-1 text-purple-700 text-sm">
+                                        <li>• België/Duitsland: 2-3 werkdagen</li>
+                                        <li>• Overig Europa: 3-5 werkdagen</li>
+                                        <li>• Express opties beschikbaar</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg mb-4 shadow-sm" data-category="verzending">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base pr-4">
+                            <i class="fas fa-search-location mr-2 text-green-600"></i>
+                            Hoe kan ik mijn bestelling volgen?
+                        </h3>
+                        <i class="fas fa-chevron-down faq-icon text-gray-400"></i>
+                    </div>
+                    <div class="faq-answer px-4 sm:px-6 pb-0">
+                        <div class="pb-4 sm:pb-6 border-t border-gray-100 pt-4">
+                            <p class="text-gray-600 mb-4">Na verzending ontvang je een e-mail met een Track & Trace code om je pakket te volgen. Je kunt je bestelling ook volgen via:</p>
+                            <div class="space-y-4">
+                                <div class="flex items-start">
+                                    <div class="bg-blue-100 rounded-full p-2 mr-4">
+                                        <i class="fas fa-envelope text-blue-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 mb-1">Track & Trace email</h4>
+                                        <p class="text-gray-600 text-sm">Na verzending ontvang je automatisch een email met trackingcode en link.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="bg-green-100 rounded-full p-2 mr-4">
+                                        <i class="fas fa-user text-green-600"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 mb-1">Mijn Account</h4>
+                                        <p class="text-gray-600 text-sm">Log in op je account en bekijk de status van al je bestellingen.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Betaling Category -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-credit-card mr-2 text-purple-600"></i>Betaling
+                </h2>
+                
+                <div class="faq-item bg-white rounded-lg mb-4 shadow-sm" data-category="betaling">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base pr-4">
+                            <i class="fas fa-credit-card mr-2 text-purple-600"></i>
+                            Welke betaalmethoden accepteren jullie?
+                        </h3>
+                        <i class="fas fa-chevron-down faq-icon text-gray-400"></i>
+                    </div>
+                    <div class="faq-answer px-4 sm:px-6 pb-0">
+                        <div class="pb-4 sm:pb-6 border-t border-gray-100 pt-4">
+                            <p class="text-gray-600 mb-4">We accepteren verschillende veilige betaalmethoden:</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="space-y-3">
+                                    <h4 class="font-semibold text-gray-800">Online betaling</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center">
+                                            <div class="bg-blue-100 rounded p-1 mr-3">
+                                                <i class="fas fa-university text-blue-600 text-sm"></i>
+                                            </div>
+                                            <span class="text-gray-600 text-sm">iDEAL</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="bg-blue-100 rounded p-1 mr-3">
+                                                <i class="fab fa-paypal text-blue-600 text-sm"></i>
+                                            </div>
+                                            <span class="text-gray-600 text-sm">PayPal</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="bg-blue-100 rounded p-1 mr-3">
+                                                <i class="fas fa-mobile-alt text-blue-600 text-sm"></i>
+                                            </div>
+                                            <span class="text-gray-600 text-sm">Bancontact</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="space-y-3">
+                                    <h4 class="font-semibold text-gray-800">Creditcards</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center">
+                                            <div class="bg-blue-100 rounded p-1 mr-3">
+                                                <i class="fab fa-cc-visa text-blue-600 text-sm"></i>
+                                            </div>
+                                            <span class="text-gray-600 text-sm">Visa</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="bg-red-100 rounded p-1 mr-3">
+                                                <i class="fab fa-cc-mastercard text-red-600 text-sm"></i>
+                                            </div>
+                                            <span class="text-gray-600 text-sm">Mastercard</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <div class="bg-blue-100 rounded p-1 mr-3">
+                                                <i class="fab fa-cc-amex text-blue-600 text-sm"></i>
+                                            </div>
+                                            <span class="text-gray-600 text-sm">American Express</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white rounded-lg mb-4 shadow-sm" data-category="betaling">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base pr-4">
+                            <i class="fas fa-shield-alt mr-2 text-purple-600"></i>
+                            Is het veilig om online te betalen?
+                        </h3>
+                        <i class="fas fa-chevron-down faq-icon text-gray-400"></i>
+                    </div>
+                    <div class="faq-answer px-4 sm:px-6 pb-0">
+                        <div class="pb-4 sm:pb-6 border-t border-gray-100 pt-4">
+                            <p class="text-gray-600 mb-4">Ja, alle betalingen worden veilig verwerkt via een beveiligde SSL-verbinding. We voldoen aan alle veiligheidseisen voor online betalingen en slaan geen creditcardgegevens op.</p>
+                            <div class="p-4 bg-green-50 rounded-lg">
+                                <p class="text-green-800 text-sm">
+                                    <i class="fas fa-shield-alt mr-2"></i>
+                                    <strong>Veilig betalen:</strong> Onze betaalomgeving is beveiligd met SSL-encryptie en voldoet aan de PCI DSS-standaard.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Retourneren Category -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-undo mr-2 text-orange-600"></i>Retourneren
+                </h2>
+                
+                <div class="faq-item bg-white rounded-lg mb-4 shadow-sm" data-category="retour">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base pr-4">
+                            <i class="fas fa-undo mr-2 text-orange-600"></i>
+                            Hoe kan ik een product retourneren?
+                        </h3>
+                        <i class="fas fa-chevron-down faq-icon text-gray-400"></i>
+                    </div>
+                    <div class="faq-answer px-4 sm:px-6 pb-0">
+                        <div class="pb-4 sm:pb-6 border-t border-gray-100 pt-4">
+                            <p class="text-gray-600 mb-4">Het retourneren van een product is eenvoudig en gratis binnen 30 dagen:</p>
+                            <div class="space-y-4">
+                                <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
+                                    <h4 class="font-semibold text-orange-800 mb-2">Retourvoorwaarden</h4>
+                                    <ul class="text-orange-700 text-sm space-y-1">
+                                        <li>• Product in originele staat en verpakking</li>
+                                        <li>• Binnen 30 dagen na ontvangst</li>
+                                        <li>• Met originele kassabon of factuur</li>
+                                        <li>• Hygiënische producten uitgesloten</li>
+                                    </ul>
+                                </div>
+                                <div class="space-y-3">
+                                    <h4 class="font-semibold text-gray-800">Retour aanmelden</h4>
+                                    <div class="space-y-2 text-sm">
+                                        <div class="flex items-center">
+                                            <span class="bg-orange-100 text-orange-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mr-2">1</span>
+                                            <span class="text-gray-600">Log in op je account</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span class="bg-orange-100 text-orange-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mr-2">2</span>
+                                            <span class="text-gray-600">Ga naar 'Mijn bestellingen'</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span class="bg-orange-100 text-orange-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mr-2">3</span>
+                                            <span class="text-gray-600">Klik op 'Retour aanmelden'</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span class="bg-orange-100 text-orange-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mr-2">4</span>
+                                            <span class="text-gray-600">Print het retourlabel</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span class="bg-orange-100 text-orange-800 rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mr-2">5</span>
+                                            <span class="text-gray-600">Stuur het product terug</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg mb-4 shadow-sm" data-category="retour">
+                    <div class="faq-question p-4 sm:p-6 flex justify-between items-center">
+                        <h3 class="font-semibold text-gray-800 text-sm sm:text-base pr-4">
+                            <i class="fas fa-euro-sign mr-2 text-orange-600"></i>
+                            Wanneer krijg ik mijn geld terug bij een retour?
+                        </h3>
+                        <i class="fas fa-chevron-down faq-icon text-gray-400"></i>
+                    </div>
+                    <div class="faq-answer px-4 sm:px-6 pb-0">
+                        <div class="pb-4 sm:pb-6 border-t border-gray-100 pt-4">
+                            <p class="text-gray-600 mb-4">Na ontvangst en controle van je retourzending streven we ernaar om binnen 5 werkdagen het aankoopbedrag terug te storten. De terugbetaling vindt plaats via dezelfde betaalmethode als waarmee je hebt betaald.</p>
+                            <div class="p-4 bg-yellow-50 rounded-lg">
+                                <p class="text-yellow-800 text-sm">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                                    <strong>Let op:</strong> Afhankelijk van je bank kan het nog 2-5 werkdagen duren voordat het bedrag op je rekening staat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-card rounded-lg p-6 sm:p-8 mt-8 sm:mt-12 text-center">
+            <div class="max-w-2xl mx-auto">
+                <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-headset mr-2 text-blue-600"></i>
+                    Vraag niet gevonden?
+                </h3>
+                <p class="text-gray-600 mb-6">Ons klantenservice team staat klaar om je te helpen met al je vragen.</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-phone text-blue-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-1">Telefonisch</h4>
+                        <p class="text-gray-600 text-sm">0800-1234567</p>
+                        <p class="text-gray-500 text-xs">Ma-Vr 9:00-17:00</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-envelope text-green-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-1">Email</h4>
+                        <p class="text-gray-600 text-sm">info@allgoodsmarket.nl</p>
+                        <p class="text-gray-500 text-xs">Reactie binnen 24u</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-comments text-purple-600"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-1">Live Chat</h4>
+                        <p class="text-gray-600 text-sm">Direct hulp</p>
+                        <p class="text-gray-500 text-xs">Ma-Vr 9:00-17:00</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="../contact/index.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium">
+                        <i class="fas fa-envelope mr-2"></i>Contact opnemen
+                    </a>
+                    <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-medium">
+                        <i class="fas fa-comments mr-2"></i>Start Live Chat
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-8 sm:mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="sm:col-span-2 md:col-span-1">
+                    <h3 class="font-bold text-lg mb-4">
+                        <i class="fas fa-store mr-2" aria-hidden="true"></i>AllGoodsMarket
+                    </h3>
+                    <p class="text-gray-300 mb-4 text-sm sm:text-base">Uw vertrouwde partner voor online winkelen.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Klantenservice</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../contact/index.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="../footer pages/veelgesteldevragen.html" class="hover:text-white">Veelgestelde vragen</a></li>
+                        <li><a href="../footer pages/retourneren.html" class="hover:text-white">Retourneren</a></li>
+                        <li><a href="../footer pages/garantie.html" class="hover:text-white">Garantie</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Informatie</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../footer pages/over_ons.html" class="hover:text-white">Over ons</a></li>
+                        <li><a href="../footer pages/leveringsvoorwaarden.html" class="hover:text-white">Leveringsvoorwaarden</a></li>
+                        <li><a href="../footer pages/privacy_beleid.html" class="hover:text-white">Privacy beleid</a></li>
+                        <li><a href="../footer pages/algemene_voorwaarden.html" class="hover:text-white text-blue-400">Algemene voorwaarden</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Betalingsmogelijkheden</h4>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">VISA</div>
+                        <div class="bg-white text-red-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">MC</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">PayPal</div>
+                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">iDEAL</div>
+                    </div>
+                    <div class="flex items-center text-green-400">
+                        <i class="fas fa-lock mr-2" aria-hidden="true"></i>
+                        <span class="text-sm">SSL Beveiligd</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300">
+                <p class="text-sm sm:text-base">&copy; 2025 AllGoodsMarket. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            // Mobile search functionality
+            const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            
+            // FAQ functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            const categoryFilters = document.querySelectorAll('.category-filter');
+            const helpCategories = document.querySelectorAll('.help-category');
+            const searchInputs = document.querySelectorAll('#desktop-search, #mobile-search');
+            const searchResults = document.getElementById('search-results');
+            const resultsCount = document.getElementById('results-count');
+            const clearSearchBtn = document.getElementById('clear-search');
+            
+            let currentCategory = 'alle';
+            let currentSearchTerm = '';
+            
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('active');
+                document.body.classList.add('overlay-open');
+            });
+            
+            // Close mobile menu
+            closeMobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                setTimeout(function() {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+                document.body.classList.remove('overlay-open');
+            });
+            
+            // Toggle mobile search
+            mobileSearchToggle.addEventListener('click', function() {
+                mobileSearchInput.classList.toggle('hidden');
+                if (!mobileSearchInput.classList.contains('hidden')) {
+                    document.getElementById('mobile-search').focus();
+                }
+            });
+            
+            // FAQ accordion functionality
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const answer = faqItem.querySelector('.faq-answer');
+                    const icon = this.querySelector('.faq-icon');
+                    
+                    const isActive = answer.classList.contains('active');
+                    
+                    // Close all other FAQ items
+                    document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+                        if (activeAnswer !== answer) {
+                            activeAnswer.classList.remove('active');
+                            activeAnswer.parentElement.classList.remove('active');
+                            activeAnswer.parentElement.querySelector('.faq-icon').classList.remove('rotated');
+                        }
+                    });
+                    
+                    // Toggle current FAQ item
+                    if (isActive) {
+                        answer.classList.remove('active');
+                        faqItem.classList.remove('active');
+                        icon.classList.remove('rotated');
+                    } else {
+                        answer.classList.add('active');
+                        faqItem.classList.add('active');
+                        icon.classList.add('rotated');
+                    }
+                });
+            });
+            
+            // Category filter functionality
+            categoryFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Update active filter
+                    categoryFilters.forEach(f => f.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    currentCategory = category;
+                    filterFAQs();
+                });
+            });
+            
+            // Help category clicks
+            helpCategories.forEach(category => {
+                category.addEventListener('click', function() {
+                    const categoryName = this.dataset.category;
+                    
+                    // Update category filter
+                    categoryFilters.forEach(f => {
+                        if (f.dataset.category === categoryName) {
+                            f.classList.add('active');
+                            currentCategory = categoryName;
+                            filterFAQs();
+                            
+                            // Scroll to category section
+                            const categoryHeader = document.querySelector(`h2 i.fas.fa-${getCategoryIcon(categoryName)}`).closest('h2');
+                            categoryHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        } else {
+                            f.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            function getCategoryIcon(category) {
+                switch(category) {
+                    case 'bestellen': return 'shopping-cart';
+                    case 'verzending': return 'truck';
+                    case 'retour': return 'undo';
+                    case 'betaling': return 'credit-card';
+                    default: return 'question-circle';
+                }
+            }
+            
+            // Search functionality
+            searchInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    currentSearchTerm = this.value.toLowerCase();
+                    
+                    // Sync search inputs
+                    searchInputs.forEach(otherInput => {
+                        if (otherInput !== this) {
+                            otherInput.value = currentSearchTerm;
+                        }
+                    });
+                    
+                    filterFAQs();
+                });
+            });
+            
+            // Clear search
+            clearSearchBtn.addEventListener('click', function() {
+                searchInputs.forEach(input => input.value = '');
+                currentSearchTerm = '';
+                searchResults.classList.add('hidden');
+                filterFAQs();
+            });
+            
+            // Filter FAQ items based on category and search
+            function filterFAQs() {
+                const faqItems = document.querySelectorAll('.faq-item');
+                let visibleCount = 0;
+                
+                faqItems.forEach(item => {
+                    const itemCategory = item.dataset.category;
+                    const questionText = item.querySelector('.faq-question h3').textContent.toLowerCase();
+                    const answerText = item.querySelector('.faq-answer').textContent.toLowerCase();
+                    
+                    const matchesCategory = currentCategory === 'alle' || itemCategory === currentCategory;
+                    const matchesSearch = currentSearchTerm === '' || 
+                                        questionText.includes(currentSearchTerm) || 
+                                        answerText.includes(currentSearchTerm);
+                    
+                    if (matchesCategory && matchesSearch) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide search results
+                if (currentSearchTerm) {
+                    searchResults.classList.remove('hidden');
+                    resultsCount.textContent = visibleCount;
+                } else {
+                    searchResults.classList.add('hidden');
+                }
+            }
+            
+            // Close overlays when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.classList.contains('hidden') && 
+                    !mobileMenuButton.contains(event.target) && 
+                    !mobileMenu.contains(event.target)) {
+                    closeMobileMenu.click();
+                }
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) {
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        closeMobileMenu.click();
+                    }
+                    
+                    if (!mobileSearchInput.classList.contains('hidden')) {
+                        mobileSearchInput.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

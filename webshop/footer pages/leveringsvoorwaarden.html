@@ -1,0 +1,896 @@
+```html
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leveringsvoorwaarden - AllGoodsMarket</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Hide scrollbar when menu is open */
+        body.overlay-open {
+            overflow: hidden;
+        }
+        
+        /* Banner styling */
+        .page-banner {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+        
+        /* Delivery content styling */
+        .delivery-content h2 {
+            color: #1f2937;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .delivery-content h3 {
+            color: #374151;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .delivery-content p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+        
+        .delivery-content ul {
+            margin-bottom: 1rem;
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        
+        .delivery-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-left: 4px solid #059669;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .toc-item {
+            transition: all 0.2s;
+        }
+        
+        .toc-item:hover {
+            background-color: #f3f4f6;
+            transform: translateX(4px);
+        }
+        
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Offset for fixed header when jumping to sections */
+        .section-anchor {
+            scroll-margin-top: 100px;
+        }
+        
+        /* Price table styling */
+        .price-table {
+            overflow-x: auto;
+        }
+        
+        .price-table table {
+            min-width: 600px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Bar - Simplified for mobile -->
+            <div class="flex flex-wrap justify-between items-center py-2 text-xs sm:text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span><i class="fas fa-phone mr-1"></i> 0800-1234567</span>
+                    <span class="hidden sm:inline"><i class="fas fa-envelope mr-1"></i> info@allgoodsmarket.nl</span>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span class="hidden sm:inline"><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                    <span><i class="fas fa-shield-alt mr-1"></i> 30 dagen retour</span>
+                </div>
+            </div>
+            
+            <!-- Main Header -->
+            <div class="flex items-center justify-between py-4">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none mr-3" aria-label="Menu openen">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <h1 class="text-xl sm:text-2xl font-bold text-blue-600">
+                        <i class="fas fa-store mr-1 sm:mr-2"></i>AllGoodsMarket
+                    </h1>
+                </div>
+                
+                <!-- Desktop Search Bar (hidden on mobile) -->
+                <div class="hidden lg:flex-1 lg:max-w-xl lg:mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Zoek naar producten..." 
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               aria-label="Zoeken">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Icons -->
+                <div class="flex items-center space-x-3 sm:space-x-6">
+                    <!-- Mobile Search Toggle -->
+                    <button id="mobile-search-toggle" class="lg:hidden text-gray-600 hover:text-blue-600" aria-label="Zoeken tonen">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    
+                    <a href="#" class="hidden sm:inline-block text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-user mr-1"></i> <span class="hidden md:inline">Account</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 relative">
+                        <i class="fas fa-shopping-cart mr-1"></i> 
+                        <span class="hidden sm:inline">Winkelwagen</span>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" aria-label="3 items in winkelwagen">3</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Search Input (initially hidden) -->
+            <div id="mobile-search-input" class="lg:hidden pb-4 hidden">
+                <div class="relative">
+                    <input type="text" placeholder="Zoek naar producten..." 
+                           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+                           aria-label="Zoeken">
+                    <button class="absolute right-2 top-3 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block py-3 border-t">
+                <ul class="flex space-x-8">
+                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="nav-link text-gray-700 hover:text-blue-600">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="nav-link text-gray-700 hover:text-blue-600">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-blue-600">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="nav-link text-gray-700 hover:text-blue-600">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="nav-link text-gray-700 hover:text-blue-600">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-blue-600">Contact</a></li>
+                    <li><a href="../footer pages/leveringsvoorwaarden.html" class="nav-link active text-gray-700 hover:text-blue-600">Leveringsvoorwaarden</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-900 bg-opacity-95 z-50 hidden flex flex-col mobile-menu lg:hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-mobile-menu" class="text-white text-3xl focus:outline-none" aria-label="Menu sluiten">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center">
+            <nav class="text-center">
+                <ul class="space-y-6">
+                    <li><a href="../startpagina/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Aanbiedingen</a></li>
+                    <li><a href="#" class="text-white text-2xl hover:text-blue-200 block py-2">Algemene Voorwaarden</a></li>
+                    <li><a href="#" class="text-white text-2xl hover:text-blue-200 block py-2 font-bold">Leveringsvoorwaarden</a></li>
+                    <li><a href="../contact/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="p-6 flex justify-center space-x-8">
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Account"><i class="fas fa-user text-xl"></i></a>
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Winkelwagen"><i class="fas fa-shopping-cart text-xl"></i></a>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm" aria-label="Kruimelpad">
+                <a href="../startpagina/index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2 text-gray-500">/</span>
+                <span class="text-gray-700">Leveringsvoorwaarden</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <div class="page-banner text-white py-5 sm:py-7">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
+                <i class="fas fa-shipping-fast mr-2 sm:mr-3"></i>Leveringsvoorwaarden
+            </h1>
+            <p class="text-lg mb-1 opacity-90">Alles over verzending, levertijden en retourneren bij AllGoodsMarket</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div class="bg-white rounded-lg shadow-md p-6 sm:p-8 lg:p-10 max-w-4xl mx-auto">
+            
+            <!-- Quick Info Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+                    <div class="text-green-600 text-2xl mb-2">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="font-semibold text-green-800 mb-1">Gratis Verzending</h3>
+                    <p class="text-sm text-green-700">Vanaf €50 in Nederland</p>
+                </div>
+                
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+                    <div class="text-blue-600 text-2xl mb-2">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="font-semibold text-blue-800 mb-1">Snelle Levering</h3>
+                    <p class="text-sm text-blue-700">1-3 werkdagen</p>
+                </div>
+                
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 text-center">
+                    <div class="text-purple-600 text-2xl mb-2">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-purple-800 mb-1">Track & Trace</h3>
+                    <p class="text-sm text-purple-700">Volg uw bestelling</p>
+                </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="mb-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                    <i class="fas fa-list-ul mr-2 text-green-600"></i>Inhoudsopgave
+                </h2>
+                <nav class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <a href="#verzendmethoden" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-green-600">
+                        1. Verzendmethoden
+                    </a>
+                    <a href="#levertijden" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-green-600">
+                        2. Levertijden
+                    </a>
+                    <a href="#verzendkosten" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-green-600">
+                        3. Verzendkosten
+                    </a>
+                    <a href="#leveringsadres" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-green-600">
+                        4. Leveringsadres
+                    </a>
+                    <a href="#niet-thuis" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-green-600">
+                        5. Niet thuis bij levering
+                    </a>
+                    <a href="#tracking" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-green-600">
+                        6. Track & Trace
+                    </a>
+                    <a href="#schade-verlies" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-green-600">
+                        7. Schade of verlies
+                    </a>
+                    <a href="#internationale-verzending" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-green-600">
+                        8. Internationale verzending
+                    </a>
+                    <a href="#retouren" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-green-600">
+                        9. Retouren
+                    </a>
+                    <a href="#contact" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-green-600">
+                        10. Contact
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Delivery Content -->
+            <div class="delivery-content">
+                <div class="highlight-box p-4 rounded-lg mb-8">
+                    <p class="text-lg text-gray-700 mb-2">
+                        <strong>AllGoodsMarket B.V.</strong>
+                    </p>
+                    <p class="text-sm text-gray-600">
+                        Laatst bijgewerkt: 15 januari 2024<br>
+                        Versie: 1.2
+                    </p>
+                </div>
+
+                <!-- Section 1: Verzendmethoden -->
+                <section id="verzendmethoden" class="section-anchor mb-8">
+                    <h2><i class="fas fa-box-open mr-2 text-green-600"></i>1. Verzendmethoden</h2>
+                    
+                    <p>
+                        Wij verzenden bestellingen via betrouwbare vervoerders zoals PostNL, DHL en DPD. U kunt bij het afrekenen kiezen uit de beschikbare verzendopties.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="text-center mb-4">
+                                <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-home text-2xl text-green-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-800">Thuisbezorging</h3>
+                            </div>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Bezorging aan huis</li>
+                                <li>• Tijdvenster van 2 uur</li>
+                                <li>• SMS/email notificatie</li>
+                                <li>• Mogelijk avond bezorging</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="text-center mb-4">
+                                <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-store text-2xl text-blue-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-800">Afhaalpunt</h3>
+                            </div>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• Meer dan 3.000 punten</li>
+                                <li>• Vaak langere openingstijden</li>
+                                <li>• Goedkoper dan thuisbezorging</li>
+                                <li>• 14 dagen ophaalperiode</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="text-center mb-4">
+                                <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fas fa-box text-2xl text-purple-600"></i>
+                                </div>
+                                <h3 class="font-semibold text-gray-800">Pakketautomaat</h3>
+                            </div>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• 24/7 beschikbaar</li>
+                                <li>• Veilige opslag</li>
+                                <li>• Snelle afhaling</li>
+                                <li>• Contactloos ophalen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Levertijden -->
+                <section id="levertijden" class="section-anchor mb-8">
+                    <h2><i class="fas fa-clock mr-2 text-green-600"></i>2. Levertijden</h2>
+                    
+                    <h3>Standaard levertijden</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                <i class="fas fa-shipping-fast mr-2 text-green-600"></i>Standaard Verzending
+                            </h4>
+                            <ul class="space-y-2">
+                                <li><strong>Besteld voor 23:59:</strong> volgende werkdag verzonden</li>
+                                <li><strong>Levertijd:</strong> 1-2 werkdagen</li>
+                                <li><strong>Bezorgtijden:</strong> 08:00 - 21:00</li>
+                                <li><strong>Kosten:</strong> €4,95 (gratis vanaf €50)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                <i class="fas fa-rocket mr-2 text-red-600"></i>Express Verzending
+                            </h4>
+                            <ul class="space-y-2">
+                                <li><strong>Besteld voor 15:00:</strong> volgende werkdag geleverd</li>
+                                <li><strong>Levertijd:</strong> 1 werkdag</li>
+                                <li><strong>Bezorgtijden:</strong> 08:00 - 18:00</li>
+                                <li><strong>Kosten:</strong> €7,95</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Uitzonderingen</h3>
+                    <p>
+                        Levertijden kunnen afwijken tijdens piekperiodes (bijv. feestdagen, Black Friday), door onvoorziene omstandigheden bij de koeriersdienst, of bij levering aan afgelegen gebieden. AllGoodsMarket is niet aansprakelijk voor vertragingen buiten haar redelijke controle.
+                    </p>
+                    <p>
+                        Indien een product tijdelijk niet op voorraad is, wordt de consument hiervan zo spoedig mogelijk op de hoogte gesteld.
+                    </p>
+
+                    <div class="highlight-box p-4 rounded-lg mt-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">
+                            <i class="fas fa-info-circle mr-2 text-green-600"></i>Werkdagen en feestdagen
+                        </h4>
+                        <p class="text-gray-700">
+                            Werkdagen zijn maandag t/m vrijdag, exclusief Nederlandse feestdagen. Bestellingen geplaatst in het weekend 
+                            of op feestdagen worden de eerstvolgende werkdag verwerkt.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 3: Verzendkosten -->
+                <section id="verzendkosten" class="section-anchor mb-8">
+                    <h2><i class="fas fa-euro-sign mr-2 text-green-600"></i>3. Verzendkosten</h2>
+                    
+                    <div class="price-table">
+                        <table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">
+                            <thead class="bg-green-50">
+                                <tr>
+                                    <th class="border border-gray-300 px-4 py-3 text-left font-semibold">Land/Regio</th>
+                                    <th class="border border-gray-300 px-4 py-3 text-left font-semibold">Verzendmethode</th>
+                                    <th class="border border-gray-300 px-4 py-3 text-left font-semibold">Kosten</th>
+                                    <th class="border border-gray-300 px-4 py-3 text-left font-semibold">Gratis vanaf</th>
+                                    <th class="border border-gray-300 px-4 py-3 text-left font-semibold">Levertijd</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white">
+                                    <td class="border border-gray-300 px-4 py-3">Nederland</td>
+                                    <td class="border border-gray-300 px-4 py-3">Standaard</td>
+                                    <td class="border border-gray-300 px-4 py-3 font-semibold">€4,95</td>
+                                    <td class="border border-gray-300 px-4 py-3 text-green-600 font-semibold">€50,00</td>
+                                    <td class="border border-gray-300 px-4 py-3">1-2 werkdagen</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-3">Nederland</td>
+                                    <td class="border border-gray-300 px-4 py-3">Express</td>
+                                    <td class="border border-gray-300 px-4 py-3 font-semibold">€7,95</td>
+                                    <td class="border border-gray-300 px-4 py-3">-</td>
+                                    <td class="border border-gray-300 px-4 py-3">1 werkdag</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <td class="border border-gray-300 px-4 py-3">Nederland</td>
+                                    <td class="border border-gray-300 px-4 py-3">Afhaalpunt</td>
+                                    <td class="border border-gray-300 px-4 py-3 font-semibold">€3,95</td>
+                                    <td class="border border-gray-300 px-4 py-3 text-green-600 font-semibold">€35,00</td>
+                                    <td class="border border-gray-300 px-4 py-3">1-2 werkdagen</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-3">Waddeneilanden</td>
+                                    <td class="border border-gray-300 px-4 py-3">Standaard</td>
+                                    <td class="border border-gray-300 px-4 py-3 font-semibold">€7,95</td>
+                                    <td class="border border-gray-300 px-4 py-3 text-green-600 font-semibold">€75,00</td>
+                                    <td class="border border-gray-300 px-4 py-3">2-4 werkdagen</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <td class="border border-gray-300 px-4 py-3">België</td>
+                                    <td class="border border-gray-300 px-4 py-3">Standaard</td>
+                                    <td class="border border-gray-300 px-4 py-3 font-semibold">€7,95</td>
+                                    <td class="border border-gray-300 px-4 py-3 text-green-600 font-semibold">€75,00</td>
+                                    <td class="border border-gray-300 px-4 py-3">2-4 werkdagen</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Grote en zware producten</h3>
+                    <p>
+                        Voor grote en zware producten (zoals meubels, grote elektronica, fitnessapparatuur) kunnen speciale 
+                        verzendkosten gelden. Deze worden altijd duidelijk vermeld bij het product en tijdens het bestelproces. 
+                        Voor deze producten wordt vaak een afspraak gemaakt voor levering.
+                    </p>
+                </section>
+
+                <!-- Section 4: Leveringsadres -->
+                <section id="leveringsadres" class="section-anchor mb-8">
+                    <h2><i class="fas fa-map-marker-alt mr-2 text-green-600"></i>4. Leveringsadres</h2>
+                    
+                    <h3>Juistheid van het adres</h3>
+                    <p>
+                        De consument is verantwoordelijk voor het correct opgeven van het leveringsadres bij het plaatsen van de bestelling. AllGoodsMarket is niet aansprakelijk voor vertragingen of mislukte leveringen als gevolg van een onjuist of onvolledig opgegeven adres.
+                    </p>
+
+                    <h3>Wijzigingen na bestelling</h3>
+                    <p>
+                        Adreswijzigingen na het plaatsen van een bestelling zijn mogelijk zolang de bestelling nog niet is verzonden. Neem hiervoor zo snel mogelijk contact op met onze klantenservice. Na verzending is een adreswijziging doorgaans niet meer mogelijk.
+                    </p>
+
+                    <div class="warning-box p-4 rounded-lg mt-4">
+                        <h4 class="font-semibold text-orange-800 mb-2">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>Let op bij bijzondere locaties:
+                        </h4>
+                        <ul class="text-orange-700">
+                            <li>Waddeneilanden: mogelijk langere levertijd (2-4 werkdagen)</li>
+                            <li>Moeilijk bereikbare adressen: mogelijk extra kosten</li>
+                            <li>Postbusadressen: alleen voor kleine pakketten</li>
+                            <li>Bedrijventerreinen: mogelijk beperkte bezorgtijden</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 5: Niet thuis bij levering -->
+                <section id="niet-thuis" class="section-anchor mb-8">
+                    <h2><i class="fas fa-home mr-2 text-green-600"></i>5. Niet thuis bij levering</h2>
+                    
+                    <h3>Wat als u niet thuis bent?</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                <i class="fas fa-user-friends mr-2 text-blue-600"></i>Buren bezorging
+                            </h4>
+                            <p class="text-gray-600 text-sm">
+                                Als u niet thuis bent, kan het pakket bij een buur worden bezorgd (indien mogelijk). 
+                                U ontvangt hiervan direct bericht.
+                            </p>
+                        </div>
+                        
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
+                                <i class="fas fa-redo mr-2 text-green-600"></i>Herlevering
+                            </h4>
+                            <p class="text-gray-600 text-sm">
+                                Niet thuis? Geen probleem! U kunt eenvoudig een nieuwe bezorgafspraak maken 
+                                via de Track & Trace link.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>Afhaalpunten</h3>
+                    <p>
+                        Indien levering aan huis niet mogelijk is, wordt het pakket vaak naar een afhaalpunt in de buurt gebracht. U ontvangt hierover een bericht van de vervoerder met de locatie en openingstijden van het afhaalpunt. U heeft doorgaans 7 dagen de tijd om het pakket op te halen.
+                    </p>
+
+                    <h3>Bezorginstructies</h3>
+                    <p>
+                        Bij het afrekenen kunt u bezorginstructies opgeven, bijvoorbeeld "pakket achterlaten bij de buren op nummer 12" of "pakket achter de schuur plaatsen". De bezorger zal proberen deze instructies op te volgen, indien mogelijk.
+                    </p>
+                </section>
+
+                <!-- Section 6: Track & Trace -->
+                <section id="tracking" class="section-anchor mb-8">
+                    <h2><i class="fas fa-search-location mr-2 text-green-600"></i>6. Track & Trace</h2>
+                    
+                    <h3>Uw bestelling volgen</h3>
+                    <p>
+                        Zodra uw bestelling ons magazijn verlaat, ontvangt u een email met uw Track & Trace code. 
+                        Met deze code kunt u real-time de status van uw pakket volgen via onze website of de website 
+                        van onze bezorgpartner.
+                    </p>
+
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                        <h4 class="font-semibold text-blue-800 mb-3">
+                            <i class="fas fa-mobile-alt mr-2"></i>Track & Trace via verschillende kanalen:
+                        </h4>
+                        <ul class="text-blue-700 space-y-1">
+                            <li><i class="fas fa-envelope mr-2"></i>Email notificaties bij statuswijzigingen</li>
+                            <li><i class="fas fa-sms mr-2"></i>SMS berichten op de dag van bezorging</li>
+                            <li><i class="fas fa-globe mr-2"></i>Online tracking via onze website</li>
+                            <li><i class="fas fa-mobile-alt mr-2"></i>Mobiele app van bezorgpartner</li>
+                        </ul>
+                    </div>
+
+                    <h3>Tracking statussen</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                                <span class="text-sm"><strong>Bestelling verwerkt:</strong> In magazijn</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
+                                <span class="text-sm"><strong>Verzonden:</strong> Onderweg naar bezorgdepot</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-orange-400 rounded-full"></div>
+                                <span class="text-sm"><strong>In bezorging:</strong> Onderweg naar u</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                <span class="text-sm"><strong>Bezorgd:</strong> Succesvol afgeleverd</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-purple-400 rounded-full"></div>
+                                <span class="text-sm"><strong>Afhaalpunt:</strong> Klaar voor ophaling</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-3 h-3 bg-red-400 rounded-full"></div>
+                                <span class="text-sm"><strong>Probleem:</strong> Bezorging mislukt</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 7: Schade of verlies -->
+                <section id="schade-verlies" class="section-anchor mb-8">
+                    <h2><i class="fas fa-box-open mr-2 text-green-600"></i>7. Schade of verlies</h2>
+                    
+                    <h3>Melding van schade</h3>
+                    <p>
+                        Controleer de geleverde producten direct na ontvangst op eventuele schade. Indien u schade constateert, dient u dit zo spoedig mogelijk, doch uiterlijk binnen 48 uur na ontvangst, te melden bij onze klantenservice, bij voorkeur met foto's van de beschadiging en de verpakking.
+                    </p>
+
+                    <h3>Vermiste pakketten</h3>
+                    <p>
+                        Indien een pakket niet binnen de verwachte levertijd is ontvangen en de track & trace status onduidelijk is, dient u dit binnen een redelijke termijn (bijv. 7 dagen na de verwachte leverdatum) te melden bij AllGoodsMarket. Wij zullen dan een onderzoek starten bij de betreffende koerier.
+                    </p>
+
+                    <h3>Oplossing</h3>
+                    <p>
+                        Bij vastgestelde schade of verlies tijdens transport zal AllGoodsMarket zorgdragen voor een passende oplossing, zoals een vervangend product of terugbetaling, in overleg met de consument.
+                    </p>
+                </section>
+
+                <!-- Section 8: Internationale verzending -->
+                <section id="internationale-verzending" class="section-anchor mb-8">
+                    <h2><i class="fas fa-globe-europe mr-2 text-green-600"></i>8. Internationale verzending</h2>
+                    
+                    <h3>Leveringsgebieden</h3>
+                    <p>
+                        Momenteel leveren wij binnen Nederland en België. Wij werken aan uitbreiding naar andere Europese landen. 
+                        Houdt onze website in de gaten voor updates over nieuwe leveringsgebieden.
+                    </p>
+
+                    <h3>Douane en invoerrechten</h3>
+                    <p>
+                        Bij internationale zendingen buiten de Europese Unie kunnen invoerrechten, belastingen en douanekosten van toepassing zijn. Deze kosten zijn voor rekening van de consument en vallen niet onder de verantwoordelijkheid van AllGoodsMarket. Het is de verantwoordelijkheid van de consument om zich te informeren over de geldende importregels van het land van bestemming.
+                    </p>
+
+                    <h3>Afwijkende levertijden</h3>
+                    <p>
+                        Voor leveringen naar België hanteren wij de volgende levertijden: bestellingen die voor 23:59 worden geplaatst, 
+                        worden de volgende werkdag verzonden en zijn binnen 2-4 werkdagen bij u bezorgd.
+                    </p>
+                </section>
+
+                <!-- Section 9: Retouren -->
+                <section id="retouren" class="section-anchor mb-8">
+                    <h2><i class="fas fa-undo mr-2 text-green-600"></i>9. Retouren</h2>
+                    
+                    <h3>Herroepingsrecht</h3>
+                    <p>
+                        U heeft 30 dagen recht op retour na ontvangst van uw bestelling. Binnen deze periode kunt u het product zonder opgaaf van reden retourneren. Het product dient ongebruikt, onbeschadigd en in de originele verpakking te worden geretourneerd.
+                    </p>
+
+                    <h3>Retourkosten</h3>
+                    <p>
+                        Retourkosten zijn voor eigen rekening, tenzij het om een fout van onze kant gaat (verkeerd geleverd product of beschadigd bij aankomst). In dat geval vergoeden wij de retourkosten.
+                    </p>
+
+                    <h3>Retourprocedure</h3>
+                    <ol class="list-decimal list-inside space-y-2 mb-4">
+                        <li>Meld uw retour aan via onze website of klantenservice</li>
+                        <li>Verpak het product zorgvuldig in de originele verpakking</li>
+                        <li>Voeg het retourformulier toe (ontvangen bij levering of te downloaden op onze website)</li>
+                        <li>Stuur het pakket naar het opgegeven retouradres</li>
+                        <li>Na ontvangst en controle van uw retour, ontvangt u binnen 14 dagen uw geld terug</li>
+                    </ol>
+
+                    <div class="highlight-box p-4 rounded-lg mt-4">
+                        <p class="text-gray-700">
+                            Voor meer informatie over retouren, zie onze <a href="#" class="text-green-600 hover:underline">retourpagina</a>.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Section 10: Contact -->
+                <section id="contact" class="section-anchor mb-8">
+                    <h2><i class="fas fa-headset mr-2 text-green-600"></i>10. Contact</h2>
+                    
+                    <p>
+                        Voor vragen over uw bestelling, levering, of deze leveringsvoorwaarden, kunt u contact opnemen met onze klantenservice:
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <h4 class="font-semibold text-blue-800 mb-3">
+                                <i class="fas fa-phone mr-2"></i>Telefonisch
+                            </h4>
+                            <p class="text-blue-700 mb-2">
+                                <strong>0800-1234567</strong><br>
+                                Maandag t/m vrijdag: 08:00 - 18:00<br>
+                                Zaterdag: 09:00 - 17:00
+                            </p>
+                            <p class="text-sm text-blue-600">Gratis vanuit Nederland</p>
+                        </div>
+                        
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                            <h4 class="font-semibold text-green-800 mb-3">
+                                <i class="fas fa-envelope mr-2"></i>Email & Chat
+                            </h4>
+                            <p class="text-green-700 mb-2">
+                                <strong>info@allgoodsmarket.nl</strong><br>
+                                Reactie binnen 24 uur<br>
+                                Live chat: 09:00 - 17:00
+                            </p>
+                            <p class="text-sm text-green-600">Altijd een geschreven antwoord</p>
+                        </div>
+                    </div>
+
+                    <div class="warning-box p-4 rounded-lg mt-6">
+                        <h4 class="font-semibold text-orange-800 mb-2">
+                            <i class="fas fa-info-circle mr-2"></i>Belangrijke informatie bij contact
+                        </h4>
+                        <p class="text-orange-700 text-sm">
+                            Houd altijd uw bestelnummer bij de hand wanneer u contact opneemt. Dit versnelt de afhandeling 
+                            van uw vraag aanzienlijk. U vindt uw bestelnummer in de bevestigingsmail en op uw factuur.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Last Updated -->
+                <div class="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-500">
+                    <p>
+                        <i class="fas fa-calendar mr-2"></i>
+                        Deze leveringsvoorwaarden zijn voor het laatst bijgewerkt op 15 januari 2024
+                    </p>
+                    <p class="mt-2">
+                        <i class="fas fa-download mr-2"></i>
+                        <a href="#" class="text-green-600 hover:underline">Download PDF-versie</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-8 sm:mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="sm:col-span-2 md:col-span-1">
+                    <h3 class="font-bold text-lg mb-4">
+                        <i class="fas fa-store mr-2" aria-hidden="true"></i>AllGoodsMarket
+                    </h3>
+                    <p class="text-gray-300 mb-4 text-sm sm:text-base">Uw vertrouwde partner voor online winkelen.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                
+                 <div>
+                    <h4 class="font-semibold mb-4">Klantenservice</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../contact/index.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="../footer pages/veelgesteldevragen.html" class="hover:text-white">Veelgestelde vragen</a></li>
+                        <li><a href="../footer pages/retourneren.html" class="hover:text-white">Retourneren</a></li>
+                        <li><a href="../footer pages/garantie.html" class="hover:text-white">Garantie</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Informatie</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../footer pages/over_ons.html" class="hover:text-white">Over ons</a></li>
+                        <li><a href="../footer pages/leveringsvoorwaarden.html" class="hover:text-white">Leveringsvoorwaarden</a></li>
+                        <li><a href="../footer pages/privacy_beleid.html" class="hover:text-white">Privacy beleid</a></li>
+                        <li><a href="../footer pages/algemene_voorwaarden.html" class="hover:text-white text-blue-400">Algemene voorwaarden</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Betalingsmogelijkheden</h4>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">VISA</div>
+                        <div class="bg-white text-red-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">MC</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">PayPal</div>
+                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">iDEAL</div>
+                    </div>
+                    <div class="flex items-center text-green-400">
+                        <i class="fas fa-lock mr-2" aria-hidden="true"></i>
+                        <span class="text-sm">SSL Beveiligd</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300">
+                <p class="text-sm sm:text-base">&copy; 2024 AllGoodsMarket. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            // Mobile search functionality
+            const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            
+            // Toggle mobile menu
+            if (mobileMenuButton && mobileMenu && closeMobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('active');
+                    document.body.classList.add('overlay-open');
+                });
+                
+                closeMobileMenu.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    setTimeout(function() {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    document.body.classList.remove('overlay-open');
+                });
+            }
+            
+            // Toggle mobile search
+            if (mobileSearchToggle && mobileSearchInput) {
+                mobileSearchToggle.addEventListener('click', function() {
+                    mobileSearchInput.classList.toggle('hidden');
+                });
+            }
+            
+            // Close overlays when clicking outside
+            document.addEventListener('click', function(event) {
+                if (mobileMenu && !mobileMenu.classList.contains('hidden') && 
+                    mobileMenuButton && !mobileMenuButton.contains(event.target) && 
+                    !mobileMenu.contains(event.target)) {
+                    closeMobileMenu.click();
+                }
+            });
+            
+            // Handle window resize: restore layout on desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) {
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        closeMobileMenu.click();
+                    }
+                    
+                    // Hide mobile search if open
+                    if (mobileSearchInput && !mobileSearchInput.classList.contains('hidden')) {
+                        mobileSearchInput.classList.add('hidden');
+                    }
+                }
+            });
+
+            // Smooth scrolling for table of contents links
+            document.querySelectorAll('.toc-item').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```

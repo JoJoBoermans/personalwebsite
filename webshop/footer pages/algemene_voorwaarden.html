@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algemene Voorwaarden - AllGoodsMarket</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #3b82f6;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Hide scrollbar when menu is open */
+        body.overlay-open {
+            overflow: hidden;
+        }
+        
+        /* Banner styling */
+        .page-banner {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+        
+        /* Terms content styling */
+        .terms-content h2 {
+            color: #1f2937;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .terms-content h3 {
+            color: #374151;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .terms-content p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+        
+        .terms-content ul {
+            margin-bottom: 1rem;
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        
+        .terms-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .toc-item {
+            transition: all 0.2s;
+        }
+        
+        .toc-item:hover {
+            background-color: #f3f4f6;
+            transform: translateX(4px);
+        }
+        
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Offset for fixed header when jumping to sections */
+        .section-anchor {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top Bar - Simplified for mobile -->
+            <div class="flex flex-wrap justify-between items-center py-2 text-xs sm:text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span><i class="fas fa-phone mr-1"></i> 0800-1234567</span>
+                    <span class="hidden sm:inline"><i class="fas fa-envelope mr-1"></i> info@allgoodsmarket.nl</span>
+                </div>
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span class="hidden sm:inline"><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                    <span><i class="fas fa-shield-alt mr-1"></i> 30 dagen retour</span>
+                </div>
+            </div>
+            
+            <!-- Main Header -->
+            <div class="flex items-center justify-between py-4">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none mr-3" aria-label="Menu openen">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <h1 class="text-xl sm:text-2xl font-bold text-blue-600">
+                        <i class="fas fa-store mr-1 sm:mr-2"></i>AllGoodsMarket
+                    </h1>
+                </div>
+                
+                <!-- Desktop Search Bar (hidden on mobile) -->
+                <div class="hidden lg:flex-1 lg:max-w-xl lg:mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="Zoek naar producten..." 
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               aria-label="Zoeken">
+                        <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Icons -->
+                <div class="flex items-center space-x-3 sm:space-x-6">
+                    <!-- Mobile Search Toggle -->
+                    <button id="mobile-search-toggle" class="lg:hidden text-gray-600 hover:text-blue-600" aria-label="Zoeken tonen">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    
+                    <a href="#" class="hidden sm:inline-block text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-user mr-1"></i> <span class="hidden md:inline">Account</span>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 relative">
+                        <i class="fas fa-shopping-cart mr-1"></i> 
+                        <span class="hidden sm:inline">Winkelwagen</span>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" aria-label="3 items in winkelwagen">3</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Search Input (initially hidden) -->
+            <div id="mobile-search-input" class="lg:hidden pb-4 hidden">
+                <div class="relative">
+                    <input type="text" placeholder="Zoek naar producten..." 
+                           class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
+                           aria-label="Zoeken">
+                    <button class="absolute right-2 top-3 text-gray-400 hover:text-blue-600" aria-label="Zoeken">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block py-3 border-t">
+                <ul class="flex space-x-8">
+                    <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="nav-link text-gray-700 hover:text-blue-600">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="nav-link text-gray-700 hover:text-blue-600">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="nav-link text-gray-700 hover:text-blue-600">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="nav-link text-gray-700 hover:text-blue-600">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="nav-link text-gray-700 hover:text-blue-600">Aanbiedingen</a></li>
+                    <li><a href="#" class="nav-link active text-gray-700 hover:text-blue-600">Algemene Voorwaarden</a></li>
+                    <li><a href="../contact/index.html" class="nav-link text-gray-700 hover:text-blue-600">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-900 bg-opacity-95 z-50 hidden flex flex-col mobile-menu lg:hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-mobile-menu" class="text-white text-3xl focus:outline-none" aria-label="Menu sluiten">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center">
+            <nav class="text-center">
+                <ul class="space-y-6">
+                    <li><a href="../startpagina/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Aanbiedingen</a></li>
+                    <li><a href="#" class="text-white text-2xl hover:text-blue-200 block py-2 font-bold">Algemene Voorwaarden</a></li>
+                    <li><a href="../contact/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="p-6 flex justify-center space-x-8">
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Account"><i class="fas fa-user text-xl"></i></a>
+            <a href="#" class="text-white hover:text-blue-200" aria-label="Winkelwagen"><i class="fas fa-shopping-cart text-xl"></i></a>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-100 py-3">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm" aria-label="Kruimelpad">
+                <a href="../startpagina/index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2 text-gray-500">/</span>
+                <span class="text-gray-700">Algemene Voorwaarden</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Banner -->
+    <div class="page-banner text-white py-5 sm:py-7">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
+                <i class="fas fa-file-contract mr-2 sm:mr-3"></i>Algemene Voorwaarden
+            </h1>
+            <p class="text-lg mb-1 opacity-90">Transparant, eerlijk en duidelijk shoppen bij AllGoodsMarket</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div class="bg-white rounded-lg shadow-md p-6 sm:p-8 lg:p-10 max-w-4xl mx-auto">
+            <!-- Table of Contents -->
+            <div class="mb-8 p-5 bg-gray-50 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-bold mb-4 text-gray-800 flex items-center">
+                    <i class="fas fa-list-ul mr-2 text-blue-600"></i>Inhoudsopgave
+                </h2>
+                <nav class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <a href="#algemeen" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600">
+                        1. Algemene bepalingen
+                    </a>
+                    <a href="#overeenkomst" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600">
+                        2. Totstandkoming overeenkomst
+                    </a>
+                    <a href="#prijzen" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600">
+                        3. Prijzen en betaling
+                    </a>
+                    <a href="#levering" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600">
+                        4. Levering en uitvoering
+                    </a>
+                    <a href="#herroepingsrecht" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600">
+                        5. Herroepingsrecht
+                    </a>
+                    <a href="#garantie" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600">
+                        6. Garantie en conformiteit
+                    </a>
+                    <a href="#aansprakelijkheid" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600">
+                        7. Aansprakelijkheid
+                    </a>
+                    <a href="#privacy" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600">
+                        8. Privacy en gegevensbescherming
+                    </a>
+                    <a href="#intellectueel" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600">
+                        9. Intellectueel eigendom
+                    </a>
+                    <a href="#toepasselijk-recht" class="toc-item px-3 py-2 rounded-lg text-sm text-gray-700 hover:text-blue-600">
+                        10. Toepasselijk recht
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Terms Content -->
+            <div class="terms-content">
+                <div class="highlight-box p-4 rounded-lg mb-8">
+                    <p class="text-lg text-gray-700 mb-2">
+                        <strong>AllGoodsMarket B.V.</strong>
+                    </p>
+                    <p class="text-sm text-gray-600">
+                        Laatst bijgewerkt: 15 januari 2024<br>
+                        Versie: 2.1
+                    </p>
+                </div>
+
+                <!-- Section 1: Algemene bepalingen -->
+                <section id="algemeen" class="section-anchor mb-8">
+                    <h2><i class="fas fa-info-circle mr-2 text-blue-600"></i>1. Algemene bepalingen</h2>
+                    
+                    <h3>1.1 Definities</h3>
+                    <p>
+                        In deze algemene voorwaarden worden de volgende begrippen met een hoofdletter gebruikt in de navolgende betekenis, tenzij uitdrukkelijk anders is aangegeven:
+                    </p>
+                    <ul>
+                        <li><strong>Ondernemer:</strong> AllGoodsMarket B.V., gevestigd te Amsterdam, KvK-nummer 12345678, BTW-nummer NL123456789B01;</li>
+                        <li><strong>Consument:</strong> de natuurlijke persoon die niet handelt in de uitoefening van beroep of bedrijf en een overeenkomst op afstand aangaat met de ondernemer;</li>
+                        <li><strong>Overeenkomst op afstand:</strong> een overeenkomst die tussen de ondernemer en de consument wordt gesloten in het kader van een georganiseerd systeem voor verkoop op afstand;</li>
+                        <li><strong>Website:</strong> de online webshop van de ondernemer op het internetadres www.allgoodsmarket.nl;</li>
+                        <li><strong>Product:</strong> alle goederen en/of diensten die door de ondernemer worden aangeboden.</li>
+                    </ul>
+
+                    <h3>1.2 Toepasselijkheid</h3>
+                    <p>
+                        Deze algemene voorwaarden zijn van toepassing op elke aanbieding van de ondernemer en op elke tot stand gekomen overeenkomst op afstand en bestellingen tussen ondernemer en consument. Voordat de overeenkomst op afstand wordt gesloten, wordt de tekst van deze algemene voorwaarden aan de consument beschikbaar gesteld.
+                    </p>
+
+                    <h3>1.3 Wijzigingen</h3>
+                    <p>
+                        Deze algemene voorwaarden kunnen uitsluitend worden gewijzigd indien dit noodzakelijk is als gevolg van wijzigingen in de relevante wet- en regelgeving of indien de wijzigingen in het voordeel zijn van de consument.
+                    </p>
+                </section>
+
+                <!-- Section 2: Totstandkoming overeenkomst -->
+                <section id="overeenkomst" class="section-anchor mb-8">
+                    <h2><i class="fas fa-handshake mr-2 text-blue-600"></i>2. Totstandkoming van de overeenkomst</h2>
+                    
+                    <h3>2.1 Aanbiedingen</h3>
+                    <p>
+                        Alle aanbiedingen zijn vrijblijvend, tenzij anders aangegeven. De ondernemer is slechts aan zijn aanbieding gebonden indien dit uitdrukkelijk wordt aangegeven. Aanbiedingen gelden zolang de voorraad strekt en kunnen te allen tijde worden ingetrokken.
+                    </p>
+
+                    <h3>2.2 Bestelling door de consument</h3>
+                    <p>
+                        De consument kan het product bestellen via de website van de ondernemer. Bij het plaatsen van de bestelling geeft de consument aan akkoord te gaan met deze algemene voorwaarden. De overeenkomst komt tot stand op het moment dat de ondernemer de bestelling heeft bevestigd door middel van een bevestigingsmail.
+                    </p>
+
+                    <h3>2.3 Registratie en verificatie</h3>
+                    <p>
+                        De ondernemer kan zich binnen wettelijke kaders op de hoogte stellen van of de consument aan zijn betalingsverplichtingen kan voldoen, alsmede van al die feiten en factoren die van belang zijn voor een verantwoorde aangaan van de overeenkomst op afstand.
+                    </p>
+                </section>
+
+                <!-- Section 3: Prijzen en betaling -->
+                <section id="prijzen" class="section-anchor mb-8">
+                    <h2><i class="fas fa-euro-sign mr-2 text-blue-600"></i>3. Prijzen en betaling</h2>
+                    
+                    <h3>3.1 Prijzen</h3>
+                    <p>
+                        Alle prijzen die worden gehanteerd op de website van de ondernemer zijn inclusief BTW en exclusief eventuele verzendkosten, tenzij anders aangegeven. Prijswijzigingen als gevolg van wijzigingen in BTW-tarieven zijn toegestaan.
+                    </p>
+
+                    <h3>3.2 Betaling</h3>
+                    <p>
+                        De consument dient binnen 14 dagen na het sluiten van de overeenkomst het verschuldigde bedrag te voldoen. Voor overeenkomsten waarbij de consument een dienst heeft besteld, geldt deze termijn nadat de consument de bevestiging van de overeenkomst heeft ontvangen.
+                    </p>
+
+                    <h3>3.3 Betalingsmethoden</h3>
+                    <p>
+                        De ondernemer accepteert de volgende betalingsmethoden:
+                    </p>
+                    <ul>
+                        <li>iDEAL</li>
+                        <li>Creditcard (Visa, Mastercard)</li>
+                        <li>PayPal</li>
+                        <li>Bankoverschrijving</li>
+                        <li>Klarna (achteraf betalen)</li>
+                    </ul>
+                </section>
+
+                <!-- Section 4: Levering en uitvoering -->
+                <section id="levering" class="section-anchor mb-8">
+                    <h2><i class="fas fa-truck mr-2 text-blue-600"></i>4. Levering en uitvoering</h2>
+                    
+                    <h3>4.1 Levertijd</h3>
+                    <p>
+                        De ondernemer zal de bestelde producten met bekwame spoed doch uiterlijk binnen 30 dagen leveren, tenzij een langere leveringstermijn is overeengekomen. Indien de levering vertraging ondervindt, of indien een bestelling niet dan wel slechts gedeeltelijk kan worden uitgevoerd, ontvangt de consument hiervan uiterlijk 30 dagen nadat hij de bestelling geplaatst heeft bericht.
+                    </p>
+
+                    <h3>4.2 Plaats van levering</h3>
+                    <p>
+                        Levering geschiedt aan het door de consument opgegeven adres. Het risico van verlies en/of beschadiging van producten berust bij de ondernemer tot het moment van bezorging aan de consument of een vooraf aangewezen en aan de ondernemer bekend gemaakte vertegenwoordiger.
+                    </p>
+
+                    <h3>4.3 Verzendkosten</h3>
+                    <p>
+                        Verzendkosten worden berekend volgens de geldende tarieven en worden duidelijk vermeld voordat de bestelling wordt geplaatst. Bij bestellingen vanaf €50 zijn de verzendkosten gratis binnen Nederland.
+                    </p>
+                </section>
+
+                <!-- Section 5: Herroepingsrecht -->
+                <section id="herroepingsrecht" class="section-anchor mb-8">
+                    <h2><i class="fas fa-undo mr-2 text-blue-600"></i>5. Herroepingsrecht</h2>
+                    
+                    <h3>5.1 Herroepingstermijn</h3>
+                    <p>
+                        De consument kan een overeenkomst betreffende de koop van een product gedurende een bedenktijd van 30 dagen zonder opgave van redenen ontbinden. Deze bedenktijd gaat in op de dag na ontvangst van het product door de consument of een door de consument aangewezen derde, die niet de vervoerder is.
+                    </p>
+
+                    <h3>5.2 Uitoefening herroepingsrecht</h3>
+                    <p>
+                        Tijdens de bedenktijd zal de consument zorgvuldig omgaan met het product en de verpakking. Hij zal het product slechts uitpakken of gebruiken in de mate die nodig is om de aard, de kenmerken en de werking van het product vast te stellen.
+                    </p>
+
+                    <h3>5.3 Kosten van retourzending</h3>
+                    <p>
+                        Als de consument gebruik maakt van zijn herroepingsrecht, komen de kosten van terugzending voor zijn rekening. De consument is alleen aansprakelijk voor waardevermindering van het product die het gevolg is van een manier van omgaan met het product die verder gaat dan toegestaan in lid 5.2.
+                    </p>
+                </section>
+
+                <!-- Section 6: Garantie en conformiteit -->
+                <section id="garantie" class="section-anchor mb-8">
+                    <h2><i class="fas fa-shield-alt mr-2 text-blue-600"></i>6. Garantie en conformiteit</h2>
+                    
+                    <h3>6.1 Wettelijke garantie</h3>
+                    <p>
+                        De ondernemer staat er voor in dat de producten voldoen aan de overeenkomst, de in de aanbieding vermelde specificaties, aan de redelijke eisen van deugdelijkheid en/of bruikbaarheid en de op de datum van de totstandkoming van de overeenkomst bestaande wettelijke bepalingen en/of overheidsvoorschriften.
+                    </p>
+
+                    <h3>6.2 Fabrieksgarantie</h3>
+                    <p>
+                        Een door de ondernemer, fabrikant of importeur verstrekte garantie doet niets af aan de wettelijke rechten en vorderingen die de consument op grond van de overeenkomst tegenover de ondernemer kan doen gelden.
+                    </p>
+
+                    <h3>6.3 Melding gebreken</h3>
+                    <p>
+                        De consument dient gebreken binnen bekwame tijd na ontdekking aan de ondernemer te melden. De consument dient een zo gedetailleerd mogelijke omschrijving van het gebrek te geven.
+                    </p>
+                </section>
+
+                <!-- Section 7: Aansprakelijkheid -->
+                <section id="aansprakelijkheid" class="section-anchor mb-8">
+                    <h2><i class="fas fa-balance-scale mr-2 text-blue-600"></i>7. Aansprakelijkheid</h2>
+                    
+                    <h3>7.1 Beperking aansprakelijkheid</h3>
+                    <p>
+                        De aansprakelijkheid van de ondernemer is beperkt tot hetgeen in deze bepaling is geregeld. De ondernemer is niet aansprakelijk voor schade die ontstaat door of verband houdt met het gebruik van de website of producten, tenzij deze schade het gevolg is van opzet of bewuste roekeloosheid van de ondernemer.
+                    </p>
+
+                    <h3>7.2 Maximale vergoeding</h3>
+                    <p>
+                        De aansprakelijkheid van de ondernemer wegens toerekenbare tekortkoming in de nakoming van de overeenkomst is beperkt tot vergoeding van directe schade tot maximaal het bedrag van de betaalde prijs voor het betreffende product.
+                    </p>
+                </section>
+
+                <!-- Section 8: Privacy en gegevensbescherming -->
+                <section id="privacy" class="section-anchor mb-8">
+                    <h2><i class="fas fa-user-shield mr-2 text-blue-600"></i>8. Privacy en gegevensbescherming</h2>
+                    
+                    <h3>8.1 Verwerking persoonsgegevens</h3>
+                    <p>
+                        De ondernemer verwerkt persoonsgegevens van consumenten in overeenstemming met de toepasselijke privacy wetgeving, waaronder de Algemene Verordening Gegevensbescherming (AVG). Voor meer informatie over de verwerking van persoonsgegevens verwijzen wij naar ons <a href="#" class="text-blue-600 hover:underline">privacybeleid</a>.
+                    </p>
+
+                    <h3>8.2 Doelbinding</h3>
+                    <p>
+                        Persoonsgegevens worden uitsluitend verwerkt voor de doeleinden waarvoor zij zijn verzameld, te weten: het uitvoeren van overeenkomsten, het behandelen van vragen en klachten, het verzenden van nieuwsbrieven (met toestemming), en het naleven van wettelijke verplichtingen.
+                    </p>
+                </section>
+
+                <!-- Section 9: Intellectueel eigendom -->
+                <section id="intellectueel" class="section-anchor mb-8">
+                    <h2><i class="fas fa-copyright mr-2 text-blue-600"></i>9. Intellectueel eigendom</h2>
+                    
+                    <h3>9.1 Auteursrechten</h3>
+                    <p>
+                        Alle intellectuele eigendomsrechten op de website, waaronder maar niet beperkt tot auteursrechten, merkrechten, handelsnamen, teksten, afbeeldingen en technische ontwerpen, berusten bij de ondernemer of zijn rechtmatig aan hem in licentie verstrekt.
+                    </p>
+
+                    <h3>9.2 Gebruiksrechten</h3>
+                    <p>
+                        De consument verkrijgt uitsluitend het recht om de website en de daarop aangeboden producten te gebruiken voor persoonlijke, niet-commerciële doeleinden. Elk ander gebruik is uitdrukkelijk verboden zonder voorafgaande schriftelijke toestemming van de ondernemer.
+                    </p>
+                </section>
+
+                <!-- Section 10: Toepasselijk recht -->
+                <section id="toepasselijk-recht" class="section-anchor mb-8">
+                    <h2><i class="fas fa-gavel mr-2 text-blue-600"></i>10. Toepasselijk recht en geschillenbeslechting</h2>
+                    
+                    <h3>10.1 Nederlands recht</h3>
+                    <p>
+                        Op alle overeenkomsten tussen de ondernemer en de consument waarop deze algemene voorwaarden betrekking hebben, is uitsluitend Nederlands recht van toepassing, ook indien de consument woonachtig is in het buitenland.
+                    </p>
+
+                    <h3>10.2 Geschillencommissie</h3>
+                    <p>
+                        Geschillen tussen de ondernemer en de consument over de totstandkoming of uitvoering van overeenkomsten met betrekking tot door deze ondernemer te leveren of geleverde producten en diensten, kunnen zowel door de consument als de ondernemer worden voorgelegd aan de Geschillencommissie Thuiswinkel.
+                    </p>
+
+                    <h3>10.3 Bevoegde rechter</h3>
+                    <p>
+                        Indien een geschil niet vatbaar is voor behandeling door de Geschillencommissie, dan zijn uitsluitend de Nederlandse rechters bevoegd. In eerste aanleg is de rechtbank van de woonplaats van de ondernemer bevoegd, tenzij de wet anders bepaalt.
+                    </p>
+                </section>
+
+                <!-- Contact Information -->
+                <section class="mt-12 p-6 bg-gray-50 rounded-lg border-l-4 border-blue-600">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-building mr-2 text-blue-600"></i>Contactgegevens
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-semibold text-gray-700 mb-2">AllGoodsMarket B.V.</h3>
+                            <div class="space-y-1 text-gray-600">
+                                <p><i class="fas fa-map-marker-alt mr-2 text-blue-600"></i>Hoofdstraat 123</p>
+                                <p class="ml-6">1012 AB Amsterdam</p>
+                                <p class="ml-6">Nederland</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-semibold text-gray-700 mb-2">Contact</h3>
+                            <div class="space-y-1 text-gray-600">
+                                <p><i class="fas fa-phone mr-2 text-blue-600"></i>0800-1234567</p>
+                                <p><i class="fas fa-envelope mr-2 text-blue-600"></i>info@allgoodsmarket.nl</p>
+                                <p><i class="fas fa-globe mr-2 text-blue-600"></i>www.allgoodsmarket.nl</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                            <div>
+                                <strong>KvK-nummer:</strong> 12345678
+                            </div>
+                            <div>
+                                <strong>BTW-nummer:</strong> NL123456789B01
+                            </div>
+                            <div>
+                                <strong>IBAN:</strong> NL12 ABCD 0123 4567 89
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Last Updated -->
+                <div class="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-500">
+                    <p>
+                        <i class="fas fa-calendar mr-2"></i>
+                        Deze algemene voorwaarden zijn voor het laatst bijgewerkt op 15 januari 2024
+                    </p>
+                    <p class="mt-2">
+                        <i class="fas fa-download mr-2"></i>
+                        <a href="#" class="text-blue-600 hover:underline">Download PDF-versie</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-8 sm:mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="sm:col-span-2 md:col-span-1">
+                    <h3 class="font-bold text-lg mb-4">
+                        <i class="fas fa-store mr-2" aria-hidden="true"></i>AllGoodsMarket
+                    </h3>
+                    <p class="text-gray-300 mb-4 text-sm sm:text-base">Uw vertrouwde partner voor online winkelen.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-white" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Klantenservice</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../contact/index.html" class="hover:text-white">Contact</a></li>
+                        <li><a href="../footer pages/veelgesteldevragen.html" class="hover:text-white">Veelgestelde vragen</a></li>
+                        <li><a href="../footer pages/retourneren.html" class="hover:text-white">Retourneren</a></li>
+                        <li><a href="../footer pages/garantie.html" class="hover:text-white">Garantie</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Informatie</h4>
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
+                        <li><a href="../footer pages/over_ons.html" class="hover:text-white">Over ons</a></li>
+                        <li><a href="../footer pages/leveringsvoorwaarden.html" class="hover:text-white">Leveringsvoorwaarden</a></li>
+                        <li><a href="../footer pages/privacy_beleid.html" class="hover:text-white">Privacy beleid</a></li>
+                        <li><a href="../footer pages/algemene_voorwaarden.html" class="hover:text-white text-blue-400">Algemene voorwaarden</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Betalingsmogelijkheden</h4>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">VISA</div>
+                        <div class="bg-white text-red-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">MC</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">PayPal</div>
+                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">iDEAL</div>
+                    </div>
+                    <div class="flex items-center text-green-400">
+                        <i class="fas fa-lock mr-2" aria-hidden="true"></i>
+                        <span class="text-sm">SSL Beveiligd</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300">
+                <p class="text-sm sm:text-base">&copy; 2024 AllGoodsMarket. Alle rechten voorbehouden.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            // Mobile search functionality
+            const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            
+            // Toggle mobile menu
+            if (mobileMenuButton && mobileMenu && closeMobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenu.classList.add('active');
+                    document.body.classList.add('overlay-open');
+                });
+                
+                closeMobileMenu.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    setTimeout(function() {
+                        mobileMenu.classList.add('hidden');
+                    }, 300);
+                    document.body.classList.remove('overlay-open');
+                });
+            }
+            
+            // Toggle mobile search
+            if (mobileSearchToggle && mobileSearchInput) {
+                mobileSearchToggle.addEventListener('click', function() {
+                    mobileSearchInput.classList.toggle('hidden');
+                });
+            }
+            
+            // Close overlays when clicking outside
+            document.addEventListener('click', function(event) {
+                if (mobileMenu && !mobileMenu.classList.contains('hidden') && 
+                    mobileMenuButton && !mobileMenuButton.contains(event.target) && 
+                    !mobileMenu.contains(event.target)) {
+                    closeMobileMenu.click();
+                }
+            });
+            
+            // Handle window resize: restore layout on desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) {
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        closeMobileMenu.click();
+                    }
+                    
+                    // Hide mobile search if open
+                    if (mobileSearchInput && !mobileSearchInput.classList.contains('hidden')) {
+                        mobileSearchInput.classList.add('hidden');
+                    }
+                }
+            });
+
+            // Smooth scrolling for table of contents links
+            document.querySelectorAll('.toc-item').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
