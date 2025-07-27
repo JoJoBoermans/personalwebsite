@@ -96,6 +96,17 @@
             border-color: #16a34a;
             border-width: 3px;
         }
+
+        /* Huis & Tuin Banner Styling */
+.huis-tuin-banner {
+    background: linear-gradient(135deg, #16a34a 0%, #047857 100%);
+    animation: huisTuinPulse 3s infinite;
+}
+@keyframes huisTuinPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
+}
+
         
         /* Mobile adjustments for color swatches */
         @media (max-width: 640px) {
@@ -320,6 +331,35 @@
             </nav>
         </div>
     </div>
+
+    <!-- Huis & Tuin Banner -->
+<div class="huis-tuin-banner text-white py-6 sm:py-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">
+            <i class="fas fa-seedling mr-2 sm:mr-3"></i>Huis & Tuin
+        </h2>
+        <p class="text-lg sm:text-xl mb-4">Maak van uw huis een thuis met stijlvolle producten</p>
+        <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-8 text-xs sm:text-sm">
+            <div class="flex items-center">
+                <i class="fas fa-leaf mr-2"></i>
+                <span>Duurzame keuzes</span>
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-tools mr-2"></i>
+                <span>Professionele kwaliteit</span>
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-shipping-fast mr-2"></i>
+                <span>Snelle bezorging</span>
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-home mr-2"></i>
+                <span>Binnen & buiten</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
