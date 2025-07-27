@@ -51,33 +51,75 @@
             color: white;
             font-size: 2rem;
         }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        /* Mobile filter overlay */
+        .filter-overlay {
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .filter-overlay.active {
+            transform: translateY(0);
+        }
+        
+        /* Hide scrollbar when overlay is open */
+        body.overlay-open {
+            overflow: hidden;
+        }
+        
+        /* Mobile category scroll */
+        .category-scroll {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .category-scroll::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-lg">
         <div class="container mx-auto px-4">
-            <!-- Top Bar -->
-            <div class="flex items-center justify-between py-2 text-sm text-gray-600 border-b">
-                <div class="flex items-center space-x-4">
+            <!-- Top Bar - Simplified for mobile -->
+            <div class="flex flex-wrap justify-between items-center py-2 text-sm text-gray-600 border-b">
+                <div class="flex items-center space-x-2 sm:space-x-4">
                     <span><i class="fas fa-phone mr-1"></i> 0800-1234567</span>
-                    <span><i class="fas fa-envelope mr-1"></i> info@webshop.nl</span>
+                    <span class="hidden sm:inline"><i class="fas fa-envelope mr-1"></i> info@webshop.nl</span>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <span><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
+                <div class="flex items-center space-x-2 sm:space-x-4">
+                    <span class="hidden sm:inline"><i class="fas fa-truck mr-1"></i> Gratis verzending vanaf €50</span>
                     <span><i class="fas fa-shield-alt mr-1"></i> 30 dagen retour</span>
                 </div>
             </div>
             
             <!-- Main Header -->
             <div class="flex items-center justify-between py-4">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none mr-3">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                
+                <!-- Logo -->
                 <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-blue-600 mr-8">
-                        <i class="fas fa-store mr-2"></i>BetrouwbareShop
+                    <h1 class="text-xl sm:text-2xl font-bold text-blue-600">
+                        <i class="fas fa-store mr-1 sm:mr-2"></i>BetrouwbareShop
                     </h1>
                 </div>
                 
-                <div class="flex-1 max-w-xl mx-8">
+                <!-- Desktop Search Bar (hidden on mobile) -->
+                <div class="hidden lg:flex-1 lg:max-w-xl lg:mx-8">
                     <div class="relative">
                         <input type="text" placeholder="Zoek naar producten..." 
                                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -87,19 +129,37 @@
                     </div>
                 </div>
                 
-                <div class="flex items-center space-x-6">
-                    <a href="#" class="text-gray-600 hover:text-blue-600">
-                        <i class="fas fa-user mr-1"></i> Account
+                <!-- Icons -->
+                <div class="flex items-center space-x-3 sm:space-x-6">
+                    <!-- Mobile Search Toggle -->
+                    <button id="mobile-search-toggle" class="lg:hidden text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    
+                    <a href="#" class="hidden sm:inline-block text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-user mr-1"></i> <span class="hidden md:inline">Account</span>
                     </a>
                     <a href="#" class="text-gray-600 hover:text-blue-600 relative">
-                        <i class="fas fa-shopping-cart mr-1"></i> Winkelwagen
+                        <i class="fas fa-shopping-cart mr-1"></i> 
+                        <span class="hidden sm:inline">Winkelwagen</span>
                         <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
                     </a>
                 </div>
             </div>
             
-            <!-- Navigation -->
-            <nav class="py-3 border-t">
+            <!-- Mobile Search Input (initially hidden) -->
+            <div id="mobile-search-input" class="lg:hidden pb-4 hidden">
+                <div class="relative">
+                    <input type="text" placeholder="Zoek naar producten..." 
+                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button class="absolute right-2 top-2 text-gray-400 hover:text-blue-600">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:block py-3 border-t">
                 <ul class="flex space-x-8">
                     <li><a href="../startpagina/index.html" class="nav-link text-gray-700 hover:text-blue-600">Home</a></li>
                     <li><a href="../elektronica/index.html" class="nav-link active text-gray-700 hover:text-blue-600">Elektronica</a></li>
@@ -113,6 +173,32 @@
         </div>
     </header>
 
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-900 bg-opacity-95 z-50 hidden flex flex-col mobile-menu lg:hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-mobile-menu" class="text-white text-3xl focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex-1 flex flex-col justify-center items-center">
+            <nav class="text-center">
+                <ul class="space-y-6">
+                    <li><a href="../startpagina/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Home</a></li>
+                    <li><a href="../elektronica/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Elektronica</a></li>
+                    <li><a href="../mode/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Mode</a></li>
+                    <li><a href="../huis&tuin/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Huis & Tuin</a></li>
+                    <li><a href="../sport/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Sport</a></li>
+                    <li><a href="../aanbiedingen/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Aanbiedingen</a></li>
+                    <li><a href="../contact/index.html" class="text-white text-2xl hover:text-blue-200 block py-2">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="p-6 flex justify-center space-x-8">
+            <a href="#" class="text-white hover:text-blue-200"><i class="fas fa-user text-xl"></i></a>
+            <a href="#" class="text-white hover:text-blue-200"><i class="fas fa-shopping-cart text-xl"></i></a>
+        </div>
+    </div>
+
     <!-- Breadcrumb -->
     <div class="bg-gray-100 py-3">
         <div class="container mx-auto px-4">
@@ -125,10 +211,10 @@
     </div>
 
     <!-- Main Content -->
-    <div class="container mx-auto px-4 py-8">
-        <div class="flex gap-8">
-            <!-- Sidebar Filters -->
-            <aside class="w-64 filter-section rounded-lg p-6">
+    <div class="container mx-auto px-4 py-4 sm:py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Desktop Sidebar Filters -->
+            <aside class="hidden lg:block w-64 filter-section rounded-lg p-6">
                 <h2 class="text-xl font-bold mb-6 text-gray-800">
                     <i class="fas fa-filter mr-2"></i>Filters
                 </h2>
@@ -138,27 +224,27 @@
                     <h3 class="font-semibold mb-3 text-gray-700">Categorieën</h3>
                     <div class="space-y-2">
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2" checked>
+                            <input type="checkbox" class="mr-2 h-4 w-4" checked>
                             <span class="text-sm">Smartphones (24)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Laptops (18)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Tablets (12)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Audio (31)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Gaming (15)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Smart Home (22)</span>
                         </label>
                     </div>
@@ -169,23 +255,23 @@
                     <h3 class="font-semibold mb-3 text-gray-700">Merken</h3>
                     <div class="space-y-2">
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Apple (42)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Samsung (38)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Sony (25)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">HP (19)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">Dell (16)</span>
                         </label>
                     </div>
@@ -196,19 +282,19 @@
                     <h3 class="font-semibold mb-3 text-gray-700">Prijs</h3>
                     <div class="space-y-2">
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">€0 - €100 (28)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">€100 - €500 (45)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">€500 - €1000 (32)</span>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <span class="text-sm">€1000+ (17)</span>
                         </label>
                     </div>
@@ -219,21 +305,21 @@
                     <h3 class="font-semibold mb-3 text-gray-700">Beoordeling</h3>
                     <div class="space-y-2">
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <div class="flex items-center">
                                 <div class="star-rating mr-2">★★★★★</div>
                                 <span class="text-sm">(45)</span>
                             </div>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <div class="flex items-center">
                                 <div class="star-rating mr-2">★★★★☆</div>
                                 <span class="text-sm">& meer (78)</span>
                             </div>
                         </label>
                         <label class="flex items-center">
-                            <input type="checkbox" class="mr-2">
+                            <input type="checkbox" class="mr-2 h-4 w-4">
                             <div class="flex items-center">
                                 <div class="star-rating mr-2">★★★☆☆</div>
                                 <span class="text-sm">& meer (122)</span>
@@ -246,74 +332,83 @@
             <!-- Main Content Area -->
             <main class="flex-1">
                 <!-- Page Header -->
-                <div class="flex items-center justify-between mb-6">
-                    <div>
-                        <h1 class="text-3xl font-bold text-gray-800 mb-2">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 sm:mb-6">
+                    <div class="mb-4 sm:mb-0">
+                        <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
                             <i class="fas fa-microchip mr-2 text-blue-600"></i>Elektronica
                         </h1>
-                        <p class="text-gray-600">122 producten gevonden</p>
+                        <p class="text-gray-600 text-sm sm:text-base">122 producten gevonden</p>
                     </div>
                     
-                    <div class="flex items-center space-x-4">
-                        <label class="text-sm text-gray-600">Sorteer op:</label>
-                        <select class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option>Populariteit</option>
-                            <option>Prijs: laag naar hoog</option>
-                            <option>Prijs: hoog naar laag</option>
-                            <option>Nieuwste eerst</option>
-                            <option>Beste beoordeling</option>
-                        </select>
+                    <!-- Mobile Filter Button -->
+                    <div class="flex items-center space-x-2 sm:space-x-4">
+                        <button id="mobile-filter-button" class="lg:hidden bg-blue-600 text-white px-4 py-2 rounded-lg">
+                            <i class="fas fa-filter mr-2"></i>Filters
+                        </button>
+                        
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm text-gray-600 hidden sm:inline">Sorteer op:</label>
+                            <select class="border rounded px-2 sm:px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Populariteit</option>
+                                <option>Prijs: laag naar hoog</option>
+                                <option>Prijs: hoog naar laag</option>
+                                <option>Nieuwste eerst</option>
+                                <option>Beste beoordeling</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Product Categories -->
-                <div class="grid grid-cols-6 gap-4 mb-8">
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-mobile-alt text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Smartphones</span>
-                    </div>
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-laptop text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Laptops</span>
-                    </div>
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-tablet-alt text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Tablets</span>
-                    </div>
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-headphones text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Audio</span>
-                    </div>
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-gamepad text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Gaming</span>
-                    </div>
-                    <div class="category-badge rounded-lg p-4 text-white text-center cursor-pointer hover:opacity-90">
-                        <i class="fas fa-home text-2xl mb-2 block"></i>
-                        <span class="text-sm font-medium">Smart Home</span>
+                <!-- Product Categories - Horizontal scroll on mobile -->
+                <div class="mb-6 sm:mb-8">
+                    <div class="flex lg:grid lg:grid-cols-6 gap-3 sm:gap-4 overflow-x-auto category-scroll pb-2">
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] lg:min-w-0">
+                            <i class="fas fa-mobile-alt text-xl sm:text-2xl mb-1 sm:mb-2 block"></i>
+                            <span class="text-xs sm:text-sm font-medium">Smartphones</span>
+                        </div>
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] lg:min-w-0">
+                            <i class="fas fa-laptop text-xl sm:text-2xl mb-1 sm:mb-2 block"></i>
+                            <span class="text-xs sm:text-sm font-medium">Laptops</span>
+                        </div>
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] lg:min-w-0">
+                            <i class="fas fa-tablet-alt text-xl sm:text-2xl mb-1 sm:mb-2 block"></i>
+                            <span class="text-xs sm:text-sm font-medium">Tablets</span>
+                        </div>
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] lg:min-w-0">
+                            <i class="fas fa-headphones text-xl sm:text-2xl mb-1 sm:mb-2 block"></i>
+                            <span class="text-xs sm:text-sm font-medium">Audio</span>
+                        </div>
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] lg:min-w-0">
+                            <i class="fas fa-gamepad text-xl sm:text-2xl mb-1 sm:mb-2 block"></i>
+                            <span class="text-xs sm:text-sm font-medium">Gaming</span>
+                        </div>
+                        <div class="category-badge rounded-lg p-3 sm:p-4 text-white text-center cursor-pointer hover:opacity-90 flex-shrink-0 min-w-[100px] lg:min-w-0">
+                            <i class="fas fa-home text-xl sm:text-2xl mb-1 sm:mb-2 block"></i>
+                            <span class="text-xs sm:text-sm font-medium">Smart Home</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Products Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                     <!-- Product Card -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48 relative">
-                            <i class="fas fa-mobile-alt"></i>
+                        <div class="product-image h-40 sm:h-48 relative">
+                            <i class="fas fa-mobile-alt text-3xl sm:text-4xl"></i>
                             <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-15%</span>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">iPhone 15 Pro 128GB</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">iPhone 15 Pro 128GB</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★★</div>
-                                <span class="text-gray-500 text-sm">(127 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(127)</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€1.199</span>
-                                    <span class="text-sm text-gray-500 line-through ml-2">€1.399</span>
+                                    <span class="text-xs sm:text-sm text-gray-500 line-through ml-1 sm:ml-2">€1.399</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                <button class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-blue-700 transition">
                                     <i class="fas fa-cart-plus"></i>
                                 </button>
                             </div>
@@ -322,20 +417,20 @@
 
                     <!-- Product Card -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48">
-                            <i class="fas fa-laptop"></i>
+                        <div class="product-image h-40 sm:h-48">
+                            <i class="fas fa-laptop text-3xl sm:text-4xl"></i>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">MacBook Air M2 13"</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">MacBook Air M2 13"</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★★</div>
-                                <span class="text-gray-500 text-sm">(89 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(89)</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€1.499</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                <button class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-blue-700 transition">
                                     <i class="fas fa-cart-plus"></i>
                                 </button>
                             </div>
@@ -344,20 +439,20 @@
 
                     <!-- Product Card -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48">
-                            <i class="fas fa-headphones"></i>
+                        <div class="product-image h-40 sm:h-48">
+                            <i class="fas fa-headphones text-3xl sm:text-4xl"></i>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">Sony WH-1000XM5</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Sony WH-1000XM5</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★☆</div>
-                                <span class="text-gray-500 text-sm">(203 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(203)</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€399</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                <button class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-blue-700 transition">
                                     <i class="fas fa-cart-plus"></i>
                                 </button>
                             </div>
@@ -366,21 +461,21 @@
 
                     <!-- Product Card -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48 relative">
-                            <i class="fas fa-tablet-alt"></i>
+                        <div class="product-image h-40 sm:h-48 relative">
+                            <i class="fas fa-tablet-alt text-3xl sm:text-4xl"></i>
                             <span class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded text-xs">Nieuw</span>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">iPad Air 5th Gen</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">iPad Air 5th Gen</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★★</div>
-                                <span class="text-gray-500 text-sm">(67 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(67)</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€679</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                <button class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-blue-700 transition">
                                     <i class="fas fa-cart-plus"></i>
                                 </button>
                             </div>
@@ -389,20 +484,20 @@
 
                     <!-- Product Card -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48">
-                            <i class="fas fa-gamepad"></i>
+                        <div class="product-image h-40 sm:h-48">
+                            <i class="fas fa-gamepad text-3xl sm:text-4xl"></i>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">PlayStation 5</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">PlayStation 5</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★★</div>
-                                <span class="text-gray-500 text-sm">(342 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(342)</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€499</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                <button class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-blue-700 transition">
                                     <i class="fas fa-cart-plus"></i>
                                 </button>
                             </div>
@@ -411,20 +506,20 @@
 
                     <!-- Product Card -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48">
-                            <i class="fas fa-mobile-alt"></i>
+                        <div class="product-image h-40 sm:h-48">
+                            <i class="fas fa-mobile-alt text-3xl sm:text-4xl"></i>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">Samsung Galaxy S24</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Samsung Galaxy S24</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★☆</div>
-                                <span class="text-gray-500 text-sm">(156 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(156)</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€899</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                <button class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-blue-700 transition">
                                     <i class="fas fa-cart-plus"></i>
                                 </button>
                             </div>
@@ -433,22 +528,22 @@
 
                     <!-- Product Card -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48 relative">
-                            <i class="fas fa-laptop"></i>
+                        <div class="product-image h-40 sm:h-48 relative">
+                            <i class="fas fa-laptop text-3xl sm:text-4xl"></i>
                             <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs">-20%</span>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">HP Pavilion Gaming</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">HP Pavilion Gaming</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★☆</div>
-                                <span class="text-gray-500 text-sm">(94 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★☆</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(94)</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€799</span>
-                                    <span class="text-sm text-gray-500 line-through ml-2">€999</span>
+                                    <span class="text-xs sm:text-sm text-gray-500 line-through ml-1 sm:ml-2">€999</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                <button class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-blue-700 transition">
                                     <i class="fas fa-cart-plus"></i>
                                 </button>
                             </div>
@@ -457,20 +552,20 @@
 
                     <!-- Product Card -->
                     <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="product-image h-48">
-                            <i class="fas fa-home"></i>
+                        <div class="product-image h-40 sm:h-48">
+                            <i class="fas fa-home text-3xl sm:text-4xl"></i>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-gray-800 mb-2">Google Nest Hub Max</h3>
+                        <div class="p-3 sm:p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 text-sm sm:text-base">Google Nest Hub Max</h3>
                             <div class="flex items-center mb-2">
-                                <div class="star-rating text-sm mr-2">★★★★★</div>
-                                <span class="text-gray-500 text-sm">(78 reviews)</span>
+                                <div class="star-rating text-xs sm:text-sm mr-2">★★★★★</div>
+                                <span class="text-gray-500 text-xs sm:text-sm">(78)</span>
                             </div>
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-lg font-bold text-gray-800">€229</span>
                                 </div>
-                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                                <button class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded hover:bg-blue-700 transition">
                                     <i class="fas fa-cart-plus"></i>
                                 </button>
                             </div>
@@ -479,7 +574,7 @@
                 </div>
 
                 <!-- Load More Button -->
-                <div class="text-center mt-8">
+                <div class="text-center mt-6 sm:mt-8">
                     <button class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition">
                         <i class="fas fa-plus mr-2"></i>Meer producten laden
                     </button>
@@ -488,15 +583,154 @@
         </div>
     </div>
 
+    <!-- Mobile Filter Overlay -->
+    <div id="filter-overlay" class="fixed inset-0 bg-white z-50 hidden filter-overlay lg:hidden">
+        <div class="flex flex-col h-full">
+            <!-- Filter Header -->
+            <div class="flex items-center justify-between p-4 border-b bg-blue-600 text-white">
+                <h2 class="text-xl font-bold">
+                    <i class="fas fa-filter mr-2"></i>Filters
+                </h2>
+                <button id="close-filter-overlay" class="text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Filter Content -->
+            <div class="flex-1 overflow-y-auto p-4">
+                <!-- Category Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Categorieën</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5" checked>
+                            <span class="text-base">Smartphones (24)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Laptops (18)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Tablets (12)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Audio (31)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Gaming (15)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Smart Home (22)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Brand Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Merken</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Apple (42)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Samsung (38)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Sony (25)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">HP (19)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">Dell (16)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Prijs</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">€0 - €100 (28)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">€100 - €500 (45)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">€500 - €1000 (32)</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <span class="text-base">€1000+ (17)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Rating Filter -->
+                <div class="mb-6">
+                    <h3 class="font-semibold mb-3 text-gray-700">Beoordeling</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <div class="flex items-center">
+                                <div class="star-rating mr-2">★★★★★</div>
+                                <span class="text-base">(45)</span>
+                            </div>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <div class="flex items-center">
+                                <div class="star-rating mr-2">★★★★☆</div>
+                                <span class="text-base">& meer (78)</span>
+                            </div>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-3 h-5 w-5">
+                            <div class="flex items-center">
+                                <div class="star-rating mr-2">★★★☆☆</div>
+                                <span class="text-base">& meer (122)</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Actions -->
+            <div class="p-4 border-t bg-gray-50">
+                <div class="flex space-x-4">
+                    <button class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-lg font-semibold">
+                        Wis filters
+                    </button>
+                    <button id="apply-filters" class="flex-1 bg-blue-600 text-white py-3 rounded-lg font-semibold">
+                        Toon resultaten
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-12">
-        <div class="container mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
+    <footer class="bg-gray-800 text-white mt-8 sm:mt-12">
+        <div class="container mx-auto px-4 py-6 sm:py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="sm:col-span-2 md:col-span-1">
                     <h3 class="font-bold text-lg mb-4">
                         <i class="fas fa-store mr-2"></i>BetrouwbareShop
                     </h3>
-                    <p class="text-gray-300 mb-4">Uw vertrouwde partner voor elektronische apparaten en meer.</p>
+                    <p class="text-gray-300 mb-4 text-sm sm:text-base">Uw vertrouwde partner voor elektronische apparaten en meer.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="text-gray-300 hover:text-white"><i class="fab fa-twitter"></i></a>
@@ -506,7 +740,7 @@
                 
                 <div>
                     <h4 class="font-semibold mb-4">Klantenservice</h4>
-                    <ul class="space-y-2 text-gray-300">
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
                         <li><a href="#" class="hover:text-white">Contact</a></li>
                         <li><a href="#" class="hover:text-white">Veelgestelde vragen</a></li>
                         <li><a href="#" class="hover:text-white">Retourneren</a></li>
@@ -516,7 +750,7 @@
                 
                 <div>
                     <h4 class="font-semibold mb-4">Informatie</h4>
-                    <ul class="space-y-2 text-gray-300">
+                    <ul class="space-y-2 text-gray-300 text-sm sm:text-base">
                         <li><a href="#" class="hover:text-white">Over ons</a></li>
                         <li><a href="#" class="hover:text-white">Leveringsvoorwaarden</a></li>
                         <li><a href="#" class="hover:text-white">Privacy beleid</a></li>
@@ -527,10 +761,10 @@
                 <div>
                     <h4 class="font-semibold mb-4">Betalingsmogelijkheden</h4>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-sm font-semibold">VISA</div>
-                        <div class="bg-white text-red-600 px-2 py-1 rounded text-sm font-semibold">MC</div>
-                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-sm font-semibold">PayPal</div>
-                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-sm font-semibold">iDEAL</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">VISA</div>
+                        <div class="bg-white text-red-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">MC</div>
+                        <div class="bg-white text-blue-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">PayPal</div>
+                        <div class="bg-white text-purple-600 px-2 py-1 rounded text-xs sm:text-sm font-semibold">iDEAL</div>
                     </div>
                     <div class="flex items-center text-green-400">
                         <i class="fas fa-lock mr-2"></i>
@@ -539,10 +773,103 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; 2024 BetrouwbareShop. Alle rechten voorbehouden.</p>
+            <div class="border-t border-gray-700 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-300">
+                <p class="text-sm sm:text-base">&copy; 2024 BetrouwbareShop. Alle rechten voorbehouden.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            
+            // Mobile search functionality
+            const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            
+            // Mobile filter functionality
+            const mobileFilterButton = document.getElementById('mobile-filter-button');
+            const filterOverlay = document.getElementById('filter-overlay');
+            const closeFilterOverlay = document.getElementById('close-filter-overlay');
+            const applyFilters = document.getElementById('apply-filters');
+            
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('active');
+                document.body.classList.add('overlay-open');
+            });
+            
+            // Close mobile menu
+            closeMobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                setTimeout(function() {
+                    mobileMenu.classList.add('hidden');
+                }, 300); // Match the transition duration
+                document.body.classList.remove('overlay-open');
+            });
+            
+            // Toggle mobile search
+            mobileSearchToggle.addEventListener('click', function() {
+                mobileSearchInput.classList.toggle('hidden');
+            });
+            
+            // Toggle mobile filter overlay
+            mobileFilterButton.addEventListener('click', function() {
+                filterOverlay.classList.remove('hidden');
+                filterOverlay.classList.add('active');
+                document.body.classList.add('overlay-open');
+            });
+            
+            // Close filter overlay
+            closeFilterOverlay.addEventListener('click', function() {
+                filterOverlay.classList.remove('active');
+                setTimeout(function() {
+                    filterOverlay.classList.add('hidden');
+                }, 300); // Match the transition duration
+                document.body.classList.remove('overlay-open');
+            });
+            
+            // Apply filters and close overlay
+            applyFilters.addEventListener('click', function() {
+                // Here you would typically apply the filter logic
+                closeFilterOverlay.click();
+            });
+            
+            // Close overlays when clicking outside (optional)
+            document.addEventListener('click', function(event) {
+                // For mobile menu
+                if (!mobileMenu.classList.contains('hidden') && 
+                    !mobileMenuButton.contains(event.target) && 
+                    !mobileMenu.contains(event.target)) {
+                    closeMobileMenu.click();
+                }
+                
+                // For filter overlay - only if clicking on backdrop
+                if (!filterOverlay.classList.contains('hidden') && 
+                    event.target === filterOverlay) {
+                    closeFilterOverlay.click();
+                }
+            });
+            
+            // Handle window resize: restore layout on desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth >= 1024) { // Tailwind's lg breakpoint
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        closeMobileMenu.click();
+                    }
+                    
+                    // Close filter overlay if open
+                    if (!filterOverlay.classList.contains('hidden')) {
+                        closeFilterOverlay.click();
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
