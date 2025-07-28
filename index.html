@@ -70,7 +70,7 @@ color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-    /* Mobile Navigation Styles */
+ /* Mobile Navigation Styles */
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -140,7 +140,7 @@ color: white;
 .p1 { 
     text-align: center;
     font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.95);
+    color: #333;
     margin-top: 2rem;
 }
 .contact-info {
@@ -193,10 +193,11 @@ color: white;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-    /* Responsive Design - Hide navigation ul on mobile */
+/* Responsive Design - Hide navigation ul on mobile */
 @media (max-width: 767px) {
     .nav > ul {
         display: none !important;
+        position: relative;
     }
     .mobile-menu-btn {
         display: block;
@@ -208,7 +209,6 @@ color: white;
         justify-content: center;
     }
 }
-    
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -216,7 +216,7 @@ color: white;
     <ul>
         <li><a href="index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
         <li><a href="achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
-        <li><a href="personal-bio/index.html"><i class="fas fa-user mr-2"></i>Personal Bio</a></li>
+        <li><a href="personal-bio/index.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
         <li><a href="my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
         <li><a href="cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
     </ul>
@@ -231,7 +231,7 @@ color: white;
         <ul>
             <li><a href="index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
             <li><a href="achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
-            <li><a href="personal-bio/index.html"><i class="fas fa-user mr-2"></i>Personal Bio</a></li>
+            <li><a href="personal-bio/index.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
             <li><a href="my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
             <li><a href="cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
         </ul>
@@ -243,7 +243,7 @@ color: white;
 <div class="gradient-bg text-white py-12 px-4">
     <div class="welcome-section">
         <h1>Welkom Op Mijn Profiel, Neem Gerust Een Kijkje!</h1>
-        <p class="p1">IT Professional in opleiding</p>
+        <p class="p1">IT Professional in opleiding | Python & Virtualisatie Specialist</p>
     
         
         <img src="/cv-page/Profiel foto.jpg" 
@@ -260,13 +260,13 @@ color: white;
         </h2>
         <p class="text-lg text-gray-700 leading-relaxed mb-6">
             Van IT Sales naar IT Development - momenteel actief bezig met een intensieve IT Bootcamp 
-            bij BEE-Organisation waar ik mijn passie voor IT omzet in een carrière.
+            bij BEE-Organisation waar ik me specialiseer in Python, Virtual Machines, en Network Management.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             <div class="bg-blue-50 p-6 rounded-lg">
                 <i class="fab fa-python text-4xl text-blue-600 mb-4"></i>
-                <h3 class="font-bold text-xl mb-2">Software Development</h3>
-                <p class="text-gray-600">Sterke affiniteit voor software development, waaronder HTML, CSS, JS & Python</p>
+                <h3 class="font-bold text-xl mb-2">Python Development</h3>
+                <p class="text-gray-600">Sterke affiniteit voor Python programming</p>
             </div>
             <div class="bg-green-50 p-6 rounded-lg">
                 <i class="fas fa-server text-4xl text-green-600 mb-4"></i>
@@ -276,13 +276,13 @@ color: white;
             <div class="bg-purple-50 p-6 rounded-lg">
                 <i class="fas fa-network-wired text-4xl text-purple-600 mb-4"></i>
                 <h3 class="font-bold text-xl mb-2">Network Management</h3>
-                <p class="text-gray-600">Netwerkbeheer, architectuur en troubleshooting</p>
+                <p class="text-gray-600">Netwerk architectuur en troubleshooting</p>
             </div>
         </div>
     </div>
 </div>
 
-    <script>
+<script>
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-nav-menu');
     const btn = document.querySelector('.mobile-menu-btn i');
@@ -307,75 +307,43 @@ document.addEventListener('click', function(event) {
 });
 </script>
 
-<!-- Design Credit Banner -->
-<div class="fixed bottom-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-tl-lg shadow-lg z-50">
-  <p class="text-xs flex items-center gap-2">
-    <i class="fas fa-code"></i>
-    <span>Ontworpen door Joshua Boermans</span>
-  </p>
-</div>
-    
 </body>
-
-    <!-- Design Credit Banner -->
-<div class="fixed bottom-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-tl-lg shadow-lg z-50">
-  <p class="text-xs flex items-center gap-2">
-    <i class="fas fa-code"></i>
-    <span>Ontworpen door Joshua Boermans</span>
-  </p>
-</div>
     
 <!-- Footer with Contact Information -->
 <footer class="gradient-bg text-white py-8 mt-12">
-  <div class="max-w-4xl mx-auto px-4">
-    
-    <!-- Contact Information Section -->
-    <div class="text-center mb-6">
-      <h3 class="text-xl font-bold mb-4">Contact Informatie</h3>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
-        
-        <div class="flex items-center justify-center gap-2">
-          <i class="fas fa-phone text-blue-200"></i>
-          <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">
-            +31 6 36546524
-          </a>
-        </div>
-        
-        <div class="flex items-center justify-center gap-2">
-          <i class="fas fa-envelope text-blue-200"></i>
-          <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">
-            joshuaboermans@gmail.com
-          </a>
-        </div>
-        
-        <div class="flex items-center justify-center gap-2">
-          <i class="fas fa-map-marker-alt text-blue-200"></i>
-          <span>Hoofddorp, Netherlands</span>
-        </div>
-        
-        <div class="flex items-center justify-center gap-2">
-          <i class="fab fa-linkedin text-blue-200"></i>
-          <a href="https://www.linkedin.com/in/joshuaboermans/" 
-             target="_blank" 
-             class="hover:text-blue-200 transition-colors">
-            linkedin.com/in/joshuaboermans
-          </a>
-        </div>
-        
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h3 class="text-xl font-bold mb-4">Contact Informatie</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-phone text-blue-200"></i>
+        <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">
+          +31 6 36546524
+        </a>
       </div>
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-envelope text-blue-200"></i>
+        <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">
+          joshuaboermans@gmail.com
+        </a>
+      </div>
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fas fa-map-marker-alt text-blue-200"></i>
+        <span>Hoofddorp, Netherlands</span>
+      </div>
+      
+      <div class="flex items-center justify-center gap-2">
+        <i class="fab fa-linkedin text-blue-200"></i>
+        <a href="https://www.linkedin.com/in/joshuaboermans/" 
+           target="_blank" 
+           class="hover:text-blue-200 transition-colors">
+          linkedin.com/in/joshuaboermans
+        </a>
+      </div>
+      
     </div>
-    
-    <!-- Copyright and Design Credit Section -->
-    <div class="text-center pt-4 border-t border-white border-opacity-20">
-      <p class="text-sm text-white text-opacity-80 mb-1">
-        <i class="fas fa-code mr-2"></i>
-        Website ontworpen en ontwikkeld door Joshua Boermans
-      </p>
-      <p class="text-xs text-white text-opacity-60">
-        © 2025 Joshua Boermans - Alle rechten voorbehouden
-      </p>
-    </div>
-    
   </div>
 </footer>
 </html>
