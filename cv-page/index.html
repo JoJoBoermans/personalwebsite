@@ -16,7 +16,7 @@ body { -webkit-print-color-adjust: exact; }
         text-align: center;
     }
 
-    class-mb-8 {
+    .class-mb-8 {
         text-align: center;
     }
 .gradient-bg {
@@ -30,9 +30,7 @@ color: white;
 .professional-profile {
     background: none;
     color: white;
-    text-position: center;
-    left-margin: 150px;
-    right-margin: 150px;
+    text-align: center;
 }
     
 .career-transition {
@@ -43,14 +41,20 @@ color: white;
 background: linear-gradient(45deg, #f59e0b, #ef4444);
 color: white;
 }
+
+/* Enhanced Navigation Bar */
 .nav {
     position: sticky;
     top: 0;
     z-index: 1000;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
 }
+
+/* Desktop Navigation */
 .nav ul {
     display: flex;
     justify-content: center;
@@ -60,10 +64,12 @@ color: white;
     padding: 0;
     gap: 2rem;
 }
+
 .nav ul li {
     margin: 0;
     padding: 0;
 }
+
 .nav ul li a {
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
@@ -73,6 +79,7 @@ color: white;
     font-weight: 500;
     display: block;
 }
+
 .nav ul li a:hover {
     background: rgba(255, 255, 255, 0.2);
     color: white;
@@ -81,47 +88,122 @@ color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile Navigation Styles */
-.mobile-menu-btn {
+/* Mobile Navigation Header */
+.nav-header-mobile {
     display: none;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+}
+
+.mobile-brand i {
+    font-size: 1.6rem;
+    background: linear-gradient(45deg, #06b6d4, #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.mobile-brand:hover {
+    transform: scale(1.02);
+}
+
+/* Enhanced Mobile Menu Button */
+.mobile-menu-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-menu-btn::before {
+    content: '';
     position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.mobile-menu-btn:hover::before {
+    left: 100%;
+}
+
+.mobile-menu-btn:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
 }
 
 .mobile-menu-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     color: white;
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+.mobile-menu-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Mobile Dropdown Menu */
 .mobile-nav-menu {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transform: translateY(-10px);
+    transform: translateY(-15px);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     z-index: 50;
+    border-radius: 0 0 1.5rem 1.5rem;
+    overflow: hidden;
+    max-height: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
 }
 
 .mobile-nav-menu.show {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+    max-height: 400px;
 }
 
 .mobile-nav-menu ul {
@@ -133,42 +215,140 @@ color: white;
     gap: 0;
 }
 
+.mobile-nav-menu ul li {
+    margin: 0 0.75rem 0.5rem 0.75rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-menu.show ul li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered animation delays */
+.mobile-nav-menu.show ul li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav-menu.show ul li:nth-child(2) { transition-delay: 0.15s; }
+.mobile-nav-menu.show ul li:nth-child(3) { transition-delay: 0.2s; }
+.mobile-nav-menu.show ul li:nth-child(4) { transition-delay: 0.25s; }
+.mobile-nav-menu.show ul li:nth-child(5) { transition-delay: 0.3s; }
+
 .mobile-nav-menu ul li a {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
-    padding: 1rem 1.5rem;
-    display: block;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     transition: all 0.3s ease;
     font-weight: 500;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
-.mobile-nav-menu ul li a:hover {
-    background: rgba(255, 255, 255, 0.2);
+.mobile-nav-menu ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.mobile-nav-menu ul li a:hover::before,
+.mobile-nav-menu ul li a:focus::before {
+    width: 100%;
+}
+
+.mobile-nav-menu ul li a:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
+}
+
+.mobile-nav-menu ul li a:hover,
+.mobile-nav-menu ul li a:focus {
     color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
 }
-    
 
-/* Responsive Design - Hide navigation ul on mobile */
+.mobile-nav-menu ul li a i {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-menu ul li a:hover i,
+.mobile-nav-menu ul li a:focus i {
+    color: #06b6d4;
+}
+
+/* Backdrop overlay */
+.mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 40;
+}
+
+.mobile-menu-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive Design */
 @media (max-width: 767px) {
-
     .nav > ul {
         display: none !important;
     }
-    .mobile-menu-btn {
-        display: block;
-    }
-    .nav {
-        padding: 1rem 1.5rem;
+    .nav-header-mobile {
         display: flex;
-        align-items: center;
-        justify-content: center;
     }
 }
+
+@media (max-width: 480px) {
+    .mobile-brand span {
+        display: none;
+    }
+    .mobile-brand {
+        font-size: 1.2rem;
+    }
+    .mobile-menu-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    .mobile-nav-menu ul li {
+        margin: 0 0.5rem 0.5rem 0.5rem;
+    }
+    .mobile-nav-menu ul li a {
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+    }
+}
+
 </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
-<nav class="nav py-4">
+<nav class="nav">
+    <!-- Desktop Navigation -->
     <ul>
         <li><a href="../index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
         <li><a href="../achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
@@ -176,20 +356,30 @@ color: white;
         <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
         <li><a href="index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
     </ul>
+
+    <!-- Mobile Navigation Header -->
+    <div class="nav-header-mobile">
+        <div class="mobile-brand">
+            <i class="fas fa-file-user"></i>
+            <span>Joshua Boermans CV</span>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+        </button>
+    </div>
     
-    <!-- Mobile hamburger button -->
-    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-        <i class="fas fa-bars"></i>
-    </button>
+    <!-- Mobile menu backdrop -->
+    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="closeMobileMenu()"></div>
     
     <!-- Mobile dropdown menu -->
-    <div class="mobile-nav-menu" id="mobile-nav-menu">
+    <div class="mobile-nav-menu" id="mobile-nav-menu" role="navigation" aria-label="Mobile navigation">
         <ul>
-            <li><a href="../index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
-            <li><a href="../achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
-            <li><a href="../personal-bio/index.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
-            <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
-            <li><a href="index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
+            <li><a href="../index.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="../achievements-page/index.html"><i class="fas fa-trophy"></i>Achievements</a></li>
+            <li><a href="../personal-bio/index.html"><i class="fas fa-user"></i>My Bio</a></li>
+            <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase"></i>My Portfolio</a></li>
+            <li><a href="index.html"><i class="fas fa-file-alt"></i>CV Page</a></li>
         </ul>
     </div>
 </nav>
@@ -225,13 +415,6 @@ color: white;
             linkedin.com/in/joshuaboermans
           </a>
         </div>
-
-          <div class="flex items-center gap-2">
-          <i class="fas fa-globe mr-2"></i>
-          <a href="https://www.joshuaboermans.com" target="_blank" rel="noopener noreferrer" class="globe text-blue-300 hover:underline">
-            Mijn Online Portfolio
-          </a>
-        </div>
       </div>
     </div>
 
@@ -252,10 +435,9 @@ color: white;
 </h2>
 <div class="bg-white rounded-lg shadow-md p-6">
 <div class="text-gray-700 leading-relaxed space-y-4">
-<p class="text-lg">
 <p class="text-lg text-gray-700 text-center mb-8">Ambitieuze IT-professional in transitie met 6+ jaar ervaring in de technische sector, waaronder software development, 
 SaaS-implementaties, en IT-consultancy. Sterke technische achtergrond gecombineerd met bewezen business skills. 
-Momenteel bezig met intensieve IT Bootcamp opleiding om mijn passie voor programmeren, virtual machines, 
+Momenteel bezig met intensieve IT Bootcamp opleiding om mijn passie voor Python programmering, virtual machines, 
 en netwerkbeheer om te zetten in een volwaardige development carrière. Op zoek naar interne training mogelijkheden 
 bij vooruitstrevende bedrijven die investeren in talent ontwikkeling.
 </p>
@@ -687,11 +869,11 @@ in te zetten bij een vooruitstrevend bedrijf dat investeert in talent ontwikkeli
 </section>
 </div>
 
-<!--        <!-- Design Credit Banner 
+        <!-- Design Credit Banner -->
 <div class="fixed bottom-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-tl-lg shadow-lg z-50">
   <p class="text-xs flex items-center gap-2">
     <i class="fas fa-code"></i>
-    <span>Ontwikkeld door Joshua Boermans</span>
+    <span>Ontworpen door Joshua Boermans</span>
   </p>
 </div>
 
@@ -727,6 +909,7 @@ in te zetten bij een vooruitstrevend bedrijf dat investeert in talent ontwikkeli
           <i class="fab fa-linkedin text-blue-200"></i>
           <a href="https://www.linkedin.com/in/joshuaboermans/" 
              target="_blank" 
+             rel="noopener noreferrer"
              class="hover:text-blue-200 transition-colors">
             linkedin.com/in/joshuaboermans
           </a>
@@ -749,34 +932,111 @@ in te zetten bij een vooruitstrevend bedrijf dat investeert in talent ontwikkeli
   </div>
 </footer>
 
-    
-    
-</body>
-</html>
 <script>
-// Close menu when clicking outside
-document.addEventListener('click', function(event) {
+function toggleMobileMenu() {
     const menu = document.getElementById('mobile-nav-menu');
-    const btn = document.querySelector('.mobile-menu-btn');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
     
-    if (!menu.contains(event.target) && !btn.contains(event.target)) {
-        menu.classList.remove('show');
-        document.querySelector('.mobile-menu-btn i').className = 'fas fa-bars';
-    }
-});
-
-    function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-nav-menu');
-    const btn = document.querySelector('.mobile-menu-btn i');
-    
-    menu.classList.toggle('show');
-    
-    // Toggle between hamburger and X icon
     if (menu.classList.contains('show')) {
-        btn.className = 'fas fa-times';
+        closeMobileMenu();
     } else {
-        btn.className = 'fas fa-bars';
+        openMobileMenu();
     }
 }
-    </script>
 
+function openMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    menu.classList.add('show');
+    backdrop.classList.add('show');
+    btnIcon.className = 'fas fa-times';
+    btnText.textContent = 'Sluiten';
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = 'hidden';
+    
+    // Focus management for accessibility
+    setTimeout(() => {
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus();
+    }, 100);
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    menu.classList.remove('show');
+    backdrop.classList.remove('show');
+    btnIcon.className = 'fas fa-bars';
+    btnText.textContent = 'Menu';
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Enhanced event listeners for better UX
+document.addEventListener('DOMContentLoaded', function() {
+    // Close menu when clicking on menu links
+    document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 767) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Keyboard navigation within menu
+    document.getElementById('mobile-nav-menu').addEventListener('keydown', function(event) {
+        const links = this.querySelectorAll('a');
+        const currentIndex = Array.from(links).indexOf(document.activeElement);
+        
+        if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            const nextIndex = (currentIndex + 1) % links.length;
+            links[nextIndex].focus();
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            const prevIndex = (currentIndex - 1 + links.length) % links.length;
+            links[prevIndex].focus();
+        }
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobile-nav-menu');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNavHeader = document.querySelector('.nav-header-mobile');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+
+    if (!mobileMenu.contains(event.target) && 
+        !mobileMenuBtn.contains(event.target) && 
+        !mobileNavHeader.contains(event.target) && 
+        backdrop.classList.contains('show')) {
+        closeMobileMenu();
+    }
+});
+</script>
+
+</body>
+</html>
