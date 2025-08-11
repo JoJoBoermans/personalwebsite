@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joshua Boermans - My Portfolio</title>
+<title>Joshua Boermans - My Bio</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 <style>
@@ -14,10 +14,15 @@
         text-align: center;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
+    h2 {
+        text-align: center;
+    }
+
 @media print {
 body { -webkit-print-color-adjust: exact; }
 * { box-sizing: border-box; }
 }
+
 .gradient-bg {
 background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
 }
@@ -306,13 +311,131 @@ color: white;
     visibility: visible;
 }
 
-/* Responsive Design */
+/* **Geoptimaliseerde Foto Styling** */
+.welcome-section {
+    position: relative;
+    max-width: 4xl;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    overflow: hidden;
+    min-height: 350px;
+}
+
+/* Hoofdfoto - altijd zichtbaar en gecentreerd */
+.profile-image {
+    display: block;
+    margin: 2rem auto 0;
+    width: clamp(180px, 20vw, 300px);
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 20;
+}
+
+.profile-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Zijfoto's - intelligent gepositioneerd */
+.side-photo {
+    position: absolute;
+    width: clamp(160px, 14vw, 250px);
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none; /* Standaard verborgen */
+}
+
+.side-photo:hover {
+    transform: translateY(-50%) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.right-image {
+    right: clamp(10px, 2vw, 30px);
+}
+
+.left-image {
+    left: clamp(10px, 2vw, 30px);
+}
+
+/* **Intelligente Media Queries voor Foto Zichtbaarheid** */
+
+/* Grote desktop schermen - alle foto's zichtbaar */
+@media (min-width: 1200px) {
+    .side-photo {
+        display: block;
+    }
+    
+    .welcome-section {
+        padding-left: clamp(180px, 16vw, 280px);
+        padding-right: clamp(180px, 16vw, 280px);
+    }
+}
+
+/* Middelgrote desktop - alleen zijfoto's, niet beide */
+@media (min-width: 900px) and (max-width: 1199px) {
+    .right-image {
+        display: block;
+    }
+    
+    .left-image {
+        display: none;
+    }
+    
+    .welcome-section {
+        padding-right: clamp(160px, 18vw, 220px);
+        padding-left: 2rem;
+    }
+}
+
+/* Tablet en kleine desktop - geen zijfoto's */
+@media (min-width: 768px) and (max-width: 899px) {
+    .side-photo {
+        display: none !important;
+    }
+    
+    .profile-image {
+        width: clamp(200px, 25vw, 280px);
+    }
+}
+
+/* Mobile responsive design */
 @media (max-width: 767px) {
+    h2 {
+        text-align: left;
+    }
+    
     .nav > ul {
         display: none !important;
     }
     .nav-header-mobile {
         display: flex;
+    }
+    
+    .side-photo {
+        display: none !important;
+    }
+
+    .profile-image {
+        width: clamp(150px, 40vw, 220px) !important;
+        margin-top: 1.5rem !important;
+    }
+    
+    .welcome-section {
+        padding: 2rem 1rem;
+        min-height: 280px;
     }
 }
 
@@ -334,242 +457,44 @@ color: white;
         padding: 0.875rem 1rem;
         font-size: 0.95rem;
     }
+    
+    .profile-image {
+        width: clamp(120px, 35vw, 180px) !important;
+    }
 }
 
 .p1 { 
     text-align: center;
     font-size: 1.2rem;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.95);
     margin-top: 2rem;
 }
-.contact-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
-    backdrop-filter: blur(10px);
-}
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
-}
-.contact-item a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-.contact-item a:hover {
-    color: white;
-    text-decoration: underline;
-    transform: scale(1.05);
-}
-.welcome-section {
-    max-width: 4xl;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
-.project-card {
+
+.bio-section {
     background: white;
     border-radius: 1rem;
     padding: 2rem;
     margin-bottom: 2rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
-.project-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-.skill-badge {
-    display: inline-block;
-    background: linear-gradient(45deg, #4f46e5, #06b6d4);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin: 0.25rem;
-}
-.progress-bar {
-    background: #e2e8f0;
-    border-radius: 1rem;
-    height: 1rem;
-    overflow: hidden;
-    margin-top: 0.5rem;
-}
-.progress-fill {
-    background: linear-gradient(45deg, #4f46e5, #06b6d4);
-    height: 100%;
-    border-radius: 1rem;
-    transition: width 1s ease;
-}
-
-/* Sidebar Styles */
-.sidebar {
-    position: fixed;
-    right: 0;
-    top: 80px;
-    width: 280px;
-    height: calc(100vh - 80px);
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
-    backdrop-filter: blur(10px);
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-    z-index: 500;
-    overflow-y: auto;
-    padding: 2rem 1.5rem;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-}
-
-.sidebar.show {
-    transform: translateX(0);
-}
-
-.sidebar h3 {
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 0.75rem;
-}
-
-.sidebar-section {
-    margin-bottom: 2rem;
-}
-
-.sidebar-section h4 {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-align: left;
-}
-
-.project-link {
-    display: block;
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-    border-left: 3px solid transparent;
-}
-
-.project-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border-left-color: #06b6d4;
-    transform: translateX(5px);
-}
-
-.project-link i {
-    margin-right: 0.5rem;
-    width: 16px;
-}
-
-.main-content.content-shift {
-    margin-right: 280px;
-    transition: margin-right 0.3s ease;
-}
-
-@media (max-width: 1024px) {
-    .sidebar {
-        width: 100%;
-        right: 0;
-        top: 0;
-        height: 100vh;
-        z-index: 1001;
-    }
-    
-    .main-content.content-shift {
-        margin-right: 0;
-    }
-    
-    .sidebar-close {
-        display: flex;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .sidebar-close:hover {
-        background: rgba(255, 255, 255, 0.3);
-    }
-}
-
-.sidebar-toggle {
-    background: linear-gradient(45deg, #4f46e5, #06b6d4);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 2rem;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 500;
-    font-size: 0.9rem;
-    margin: 2rem auto;
-    width: fit-content;
-}
-
-.sidebar-toggle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-.sidebar-toggle i {
-    font-size: 1rem;
-}
-
-@media (max-width: 767px) {
-    .sidebar-toggle {
-        font-size: 0.8rem;
-        padding: 0.6rem 1.2rem;
-        margin: 1rem auto;
-    }
 }
 </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-800 font-sans">
 <nav class="nav">
     <!-- Desktop Navigation -->
     <ul>
         <li><a href="../index.html"><i class="fas fa-home mr-2"></i>Home</a></li>
         <li><a href="../achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
-        <li><a href="../personal-bio/index.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
-        <li><a href="index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+        <li><a href="index.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
+        <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
         <li><a href="../cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
     </ul>
 
     <!-- Mobile Navigation Header -->
     <div class="nav-header-mobile">
         <div class="mobile-brand">
-            <i class="fas fa-code"></i>
-            <span>Joshua Boermans</span>
+            <i class="fas fa-user-circle"></i>
+            <span>Mijn Verhaal</span>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
             <i class="fas fa-bars"></i>
@@ -585,270 +510,206 @@ color: white;
         <ul>
             <li><a href="../index.html"><i class="fas fa-home"></i>Home</a></li>
             <li><a href="../achievements-page/index.html"><i class="fas fa-trophy"></i>Achievements</a></li>
-            <li><a href="../personal-bio/index.html"><i class="fas fa-user"></i>My Bio</a></li>
-            <li><a href="index.html"><i class="fas fa-briefcase"></i>My Portfolio</a></li>
+            <li><a href="index.html"><i class="fas fa-user"></i>My Bio</a></li>
+            <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase"></i>My Portfolio</a></li>
             <li><a href="../cv-page/index.html"><i class="fas fa-file-alt"></i>CV Page</a></li>
         </ul>
     </div>
 </nav>
 
-<!-- Sidebar completed projects-->
-<div class="sidebar" id="projectSidebar">
-    <button class="sidebar-close" onclick="toggleSidebar()" style="display: none;"><i class="fas fa-times"></i></button>
-    <h3><i class="fas fa-folder-open mr-2"></i>Mijn Projecten</h3>
-    
-    <div class="sidebar-section">
-        <h4><i class="fas fa-check-circle mr-2"></i>Voltooide Projecten</h4>
-        <a href="../Fluffy&Fresh/startpagina/index.html" class="project-link">
-            Website Hondentrimsalon (Trainingsdoeleinden)
-        </a>
-        <a href="#banking-app" class="project-link">
-            Simple Banking App <br>(Implementatie staat gepland)
-        </a>
-        <a href="#robot-barista" class="project-link">
-            Robot Barista <br>(Implementatie staat gepland)
-        </a>
-        <h4><i class="fas fa-circle mr-2"></i>In Ontwikkeling</h4>
-        <a href="https://tech2wear.com" class="project-link">
-            Online Webshop <br>
-        </a>
+<!-- Header Section -->
+<div class="gradient-bg text-white py-12 px-4">
+    <div class="welcome-section">
+        <h1>Mijn Verhaal</h1>
+        <p class="p1">Van IT Sales naar IT Development - Een Reis van Groei en Ontdekking</p>
+         
+        <!-- Hoofdfoto - altijd zichtbaar -->
+        <img src="foto-bio.jpg" 
+             alt="Joshua Boermans profielfoto" 
+             class="profile-image"
+             loading="eager"
+             decoding="async"
+             fetchpriority="high">
+
+        <!-- Rechter zijfoto - intelligent verborgen -->
+        <img src="foto-bio2.jpg" 
+             alt="Joshua Boermans in professionele setting" 
+             class="side-photo right-image"
+             loading="lazy"
+             decoding="async">
+
+        <!-- Linker zijfoto - intelligent verborgen -->
+        <img src="foto-bio3.jpg" 
+             alt="Joshua Boermans casual foto" 
+             class="side-photo left-image"
+             loading="lazy"
+             decoding="async">
     </div>
 </div>
 
-<!-- Main Content Wrapper -->
-<main class="flex-grow" id="main-content">
-    <!-- Header Section -->
-    <div class="gradient-bg text-white py-12 px-4">
-        <div class="welcome-section">
-            <h1>Mijn Portfolio - IT Projecten & Ontwikkeling</h1>
-            <p class="p1">Showcase van mijn technische vaardigheden en projecten</p>
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Personal Introduction -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-user-circle mr-3 text-blue-500"></i>
+            Wie Ben Ik?
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+            Hallo! Ik ben Joshua Boermans, een 29-jarige IT-fanaat uit Hoofddorp die momenteel een spannende carrièretransitie doormaakt. 
+            Na meer dan zes jaar ervaring in IT-sales bij zowel startups als gevestigde bedrijven, heb ik besloten om mijn passie voor technologie 
+            een stap verder te brengen en over te stappen naar IT-development.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed">
+            Wat ooit begon als nieuwsgierigheid naar de technische kant van de producten die ik verkocht, 
+            is inmiddels uitgegroeid tot een echte passie voor programmeren, systeembeheer en IT-innovatie.
+             Ik geloof sterk in levenslang leren en ben momenteel druk bezig mijn technische vaardigheden verder 
+             te ontwikkelen om deze nieuwe uitdaging met succes aan te gaan.
+        </p>
+    </section>
+
+    <!-- Career Journey -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-road mr-3 text-green-500"></i>
+            Mijn Carrière Reis
+        </h2>
+        <div class="space-y-4">
+            <div class="border-l-4 border-blue-500 pl-4">
+                <h3 class="text-xl font-bold text-gray-800">IT Sales Ervaring (2019-2025)</h3>
+                <p class="text-gray-700">
+                    Begonnen bij XcellerateLabs waar ik werkte met cloud-native startups, gevolgd door rollen bij 
+                    Trusted Shops (e-commerce security) en NCC Group (software escrow services). Als Head of Growth bij
+                     UNIT heb ik hands-on ervaring opgedaan met low-code development en business automation.
+                </p>
+            </div>
+            <div class="border-l-4 border-green-500 pl-4">
+                <h3 class="text-xl font-bold text-gray-800">IT Bootcamp (2025)</h3>
+                <p class="text-gray-700">
+                    Momenteel volg ik een intensieve IT-bootcamp bij BEE-Organisation waar ik me specialiseer in 
+                    front-end en back-end development, virtual machines, en network management. Het is hier dat ik 
+                    mijn sterke affiniteit voor software development en netwerkbeheer ontdekte.
+                </p>
+            </div>
         </div>
-    </div>
+    </section>
+    
+    <!-- Personal Interests -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-heart mr-3 text-red-500"></i>
+            Persoonlijke Interesses
+        </h2>
 
-    <!-- Sidebar Toggle Button -->
-    <div class="text-center">
-        <button class="sidebar-toggle" onclick="toggleSidebar()">
-            <i class="fas fa-project-diagram"></i>
-            <span>Mijn Projecten</span>
-        </button>
-    </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <i class="fas fa-bicycle text-3xl text-blue-600 mb-3"></i>
+                <h3 class="font-bold text-lg mb-2">Wielrennen</h3>
+                <p class="text-gray-600">Ik vind rust en uitdaging in het wielrennen. Het helpt me om gefocust te blijven en doelen te stellen, vaardigheden die ook waardevol zijn in mijn IT-carrière.</p>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+                <i class="fas fa-tools text-3xl text-green-600 mb-3"></i>
+                <h3 class="font-bold text-lg mb-2">Klussen</h3>
+                <p class="text-gray-600">Het oplossen van praktische problemen thuis helpt me om analytisch te blijven denken - een vaardigheid die perfect aansluit bij programmeren en troubleshooting.</p>
+            </div>
+            <div class="bg-yellow-50 p-4 rounded-lg">
+                <i class="fas fa-guitar text-3xl text-yellow-600 mb-3"></i>
+                <h3 class="font-bold text-lg mb-2">Gitaar Spelen</h3>
+                <p class="text-gray-600">Muziek brengt creativiteit en discipline samen. Het helpt me om in balans te blijven en een andere vorm van logisch denken te ontwikkelen.</p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg">
+                <i class="fas fa-plane text-3xl text-purple-600 mb-3"></i>
+                <h3 class="font-bold text-lg mb-2">Reizen</h3>
+                <p class="text-gray-600">Het ontdekken van nieuwe culturen en plekken heeft me geleerd om adaptief en open-minded te zijn - essentiële eigenschappen in de snel veranderende IT-wereld.</p>
+            </div>
+        </div>
+    </section>
 
-    <div class="max-w-4xl mx-auto px-4 py-8">
-        <!-- Current IT Development Section -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                <i class="fas fa-laptop-code mr-3 text-blue-500"></i>
-                Huidige IT Ontwikkeling
-            </h2>
-            <p class="text-lg text-gray-700 text-center mb-8">
-                Als onderdeel van mijn IT Bootcamp bij BEE-Organisation ben ik bezig met het ontwikkelen van praktische vaardigheden 
-                in verschillende technologiegebieden. Hier is een overzicht van mijn huidige focus en voortgang.
+    <!-- Goals & Aspirations -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-bullseye mr-3 text-purple-500"></i>
+            Mijn Doelen & Ambities
+        </h2>
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                Mijn doel is een functie binnen de IT-sector te vinden waarin ik kan doorgroeien van junior naar ervaren professional.
+Ik zoek een werkgever die niet alleen een baan biedt, maar ook actief investeert in de ontwikkeling van medewerkers, bijvoorbeeld door trainingen en opleidingsprogramma’s.
+Zo kan ik praktijkervaring opdoen, mijn technische kennis verdiepen en direct waarde toevoegen aan het bedrijf.
             </p>
-        </section>
-
-        <!-- Skills Progress Section -->
-        <section class="mb-12">
-           <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-    <i class="fas fa-chart-line mr-3 text-green-500"></i>
-    Technische Vaardigheden - Voortgang
-</h2>
-
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="project-card">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">
-                        <i class="fab fa-python mr-2 text-blue-600"></i>
-                        Python Development
-                    </h3>
-                    <p class="text-gray-600 mb-4">Sterke affiniteit ontdekt voor Python programmering tijdens bootcamp</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 45%"></div>
-                    </div>
-                    <p class="text-sm text-gray-500 mt-2">45% - Intermediate niveau bereikt</p>
-                    <div class="mt-4">
-                        <span class="skill-badge">Automatisatie Scripts</span>
-                        <span class="skill-badge">API Integraties</span>
-                        <span class="skill-badge">Data Processing</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">
-                        <i class="fas fa-server mr-2 text-green-600"></i>
-                        Virtual Machines & Networks
-                    </h3>
-                    <p class="text-gray-600 mb-4">Hands-on ervaring met VM setup, configuratie en network management</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 40%"></div>
-                    </div>
-                    <p class="text-sm text-gray-500 mt-2">40% - Praktische ervaring opgebouwd</p>
-                    <div class="mt-4">
-                        <span class="skill-badge">VM Setup</span>
-                        <span class="skill-badge">Network Config</span>
-                        <span class="skill-badge">Troubleshooting</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">
-                        <i class="fas fa-code mr-2 text-purple-600"></i>
-                        Front-end Development
-                    </h3>
-                    <p class="text-gray-600 mb-4">HTML, CSS, JavaScript en responsive design principes</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 65%"></div>
-                    </div>
-                    <p class="text-sm text-gray-500 mt-2">65% - Basis tot intermediate</p>
-                    <div class="mt-4">
-                        <span class="skill-badge">HTML5</span>
-                        <span class="skill-badge">CSS3</span>
-                        <span class="skill-badge">JavaScript</span>
-                        <span class="skill-badge">Responsive Design</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">
-                        <i class="fas fa-database mr-2 text-orange-600"></i>
-                        Back-end & Database
-                    </h3>
-                    <p class="text-gray-600 mb-4">Server-side development en database management fundamentals</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 50%"></div>
-                    </div>
-                    <p class="text-sm text-gray-500 mt-2">50% - Basis concepten onder de knie</p>
-                    <div class="mt-4">
-                        <span class="skill-badge">SQL</span>
-                        <span class="skill-badge">API Development</span>
-                        <span class="skill-badge">Server Management</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Current Projects Section -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                <i class="fas fa-tools mr-3 text-red-500"></i>
-                Lopende Projecten
-            </h2>
-
-            <div class="project-card" id="banking-app">
-                <div class="flex items-start gap-4">
-                    <div class="bg-blue-100 p-3 rounded-full">
-                        <i class="fas fa-robot text-2xl text-blue-600"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Python Automatisatie Suite</h3>
-                        <p class="text-gray-600 mb-4">Ontwikkeling van verschillende automatiseringstools voor bedrijfsprocessen</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h4 class="font-bold text-blue-800 mb-2">File Management Tool</h4>
-                                <p class="text-blue-700">Automatische organisatie en backup van bestanden</p>
-                            </div>
-                            <div class="bg-green-50 p-4 rounded-lg">
-                                <h4 class="font-bold text-green-800 mb-2">Data Processing Script</h4>
-                                <p class="text-green-700">CSV/Excel data cleaning en transformatie</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card" id="robot-barista">
-                <div class="flex items-start gap-4">
-                    <div class="bg-green-100 p-3 rounded-full">
-                        <i class="fas fa-network-wired text-2xl text-green-600"></i>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Virtual Lab Environment</h3>
-                        <p class="text-gray-600 mb-4">Opzetten van test omgeving met verschillende VM's voor leerprojecten</p>
-                        <div class="space-y-2">
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-check-circle text-green-500"></i>
-                                <span>Ubuntu Server VM configuratie</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-check-circle text-green-500"></i>
-                                <span>Windows development environment</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-clock text-yellow-500"></i>
-                                <span>Network segmentatie en security (in ontwikkeling)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Learning Goals Section -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                <i class="fas fa-bullseye mr-3 text-purple-500"></i>
-                Leerdoelen & Toekomstige Projecten
-            </h2>
-            
-            <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <i class="fas fa-cloud text-4xl text-blue-600 mb-4"></i>
-                        <h3 class="font-bold text-xl mb-2">Cloud Technologies</h3>
-                        <p class="text-gray-700">AWS/Azure certificering en cloud deployment</p>
-                    </div>
-                    <div class="text-center">
-                        <i class="fas fa-mobile-alt text-4xl text-green-600 mb-4"></i>
-                        <h3 class="font-bold text-xl mb-2">Mobile Development</h3>
-                        <p class="text-gray-700">React Native of Flutter voor app development</p>
-                    </div>
-                    <div class="text-center">
-                        <i class="fas fa-shield-alt text-4xl text-red-600 mb-4"></i>
-                        <h3 class="font-bold text-xl mb-2">Cybersecurity</h3>
-                        <p class="text-gray-700">Security fundamentals en ethical hacking basics</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- GitHub & Version Control -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                <i class="fab fa-github mr-3 text-gray-800"></i>
-                Version Control & Samenwerking
-            </h2>
-            
-            <div class="project-card">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
                 <div class="text-center">
-                    <i class="fab fa-git-alt text-6xl text-orange-600 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Git & GitHub Workflow</h3>
-                    <p class="text-gray-600 mb-6">Leren werken met moderne development tools en collaborative workflows</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <h4 class="font-bold text-gray-800 mb-2">Huidige Status</h4>
-                            <ul class="text-gray-600 space-y-1">
-                                <li>✓ Git basics onder de knie</li>
-                                <li>✓ GitHub repository management</li>
-                                <li>⏳ Branch strategies leren</li>
-                                <li>⏳ Pull request workflow</li>
-                            </ul>
-                        </div>
-                        <div class="bg-blue-50 p-4 rounded-lg">
-                            <h4 class="font-bold text-blue-800 mb-2">Komende Stappen</h4>
-                            <ul class="text-blue-700 space-y-1">
-                                <li>• Portfolio projecten op GitHub</li>
-                                <li>• Open source contributie</li>
-                                <li>• Code review participatie</li>
-                                <li>• CI/CD pipeline basics</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <i class="fab fa-python text-4xl text-blue-600 mb-2"></i>
+                    <h4 class="font-bold">Software Development</h4>
+                    <p class="text-sm text-gray-600">Verder ontwikkelen van mijn development vaardigheden</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-server text-4xl text-green-600 mb-2"></i>
+                    <h4 class="font-bold">Infrastructure</h4>
+                    <p class="text-sm text-gray-600">Expertise opbouwen in VM's en network management</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-graduation-cap text-4xl text-purple-600 mb-2"></i>
+                    <h4 class="font-bold">Continuous Learning</h4>
+                    <p class="text-sm text-gray-600">Blijven leren en groeien in de IT-sector</p>
                 </div>
             </div>
-        </section>
-    </div>
-</main>
+        </div>
+    </section>
 
-<!-- Design Credit Banner -->
+    <!-- Values & Work Style -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-handshake mr-3 text-blue-500"></i>
+            Mijn Werkstijl & Waarden
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <h3 class="font-bold text-xl mb-3 text-gray-800">Sterke Punten</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>Sterke communicatieve vaardigheden door sales achtergrond</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>Probleemoplossend vermogen en analytisch denken</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>Business understanding gecombineerd met technische interesse</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>Zelfmotivatie en bereidheid om te leren</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl mb-3 text-gray-800">Kernwaarden</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <span>Integriteit en transparantie in alle communicatie</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <span>Continue verbetering en levenslang leren</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <span>Teamwork en kennisdeling</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <span>Klantgerichtheid en kwaliteitslevering</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+    
+    <!-- Design Credit Banner -->
 <div class="fixed bottom-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-tl-lg shadow-lg z-50">
   <p class="text-xs flex items-center gap-2">
     <i class="fas fa-code"></i>
@@ -856,8 +717,8 @@ color: white;
   </p>
 </div>
 
-<!-- Footer with Contact Information -->
-<footer class="gradient-bg text-white py-8">
+    <!-- Footer with Contact Information -->
+<footer class="gradient-bg text-white py-8 mt-12">
   <div class="max-w-4xl mx-auto px-4">
     
     <!-- Contact Information Section -->
@@ -1015,90 +876,7 @@ document.addEventListener('click', function(event) {
         closeMobileMenu();
     }
 });
-
-// Animate progress bars on page load
-window.addEventListener('load', function() {
-    const progressBars = document.querySelectorAll('.progress-fill');
-    progressBars.forEach(bar => {
-        const width = bar.style.width;
-        bar.style.width = '0%';
-        setTimeout(() => {
-            bar.style.width = width;
-        }, 500);
-    });
-});
-
-// Sidebar functionality
-function toggleSidebar() {
-    const sidebar = document.getElementById('projectSidebar');
-    const mainContent = document.getElementById('main-content');
-    const closeBtn = sidebar.querySelector('.sidebar-close');
-    
-    sidebar.classList.toggle('show');
-    mainContent.classList.toggle('content-shift');
-    
-    // Show/hide close button on mobile
-    if (window.innerWidth <= 1024) {
-        if (sidebar.classList.contains('show')) {
-            closeBtn.style.display = 'flex';
-        } else {
-            closeBtn.style.display = 'none';
-        }
-    }
-}
-
-// Close sidebar when clicking outside
-document.addEventListener('click', function(event) {
-    const sidebar = document.getElementById('projectSidebar');
-    const toggleBtn = document.querySelector('.sidebar-toggle');
-    
-    if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
-        sidebar.classList.remove('show');
-        document.getElementById('main-content').classList.remove('content-shift');
-        
-        // Hide close button if sidebar is closed
-        if (window.innerWidth <= 1024) {
-            sidebar.querySelector('.sidebar-close').style.display = 'none';
-        }
-    }
-});
-
-// Smooth scroll to sections
-document.querySelectorAll('.project-link[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            
-            // Close sidebar on mobile after clicking
-            if (window.innerWidth <= 1024) {
-                document.getElementById('projectSidebar').classList.remove('show');
-                document.getElementById('main-content').classList.remove('content-shift');
-                document.getElementById('projectSidebar').querySelector('.sidebar-close').style.display = 'none';
-            }
-        }
-    });
-});
-
-// Handle window resize for sidebar close button
-window.addEventListener('resize', function() {
-    const sidebar = document.getElementById('projectSidebar');
-    const closeBtn = sidebar.querySelector('.sidebar-close');
-    
-    if (window.innerWidth > 1024) {
-        closeBtn.style.display = 'none';
-    } else if (sidebar.classList.contains('show')) {
-        closeBtn.style.display = 'flex';
-    }
-});
 </script>
-
+    
 </body>
 </html>
-
