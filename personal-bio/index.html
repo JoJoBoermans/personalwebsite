@@ -17,10 +17,12 @@
     h2 {
         text-align: center;
     }
+
 @media print {
 body { -webkit-print-color-adjust: exact; }
 * { box-sizing: border-box; }
 }
+
 .gradient-bg {
 background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
 }
@@ -309,20 +311,29 @@ color: white;
     visibility: visible;
 }
 
+/* **Geoptimaliseerde Foto Styling** */
+.welcome-section {
+    position: relative;
+    max-width: 4xl;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    overflow: hidden;
+    min-height: 350px;
+}
+
+/* Hoofdfoto - altijd zichtbaar en gecentreerd */
 .profile-image {
-    position: absolute;
-    left: 20px;
-    margin-top: 5.5rem;
-    margin-left: auto;
-    margin-right: auto;
+    display: block;
+    margin: 2rem auto 0;
+    width: clamp(180px, 20vw, 300px);
+    height: auto;
     border-radius: 1rem;
-    width: 250px;
-    max-width: 28rem;
     object-fit: cover;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 4px solid rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
-    float: right;
+    position: relative;
+    z-index: 20;
 }
 
 .profile-image:hover {
@@ -330,50 +341,77 @@ color: white;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
-.right-image {
+/* Zijfoto's - intelligent gepositioneerd */
+.side-photo {
     position: absolute;
-    right: 20px;
-    top: 180%;
-    transform: translateY(-50%);
-    border-radius: 1rem;
-    width: 250px;
+    width: clamp(160px, 14vw, 250px);
     height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     border: 4px solid rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
-    z-index: 100;
-    float: right;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none; /* Standaard verborgen */
+}
+
+.side-photo:hover {
+    transform: translateY(-50%) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.right-image {
+    right: clamp(10px, 2vw, 30px);
 }
 
 .left-image {
-    position: absolute;
-    left: 20px;
-    top: 290%;
-    transform: translateY(-50%);
-    border-radius: 1rem;
-    width: 250px;
-    height: auto;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    border: 4px solid rgba(255, 255, 255, 0.8);
-    transition: all 0.3s ease;
-    z-index: 100;
-    float: left;
+    left: clamp(10px, 2vw, 30px);
 }
 
-.interests-section {
-    overflow: hidden;
-}
+/* **Intelligente Media Queries voor Foto Zichtbaarheid** */
 
-/* Hide images when zoomed above 125% on DESKTOP only */
-@media (min-width: 768px) and (max-width: 1000px) {
-    .profile-image,
-    .right-image,
-    .left-image {
-        display: none !important;
+/* Grote desktop schermen - alle foto's zichtbaar */
+@media (min-width: 1200px) {
+    .side-photo {
+        display: block;
+    }
+    
+    .welcome-section {
+        padding-left: clamp(180px, 16vw, 280px);
+        padding-right: clamp(180px, 16vw, 280px);
     }
 }
 
-/* Responsive Design */
+/* Middelgrote desktop - alleen zijfoto's, niet beide */
+@media (min-width: 900px) and (max-width: 1199px) {
+    .right-image {
+        display: block;
+    }
+    
+    .left-image {
+        display: none;
+    }
+    
+    .welcome-section {
+        padding-right: clamp(160px, 18vw, 220px);
+        padding-left: 2rem;
+    }
+}
+
+/* Tablet en kleine desktop - geen zijfoto's */
+@media (min-width: 768px) and (max-width: 899px) {
+    .side-photo {
+        display: none !important;
+    }
+    
+    .profile-image {
+        width: clamp(200px, 25vw, 280px);
+    }
+}
+
+/* Mobile responsive design */
 @media (max-width: 767px) {
     h2 {
         text-align: left;
@@ -386,24 +424,18 @@ color: white;
         display: flex;
     }
     
-    /* Mobile: Hide right and left images, keep profile image */
-    .right-image,
-    .left-image {
+    .side-photo {
         display: none !important;
     }
 
     .profile-image {
-        position: relative !important;
-        float: none !important;
-        display: block !important;
-        margin: 2rem auto !important;
-        width: clamp(120px, 40vw, 200px) !important;
-        top: 30px !important;
-        left: 0 !important;
-    }   
-
-    .design-credit {
-        display: none;
+        width: clamp(150px, 40vw, 220px) !important;
+        margin-top: 1.5rem !important;
+    }
+    
+    .welcome-section {
+        padding: 2rem 1rem;
+        min-height: 280px;
     }
 }
 
@@ -425,6 +457,10 @@ color: white;
         padding: 0.875rem 1rem;
         font-size: 0.95rem;
     }
+    
+    .profile-image {
+        width: clamp(120px, 35vw, 180px) !important;
+    }
 }
 
 .p1 { 
@@ -433,40 +469,7 @@ color: white;
     color: rgba(255, 255, 255, 0.95);
     margin-top: 2rem;
 }
-.contact-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 1rem;
-    backdrop-filter: blur(10px);
-}
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
-}
-.contact-item a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-.contact-item a:hover {
-    color: white;
-    text-decoration: underline;
-    transform: scale(1.05);
-}
 
-.welcome-section {
-    max-width: 4xl;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
 .bio-section {
     background: white;
     border-radius: 1rem;
@@ -520,17 +523,27 @@ color: white;
         <h1>Mijn Verhaal</h1>
         <p class="p1">Van IT Sales naar IT Development - Een Reis van Groei en Ontdekking</p>
          
+        <!-- Hoofdfoto - altijd zichtbaar -->
         <img src="foto-bio.jpg" 
-             alt="Joshua Boermans Profile Photo" 
-             class="profile-image">
+             alt="Joshua Boermans profielfoto" 
+             class="profile-image"
+             loading="eager"
+             decoding="async"
+             fetchpriority="high">
 
-               <img src="foto-bio2.jpg" 
-             alt="Joshua Boermans Profile Photo" 
-             class="right-image">
+        <!-- Rechter zijfoto - intelligent verborgen -->
+        <img src="foto-bio2.jpg" 
+             alt="Joshua Boermans in professionele setting" 
+             class="side-photo right-image"
+             loading="lazy"
+             decoding="async">
 
-         <img src="foto-bio3.jpg" 
-             alt="Joshua Boermans Profile Photo" 
-             class="left-image">
+        <!-- Linker zijfoto - intelligent verborgen -->
+        <img src="foto-bio3.jpg" 
+             alt="Joshua Boermans casual foto" 
+             class="side-photo left-image"
+             loading="lazy"
+             decoding="async">
     </div>
 </div>
 
@@ -565,8 +578,8 @@ color: white;
                 <h3 class="text-xl font-bold text-gray-800">IT Sales Ervaring (2019-2025)</h3>
                 <p class="text-gray-700">
                     Begonnen bij XcellerateLabs waar ik werkte met cloud-native startups, gevolgd door rollen bij 
-                    Trusted Shops (e-commerce security) en NCC Group (software escrow services). Als medeoprichter 
-                    van UNIT heb ik hands-on ervaring opgedaan met low-code development en business automation.
+                    Trusted Shops (e-commerce security) en NCC Group (software escrow services). Als Head of Growth bij
+                     UNIT heb ik hands-on ervaring opgedaan met low-code development en business automation.
                 </p>
             </div>
             <div class="border-l-4 border-green-500 pl-4">
@@ -574,14 +587,14 @@ color: white;
                 <p class="text-gray-700">
                     Momenteel volg ik een intensieve IT-bootcamp bij BEE-Organisation waar ik me specialiseer in 
                     front-end en back-end development, virtual machines, en network management. Het is hier dat ik 
-                    mijn sterke affiniteit voor Python en virtualisatie technologieën ontdekte.
+                    mijn sterke affiniteit voor software development en netwerkbeheer ontdekte.
                 </p>
             </div>
         </div>
     </section>
     
-    <!-- Personal Interests with Image -->
-    <section class="bio-section interests-section">
+    <!-- Personal Interests -->
+    <section class="bio-section">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">
             <i class="fas fa-heart mr-3 text-red-500"></i>
             Persoonlijke Interesses
@@ -622,7 +635,7 @@ color: white;
                 Mijn doel is om binnen de IT-sector een rol te vinden waar ik kan groeien van junior naar ervaren professional. 
                 Ik zoek specifiek naar bedrijven die naast het bieden van een baan investeren in de ontwikkeling van hun werknemers door middel van trainingen. 
                 In mijn opinie is dit de beste manier
-                om praktijkervaring op te doen terwijl ik mijn technische kennis verder kan ontwikkellen en meerwaarde kan bieden.
+                om praktijkervaring op te doen terwijl ik mijn technische kennis verder kan ontwikkelen en meerwaarde kan bieden.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
                 <div class="text-center">
@@ -864,33 +877,7 @@ document.addEventListener('click', function(event) {
         closeMobileMenu();
     }
 });
-
-function handleZoomImages() {
-    const images = document.querySelectorAll('.profile-image, .right-image, .left-image');
-    const zoomLevel = window.devicePixelRatio || 1;
-    
-    images.forEach(img => {
-        if (zoomLevel > 1.25) {
-            img.style.display = 'none';
-        } else {
-            img.style.display = 'block';
-        }
-    });
-}
-
-// Listen for zoom changes
-window.addEventListener('resize', handleZoomImages);
-window.addEventListener('load', handleZoomImages);
-
-// Better zoom detection with debouncing
-let zoomTimer;
-window.addEventListener('resize', function() {
-    clearTimeout(zoomTimer);
-    zoomTimer = setTimeout(handleZoomImages, 100);
-});
 </script>
     
 </body>
 </html>
-
-
