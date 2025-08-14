@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Boermans - My Bio</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+<!-- SEO Hreflang tags for multilingual support -->
+<link rel="alternate" href="index.html" hreflang="nl">
+<link rel="alternate" href="EN-index.html" hreflang="en">
+<link rel="alternate" href="EN-index.html" hreflang="x-default">
+
+<style>
+    h1 {    
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    h2 {
+        text-align: center;
+    }
+
+@media print {
+body { -webkit-print-color-adjust: exact; }
+* { box-sizing: border-box; }
+}
+
+.gradient-bg {
+background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+}
+.tech-badge {
+background: linear-gradient(45deg, #4f46e5, #06b6d4);
+color: white;
+}
+.career-transition {
+background: linear-gradient(45deg, #10b981, #3b82f6);
+color: white;
+}
+.bootcamp-highlight {
+background: linear-gradient(45deg, #f59e0b, #ef4444);
+color: white;
+}
+
+/* Enhanced Navigation Bar */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+}
+
+/* Desktop Navigation */
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: block;
+}
+
+.nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Language Switcher Styling */
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.lang-btn:hover, .lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Mobile Navigation Header */
+.nav-header-mobile {
+    display: none;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.mobile-brand i {
+    font-size: 1.6rem;
+    background: linear-gradient(45deg, #06b6d4, #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.mobile-brand:hover {
+    transform: scale(1.02);
+}
+
+/* Mobile Controls Container */
+.mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Mobile Language Switcher */
+.mobile-language-switcher {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.mobile-lang-btn {
+    padding: 0.5rem 0.75rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.mobile-lang-btn:hover, .mobile-lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    text-decoration: none;
+}
+
+.mobile-lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Enhanced Mobile Menu Button */
+.mobile-menu-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-menu-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.mobile-menu-btn:hover::before {
+    left: 100%;
+}
+
+.mobile-menu-btn:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Mobile Dropdown Menu */
+.mobile-nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-15px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 50;
+    border-radius: 0 0 1.5rem 1.5rem;
+    overflow: hidden;
+    max-height: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+}
+
+.mobile-nav-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    max-height: 400px;
+}
+
+.mobile-nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    gap: 0;
+}
+
+.mobile-nav-menu ul li {
+    margin: 0 0.75rem 0.5rem 0.75rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-menu.show ul li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered animation delays */
+.mobile-nav-menu.show ul li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav-menu.show ul li:nth-child(2) { transition-delay: 0.15s; }
+.mobile-nav-menu.show ul li:nth-child(3) { transition-delay: 0.2s; }
+.mobile-nav-menu.show ul li:nth-child(4) { transition-delay: 0.25s; }
+.mobile-nav-menu.show ul li:nth-child(5) { transition-delay: 0.3s; }
+
+.mobile-nav-menu ul li a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-nav-menu ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.mobile-nav-menu ul li a:hover::before,
+.mobile-nav-menu ul li a:focus::before {
+    width: 100%;
+}
+
+.mobile-nav-menu ul li a:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
+}
+
+.mobile-nav-menu ul li a:hover,
+.mobile-nav-menu ul li a:focus {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-nav-menu ul li a i {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-menu ul li a:hover i,
+.mobile-nav-menu ul li a:focus i {
+    color: #06b6d4;
+}
+
+/* Backdrop overlay */
+.mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 40;
+}
+
+.mobile-menu-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* **Optimized Photo Styling** */
+.welcome-section {
+    position: relative;
+    max-width: 4xl;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    overflow: hidden;
+    min-height: 350px;
+}
+
+/* Main photo - always visible and centered */
+.profile-image {
+    display: block;
+    margin: 2rem auto 0;
+    width: clamp(180px, 20vw, 300px);
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 20;
+}
+
+.profile-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Side photos - intelligently positioned */
+.side-photo {
+    position: absolute;
+    width: clamp(160px, 14vw, 250px);
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none; /* Hidden by default */
+}
+
+.side-photo:hover {
+    transform: translateY(-50%) scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.right-image {
+    right: clamp(10px, 2vw, 30px);
+}
+
+.left-image {
+    left: clamp(10px, 2vw, 30px);
+}
+
+/* **Intelligent Media Queries for Photo Visibility** */
+
+/* Large desktop screens - all photos visible */
+@media (min-width: 1200px) {
+    .side-photo {
+        display: block;
+    }
+    
+    .welcome-section {
+        padding-left: clamp(180px, 16vw, 280px);
+        padding-right: clamp(180px, 16vw, 280px);
+    }
+}
+
+/* Medium desktop - only side photos, not both */
+@media (min-width: 900px) and (max-width: 1199px) {
+    .right-image {
+        display: block;
+    }
+    
+    .left-image {
+        display: none;
+    }
+    
+    .welcome-section {
+        padding-right: clamp(160px, 18vw, 220px);
+        padding-left: 2rem;
+    }
+}
+
+/* Tablet and small desktop - no side photos */
+@media (min-width: 768px) and (max-width: 899px) {
+    .side-photo {
+        display: none !important;
+    }
+    
+    .profile-image {
+        width: clamp(200px, 25vw, 280px);
+    }
+}
+
+/* Mobile responsive design */
+@media (max-width: 767px) {
+    h2 {
+        text-align: left;
+    }
+    
+    .nav > ul {
+        display: none !important;
+    }
+    .nav-header-mobile {
+        display: flex;
+    }
+    
+    .side-photo {
+        display: none !important;
+    }
+
+    .profile-image {
+        width: clamp(150px, 40vw, 220px) !important;
+        margin-top: 1.5rem !important;
+    }
+    
+    .welcome-section {
+        padding: 2rem 1rem;
+        min-height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-brand span {
+        display: none;
+    }
+    .mobile-brand {
+        font-size: 1.2rem;
+    }
+    .mobile-menu-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    .mobile-nav-menu ul li {
+        margin: 0 0.5rem 0.5rem 0.5rem;
+    }
+    .mobile-nav-menu ul li a {
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .mobile-lang-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+    
+    .profile-image {
+        width: clamp(120px, 35vw, 180px) !important;
+    }
+}
+
+.p1 { 
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 2rem;
+}
+
+.bio-section {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+<nav class="nav">
+    <!-- Desktop Navigation -->
+    <ul>
+        <li><a href="home.html"><i class="fas fa-home mr-2"></i>Home</a></li>
+        <li><a href="my-achievements.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
+        <li><a href="personal-bio.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
+        <li><a href="my-portfolio.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+        <li><a href="cv-page.html"><i class="fas fa-file-alt mr-2"></i>Resume</a></li>
+        
+        <!-- Desktop Language Switcher -->
+        <li>
+            <div class="language-switcher">
+                <a href="../personal-bio/index.html" class="lang-btn">🇳🇱 NL</a>
+                <a href="personal-bio.html" class="lang-btn active">🇬🇧 EN</a>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Mobile Navigation Header -->
+    <div class="nav-header-mobile">
+        <div class="mobile-brand">
+            <i class="fas fa-user-circle"></i>
+            <span>My Story</span>
+        </div>
+        
+        <div class="mobile-controls">
+            <!-- Mobile Language Switcher -->
+            <div class="mobile-language-switcher">
+                <a href="../personal-bio/index.html" class="mobile-lang-btn">🇳🇱</a>
+                <a href="personal-bio.html" class="mobile-lang-btn active">🇬🇧</a>
+            </div>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile menu backdrop -->
+    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile dropdown menu -->
+    <div class="mobile-nav-menu" id="mobile-nav-menu" role="navigation" aria-label="Mobile navigation">
+        <ul>
+            <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="my-achievements.html"><i class="fas fa-trophy"></i>Achievements</a></li>
+            <li><a href="personal-bio.html"><i class="fas fa-user"></i>My Bio</a></li>
+            <li><a href="my-portfolio.html"><i class="fas fa-briefcase"></i>My Portfolio</a></li>
+            <li><a href="cv-page.html"><i class="fas fa-file-alt"></i>Resume</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<div class="gradient-bg text-white py-12 px-4">
+    <div class="welcome-section">
+        <h1>My Story</h1>
+        <p class="p1">From IT Sales to IT Development - A Journey of Growth and Discovery</p>
+         
+        <!-- Main photo - always visible -->
+        <img src="../personal-bio/foto-bio.jpg" 
+             alt="Joshua Boermans profile photo" 
+             class="profile-image"
+             loading="eager"
+             decoding="async"
+             fetchpriority="high">
+
+        <!-- Right side photo - intelligently hidden -->
+        <img src="../personal-bio/foto-bio2.jpg" 
+             alt="Joshua Boermans in professional setting" 
+             class="side-photo right-image"
+             loading="lazy"
+             decoding="async">
+
+        <!-- Left side photo - intelligently hidden -->
+        <img src="../personal-bio/foto-bio3.jpg" 
+             alt="Joshua Boermans casual photo" 
+             class="side-photo left-image"
+             loading="lazy"
+             decoding="async">
+    </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- Personal Introduction -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-user-circle mr-3 text-blue-500"></i>
+            Who Am I?
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+            Hello! I'm Joshua Boermans, a 29-year-old IT enthusiast from Hoofddorp currently undergoing an exciting career transition. 
+            After more than six years of experience in IT sales at both startups and established companies, I've decided to take my passion for technology 
+            a step further and transition into IT development.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed">
+            What started as curiosity about the technical side of the products I was selling has now grown into a genuine passion for programming, 
+            systems administration, and IT innovation. I strongly believe in lifelong learning and am currently busy further developing my technical skills 
+            to successfully tackle this new challenge.
+        </p>
+    </section>
+
+    <!-- Career Journey -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-road mr-3 text-green-500"></i>
+            My Career Journey
+        </h2>
+        <div class="space-y-4">
+            <div class="border-l-4 border-blue-500 pl-4">
+                <h3 class="text-xl font-bold text-gray-800">IT Sales Experience (2019-2025)</h3>
+                <p class="text-gray-700">
+                    Started at XcellerateLabs where I worked with cloud-native startups, followed by roles at 
+                    Trusted Shops (e-commerce security) and NCC Group (software escrow services). As Head of Growth at
+                    UNIT, I gained hands-on experience with low-code development and business automation.
+                </p>
+            </div>
+            <div class="border-l-4 border-green-500 pl-4">
+                <h3 class="text-xl font-bold text-gray-800">IT Bootcamp (2025)</h3>
+                <p class="text-gray-700">
+                    Currently pursuing an intensive IT bootcamp at BEE-Organisation where I specialize in 
+                    front-end and back-end development, virtual machines, and network management. It's here that I 
+                    discovered my strong affinity for software development and network administration.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Personal Interests -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-heart mr-3 text-red-500"></i>
+            Personal Interests
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <i class="fas fa-bicycle text-3xl text-blue-600 mb-3"></i>
+                <h3 class="font-bold text-lg mb-2">Cycling</h3>
+                <p class="text-gray-600">I find peace and challenge in cycling. It helps me stay focused and set goals, skills that are also valuable in my IT career.</p>
+            </div>
+            <div class="bg-green-50 p-4 rounded-lg">
+                <i class="fas fa-tools text-3xl text-green-600 mb-3"></i>
+                <h3 class="font-bold text-lg mb-2">DIY Projects</h3>
+                <p class="text-gray-600">Solving practical problems at home helps me maintain analytical thinking - a skill that perfectly aligns with programming and troubleshooting.</p>
+            </div>
+            <div class="bg-yellow-50 p-4 rounded-lg">
+                <i class="fas fa-guitar text-3xl text-yellow-600 mb-3"></i>
+                <h3 class="font-bold text-lg mb-2">Playing Guitar</h3>
+                <p class="text-gray-600">Music brings creativity and discipline together. It helps me stay balanced and develop a different form of logical thinking.</p>
+            </div>
+            <div class="bg-purple-50 p-4 rounded-lg">
+                <i class="fas fa-plane text-3xl text-purple-600 mb-3"></i>
+                <h3 class="font-bold text-lg mb-2">Traveling</h3>
+                <p class="text-gray-600">Discovering new cultures and places has taught me to be adaptive and open-minded - essential qualities in the rapidly changing IT world.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals & Aspirations -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-bullseye mr-3 text-purple-500"></i>
+            My Goals & Ambitions
+        </h2>
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                My goal is to find a position within the IT sector where I can grow from junior to experienced professional.
+                I'm looking for an employer that not only offers a job, but also actively invests in employee development, 
+                for example through training and educational programs. This way I can gain practical experience, 
+                deepen my technical knowledge and directly add value to the company.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                <div class="text-center">
+                    <i class="fab fa-python text-4xl text-blue-600 mb-2"></i>
+                    <h4 class="font-bold">Software Development</h4>
+                    <p class="text-sm text-gray-600">Further develop my development skills</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-server text-4xl text-green-600 mb-2"></i>
+                    <h4 class="font-bold">Infrastructure</h4>
+                    <p class="text-sm text-gray-600">Build expertise in VMs and network management</p>
+                </div>
+                <div class="text-center">
+                    <i class="fas fa-graduation-cap text-4xl text-purple-600 mb-2"></i>
+                    <h4 class="font-bold">Continuous Learning</h4>
+                    <p class="text-sm text-gray-600">Keep learning and growing in the IT sector</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values & Work Style -->
+    <section class="bio-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">
+            <i class="fas fa-handshake mr-3 text-blue-500"></i>
+            My Work Style & Values
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <h3 class="font-bold text-xl mb-3 text-gray-800">Strengths</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>Strong communication skills from sales background</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>Problem-solving ability and analytical thinking</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>Business understanding combined with technical interest</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                        <span>Self-motivation and willingness to learn</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl mb-3 text-gray-800">Core Values</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <span>Integrity and transparency in all communication</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <span>Continuous improvement and lifelong learning</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <span>Teamwork and knowledge sharing</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-star text-yellow-500"></i>
+                        <span>Customer focus and quality delivery</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+    
+    <!-- Design Credit Banner -->
+<div class="fixed bottom-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-tl-lg shadow-lg z-50">
+  <p class="text-xs flex items-center gap-2">
+    <i class="fas fa-code"></i>
+    <span>Developed by Joshua Boermans</span>
+  </p>
+</div>
+
+    <!-- Footer with Contact Information -->
+<footer class="gradient-bg text-white py-8 mt-12">
+  <div class="max-w-4xl mx-auto px-4">
+    
+    <!-- Contact Information Section -->
+    <div class="text-center mb-6">
+      <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-phone text-blue-200"></i>
+          <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">
+            +31 6 36546524
+          </a>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-envelope text-blue-200"></i>
+          <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">
+            joshuaboermans@gmail.com
+          </a>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-map-marker-alt text-blue-200"></i>
+          <span>Hoofddorp, Netherlands</span>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fab fa-linkedin text-blue-200"></i>
+          <a href="https://www.linkedin.com/in/joshuaboermans/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="hover:text-blue-200 transition-colors">
+            linkedin.com/in/joshuaboermans
+          </a>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Copyright and Design Credit Section -->
+    <div class="text-center pt-4 border-t border-white border-opacity-20">
+      <p class="text-sm text-white text-opacity-80 mb-1">
+        <i class="fas fa-code mr-2"></i>
+        Website designed and developed by Joshua Boermans
+      </p>
+      <p class="text-xs text-white text-opacity-60">
+        © 2025 Joshua Boermans - All rights reserved
+      </p>
+    </div>
+    
+  </div>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    if (menu.classList.contains('show')) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+}
+
+function openMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    menu.classList.add('show');
+    backdrop.classList.add('show');
+    btnIcon.className = 'fas fa-times';
+    btnText.textContent = 'Close';
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = 'hidden';
+    
+    // Focus management for accessibility
+    setTimeout(() => {
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus();
+    }, 100);
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    menu.classList.remove('show');
+    backdrop.classList.remove('show');
+    btnIcon.className = 'fas fa-bars';
+    btnText.textContent = 'Menu';
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Enhanced event listeners for better UX
+document.addEventListener('DOMContentLoaded', function() {
+    // Close menu when clicking on menu links
+    document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 767) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Keyboard navigation within menu
+    document.getElementById('mobile-nav-menu').addEventListener('keydown', function(event) {
+        const links = this.querySelectorAll('a');
+        const currentIndex = Array.from(links).indexOf(document.activeElement);
+        
+        if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            const nextIndex = (currentIndex + 1) % links.length;
+            links[nextIndex].focus();
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            const prevIndex = (currentIndex - 1 + links.length) % links.length;
+            links[prevIndex].focus();
+        }
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobile-nav-menu');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNavHeader = document.querySelector('.nav-header-mobile');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+
+    if (!mobileMenu.contains(event.target) && 
+        !mobileMenuBtn.contains(event.target) && 
+        !mobileNavHeader.contains(event.target) && 
+        backdrop.classList.contains('show')) {
+        closeMobileMenu();
+    }
+});
+</script>
+    
+</body>
+</html>

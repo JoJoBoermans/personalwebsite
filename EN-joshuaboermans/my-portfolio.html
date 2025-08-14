@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Boermans - My Portfolio</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+<!-- SEO Hreflang tags for multilingual support -->
+<link rel="alternate" href="index.html" hreflang="nl">
+<link rel="alternate" href="EN-index.html" hreflang="en">
+<link rel="alternate" href="EN-index.html" hreflang="x-default">
+
+<style>
+    h1 {    
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+@media print {
+body { -webkit-print-color-adjust: exact; }
+* { box-sizing: border-box; }
+}
+.gradient-bg {
+background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+}
+.tech-badge {
+background: linear-gradient(45deg, #4f46e5, #06b6d4);
+color: white;
+}
+.career-transition {
+background: linear-gradient(45deg, #10b981, #3b82f6);
+color: white;
+}
+.bootcamp-highlight {
+background: linear-gradient(45deg, #f59e0b, #ef4444);
+color: white;
+}
+
+/* Enhanced Navigation Bar */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+}
+
+/* Desktop Navigation */
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: block;
+}
+
+.nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Language Switcher Styling */
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.lang-btn:hover, .lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Mobile Navigation Header */
+.nav-header-mobile {
+    display: none;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.mobile-brand i {
+    font-size: 1.6rem;
+    background: linear-gradient(45deg, #06b6d4, #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.mobile-brand:hover {
+    transform: scale(1.02);
+}
+
+/* Mobile Controls Container */
+.mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Mobile Language Switcher */
+.mobile-language-switcher {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.mobile-lang-btn {
+    padding: 0.5rem 0.75rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.mobile-lang-btn:hover, .mobile-lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    text-decoration: none;
+}
+
+.mobile-lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Enhanced Mobile Menu Button */
+.mobile-menu-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-menu-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.mobile-menu-btn:hover::before {
+    left: 100%;
+}
+
+.mobile-menu-btn:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Mobile Dropdown Menu */
+.mobile-nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-15px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 50;
+    border-radius: 0 0 1.5rem 1.5rem;
+    overflow: hidden;
+    max-height: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+}
+
+.mobile-nav-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    max-height: 400px;
+}
+
+.mobile-nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    gap: 0;
+}
+
+.mobile-nav-menu ul li {
+    margin: 0 0.75rem 0.5rem 0.75rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-menu.show ul li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered animation delays */
+.mobile-nav-menu.show ul li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav-menu.show ul li:nth-child(2) { transition-delay: 0.15s; }
+.mobile-nav-menu.show ul li:nth-child(3) { transition-delay: 0.2s; }
+.mobile-nav-menu.show ul li:nth-child(4) { transition-delay: 0.25s; }
+.mobile-nav-menu.show ul li:nth-child(5) { transition-delay: 0.3s; }
+
+.mobile-nav-menu ul li a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-nav-menu ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.mobile-nav-menu ul li a:hover::before,
+.mobile-nav-menu ul li a:focus::before {
+    width: 100%;
+}
+
+.mobile-nav-menu ul li a:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
+}
+
+.mobile-nav-menu ul li a:hover,
+.mobile-nav-menu ul li a:focus {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-nav-menu ul li a i {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-menu ul li a:hover i,
+.mobile-nav-menu ul li a:focus i {
+    color: #06b6d4;
+}
+
+/* Backdrop overlay */
+.mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 40;
+}
+
+.mobile-menu-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .nav > ul {
+        display: none !important;
+    }
+    .nav-header-mobile {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-brand span {
+        display: none;
+    }
+    .mobile-brand {
+        font-size: 1.2rem;
+    }
+    .mobile-menu-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    .mobile-nav-menu ul li {
+        margin: 0 0.5rem 0.5rem 0.5rem;
+    }
+    .mobile-nav-menu ul li a {
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .mobile-lang-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}
+
+.p1 { 
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-top: 2rem;
+}
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+.contact-item a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.contact-item a:hover {
+    color: white;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+.welcome-section {
+    max-width: 4xl;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+.project-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.skill-badge {
+    display: inline-block;
+    background: linear-gradient(45deg, #4f46e5, #06b6d4);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0.25rem;
+}
+.progress-bar {
+    background: #e2e8f0;
+    border-radius: 1rem;
+    height: 1rem;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+.progress-fill {
+    background: linear-gradient(45deg, #4f46e5, #06b6d4);
+    height: 100%;
+    border-radius: 1rem;
+    transition: width 1s ease;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    right: 0;
+    top: 80px;
+    width: 280px;
+    height: calc(100vh - 80px);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 500;
+    overflow-y: auto;
+    padding: 2rem 1.5rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.sidebar.show {
+    transform: translateX(0);
+}
+
+.sidebar h3 {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.75rem;
+}
+
+.sidebar-section {
+    margin-bottom: 2rem;
+}
+
+.sidebar-section h4 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.project-link {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.project-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-left-color: #06b6d4;
+    transform: translateX(5px);
+}
+
+.project-link i {
+    margin-right: 0.5rem;
+    width: 16px;
+}
+
+.main-content.content-shift {
+    margin-right: 280px;
+    transition: margin-right 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 100%;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 1001;
+    }
+    
+    .main-content.content-shift {
+        margin-right: 0;
+    }
+    
+    .sidebar-close {
+        display: flex;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .sidebar-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.sidebar-toggle {
+    background: linear-gradient(45deg, #4f46e5, #06b6d4);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin: 2rem auto;
+    width: fit-content;
+}
+
+.sidebar-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-toggle i {
+    font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+    .sidebar-toggle {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.2rem;
+        margin: 1rem auto;
+    }
+}
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+<nav class="nav">
+    <!-- Desktop Navigation -->
+    <ul>
+        <li><a href="home.html"><i class="fas fa-home mr-2"></i>Home</a></li>
+        <li><a href="my-achievements.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
+        <li><a href="personal-bio.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
+        <li><a href="my-portfolio.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+        <li><a href="cv-page.html"><i class="fas fa-file-alt mr-2"></i>Resume</a></li>
+        
+        <!-- Desktop Language Switcher -->
+        <li>
+            <div class="language-switcher">
+                <a href="../my-portfolio/index.html" class="lang-btn">🇳🇱 NL</a>
+                <a href="my-portfolio.html" class="lang-btn active">🇬🇧 EN</a>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Mobile Navigation Header -->
+    <div class="nav-header-mobile">
+        <div class="mobile-brand">
+            <i class="fas fa-code"></i>
+            <span>Joshua Boermans</span>
+        </div>
+        
+        <div class="mobile-controls">
+            <!-- Mobile Language Switcher -->
+            <div class="mobile-language-switcher">
+                <a href="../my-portfolio/index.html" class="mobile-lang-btn">🇳🇱</a>
+                <a href="my-portfolio.html" class="mobile-lang-btn active">🇬🇧</a>
+            </div>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile menu backdrop -->
+    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile dropdown menu -->
+    <div class="mobile-nav-menu" id="mobile-nav-menu" role="navigation" aria-label="Mobile navigation">
+        <ul>
+            <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="my-achievements.html"><i class="fas fa-trophy"></i>Achievements</a></li>
+            <li><a href="personal-bio.html"><i class="fas fa-user"></i>My Bio</a></li>
+            <li><a href="my-portfolio.html"><i class="fas fa-briefcase"></i>My Portfolio</a></li>
+            <li><a href="cv-page.html"><i class="fas fa-file-alt"></i>Resume</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Sidebar completed projects-->
+<div class="sidebar" id="projectSidebar">
+    <button class="sidebar-close" onclick="toggleSidebar()" style="display: none;"><i class="fas fa-times"></i></button>
+    <h3><i class="fas fa-folder-open mr-2"></i>My Projects</h3>
+    
+    <div class="sidebar-section">
+        <h4><i class="fas fa-check-circle mr-2"></i>Completed Projects</h4>
+        <a href="../Fluffy&Fresh/startpagina/index.html" class="project-link">
+            Dog Grooming Salon Website (Training Purpose)
+        </a>
+        <a href="#banking-app" class="project-link">
+            Simple Banking App <br>(Implementation Scheduled)
+        </a>
+        <a href="#robot-barista" class="project-link">
+            Robot Barista <br>(Implementation Scheduled)
+        </a>
+        <h4><i class="fas fa-circle mr-2"></i>In Development</h4>
+        <a href="https://tech2wear.com" class="project-link" target="_blank" rel="noopener noreferrer">
+            Online Webshop
+        </a>
+    </div>
+</div>
+
+<!-- Main Content Wrapper -->
+<main class="flex-grow" id="main-content">
+    <!-- Header Section -->
+    <div class="gradient-bg text-white py-12 px-4">
+        <div class="welcome-section">
+            <h1>My Portfolio - IT Projects & Development</h1>
+            <p class="p1">Showcase of my technical skills and projects</p>
+        </div>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <div class="text-center">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-project-diagram"></i>
+            <span>My Projects</span>
+        </button>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <!-- Current IT Development Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                <i class="fas fa-laptop-code mr-3 text-blue-500"></i>
+                Current IT Development
+            </h2>
+            <p class="text-lg text-gray-700 text-left mb-8">
+                As part of my IT Bootcamp at BEE-Organisation, I am developing practical skills 
+                in various technology areas. Here is an overview of my current focus and progress.
+            </p>
+        </section>
+
+        <!-- Skills Progress Section -->
+        <section class="mb-12">
+           <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                <i class="fas fa-chart-line mr-3 text-green-500"></i>
+                Technical Skills - Progress
+           </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="project-card">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fab fa-python mr-2 text-blue-600"></i>
+                        Python Development
+                    </h3>
+                    <p class="text-gray-600 mb-4">Discovered strong affinity for Python programming during bootcamp</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">45% - Intermediate level achieved</p>
+                    <div class="mt-4">
+                        <span class="skill-badge">Automation Scripts</span>
+                        <span class="skill-badge">API Integrations</span>
+                        <span class="skill-badge">Data Processing</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-server mr-2 text-green-600"></i>
+                        Virtual Machines & Networks
+                    </h3>
+                    <p class="text-gray-600 mb-4">Hands-on experience with VM setup, configuration and network management</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 40%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">40% - Practical experience built</p>
+                    <div class="mt-4">
+                        <span class="skill-badge">VM Setup</span>
+                        <span class="skill-badge">Network Config</span>
+                        <span class="skill-badge">Troubleshooting</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-code mr-2 text-purple-600"></i>
+                        Front-end Development
+                    </h3>
+                    <p class="text-gray-600 mb-4">HTML, CSS, JavaScript and responsive design principles</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">65% - Basic to intermediate</p>
+                    <div class="mt-4">
+                        <span class="skill-badge">HTML5</span>
+                        <span class="skill-badge">CSS3</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Responsive Design</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">
+                        <i class="fas fa-database mr-2 text-orange-600"></i>
+                        Back-end & Database
+                    </h3>
+                    <p class="text-gray-600 mb-4">Server-side development and database management fundamentals</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 50%"></div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">50% - Basic concepts mastered</p>
+                    <div class="mt-4">
+                        <span class="skill-badge">SQL</span>
+                        <span class="skill-badge">API Development</span>
+                        <span class="skill-badge">Server Management</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Projects Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                <i class="fas fa-tools mr-3 text-red-500"></i>
+                Current Projects
+            </h2>
+
+            <div class="project-card" id="banking-app">
+                <div class="flex items-start gap-4">
+                    <div class="bg-blue-100 p-3 rounded-full">
+                        <i class="fas fa-robot text-2xl text-blue-600"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Python Automation Suite</h3>
+                        <p class="text-gray-600 mb-4">Development of various automation tools for business processes</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-blue-800 mb-2">File Management Tool</h4>
+                                <p class="text-blue-700">Automatic organization and backup of files</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-green-800 mb-2">Data Processing Script</h4>
+                                <p class="text-green-700">CSV/Excel data cleaning and transformation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" id="robot-barista">
+                <div class="flex items-start gap-4">
+                    <div class="bg-green-100 p-3 rounded-full">
+                        <i class="fas fa-network-wired text-2xl text-green-600"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Virtual Lab Environment</h3>
+                        <p class="text-gray-600 mb-4">Setting up test environment with various VMs for learning projects</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span>Ubuntu Server VM configuration</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span>Windows development environment</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-clock text-yellow-500"></i>
+                                <span>Network segmentation and security (in development)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Goals Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                <i class="fas fa-bullseye mr-3 text-purple-500"></i>
+                Learning Goals & Future Projects
+            </h2>
+            
+            <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <i class="fas fa-cloud text-4xl text-blue-600 mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Cloud Technologies</h3>
+                        <p class="text-gray-700">AWS/Azure certification and cloud deployment</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-mobile-alt text-4xl text-green-600 mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Mobile Development</h3>
+                        <p class="text-gray-700">React Native or Flutter for app development</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-shield-alt text-4xl text-red-600 mb-4"></i>
+                        <h3 class="font-bold text-xl mb-2">Cybersecurity</h3>
+                        <p class="text-gray-700">Security fundamentals and ethical hacking basics</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub & Version Control -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+                <i class="fab fa-github mr-3 text-gray-800"></i>
+                Version Control & Collaboration
+            </h2>
+            
+            <div class="project-card">
+                <div class="text-center">
+                    <i class="fab fa-git-alt text-6xl text-orange-600 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Git & GitHub Workflow</h3>
+                    <p class="text-gray-600 mb-6">Learning to work with modern development tools and collaborative workflows</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-gray-800 mb-2">Current Status</h4>
+                            <ul class="text-gray-600 space-y-1">
+                                <li>✓ Git basics mastered</li>
+                                <li>✓ GitHub repository management</li>
+                                <li>⏳ Learning branch strategies</li>
+                                <li>⏳ Pull request workflow</li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-800 mb-2">Next Steps</h4>
+                            <ul class="text-blue-700 space-y-1">
+                                <li>• Portfolio projects on GitHub</li>
+                                <li>• Open source contributions</li>
+                                <li>• Code review participation</li>
+                                <li>• CI/CD pipeline basics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Design Credit Banner -->
+<div class="fixed bottom-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-tl-lg shadow-lg z-50">
+  <p class="text-xs flex items-center gap-2">
+    <i class="fas fa-code"></i>
+    <span>Developed by Joshua Boermans</span>
+  </p>
+</div>
+
+<!-- Footer with Contact Information -->
+<footer class="gradient-bg text-white py-8">
+  <div class="max-w-4xl mx-auto px-4">
+    
+    <!-- Contact Information Section -->
+    <div class="text-center mb-6">
+      <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-phone text-blue-200"></i>
+          <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">
+            +31 6 36546524
+          </a>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-envelope text-blue-200"></i>
+          <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">
+            joshuaboermans@gmail.com
+          </a>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-map-marker-alt text-blue-200"></i>
+          <span>Hoofddorp, Netherlands</span>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fab fa-linkedin text-blue-200"></i>
+          <a href="https://www.linkedin.com/in/joshuaboermans/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="hover:text-blue-200 transition-colors">
+            linkedin.com/in/joshuaboermans
+          </a>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Copyright and Design Credit Section -->
+    <div class="text-center pt-4 border-t border-white border-opacity-20">
+      <p class="text-sm text-white text-opacity-80 mb-1">
+        <i class="fas fa-code mr-2"></i>
+        Website designed and developed by Joshua Boermans
+      </p>
+      <p class="text-xs text-white text-opacity-60">
+        © 2025 Joshua Boermans - All rights reserved
+      </p>
+    </div>
+    
+  </div>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    if (menu.classList.contains('show')) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+}
+
+function openMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    menu.classList.add('show');
+    backdrop.classList.add('show');
+    btnIcon.className = 'fas fa-times';
+    btnText.textContent = 'Close';
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = 'hidden';
+    
+    // Focus management for accessibility
+    setTimeout(() => {
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus();
+    }, 100);
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    menu.classList.remove('show');
+    backdrop.classList.remove('show');
+    btnIcon.className = 'fas fa-bars';
+    btnText.textContent = 'Menu';
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Enhanced event listeners for better UX
+document.addEventListener('DOMContentLoaded', function() {
+    // Close menu when clicking on menu links
+    document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 767) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Keyboard navigation within menu
+    document.getElementById('mobile-nav-menu').addEventListener('keydown', function(event) {
+        const links = this.querySelectorAll('a');
+        const currentIndex = Array.from(links).indexOf(document.activeElement);
+        
+        if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            const nextIndex = (currentIndex + 1) % links.length;
+            links[nextIndex].focus();
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            const prevIndex = (currentIndex - 1 + links.length) % links.length;
+            links[prevIndex].focus();
+        }
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobile-nav-menu');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNavHeader = document.querySelector('.nav-header-mobile');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+
+    if (!mobileMenu.contains(event.target) && 
+        !mobileMenuBtn.contains(event.target) && 
+        !mobileNavHeader.contains(event.target) && 
+        backdrop.classList.contains('show')) {
+        closeMobileMenu();
+    }
+});
+
+// Animate progress bars on page load
+window.addEventListener('load', function() {
+    const progressBars = document.querySelectorAll('.progress-fill');
+    progressBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0%';
+        setTimeout(() => {
+            bar.style.width = width;
+        }, 500);
+    });
+});
+
+// Sidebar functionality
+function toggleSidebar() {
+    const sidebar = document.getElementById('projectSidebar');
+    const mainContent = document.getElementById('main-content');
+    const closeBtn = sidebar.querySelector('.sidebar-close');
+    
+    sidebar.classList.toggle('show');
+    mainContent.classList.toggle('content-shift');
+    
+    // Show/hide close button on mobile
+    if (window.innerWidth <= 1024) {
+        if (sidebar.classList.contains('show')) {
+            closeBtn.style.display = 'flex';
+        } else {
+            closeBtn.style.display = 'none';
+        }
+    }
+}
+
+// Close sidebar when clicking outside
+document.addEventListener('click', function(event) {
+    const sidebar = document.getElementById('projectSidebar');
+    const toggleBtn = document.querySelector('.sidebar-toggle');
+    
+    if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
+        sidebar.classList.remove('show');
+        document.getElementById('main-content').classList.remove('content-shift');
+        
+        // Hide close button if sidebar is closed
+        if (window.innerWidth <= 1024) {
+            sidebar.querySelector('.sidebar-close').style.display = 'none';
+        }
+    }
+});
+
+// Smooth scroll to sections
+document.querySelectorAll('.project-link[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Close sidebar on mobile after clicking
+            if (window.innerWidth <= 1024) {
+                document.getElementById('projectSidebar').classList.remove('show');
+                document.getElementById('main-content').classList.remove('content-shift');
+                document.getElementById('projectSidebar').querySelector('.sidebar-close').style.display = 'none';
+            }
+        }
+    });
+});
+
+// Handle window resize for sidebar close button
+window.addEventListener('resize', function() {
+    const sidebar = document.getElementById('projectSidebar');
+    const closeBtn = sidebar.querySelector('.sidebar-close');
+    
+    if (window.innerWidth > 1024) {
+        closeBtn.style.display = 'none';
+    } else if (sidebar.classList.contains('show')) {
+        closeBtn.style.display = 'flex';
+    }
+});
+</script>
+
+</body>
+</html>

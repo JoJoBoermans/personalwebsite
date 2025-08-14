@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Boermans - Resume</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+<!-- SEO Hreflang tags for multilingual support -->
+<link rel="alternate" href="index.html" hreflang="nl">
+<link rel="alternate" href="EN-index.html" hreflang="en">
+<link rel="alternate" href="EN-index.html" hreflang="x-default">
+
+<style>
+
+@media print {
+body { -webkit-print-color-adjust: exact; }
+* { box-sizing: border-box; }
+}
+    h2 { 
+        text-align: center;
+    }
+
+    .class-mb-8 {
+        text-align: center;
+    }
+.gradient-bg {
+background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+}
+.tech-badge {
+background: linear-gradient(45deg, #4f46e5, #06b6d4);
+color: white;
+}
+    
+.professional-profile {
+    background: none;
+    color: white;
+    text-align: center;
+}
+    
+.career-transition {
+background: linear-gradient(45deg, #10b981, #3b82f6);
+color: white;
+}
+.bootcamp-highlight {
+background: linear-gradient(45deg, #f59e0b, #ef4444);
+color: white;
+}
+
+/* Enhanced Navigation Bar */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+}
+
+/* Desktop Navigation */
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: block;
+}
+
+.nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Language Switcher Styling */
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.lang-btn:hover, .lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Mobile Navigation Header */
+.nav-header-mobile {
+    display: none;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.mobile-brand i {
+    font-size: 1.6rem;
+    background: linear-gradient(45deg, #06b6d4, #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.mobile-brand:hover {
+    transform: scale(1.02);
+}
+
+/* Mobile Controls Container */
+.mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Mobile Language Switcher */
+.mobile-language-switcher {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.mobile-lang-btn {
+    padding: 0.5rem 0.75rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.mobile-lang-btn:hover, .mobile-lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    text-decoration: none;
+}
+
+.mobile-lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Enhanced Mobile Menu Button */
+.mobile-menu-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-menu-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.mobile-menu-btn:hover::before {
+    left: 100%;
+}
+
+.mobile-menu-btn:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Mobile Dropdown Menu */
+.mobile-nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-15px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 50;
+    border-radius: 0 0 1.5rem 1.5rem;
+    overflow: hidden;
+    max-height: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+}
+
+.mobile-nav-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    max-height: 400px;
+}
+
+.mobile-nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    gap: 0;
+}
+
+.mobile-nav-menu ul li {
+    margin: 0 0.75rem 0.5rem 0.75rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-menu.show ul li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered animation delays */
+.mobile-nav-menu.show ul li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav-menu.show ul li:nth-child(2) { transition-delay: 0.15s; }
+.mobile-nav-menu.show ul li:nth-child(3) { transition-delay: 0.2s; }
+.mobile-nav-menu.show ul li:nth-child(4) { transition-delay: 0.25s; }
+.mobile-nav-menu.show ul li:nth-child(5) { transition-delay: 0.3s; }
+
+.mobile-nav-menu ul li a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-nav-menu ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.mobile-nav-menu ul li a:hover::before,
+.mobile-nav-menu ul li a:focus::before {
+    width: 100%;
+}
+
+.mobile-nav-menu ul li a:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
+}
+
+.mobile-nav-menu ul li a:hover,
+.mobile-nav-menu ul li a:focus {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-nav-menu ul li a i {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-menu ul li a:hover i,
+.mobile-nav-menu ul li a:focus i {
+    color: #06b6d4;
+}
+
+/* Backdrop overlay */
+.mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 40;
+}
+
+.mobile-menu-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .nav > ul {
+        display: none !important;
+    }
+    .nav-header-mobile {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-brand span {
+        display: none;
+    }
+    .mobile-brand {
+        font-size: 1.2rem;
+    }
+    .mobile-menu-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    .mobile-nav-menu ul li {
+        margin: 0 0.5rem 0.5rem 0.5rem;
+    }
+    .mobile-nav-menu ul li a {
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .mobile-lang-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}
+
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+<nav class="nav">
+    <!-- Desktop Navigation -->
+    <ul>
+        <li><a href="home.html"><i class="fas fa-home mr-2"></i>Home</a></li>
+        <li><a href="my-achievements.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
+        <li><a href="personal-bio.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
+        <li><a href="my-portfolio.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+        <li><a href="cv-page.html"><i class="fas fa-file-alt mr-2"></i>Resume</a></li>
+        
+        <!-- Desktop Language Switcher -->
+        <li>
+            <div class="language-switcher">
+                <a href="../cv-page/index.html" class="lang-btn">🇳🇱 NL</a>
+                <a href="cv-page.html" class="lang-btn active">🇬🇧 EN</a>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Mobile Navigation Header -->
+    <div class="nav-header-mobile">
+        <div class="mobile-brand">
+            <i class="fas fa-file-user"></i>
+            <span>Joshua Boermans Resume</span>
+        </div>
+        
+        <div class="mobile-controls">
+            <!-- Mobile Language Switcher -->
+            <div class="mobile-language-switcher">
+                <a href="../cv-page/index.html" class="mobile-lang-btn">🇳🇱</a>
+                <a href="cv-page.html" class="mobile-lang-btn active">🇬🇧</a>
+            </div>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile menu backdrop -->
+    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile dropdown menu -->
+    <div class="mobile-nav-menu" id="mobile-nav-menu" role="navigation" aria-label="Mobile navigation">
+        <ul>
+            <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="my-achievements.html"><i class="fas fa-trophy"></i>Achievements</a></li>
+            <li><a href="personal-bio.html"><i class="fas fa-user"></i>My Bio</a></li>
+            <li><a href="my-portfolio.html"><i class="fas fa-briefcase"></i>My Portfolio</a></li>
+            <li><a href="cv-page.html"><i class="fas fa-file-alt"></i>Resume</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<div class="gradient-bg text-white py-8 px-4">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    
+    <!-- Left: Text content -->
+    <div class="flex-1">
+      <h1 class="text-4xl md:text-5xl font-bold mb-2">Joshua Boermans</h1>
+      <p class="text-xl md:text-2xl mb-2">Junior IT Professional & Software Development Trainee</p>
+      <p class="text-lg mb-4 opacity-90">Transitioning from Technical Sales to IT Professional</p>
+
+      <div class="flex flex-wrap gap-4 text-sm">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-phone"></i>
+          <span>+31 6 36 54 65 24</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-envelope"></i>
+          <span>joshuaboermans@gmail.com</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-map-marker-alt"></i>
+          <a href="https://www.google.com/maps/place/Niemeyerstraat+40,+2132+HE+Hoofddorp/@52.2984632,4.7023382,678m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47c5e7d48675051d:0x1134a8da49e73367!8m2!3d52.2984599!4d4.7049131!16s%2Fg%2F11vy1j_9lj?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+  <span>Hoofddorp, Netherlands</span>
+</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/joshuaboermans/" target="_blank" rel="noopener noreferrer" class="linkedin text-blue-300 hover:underline">
+            linkedin.com/in/joshuaboermans
+          </a>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-globe"></i>
+          <a href="https://www.joshuaboermans.com" target="_blank" rel="noopener noreferrer" class="linkedin text-blue-300 hover:underline">
+            joshuaboermans.com
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Profile Image -->
+    <div class="flex-shrink-0 mt-6 md:mt-0">
+      <img src="../cv-page/Profiel foto.jpg" alt="Profile Photo" class="w-40 h-auto rounded-full border-4 border-white shadow-lg">
+    </div>
+  </div>
+</div>
+<br>
+    
+<div class="max-w-4xl mx-auto px-4 py-8">
+
+<!-- Professional Profile -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-user-code mr-2 text-blue-500"></i>Professional Profile
+</h2>
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="text-gray-700 leading-relaxed space-y-4">
+<p class="text-lg text-gray-700 text-center mb-8">Ambitious IT professional in transition with 6+ years of experience in the technical sector, including software development, 
+SaaS implementations, and IT consultancy. Strong technical background combined with proven business skills. 
+Currently engaged in an intensive IT Bootcamp to transform my passion for programming, virtual machines, 
+and network management into a full-fledged development career. Seeking an innovative employer that values talent development and offers growth opportunities within IT.
+</p>
+</div>
+</div>
+</section>
+
+<br>
+    <br>
+    
+<!-- Career Transition Banner -->
+<section class="mb-8">
+<div class="career-transition rounded-lg shadow-lg p-6 text-center">
+<h2 class="text-2xl font-bold mb-3">
+<i class="fas fa-rocket mr-2"></i>Career Transition to IT
+</h2>
+<p class="text-lg leading-relaxed">
+Actively transitioning from Technical Sales to Software Development through an intensive IT bootcamp.
+Seeking internal training opportunities to launch my IT career at a company that values dedication, 
+technical curiosity, and proven business insight.
+</p>
+</div>
+</section>
+
+    <br>
+    <br>
+
+<!-- Current Education -->
+<section class="mb-8">
+  <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+    <i class="fas fa-graduation-cap mr-2 text-blue-500"></i>Current IT Education
+  </h2>
+  
+  <div class="bootcamp-highlight rounded-lg shadow-lg p-6 bg-white">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+      <div>
+        <h3 class="font-bold text-xl">BEE-4-IT Bootcamp - Software Development</h3>
+        <p class="text-lg font-semibold opacity-90">BEE Organisation</p>
+      </div>
+      <span class="text-sm mt-2 md:mt-0 opacity-90">June - August 2025</span>
+    </div>
+
+    <div class="mt-4 text-sm leading-relaxed opacity-90 space-y-4">
+      <p>
+        Comprehensive IT development training in front-end, back-end, scripting, network management, VM setup, and databases.
+      </p>
+
+      <ul class="list-disc list-inside space-y-1">
+        <li><strong>Front-end (HTML/CSS/JS):</strong> responsive and dynamic web structures</li>
+        <li><strong>Back-end & SQL:</strong> database design, query construction, and indexing</li>
+        <li><strong>Python scripting:</strong> automation scripts developed</li>
+        <li><strong>VM & Networks:</strong> virtual environments configured, network segmented and secured</li>
+        <li><strong>C# & .NET:</strong> console apps built with OOP principles</li>
+      </ul>
+
+     <div>
+  <p class="font-semibold"><strong>Project Work:</strong></p>
+  <ul class="list-disc list-inside space-y-1">
+    <li><strong>Websites with HTML, CSS & JavaScript – </strong>fully built in Visual Studio Code, hosted via hosting provider, and managed with GitHub for version control</li>
+    <li><strong>Order Management System (Python) – </strong>automation script developed for processing and managing orders</li>
+    <li><strong>SQL Database – </strong>designed and implemented relational database system for data storage and queries</li>
+    <li><strong>C# Applications – </strong>including a calculator app built with object-oriented programming</li>
+    <li><strong>Virtual Lab – </strong>multi-OS test environment set up with virtual machines, including network configuration and security settings</li>
+  </ul>
+</div>
+
+
+      <p>
+        <strong>Continuous development:</strong> expanding skills in AI, cloud (AWS/Azure), mobile (React Native/Flutter), homelab.
+      </p>
+    </div>
+  </div>
+</section>
+
+<br>
+    <br>
+<!-- Technical Skills -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-code mr-2 text-blue-500"></i>Technical Skills
+</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white rounded-lg shadow-md p-6">
+<h3 class="font-semibold text-lg mb-3 text-gray-800">
+<i class="fas fa-laptop-code mr-2 text-blue-500"></i>Programming & Development
+</h3>
+<div class="flex flex-wrap gap-2">
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Python</span>
+
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">HTML/CSS</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">JavaScript</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">API Integration</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">SQL</span>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<h3 class="font-semibold text-lg mb-3 text-gray-800">
+<i class="fas fa-server mr-2 text-blue-500"></i>Infrastructure & Systems
+</h3>
+<div class="flex flex-wrap gap-2">
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Virtual Machines</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Oracle VirtualBox</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Network Management</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Cloud Computing</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">DevOps Principles</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Windows Server</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Ubuntu</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Linux</span>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<h3 class="font-semibold text-lg mb-3 text-gray-800">
+<i class="fas fa-tools mr-2 text-blue-500"></i>Development Tools
+</h3>
+<div class="flex flex-wrap gap-2">
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Figma</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Zapier</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">VirtualBox</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Visual Studio Code</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Visual Studio</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">GitHub</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Git</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Flutter</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">FlutterFlow</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Azure</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Active Directory</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Microsoft Intune</span>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<h3 class="font-semibold text-lg mb-3 text-gray-800">
+<i class="fas fa-robot mr-2 text-blue-500"></i>AI & Automation
+</h3>
+<div class="flex flex-wrap gap-2">
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">ChatGPT</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Claude</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Google Gemini</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Process Automation</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Machine Learning</span>
+    <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">N8N</span>
+    <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Google Cloud</span>
+    <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Genspark</span>
+</div>
+</div>
+</div>
+</section>
+
+    <br>
+    <br>
+    
+<!-- Technical Experience -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-briefcase mr-2 text-blue-500"></i>Work Experience
+</h2>
+
+<div class="space-y-6">
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Head of Growth</h3>
+<p class="text-blue-600 font-semibold">UNIT - Software Development & Business Solutions</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Dec 2024 - Present</span>
+</div>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Low-code app development</strong> with Flutter, FlutterFlow for web and mobile applications</li>
+<li><strong>Full-stack development</strong>: UI/UX design, front-end, back-end implementation, and API integrations</li>
+<li><strong>Legacy system upgrades</strong> for improved performance, scalability, and security</li>
+<li><strong>AI & ML integration</strong> in custom applications for automated business processes</li>
+<li><strong>Technical consultancy</strong> for software selection and implementation strategies</li>
+</ul>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Technical Sales Development Representative</h3>
+<p class="text-blue-600 font-semibold">NCC Group (Escode) - Software Assurance & Security</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Oct 2022 - Jul 2024</span>
+</div>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Software escrow services</strong> and source code verification</li>
+<li><strong>Technical due diligence</strong> for software acquisitions and IP protection projects</li>
+<li><strong>Collaboration with development teams</strong> for code reviews and compliance assessments</li>
+<li><strong>IT-legal partnerships</strong> developed for software lifecycle management</li>
+<li><strong>Technical documentation</strong> prepared for complex software implementations</li>
+</ul>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Account Executive E-commerce Technology</h3>
+<p class="text-blue-600 font-semibold">Trusted Shops - Integration & Implementation</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Jan 2022 - Jun 2022</span>
+</div>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>JavaScript widgets and CSS customizations</strong> for client-specific implementations</li>
+<li><strong>API integration projects</strong> for trust badge technology and security features</li>
+<li><strong>Technical troubleshooting</strong> and performance optimization for webshop environments</li>
+</ul>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Cloud-Native Technical Sales Lead</h3>
+<p class="text-blue-600 font-semibold">XcellerateLabs - SaaS & DevOps Solutions</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Jan 2019 - Jan 2022</span>
+</div>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Cloud-native architecture</strong> solutions for microservices and containerization projects</li>
+<li><strong>Kubernetes management platforms</strong> evaluation and implementation support</li>
+<li><strong>Database DevOps solutions</strong> for Agile development and Continuous Delivery</li>
+<li><strong>CI/CD platforms</strong> implementation for automated QA processes</li>
+<li><strong>Training and mentoring juniors</strong> in cloud-native technologies and best practices</li>
+<li><strong>Product demonstrations</strong> conducted on cloud-native development and DevOps</li>
+<li><strong>Parallel filesystems</strong> for high-performance computing</li>
+</ul>
+</div>
+</div>
+</section>
+
+    <br>
+    <br>
+<!-- Certifications & Learning -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2 text-center">
+<a href="https://www.linkedin.com/in/joshuaboermans/details/certifications/" target="_blank" class="flex items-center justify-center text-blue-500 hover:underline mx-auto">
+  <i class="fas fa-certificate mr-2"></i>
+  Certifications & Continuous Development
+</a>
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white rounded-lg shadow-md p-4">
+<h3 class="font-bold text-gray-800 mb-2">
+<i class="fas fa-brain mr-2 text-green-500"></i>What Is Generative AI?
+</h3>
+<p class="text-gray-600 text-sm">AI/ML fundamentals and practical applications</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-4">
+<h3 class="font-bold text-gray-800 mb-2">
+<i class="fas fa-cloud mr-2 text-blue-500"></i>Learning Cloud Computing: Application Migration
+</h3>
+<p class="text-gray-600 text-sm">Cloud infrastructure and migration strategies</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-4">
+<h3 class="font-bold text-gray-800 mb-2">
+<i class="fas fa-chart-line mr-2 text-purple-500"></i>Sales Strategies in New World of Selling
+</h3>
+<p class="text-gray-600 text-sm">Modern business development methodologies</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-4">
+<h3 class="font-bold text-gray-800 mb-2">
+<i class="fas fa-heart mr-2 text-red-500"></i>Mindfulness & Compassion Essentials
+</h3>
+<p class="text-gray-600 text-sm">Leadership and team collaboration skills</p>
+</div>
+</div>
+</section>
+
+
+    <br>
+    <br>
+    
+<!-- Formal Education -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-university mr-2 text-blue-500"></i>Education
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white rounded-lg shadow-md p-6">
+<h3 class="font-bold text-lg text-gray-800">Facility Management</h3>
+<p class="text-blue-600 font-semibold">The Hague University of Applied Sciences</p>
+<p class="text-gray-500">2020</p>
+<p class="text-sm text-gray-600 mt-2">Focus on process optimization, leadership, and project management</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-6">
+<h3 class="font-bold text-lg text-gray-800">MBO4 Facility Management Leadership</h3>
+<p class="text-blue-600 font-semibold">MBO College Airport</p>
+<p class="text-gray-500">2015</p>
+<p class="text-sm text-gray-600 mt-2">Leadership and organizational skills in technical environments</p>
+</div>
+</div>
+</section>
+
+    <br>
+    <br>
+    
+<!-- Why Internal Training -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-target mr-2 text-blue-500"></i>Why Internal Training Programs?
+</h2>
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<h3 class="font-bold text-lg mb-3 text-gray-800">
+<i class="fas fa-rocket mr-2 text-green-500"></i>My Strengths
+</h3>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Business & Technical Balance:</strong> Unique combination of technical skills and business insight</li>
+<li><strong>Fast Learner:</strong> Proven track record in quickly mastering new technologies</li>
+<li><strong>Practical Experience:</strong> 6+ years of experience within IT</li>
+<li><strong>Team Collaboration:</strong> Experience with mentoring and cross-functional teamwork</li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-3 text-gray-800">
+<i class="fas fa-lightbulb mr-2 text-yellow-500"></i>What I'm Looking For
+</h3>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Structured Development:</strong> Companies that invest in talent development</li>
+<li><strong>Mentorship Opportunities:</strong> Experienced developers willing to share knowledge</li>
+<li><strong>Real-world Projects:</strong> Direct contribution to productive IT projects</li>
+<li><strong>Growth Path:</strong> Clear career trajectory from trainee to full developer</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+    <br>
+<!-- Languages & Additional Skills -->
+<section class="mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white rounded-lg shadow-md p-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4">
+<i class="fas fa-language mr-2 text-blue-500"></i>Languages
+</h2>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="font-semibold">Dutch</span>
+<span class="text-green-600 font-bold">Native</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-semibold">English</span>
+<span class="text-green-600 font-bold">Native</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-semibold">Russian</span>
+<span class="text-yellow-600">In Development</span>
+</div>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4">
+<i class="fas fa-user-cog mr-2 text-blue-500"></i>Soft Skills
+</h2>
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Analytical Thinking</span>
+</div>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Problem-Solving Ability</span>
+</div>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Technical Communication</span>
+</div>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Project Management</span>
+</div>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Team Collaboration</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+    <br>
+    <br>
+    
+<!-- Career Goals -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-compass mr-2 text-blue-500"></i>Career Goals
+</h2>
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="text-center">
+<i class="fas fa-code text-3xl text-blue-500 mb-3"></i>
+<h3 class="font-bold text-lg mb-2">2025: Junior Developer, Network Administrator, or Software Tester</h3>
+<p class="text-sm text-gray-600">Start as trainee software developer/tester or trainee network administrator</p>
+</div>
+<div class="text-center">
+<i class="fas fa-server text-3xl text-green-500 mb-3"></i>
+<h3 class="font-bold text-lg mb-2">2027: System Specialist</h3>
+<p class="text-sm text-gray-600">Development towards infrastructure and network management expertise</p>
+</div>
+<div class="text-center">
+<i class="fas fa-rocket text-3xl text-purple-500 mb-3"></i>
+<h3 class="font-bold text-lg mb-2">2029+: Technical Lead</h3>
+<p class="text-sm text-gray-600">Growth to senior developer</p>
+</div>
+</div>
+</div>
+</section>
+
+<br>
+    <br>
+    
+<!-- Interests -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-heart mr-2 text-blue-500"></i>Personal Interests
+</h2>
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+<div class="text-center">
+<i class="fas fa-bicycle text-2xl text-blue-500 mb-2"></i>
+<p class="text-sm font-semibold">Cycling</p>
+</div>
+<div class="text-center">
+<i class="fas fa-chart-line text-2xl text-blue-500 mb-2"></i>
+<p class="text-sm font-semibold">Trading</p>
+</div>
+<div class="text-center">
+<i class="fas fa-guitar text-2xl text-blue-500 mb-2"></i>
+<p class="text-sm font-semibold">Playing Guitar</p>
+</div>
+<div class="text-center">
+<i class="fas fa-tools text-2xl text-blue-500 mb-2"></i>
+<p class="text-sm font-semibold">Software</p>
+</div>
+<div class="text-center">
+<i class="fas fa-plane text-2xl text-blue-500 mb-2"></i>
+<p class="text-sm font-semibold">Traveling</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Call to Action -->
+<section class="mb-8">
+<div class="gradient-bg text-white rounded-lg shadow-lg p-8 text-center">
+<h2 class="text-2xl font-bold mb-4">
+<i class="fas fa-handshake mr-2"></i>Ready for the Next Step
+</h2>
+<p class="text-lg leading-relaxed mb-4">
+I am enthusiastic about the opportunity to apply my technical passion and business experience 
+at a forward-thinking company that invests in talent development.
+</p>
+<div class="flex flex-wrap justify-center gap-4 text-sm">
+<div class="flex items-center gap-2">
+</div>
+</div>
+</div>
+</section>
+</div>
+
+
+
+<!-- Footer with Contact Information -->
+<footer class="gradient-bg text-white py-8 mt-12">
+  <div class="max-w-4xl mx-auto px-4">
+    
+    <!-- Contact Information Section -->
+    <div class="text-center mb-6">
+      <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-phone text-blue-200"></i>
+          <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">
+            +31 6 36546524
+          </a>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-envelope text-blue-200"></i>
+          <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">
+            joshuaboermans@gmail.com
+          </a>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-map-marker-alt text-blue-200"></i>
+          <span>Hoofddorp, Netherlands</span>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fab fa-linkedin text-blue-200"></i>
+          <a href="https://www.linkedin.com/in/joshuaboermans/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="hover:text-blue-200 transition-colors">
+            linkedin.com/in/joshuaboermans
+          </a>
+        </div>
+        
+        
+      </div>
+    </div>
+    
+    <!-- Copyright and Design Credit Section -->
+    <div class="text-center pt-4 border-t border-white border-opacity-20">
+      <p class="text-sm text-white text-opacity-80 mb-1">
+        <i class="fas fa-code mr-2"></i>
+        Website designed and developed by Joshua Boermans
+      </p>
+      <p class="text-xs text-white text-opacity-60">
+        © 2025 Joshua Boermans - All rights reserved
+      </p>
+    </div>
+    
+  </div>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    if (menu.classList.contains('show')) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+}
+
+function openMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    menu.classList.add('show');
+    backdrop.classList.add('show');
+    btnIcon.className = 'fas fa-times';
+    btnText.textContent = 'Close';
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = 'hidden';
+    
+    // Focus management for accessibility
+    setTimeout(() => {
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus();
+    }, 100);
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    menu.classList.remove('show');
+    backdrop.classList.remove('show');
+    btnIcon.className = 'fas fa-bars';
+    btnText.textContent = 'Menu';
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Enhanced event listeners for better UX
+document.addEventListener('DOMContentLoaded', function() {
+    // Close menu when clicking on menu links
+    document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 767) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Keyboard navigation within menu
+    document.getElementById('mobile-nav-menu').addEventListener('keydown', function(event) {
+        const links = this.querySelectorAll('a');
+        const currentIndex = Array.from(links).indexOf(document.activeElement);
+        
+        if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            const nextIndex = (currentIndex + 1) % links.length;
+            links[nextIndex].focus();
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            const prevIndex = (currentIndex - 1 + links.length) % links.length;
+            links[prevIndex].focus();
+        }
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobile-nav-menu');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNavHeader = document.querySelector('.nav-header-mobile');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+
+    if (!mobileMenu.contains(event.target) && 
+        !mobileMenuBtn.contains(event.target) && 
+        !mobileNavHeader.contains(event.target) && 
+        backdrop.classList.contains('show')) {
+        closeMobileMenu();
+    }
+});
+</script>
+
+</body>
+</html>

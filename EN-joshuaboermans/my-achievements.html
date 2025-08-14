@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Boermans - Achievements</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+<!-- SEO Hreflang tags for multilingual support -->
+<link rel="alternate" href="index.html" hreflang="nl">
+<link rel="alternate" href="EN-index.html" hreflang="en">
+<link rel="alternate" href="EN-index.html" hreflang="x-default">
+
+<style>
+    h1 {    
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    section {
+        margin-top: 5%;
+        text-align: center;
+    }
+
+@media print {
+body { -webkit-print-color-adjust: exact; }
+* { box-sizing: border-box; }
+}
+.gradient-bg {
+background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+}
+.tech-badge {
+background: linear-gradient(45deg, #4f46e5, #06b6d4);
+color: white;
+}
+.career-transition {
+background: linear-gradient(45deg, #10b981, #3b82f6);
+color: white;
+}
+.bootcamp-highlight {
+background: linear-gradient(45deg, #f59e0b, #ef4444);
+color: white;
+}
+
+/* Enhanced Navigation Bar */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+}
+
+/* Desktop Navigation */
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: block;
+}
+
+.nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Language Switcher Styling */
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.lang-btn:hover, .lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Mobile Navigation Header */
+.nav-header-mobile {
+    display: none;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.mobile-brand i {
+    font-size: 1.6rem;
+    background: linear-gradient(45deg, #06b6d4, #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.mobile-brand:hover {
+    transform: scale(1.02);
+}
+
+/* Mobile Controls Container */
+.mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Mobile Language Switcher */
+.mobile-language-switcher {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.mobile-lang-btn {
+    padding: 0.5rem 0.75rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.mobile-lang-btn:hover, .mobile-lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    text-decoration: none;
+}
+
+.mobile-lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Enhanced Mobile Menu Button */
+.mobile-menu-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-menu-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.mobile-menu-btn:hover::before {
+    left: 100%;
+}
+
+.mobile-menu-btn:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Mobile Dropdown Menu */
+.mobile-nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4f46e5 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform: translateY(-15px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 50;
+    border-radius: 0 0 1.5rem 1.5rem;
+    overflow: hidden;
+    max-height: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+}
+
+.mobile-nav-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    max-height: 400px;
+}
+
+.mobile-nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    gap: 0;
+}
+
+.mobile-nav-menu ul li {
+    margin: 0 0.75rem 0.5rem 0.75rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-menu.show ul li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered animation delays */
+.mobile-nav-menu.show ul li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav-menu.show ul li:nth-child(2) { transition-delay: 0.15s; }
+.mobile-nav-menu.show ul li:nth-child(3) { transition-delay: 0.2s; }
+.mobile-nav-menu.show ul li:nth-child(4) { transition-delay: 0.25s; }
+.mobile-nav-menu.show ul li:nth-child(5) { transition-delay: 0.3s; }
+
+.mobile-nav-menu ul li a {
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-nav-menu ul li a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.mobile-nav-menu ul li a:hover::before,
+.mobile-nav-menu ul li a:focus::before {
+    width: 100%;
+}
+
+.mobile-nav-menu ul li a:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
+}
+
+.mobile-nav-menu ul li a:hover,
+.mobile-nav-menu ul li a:focus {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-nav-menu ul li a i {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-menu ul li a:hover i,
+.mobile-nav-menu ul li a:focus i {
+    color: #06b6d4;
+}
+
+/* Backdrop overlay */
+.mobile-menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 40;
+}
+
+.mobile-menu-backdrop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.footer {
+    position: sticky;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .nav > ul {
+        display: none !important;
+    }
+    .nav-header-mobile {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-brand span {
+        display: none;
+    }
+    .mobile-brand {
+        font-size: 1.2rem;
+    }
+    .mobile-menu-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    .mobile-nav-menu ul li {
+        margin: 0 0.5rem 0.5rem 0.5rem;
+    }
+    .mobile-nav-menu ul li a {
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .mobile-lang-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}
+
+.p1 { 
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 2rem;
+}
+.welcome-section {
+    max-width: 4xl;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+.achievement-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+.achievement-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.metric-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.metric-card:hover {
+    transform: scale(1.05);
+}
+.timeline-item {
+    border-left: 4px solid #4f46e5;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background: #4f46e5;
+    border-radius: 50%;
+}
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+<nav class="nav">
+    <!-- Desktop Navigation -->
+    <ul>
+        <li><a href="home.html"><i class="fas fa-home mr-2"></i>Home</a></li>
+        <li><a href="my-achievements.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
+        <li><a href="personal-bio.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
+        <li><a href="my-portfolio.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
+        <li><a href="cv-page.html"><i class="fas fa-file-alt mr-2"></i>Resume</a></li>
+        
+        <!-- Desktop Language Switcher -->
+        <li>
+            <div class="language-switcher">
+                <a href="../achievements-page/index.html" class="lang-btn">🇳🇱 NL</a>
+                <a href="my-achievements.html" class="lang-btn active">🇬🇧 EN</a>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Mobile Navigation Header -->
+    <div class="nav-header-mobile">
+        <div class="mobile-brand">
+            <i class="fas fa-trophy"></i>
+            <span>My Achievements</span>
+        </div>
+        
+        <div class="mobile-controls">
+            <!-- Mobile Language Switcher -->
+            <div class="mobile-language-switcher">
+                <a href="../achievements-page/index.html" class="mobile-lang-btn">🇳🇱</a>
+                <a href="my-achievements.html" class="mobile-lang-btn active">🇬🇧</a>
+            </div>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile menu backdrop -->
+    <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile dropdown menu -->
+    <div class="mobile-nav-menu" id="mobile-nav-menu" role="navigation" aria-label="Mobile navigation">
+        <ul>
+            <li><a href="home.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="my-achievements.html"><i class="fas fa-trophy"></i>Achievements</a></li>
+            <li><a href="personal-bio.html"><i class="fas fa-user"></i>My Bio</a></li>
+            <li><a href="my-portfolio.html"><i class="fas fa-briefcase"></i>My Portfolio</a></li>
+            <li><a href="cv-page.html"><i class="fas fa-file-alt"></i>Resume</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Header Section -->
+<div class="gradient-bg text-white py-12 px-4">
+    <div class="welcome-section">
+        <h1>My Achievements</h1>
+        <p class="p1">An Overview of My Professional Journey and Technical Development</p>
+    </div>
+</div>
+
+<div class="max-w-6xl mx-auto px-4 py-8">
+
+ <!-- Career Timeline -->
+    <section class="mb-12">
+        <br>
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">
+            <i class="fas fa-timeline mr-3 text-red-500"></i>
+            Career Timeline
+        </h2>
+        
+        <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="timeline-item">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2025 - IT Bootcamp BEE-Organisation</h3>
+                <p class="text-gray-600 mb-2">Comprehensive IT Development training - Front-end, Back-end, VMs, Network Management</p>
+                <div class="text-sm text-blue-600 font-semibold"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2024-2025 - UNIT (Software Development)</h3>
+                <p class="text-gray-600 mb-2">Strategic partnerships, business development, technical consultancy</p>
+                <div class="text-sm text-green-600 font-semibold"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2022-2024 - NCC Group (Software Escrow)</h3>
+                <p class="text-gray-600 mb-2">Technical Sales Development, software verification, enterprise partnerships</p>
+                <div class="text-sm text-purple-600 font-semibold"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2022 - Trusted Shops (E-commerce)</h3>
+                <p class="text-gray-600 mb-2">Account Executive, web integrations, e-commerce technology</p>
+                <div class="text-sm text-orange-600 font-semibold"></div>
+            </div>
+            
+            <div class="timeline-item">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">2019-2022 - XcellerateLabs (Cloud-Native SaaS)</h3>
+                <p class="text-gray-600 mb-2">BDR/SDR & Team Lead, cloud-native startups, DevOps solutions</p>
+                <div class="text-sm text-blue-600 font-semibold"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Achievements -->
+    <section class="mb-12">
+        <br>
+        <br>
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+            <i class="fas fa-code mr-3 text-purple-500"></i>
+            Technical Development
+        </h2>
+
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="achievement-card">
+            <div class="text-center mb-4">
+                <i class="fab fa-html5 text-5xl text-orange-600 mb-4"></i>
+                <h3 class="text-xl font-bold text-gray-800">HTML & CSS</h3>
+            </div>
+            <p class="text-gray-600 text-center mb-4">Developed responsive and visually appealing web pages</p>
+            <div class="space-y-2">
+                <div class="bg-orange-50 p-3 rounded-lg text-center">
+                    <span class="text-orange-800 font-semibold">Designed mobile-friendly layouts</span>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-lg text-center">
+                    <span class="text-orange-800 font-semibold">Applied CSS animations and styling</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="achievement-card">
+            <div class="text-center mb-4">
+                <i class="fab fa-js-square text-5xl text-yellow-500 mb-4"></i>
+                <h3 class="text-xl font-bold text-gray-800">JavaScript</h3>
+            </div>
+            <p class="text-gray-600 text-center mb-4">Added interactive elements to enhance user experience</p>
+            <div class="space-y-2">
+            <div class="bg-yellow-50 p-3 rounded-lg text-center">
+                <span class="text-yellow-800 font-semibold">Added interactivity with buttons and forms</span>
+            </div>
+            <div class="bg-yellow-50 p-3 rounded-lg text-center">
+                <span class="text-yellow-800 font-semibold">Gained foundational knowledge of variables, functions, and logic</span>
+            </div>
+
+            </div>
+        </div>
+    </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="achievement-card">
+                <div class="text-center mb-4">
+                    <i class="fab fa-python text-5xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800">Python Development</h3>
+                </div>
+                <p class="text-gray-600 text-center mb-4">Discovered strong affinity for Python programming during IT Bootcamp</p>
+                <div class="space-y-2">
+                    <div class="bg-blue-50 p-3 rounded-lg text-center">
+                        <span class="text-blue-800 font-semibold">Developed automation scripts</span>
+                    </div>
+                    <div class="bg-blue-50 p-3 rounded-lg text-center">
+                        <span class="text-blue-800 font-semibold">Implemented API integrations</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="text-center mb-4">
+                    <i class="fas fa-server text-5xl text-green-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800">Virtual Machines & Networks</h3>
+                </div>
+                <p class="text-gray-600 text-center mb-4">Hands-on experience with VM setup, configuration, and network management</p>
+                <div class="space-y-2">
+                    <div class="bg-green-50 p-3 rounded-lg text-center">
+                        <span class="text-green-800 font-semibold">Designed VM architecture</span>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded-lg text-center">
+                        <span class="text-green-800 font-semibold">Network troubleshooting expertise</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="achievement-card">
+                <div class="text-center mb-4">
+                    <i class="fas fa-database text-5xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800">SQL (Structured Query Language)</h3>
+                </div>
+            
+                <p class="text-gray-600 text-center mb-4">Database design and optimization for efficient data storage
+                    <br>
+                    <br>
+                </p>
+                <div class="space-y-2">
+                    <div class="bg-purple-50 p-3 rounded-lg text-center">
+                        <span class="text-purple-800 font-semibold">Developed complex queries and joins</span>
+                    </div>
+                    <div class="bg-purple-50 p-3 rounded-lg text-center">
+                        <span class="text-purple-800 font-semibold">Database normalization and indexing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="text-center mb-4">
+                    <i class="fab fa-microsoft text-5xl text-indigo-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-800">C# Development</h3>
+                </div>
+                <p class="text-gray-600 text-center mb-4">Object-oriented programming with focus on .NET development</p>
+                <div class="space-y-2">
+                    <div class="bg-indigo-50 p-3 rounded-lg text-center">
+                        <span class="text-indigo-800 font-semibold">Console applications and OOP principles</span>
+                    </div>
+                    <div class="bg-indigo-50 p-3 rounded-lg text-center">
+                        <span class="text-indigo-800 font-semibold">ASP.NET Core basics and REST APIs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+     <!-- Certifications & Education -->
+  <h2 class="text-3xl font-bold text-gray-800 mb-8">
+  <a href="https://www.linkedin.com/in/joshuaboermans/details/certifications/" target="_blank" class="hover:underline hover:text-blue-600">
+    <i class="fas fa-certificate mr-3 text-yellow-500"></i>
+    Certifications & Education
+  </a>
+</h2>
+
+        
+            <div class="achievement-card text-center">
+                <i class="fas fa-code text-4xl text-indigo-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">IT Bootcamp</h3>
+                <p class="text-gray-600">BEE-Organisation (2025) - In Progress</p>
+            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="achievement-card text-center">
+                <i class="fas fa-robot text-4xl text-purple-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Generative AI</h3>
+                <p class="text-gray-600">Certification in AI applications and implementation</p>
+            </div>
+            
+            <div class="achievement-card text-center">
+                <i class="fas fa-cloud text-4xl text-blue-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Cloud Computing</h3>
+                <p class="text-gray-600">Application migration and cloud architecture</p>
+            </div>
+            
+            <div class="achievement-card text-center">
+                <i class="fas fa-chart-line text-4xl text-green-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Sales Strategies</h3>
+                <p class="text-gray-600">Modern sales approaches and techniques</p>
+            </div>
+        </div>
+            
+            <div class="achievement-card text-center">
+                <i class="fas fa-graduation-cap text-4xl text-red-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">Facility Management</h3>
+                <p class="text-gray-600">The Hague University of Applied Sciences (2020)</p>
+            </div>
+            
+            <div class="achievement-card text-center">
+                <i class="fas fa-tools text-4xl text-orange-600 mb-4"></i>
+                <h3 class="font-bold text-lg mb-2">MBO4 Facility Management Leadership</h3>
+                <p class="text-gray-600">MBO College Airport (2015)</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <br>
+    <br>
+</div>
+
+        <!-- Design Credit Banner -->
+<div class="fixed bottom-0 right-0 bg-blue-600 text-white px-4 py-2 rounded-tl-lg shadow-lg z-50">
+  <p class="text-xs flex items-center gap-2">
+    <i class="fas fa-code"></i>
+    <span>Developed by Joshua Boermans</span>
+  </p>
+</div>
+
+    <!-- Footer with Contact Information -->
+<footer class="gradient-bg text-white py-8 mt-12">
+  <div class="max-w-4xl mx-auto px-4">
+    
+    <!-- Contact Information Section -->
+    <div class="text-center mb-6">
+      <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-phone text-blue-200"></i>
+          <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">
+            +31 6 36546524
+          </a>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-envelope text-blue-200"></i>
+          <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">
+            joshuaboermans@gmail.com
+          </a>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-map-marker-alt text-blue-200"></i>
+          <span>Hoofddorp, Netherlands</span>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <i class="fab fa-linkedin text-blue-200"></i>
+          <a href="https://www.linkedin.com/in/joshuaboermans/" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="hover:text-blue-200 transition-colors">
+            linkedin.com/in/joshuaboermans
+          </a>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Copyright and Design Credit Section -->
+    <div class="text-center pt-4 border-t border-white border-opacity-20">
+      <p class="text-sm text-white text-opacity-80 mb-1">
+        <i class="fas fa-code mr-2"></i>
+        Website designed and developed by Joshua Boermans
+      </p>
+      <p class="text-xs text-white text-opacity-60">
+        © 2025 Joshua Boermans - All rights reserved
+      </p>
+    </div>
+    
+  </div>
+</footer>
+
+<script>
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    if (menu.classList.contains('show')) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+}
+
+function openMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    menu.classList.add('show');
+    backdrop.classList.add('show');
+    btnIcon.className = 'fas fa-times';
+    btnText.textContent = 'Close';
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = 'hidden';
+    
+    // Focus management for accessibility
+    setTimeout(() => {
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus();
+    }, 100);
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('mobile-nav-menu');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+    const btnIcon = document.querySelector('.mobile-menu-btn i');
+    const btnText = document.querySelector('.mobile-menu-btn span');
+    
+    menu.classList.remove('show');
+    backdrop.classList.remove('show');
+    btnIcon.className = 'fas fa-bars';
+    btnText.textContent = 'Menu';
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Enhanced event listeners for better UX
+document.addEventListener('DOMContentLoaded', function() {
+    // Close menu when clicking on menu links
+    document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 767) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Keyboard navigation within menu
+    document.getElementById('mobile-nav-menu').addEventListener('keydown', function(event) {
+        const links = this.querySelectorAll('a');
+        const currentIndex = Array.from(links).indexOf(document.activeElement);
+        
+        if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            const nextIndex = (currentIndex + 1) % links.length;
+            links[nextIndex].focus();
+        } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            const prevIndex = (currentIndex - 1 + links.length) % links.length;
+            links[prevIndex].focus();
+        }
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobile-nav-menu');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileNavHeader = document.querySelector('.nav-header-mobile');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
+
+    if (!mobileMenu.contains(event.target) && 
+        !mobileMenuBtn.contains(event.target) && 
+        !mobileNavHeader.contains(event.target) && 
+        backdrop.classList.contains('show')) {
+        closeMobileMenu();
+    }
+});
+</script>
+</body>
+</html>
