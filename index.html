@@ -6,6 +6,12 @@
 <title>Joshua Boermans - Junior IT Professional</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+<!-- SEO Hreflang tags voor meertalige ondersteuning -->
+<link rel="alternate" href="index.html" hreflang="nl">
+<link rel="alternate" href="EN-index.html" hreflang="en">
+<link rel="alternate" href="EN-index.html" hreflang="x-default">
+
 <style>
     h1 {    
         color: rgba(255, 255, 255, 0.95);
@@ -82,6 +88,38 @@ color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Language Switcher Styling */
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.lang-btn:hover, .lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+}
+
 /* Mobile Navigation Header */
 .nav-header-mobile {
     display: none;
@@ -115,6 +153,42 @@ color: white;
 
 .mobile-brand:hover {
     transform: scale(1.02);
+}
+
+/* Mobile Controls Container */
+.mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Mobile Language Switcher */
+.mobile-language-switcher {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.mobile-lang-btn {
+    padding: 0.5rem 0.75rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.mobile-lang-btn:hover, .mobile-lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    text-decoration: none;
+}
+
+.mobile-lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
 }
 
 /* Enhanced Mobile Menu Button */
@@ -393,6 +467,11 @@ color: white;
         padding: 0.875rem 1rem;
         font-size: 0.95rem;
     }
+    
+    .mobile-lang-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
 }
 </style>
 </head>
@@ -405,6 +484,14 @@ color: white;
         <li><a href="personal-bio/index.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
         <li><a href="my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
         <li><a href="cv-page/index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
+        
+        <!-- Desktop Language Switcher -->
+        <li>
+            <div class="language-switcher">
+                <a href="index.html" class="lang-btn active">🇳🇱 NL</a>
+                <a href="EN-joshuaboermans/home.html" class="lang-btn">🇬🇧 EN</a>
+            </div>
+        </li>
     </ul>
 
     <!-- Mobile Navigation Header -->
@@ -413,10 +500,19 @@ color: white;
             <i class="fas fa-home"></i>
             <span>Joshua Boermans</span>
         </div>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-        </button>
+        
+        <div class="mobile-controls">
+            <!-- Mobile Language Switcher -->
+            <div class="mobile-language-switcher">
+                <a href="index.html" class="mobile-lang-btn active">🇳🇱</a>
+                <a href="EN-joshuaboermans/home.html" class="mobile-lang-btn">🇬🇧</a>
+            </div>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+        </div>
     </div>
     
     <!-- Mobile menu backdrop -->
