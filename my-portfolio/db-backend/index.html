@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Development & Backend Architecture Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                <span>API Development Portfolio</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#overview" class="nav-link" onclick="closeMobileMenu()">Overview</a></li>
+                <li><a href="#architecture" class="nav-link" onclick="closeMobileMenu()">Architecture</a></li>
+                <li><a href="#demo" class="nav-link" onclick="closeMobileMenu()">Live Demo</a></li>
+                <li><a href="#documentation" class="nav-link" onclick="closeMobileMenu()">Documentation</a></li>
+                <li><a href="database-design.html" class="nav-link" onclick="closeMobileMenu()">Database Design</a></li>
+                <li><a href="#experience" class="nav-link" onclick="closeMobileMenu()">Experience</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">API Development & Backend Architecture</span>
+                    <span class="hero-subtitle">Portfolio</span>
+                </h1>
+                <p class="hero-description">
+                    From Technical Sales to Software Development: Building robust backend solutions with RESTful APIs, database design, and enterprise-level architecture thinking.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">REST</span>
+                        <span class="stat-label">API Design</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">JWT</span>
+                        <span class="stat-label">Authentication</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">SQL</span>
+                        <span class="stat-label">Database Design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-preview">
+                    <div class="code-header">
+                        <span class="code-title">ReviewController.js</span>
+                        <div class="code-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <pre class="code-content"><code>// RESTful API Controller
+class ReviewController {
+    async createReview(req, res) {
+        try {
+            const { customerName, rating, content } = req.body;
+            
+            // Validate JWT token
+            const user = await this.auth.verifyToken(req.headers.authorization);
+            
+            // Create review with sentiment analysis
+            const review = await this.reviewService.create({
+                customerName,
+                rating,
+                content,
+                sentiment: this.analyzeSentiment(content),
+                userId: user.id
+            });
+            
+            res.status(201).json({ success: true, data: review });
+        } catch (error) {
+            this.handleError(res, error);
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Project Overview</h2>
+                <p class="text-xl text-secondary max-w-3xl mx-auto">
+                    This comprehensive API showcase demonstrates my transition from understanding how systems integrate 
+                    (from my technical sales background) to actually building them as a software developer.
+                </p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>CRUD Operations</h3>
+                    <p>Complete Create, Read, Update, Delete functionality with proper validation, error handling, and business logic implementation.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>JWT Authentication</h3>
+                    <p>Secure token-based authentication with role-based access control, session management, and proper security practices.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>RESTful Design</h3>
+                    <p>Industry-standard REST API design with proper HTTP methods, status codes, and resource-oriented architecture.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Documentation</h3>
+                    <p>Comprehensive API documentation with interactive testing capabilities, Postman collections, and clear examples.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="section" style="background: var(--background-light);">
+        <div class="container">
+            <h2 class="section-title">System Architecture</h2>
+            <p class="section-subtitle">
+                A well-designed, scalable architecture that demonstrates enterprise-level thinking 
+                applied to backend development.
+            </p>
+
+            <div class="architecture-diagram">
+                <h3 style="text-align: center; font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-primary);">Architecture Flow</h3>
+                <div class="architecture-flow">
+                    <div class="arch-component">
+                        <div class="arch-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h4>Client Applications</h4>
+                        <p>Web, Mobile, External Systems</p>
+                    </div>
+                    
+                    <div class="arch-arrow hidden md:block">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="arch-component">
+                        <div class="arch-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>API Gateway</h4>
+                        <p>Authentication, Rate Limiting</p>
+                    </div>
+                    
+                    <div class="arch-arrow hidden md:block">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="arch-component">
+                        <div class="arch-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>Business Logic</h4>
+                        <p>Services, Controllers, Validation</p>
+                    </div>
+                    
+                    <div class="arch-arrow hidden md:block">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="arch-component">
+                        <div class="arch-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Database Layer</h4>
+                        <p>PostgreSQL, Redis Cache</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <i class="fab fa-js-square" style="color: #f7df1e;"></i>
+                    <h4>JavaScript</h4>
+                    <p>Modern ES6+ with Node.js runtime for server-side development</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-server" style="color: #10b981;"></i>
+                    <h4>Express.js</h4>
+                    <p>Lightweight web framework for building RESTful APIs</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-database" style="color: #336791;"></i>
+                    <h4>PostgreSQL</h4>
+                    <p>Advanced relational database with complex query support</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-key" style="color: #ef4444;"></i>
+                    <h4>JWT</h4>
+                    <p>Secure token-based authentication system</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Section -->
+    <section id="demo" class="section">
+        <div class="container">
+            <h2 class="section-title">Interactive API Demo</h2>
+            <p class="section-subtitle">
+                Test the API endpoints directly in your browser. This simulation demonstrates 
+                the complete functionality including authentication, CRUD operations, and error handling.
+            </p>
+
+            <div class="api-demo-container">
+                <div id="api-demo-container">
+                    <!-- Authentication Section -->
+                    <div class="demo-section">
+                        <h3>1. Authentication</h3>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <input type="email" id="login-email" placeholder="Email" class="form-input">
+                                <input type="password" id="login-password" placeholder="Password" class="form-input">
+                                <button id="login-btn" class="btn btn-primary">
+                                    <i class="fas fa-sign-in-alt" style="margin-right: 0.5rem;"></i>Login
+                                </button>
+                            </div>
+                            <div id="auth-status" class="status-display status-warning">Not authenticated. Use demo credentials above to login.</div>
+                        </div>
+                    </div>
+
+                    <!-- CRUD Operations Section -->
+                    <div class="demo-section">
+                        <h3>2. Customer Reviews Management</h3>
+                        
+                        <!-- Create Review -->
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <h4 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-primary);">Create New Review</h4>
+                            <div class="form-row">
+                                <input type="text" id="customer-name" placeholder="Customer Name" class="form-input">
+                                <select id="rating" class="form-input">
+                                    <option value="">Select Rating</option>
+                                    <option value="5">5 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="1">1 Star</option>
+                                </select>
+                            </div>
+                            <textarea id="review-content" placeholder="Review Content" class="form-textarea" rows="3"></textarea>
+                            <button id="create-review-btn" class="btn btn-success">
+                                <i class="fas fa-plus" style="margin-right: 0.5rem;"></i>Create Review
+                            </button>
+                        </div>
+
+                        <!-- Reviews List -->
+                        <div class="form-group">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+                                <h4 style="font-size: 1.2rem; font-weight: 600; color: var(--text-primary);">Customer Reviews</h4>
+                                <button id="refresh-reviews-btn" class="btn btn-secondary">
+                                    <i class="fas fa-sync-alt" style="margin-right: 0.5rem;"></i>Refresh
+                                </button>
+                            </div>
+                            <div id="reviews-container" class="reviews-container">
+                                <p style="text-align: center; padding: 2rem; color: var(--text-secondary);">Click "Refresh" to load reviews or create a new review above.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- API Response Section -->
+                    <div class="demo-section">
+                        <h3>3. API Response Log</h3>
+                        <div id="api-log" class="api-log">
+                            <p>// API responses will appear here as you interact with the demo</p>
+                            <p>// This simulates real API communication with proper JSON responses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="documentation" class="section" style="background: var(--background-light);">
+        <div class="container">
+            <h2 class="section-title">API Documentation</h2>
+            <p class="section-subtitle">
+                Comprehensive documentation following OpenAPI standards, making integration 
+                straightforward for any development team.
+            </p>
+
+            <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden;">
+                <div class="doc-tabs">
+                    <button class="doc-tab active" data-tab="endpoints">
+                        Endpoints
+                    </button>
+                    <button class="doc-tab" data-tab="authentication">
+                        Authentication
+                    </button>
+                    <button class="doc-tab" data-tab="errors">
+                        Error Handling
+                    </button>
+                    <button class="doc-tab" data-tab="postman">
+                        Postman Collection
+                    </button>
+                </div>
+
+                <div style="padding: 2rem;">
+                    <!-- Endpoints Tab -->
+                    <div id="endpoints-content" class="doc-content active">
+                        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-primary);">API Endpoints</h3>
+                        
+                        <!-- Authentication Endpoints -->
+                        <div class="endpoint-group">
+                            <h4>Authentication</h4>
+                            <div class="endpoint-item">
+                                <div class="endpoint-header">
+                                    <span class="method-badge method-post">POST</span>
+                                    <code class="endpoint-path">/api/auth/login</code>
+                                </div>
+                                <p class="endpoint-description">Authenticate user and receive JWT token</p>
+                                <details class="endpoint-details">
+                                    <summary>View Request/Response</summary>
+                                    <pre><code>{
+  "email": "user@example.com",
+  "password": "password123"
+}</code></pre>
+                                </details>
+                            </div>
+                        </div>
+
+                        <!-- Reviews Endpoints -->
+                        <div class="endpoint-group">
+                            <h4>Reviews</h4>
+                            <div class="endpoint-item">
+                                <div class="endpoint-header">
+                                    <span class="method-badge method-get">GET</span>
+                                    <code class="endpoint-path">/api/reviews</code>
+                                </div>
+                                <p class="endpoint-description">Retrieve all customer reviews with pagination</p>
+                            </div>
+                            <div class="endpoint-item">
+                                <div class="endpoint-header">
+                                    <span class="method-badge method-post">POST</span>
+                                    <code class="endpoint-path">/api/reviews</code>
+                                </div>
+                                <p class="endpoint-description">Create a new customer review</p>
+                            </div>
+                            <div class="endpoint-item">
+                                <div class="endpoint-header">
+                                    <span class="method-badge method-get">GET</span>
+                                    <code class="endpoint-path">/api/reviews/:id</code>
+                                </div>
+                                <p class="endpoint-description">Retrieve a specific review by ID</p>
+                            </div>
+                            <div class="endpoint-item">
+                                <div class="endpoint-header">
+                                    <span class="method-badge method-put">PUT</span>
+                                    <code class="endpoint-path">/api/reviews/:id</code>
+                                </div>
+                                <p class="endpoint-description">Update an existing review</p>
+                            </div>
+                            <div class="endpoint-item">
+                                <div class="endpoint-header">
+                                    <span class="method-badge method-delete">DELETE</span>
+                                    <code class="endpoint-path">/api/reviews/:id</code>
+                                </div>
+                                <p class="endpoint-description">Delete a review</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Authentication Tab -->
+                    <div id="authentication-content" class="doc-content hidden">
+                        <h3 class="text-2xl font-semibold mb-6">Authentication & Authorization</h3>
+                        <div class="space-y-6">
+                            <div class="bg-blue-50 p-6 rounded-lg">
+                                <h4 class="text-lg font-semibold mb-3">JWT Token Authentication</h4>
+                                <p class="text-secondary mb-4">
+                                    All API requests (except login) require a valid JWT token in the Authorization header.
+                                </p>
+                                <pre class="bg-white p-4 rounded border"><code>Authorization: Bearer &lt;your-jwt-token&gt;</code></pre>
+                            </div>
+                            <div class="bg-green-50 p-6 rounded-lg">
+                                <h4 class="text-lg font-semibold mb-3">Token Lifecycle</h4>
+                                <ul class="text-secondary space-y-2">
+                                    <li><i class="fas fa-check text-green-600 mr-2"></i>Tokens expire after 24 hours</li>
+                                    <li><i class="fas fa-check text-green-600 mr-2"></i>Refresh tokens available for extended sessions</li>
+                                    <li><i class="fas fa-check text-green-600 mr-2"></i>Role-based access control implemented</li>
+                                    <li><i class="fas fa-check text-green-600 mr-2"></i>Secure password hashing with bcrypt</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Error Handling Tab -->
+                    <div id="errors-content" class="doc-content hidden">
+                        <h3 class="text-2xl font-semibold mb-6">Error Handling</h3>
+                        <div class="space-y-6">
+                            <div class="bg-red-50 p-6 rounded-lg">
+                                <h4 class="text-lg font-semibold mb-3">HTTP Status Codes</h4>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <p class="font-semibold text-green-600">Success Codes</p>
+                                        <ul class="text-sm text-secondary mt-2 space-y-1">
+                                            <li>200 - OK (GET, PUT)</li>
+                                            <li>201 - Created (POST)</li>
+                                            <li>204 - No Content (DELETE)</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-red-600">Error Codes</p>
+                                        <ul class="text-sm text-secondary mt-2 space-y-1">
+                                            <li>400 - Bad Request</li>
+                                            <li>401 - Unauthorized</li>
+                                            <li>403 - Forbidden</li>
+                                            <li>404 - Not Found</li>
+                                            <li>500 - Internal Server Error</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-yellow-50 p-6 rounded-lg">
+                                <h4 class="text-lg font-semibold mb-3">Error Response Format</h4>
+                                <pre class="bg-white p-4 rounded border overflow-x-auto"><code>{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid request data",
+    "details": [
+      {
+        "field": "email",
+        "message": "Invalid email format"
+      }
+    ],
+    "timestamp": "2024-01-15T10:30:00Z",
+    "requestId": "req_123456789"
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Postman Collection Tab -->
+                    <div id="postman-content" class="doc-content hidden">
+                        <h3 class="text-2xl font-semibold mb-6">Postman Collection</h3>
+                        <div class="space-y-6">
+                            <div class="bg-orange-50 p-6 rounded-lg">
+                                <h4 class="text-lg font-semibold mb-3">Quick Testing</h4>
+                                <p class="text-secondary mb-4">
+                                    Import our comprehensive Postman collection to test all API endpoints immediately.
+                                </p>
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                    <button class="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+                                        <i class="fas fa-download mr-2"></i>Download Collection
+                                    </button>
+                                    <button class="border border-orange-500 text-orange-500 px-6 py-2 rounded-lg hover:bg-orange-50 transition-colors">
+                                        <i class="fas fa-external-link-alt mr-2"></i>View Online
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bg-purple-50 p-6 rounded-lg">
+                                <h4 class="text-lg font-semibold mb-3">Collection Features</h4>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <ul class="text-secondary space-y-2">
+                                        <li><i class="fas fa-check text-purple-600 mr-2"></i>Pre-configured environment variables</li>
+                                        <li><i class="fas fa-check text-purple-600 mr-2"></i>Automated authentication flow</li>
+                                        <li><i class="fas fa-check text-purple-600 mr-2"></i>Request/response examples</li>
+                                    </ul>
+                                    <ul class="text-secondary space-y-2">
+                                        <li><i class="fas fa-check text-purple-600 mr-2"></i>Test scripts for validation</li>
+                                        <li><i class="fas fa-check text-purple-600 mr-2"></i>Complete CRUD workflow</li>
+                                        <li><i class="fas fa-check text-purple-600 mr-2"></i>Error scenario testing</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">From Sales to Software Development</h2>
+            <p class="section-subtitle">
+                My unique journey from technical sales to software development brings valuable 
+                business perspective to backend architecture decisions.
+            </p>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #2563eb, #3b82f6);">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>API Integration Understanding</h3>
+                    <p>From my time at Trusted Shops, I understand how businesses actually use APIs - leading to more practical, integration-friendly design decisions.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Client-Focused Solutions</h3>
+                    <p>Technical sales experience means I design APIs thinking about the end-user experience and business requirements, not just technical elegance.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Business Process Automation</h3>
+                    <p>Experience with N8N and process automation at UNIT informs how I design APIs for seamless system integration and workflow automation.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Technical Skills Development</h3>
+                    <p>Currently advancing backend development skills through C#/.NET and Python training, combined with practical SQL database design experience.</p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin-top: 4rem;">
+                <div style="background: var(--gradient-primary); color: white; padding: 3rem; border-radius: 16px; border: 1px solid var(--border-color);">
+                    <h3 style="font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem;">Ready to Build Together?</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">
+                        Let's discuss how my unique combination of business insight and technical skills 
+                        can contribute to your development team.
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; justify-content: center;">
+                        <a href="mailto:your.email@example.com" class="btn" style="background: white; color: var(--primary-color); text-decoration: none;">
+                            <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>Get In Touch
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="btn" style="border: 2px solid white; color: white; text-decoration: none; background: transparent;">
+                            <i class="fab fa-linkedin" style="margin-right: 0.5rem;"></i>Connect on LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--background-dark); border-top: 1px solid var(--border-color); padding: 3rem 0 1rem;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <div style="display: flex; items-center; margin-bottom: 1rem;">
+                        <i class="fas fa-code" style="color: var(--primary-color); font-size: 1.5rem; margin-right: 0.75rem;"></i>
+                        <span style="font-size: 1.2rem; font-weight: 600; color: var(--text-primary);">API Portfolio</span>
+                    </div>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Showcasing the transition from technical sales to software development 
+                        through practical backend architecture and API design.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-primary);">Quick Links</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="#overview" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;">▸ Project Overview</a>
+                        <a href="#architecture" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;">▸ System Architecture</a>
+                        <a href="#demo" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;">▸ Live Demo</a>
+                        <a href="#documentation" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;">▸ API Documentation</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-primary);">Connect</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="https://github.com/yourusername" target="_blank" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;">
+                            <i class="fab fa-github" style="margin-right: 0.5rem;"></i>GitHub Repository
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;">
+                            <i class="fab fa-linkedin" style="margin-right: 0.5rem;"></i>LinkedIn Profile
+                        </a>
+                        <a href="mailto:your.email@example.com" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease;">
+                            <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>Email Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-secondary);">
+                <p>&copy; 2024 API Development Portfolio. Built to demonstrate backend architecture and development capabilities.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
