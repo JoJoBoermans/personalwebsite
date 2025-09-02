@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>My Java OOP Learning Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fab fa-java"></i>
+                <span>Java OOP Journey</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#overview" class="nav-link" onclick="closeMobileMenu()">Overview</a></li>
+                <li><a href="#principles" class="nav-link" onclick="closeMobileMenu()">OOP Principles</a></li>
+                <li><a href="#interactive" class="nav-link" onclick="closeMobileMenu()">Code Playground</a></li>
+                <li><a href="#projects" class="nav-link" onclick="closeMobileMenu()">My Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient-text">Object-Oriented Programming</span>
+                <span class="hero-subtitle">in Java</span>
+            </h1>
+            <p class="hero-description">
+                Learning Java OOP concepts through hands-on examples and practice projects. 
+                Join me as I explore the fundamentals of object-oriented programming!
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Core Principles</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Months Learning</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Practice Projects</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="code-preview">
+                <div class="code-header">
+                    <span class="code-title">Animal.java</span>
+                    <div class="code-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+                <pre class="code-content"><code>// My first Animal class!
+public class Animal {
+    private String name;
+    private int age;
+    
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    public void makeSound() {
+        System.out.println("Some generic animal sound");
+    }
+    
+    public String getName() {
+        return name;
+    }
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <h2 class="section-title">Learning OOP Fundamentals</h2>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Encapsulation</h3>
+                    <p>Learning to protect data using private fields and public methods. Understanding why we hide implementation details.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>Inheritance</h3>
+                    <p>Creating parent and child classes to share common functionality. Practicing with extends keyword and method overriding.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <h3>Polymorphism</h3>
+                    <p>Understanding how the same method can behave differently based on the object type. Exploring interfaces and method overriding.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <h3>Abstraction</h3>
+                    <p>Learning about abstract classes and interfaces. Understanding how to define what classes should do without specifying how.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OOP Principles Interactive Section -->
+    <section id="principles" class="section principles-section">
+        <div class="container">
+            <h2 class="section-title">Let's Practice OOP Together!</h2>
+            <div class="principles-container">
+                <div class="principle-tabs">
+                    <button class="tab-btn active" data-principle="encapsulation">
+                        <i class="fas fa-shield-alt"></i>
+                        Encapsulation
+                    </button>
+                    <button class="tab-btn" data-principle="inheritance">
+                        <i class="fas fa-sitemap"></i>
+                        Inheritance
+                    </button>
+                    <button class="tab-btn" data-principle="polymorphism">
+                        <i class="fas fa-shapes"></i>
+                        Polymorphism
+                    </button>
+                    <button class="tab-btn" data-principle="abstraction">
+                        <i class="fas fa-eye-slash"></i>
+                        Abstraction
+                    </button>
+                </div>
+
+                <div class="principle-content">
+                    <!-- Encapsulation Content -->
+                    <div class="principle-panel active" id="encapsulation">
+                        <div class="principle-demo">
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span>BankAccount.java</span>
+                                </div>
+                                <pre><code class="language-java">public class BankAccount {
+    private double balance;
+    private String accountNumber;
+    
+    public BankAccount(String accountNumber, double initialBalance) {
+        this.accountNumber = accountNumber;
+        setBalance(initialBalance);
+    }
+    
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: $" + amount);
+        }
+    }
+    
+    public boolean withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: $" + amount);
+            return true;
+        }
+        return false;
+    }
+    
+    public double getBalance() {
+        return balance;
+    }
+    
+    private void setBalance(double balance) {
+        this.balance = Math.max(0, balance);
+    }
+}</code></pre>
+                            </div>
+                            <div class="interactive-demo">
+                                <h4>Try It Out</h4>
+                                <div class="demo-controls">
+                                    <div class="account-info">
+                                        <p>Account: <span id="account-number">ACC-001</span></p>
+                                        <p>Balance: $<span id="balance">1000.00</span></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <input type="number" id="amount-input" placeholder="Enter amount" min="0" step="0.01">
+                                        <button onclick="deposit()" class="btn btn-success">Deposit</button>
+                                        <button onclick="withdraw()" class="btn btn-danger">Withdraw</button>
+                                    </div>
+                                    <div class="transaction-log" id="transaction-log"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Inheritance Content -->
+                    <div class="principle-panel" id="inheritance">
+                        <div class="principle-demo">
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span>Vehicle Hierarchy</span>
+                                </div>
+                                <pre><code class="language-java">// Base class
+public abstract class Vehicle {
+    protected String brand;
+    protected int year;
+    
+    public Vehicle(String brand, int year) {
+        this.brand = brand;
+        this.year = year;
+    }
+    
+    public abstract void start();
+    public abstract double getFuelEfficiency();
+    
+    public void displayInfo() {
+        System.out.println(year + " " + brand);
+    }
+}
+
+// Derived class
+public class Car extends Vehicle {
+    private int doors;
+    
+    public Car(String brand, int year, int doors) {
+        super(brand, year);
+        this.doors = doors;
+    }
+    
+    @Override
+    public void start() {
+        System.out.println("Car engine started with key");
+    }
+    
+    @Override
+    public double getFuelEfficiency() {
+        return 25.5; // MPG
+    }
+}
+
+// Another derived class
+public class Motorcycle extends Vehicle {
+    private boolean hasSidecar;
+    
+    public Motorcycle(String brand, int year, boolean hasSidecar) {
+        super(brand, year);
+        this.hasSidecar = hasSidecar;
+    }
+    
+    @Override
+    public void start() {
+        System.out.println("Motorcycle started with button");
+    }
+    
+    @Override
+    public double getFuelEfficiency() {
+        return 45.0; // MPG
+    }
+}</code></pre>
+                            </div>
+                            <div class="interactive-demo">
+                                <h4>Vehicle Inheritance Demo</h4>
+                                <div class="demo-controls">
+                                    <div class="vehicle-selector">
+                                        <button onclick="createVehicle('car')" class="btn btn-primary">Create Car</button>
+                                        <button onclick="createVehicle('motorcycle')" class="btn btn-primary">Create Motorcycle</button>
+                                    </div>
+                                    <div class="vehicle-display" id="vehicle-display">
+                                        <p>Select a vehicle type to see inheritance in action!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Polymorphism Content -->
+                    <div class="principle-panel" id="polymorphism">
+                        <div class="principle-demo">
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span>Shape Polymorphism</span>
+                                </div>
+                                <pre><code class="language-java">public interface Drawable {
+    void draw();
+    double calculateArea();
+}
+
+public class Circle implements Drawable {
+    private double radius;
+    
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    
+    @Override
+    public void draw() {
+        System.out.println("Drawing a circle");
+    }
+    
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+public class Rectangle implements Drawable {
+    private double width, height;
+    
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
+    }
+    
+    @Override
+    public void draw() {
+        System.out.println("Drawing a rectangle");
+    }
+    
+    @Override
+    public double calculateArea() {
+        return width * height;
+    }
+}
+
+// Polymorphic usage
+public class ShapeManager {
+    public void processShapes(Drawable[] shapes) {
+        for (Drawable shape : shapes) {
+            shape.draw(); // Polymorphic call
+            System.out.println("Area: " + shape.calculateArea());
+        }
+    }
+}</code></pre>
+                            </div>
+                            <div class="interactive-demo">
+                                <h4>Polymorphism Visualizer</h4>
+                                <div class="demo-controls">
+                                    <div class="shape-controls">
+                                        <select id="shape-type">
+                                            <option value="circle">Circle</option>
+                                            <option value="rectangle">Rectangle</option>
+                                            <option value="triangle">Triangle</option>
+                                        </select>
+                                        <button onclick="addShape()" class="btn btn-primary">Add Shape</button>
+                                        <button onclick="processAllShapes()" class="btn btn-success">Process All</button>
+                                        <button onclick="clearShapes()" class="btn btn-danger">Clear</button>
+                                    </div>
+                                    <div class="shapes-container" id="shapes-container">
+                                        <canvas id="shapes-canvas" width="400" height="300"></canvas>
+                                    </div>
+                                    <div class="shapes-output" id="shapes-output"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Abstraction Content -->
+                    <div class="principle-panel" id="abstraction">
+                        <div class="principle-demo">
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span>Database Abstraction</span>
+                                </div>
+                                <pre><code class="language-java">// Abstract class defining the contract
+public abstract class DatabaseConnection {
+    protected String connectionString;
+    
+    public DatabaseConnection(String connectionString) {
+        this.connectionString = connectionString;
+    }
+    
+    // Abstract methods - must be implemented by subclasses
+    public abstract void connect();
+    public abstract void disconnect();
+    public abstract boolean executeQuery(String query);
+    
+    // Concrete method - common to all implementations
+    public void logOperation(String operation) {
+        System.out.println("[" + this.getClass().getSimpleName() + "] " + operation);
+    }
+}
+
+// Concrete implementation for MySQL
+public class MySQLConnection extends DatabaseConnection {
+    public MySQLConnection(String connectionString) {
+        super(connectionString);
+    }
+    
+    @Override
+    public void connect() {
+        logOperation("Connecting to MySQL database...");
+        // MySQL-specific connection logic
+    }
+    
+    @Override
+    public void disconnect() {
+        logOperation("Disconnecting from MySQL database...");
+        // MySQL-specific disconnection logic
+    }
+    
+    @Override
+    public boolean executeQuery(String query) {
+        logOperation("Executing MySQL query: " + query);
+        return true; // Simulated success
+    }
+}
+
+// Concrete implementation for PostgreSQL
+public class PostgreSQLConnection extends DatabaseConnection {
+    public PostgreSQLConnection(String connectionString) {
+        super(connectionString);
+    }
+    
+    @Override
+    public void connect() {
+        logOperation("Connecting to PostgreSQL database...");
+        // PostgreSQL-specific connection logic
+    }
+    
+    @Override
+    public void disconnect() {
+        logOperation("Disconnecting from PostgreSQL database...");
+        // PostgreSQL-specific disconnection logic
+    }
+    
+    @Override
+    public boolean executeQuery(String query) {
+        logOperation("Executing PostgreSQL query: " + query);
+        return true; // Simulated success
+    }
+}</code></pre>
+                            </div>
+                            <div class="interactive-demo">
+                                <h4>Database Abstraction Demo</h4>
+                                <div class="demo-controls">
+                                    <div class="db-selector">
+                                        <select id="db-type">
+                                            <option value="mysql">MySQL</option>
+                                            <option value="postgresql">PostgreSQL</option>
+                                            <option value="oracle">Oracle</option>
+                                        </select>
+                                        <button onclick="connectDatabase()" class="btn btn-primary">Connect</button>
+                                        <button onclick="disconnectDatabase()" class="btn btn-danger">Disconnect</button>
+                                    </div>
+                                    <div class="query-input">
+                                        <input type="text" id="sql-query" placeholder="Enter SQL query" value="SELECT * FROM users">
+                                        <button onclick="executeQuery()" class="btn btn-success">Execute</button>
+                                    </div>
+                                    <div class="db-log" id="db-log"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Code Playground -->
+    <section id="interactive" class="section playground-section">
+        <div class="container">
+            <h2 class="section-title">Java OOP Code Playground</h2>
+            <div class="playground-container">
+                <div class="code-editor">
+                    <div class="editor-header">
+                        <div class="file-tabs">
+                            <div class="tab active">Main.java</div>
+                        </div>
+                        <button onclick="runCode()" class="run-btn">
+                            <i class="fas fa-play"></i> Run Code
+                        </button>
+                    </div>
+                    <textarea id="code-editor" spellcheck="false">// My Java OOP practice code - feel free to experiment!
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects - this is what I'm learning!
+        Animal dog = new Dog("Buddy", 3);
+        Animal cat = new Cat("Whiskers", 2);
+        
+        // Using an array to hold different animals
+        Animal[] pets = {dog, cat};
+        
+        // This loop shows polymorphism - same method, different results!
+        for (Animal pet : pets) {
+            pet.displayInfo();
+            pet.makeSound();
+            System.out.println();
+        }
+        
+        // Testing my BankAccount class (encapsulation practice)
+        BankAccount myAccount = new BankAccount("12345", 1000.0);
+        myAccount.deposit(500.0);
+        myAccount.withdraw(200.0);
+        System.out.println("My balance: $" + myAccount.getBalance());
+    }
+}
+
+// Learning about abstract classes - still figuring this out!
+abstract class Animal {
+    protected String name;  // protected means child classes can access this
+    protected int age;
+    
+    // Constructor - this runs when we create an Animal
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    // Abstract method - child classes MUST implement this
+    public abstract void makeSound();
+    
+    // Regular method - all animals can use this
+    public void displayInfo() {
+        System.out.println(name + " is " + age + " years old");
+    }
+}
+
+// Dog class extends (inherits from) Animal
+class Dog extends Animal {
+    public Dog(String name, int age) {
+        super(name, age);  // calling parent constructor
+    }
+    
+    // Overriding the abstract method
+    @Override
+    public void makeSound() {
+        System.out.println(name + " says: Woof! Woof!");
+    }
+}
+
+// Cat class also extends Animal
+class Cat extends Animal {
+    public Cat(String name, int age) {
+        super(name, age);
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println(name + " says: Meow! Meow!");
+    }
+}
+
+// Simple BankAccount class for learning encapsulation
+class BankAccount {
+    private double balance;  // private = encapsulated!
+    private String accountNumber;
+    
+    public BankAccount(String accountNumber, double initialBalance) {
+        this.accountNumber = accountNumber;
+        this.balance = initialBalance;
+    }
+    
+    // Public methods to access private data
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: $" + amount);
+        }
+    }
+    
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawn: $" + amount);
+        }
+    }
+    
+    public double getBalance() {
+        return balance;  // getter method
+    }
+}</textarea>
+                </div>
+                <div class="output-panel">
+                    <div class="output-header">
+                        <h4>Output</h4>
+                        <button onclick="clearOutput()" class="clear-btn">Clear</button>
+                    </div>
+                    <div id="code-output" class="output-content">
+                        <pre style="margin: 0; white-space: pre-wrap; font-family: 'JetBrains Mono', monospace;">Click "Run Code" to execute the Java code and see the output here!
+
+// This will show:
+// - Animal sounds (polymorphism)
+// - Bank account operations (encapsulation)
+// - Learning notes about OOP concepts
+
+// TIP: Try changing animal names, ages, or account balances!
+// The code parser is flexible and will adapt to your changes.
+
+Ready when you are! 🚀</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Projects -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <h2 class="section-title">My Learning Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Simple Text-Based Game 🎮</h3>
+                    <p>My first game using basic OOP! Created different character classes that inherit from a Player class. Learning about constructors and method overriding.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Classes</span>
+                        <span class="tech-tag">Inheritance</span>
+                        <span class="tech-tag">Methods</span>
+                    </div>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <small style="color: #10b981; font-weight: 500;">✅ Working demo available below!</small>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Student Grade Calculator 📊</h3>
+                    <p>A console app to calculate student grades. Used encapsulation to protect student data and created methods for grade calculations. Still learning about getters/setters!</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Encapsulation</span>
+                        <span class="tech-tag">Methods</span>
+                        <span class="tech-tag">Data Validation</span>
+                    </div>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <small style="color: #10b981; font-weight: 500;">✅ Working demo available below!</small>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3>Pet Management System 🐶</h3>
+                    <p>Learning project with Dog and Cat classes extending Animal. Practiced method overriding for different animal sounds. My first attempt at polymorphism!</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Inheritance</span>
+                        <span class="tech-tag">Polymorphism</span>
+                        <span class="tech-tag">Method Overriding</span>
+                    </div>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <small style="color: #10b981; font-weight: 500;">✅ Working demo available below!</small>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Basic Library System 📚</h3>
+                    <p>Console application to manage books and users. Learning about class relationships and basic CRUD operations. Still working on understanding interfaces!</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Classes</span>
+                        <span class="tech-tag">ArrayLists</span>
+                        <span class="tech-tag">Basic CRUD</span>
+                    </div>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <small style="color: #10b981; font-weight: 500;">✅ Working demo available below!</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Project Demos -->
+    <section class="section project-demos-section">
+        <div class="container">
+            <h2 class="section-title">Try My Learning Projects!</h2>
+            <p class="section-subtitle">These are working implementations of the projects I've built while learning Java OOP. Click on each one to try them out!</p>
+            
+            <div class="project-demos-grid">
+                <!-- Simple Text-Based Game -->
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Simple Text-Based Game</h3>
+                        <p>A basic RPG with different character classes</p>
+                    </div>
+                    <div class="demo-content" id="game-demo">
+                        <div class="game-interface">
+                            <div class="character-selection">
+                                <h4>Choose Your Character:</h4>
+                                <div class="character-buttons">
+                                    <button onclick="createCharacter('warrior')" class="btn btn-primary">Warrior</button>
+                                    <button onclick="createCharacter('mage')" class="btn btn-primary">Mage</button>
+                                    <button onclick="createCharacter('archer')" class="btn btn-primary">Archer</button>
+                                </div>
+                            </div>
+                            <div class="game-status" id="game-status">
+                                <p>Welcome to my first OOP game! Select a character to start.</p>
+                            </div>
+                            <div class="game-actions" id="game-actions" style="display: none;">
+                                <button onclick="attack()" class="btn btn-danger">Attack</button>
+                                <button onclick="defend()" class="btn btn-success">Defend</button>
+                                <button onclick="heal()" class="btn btn-warning">Heal</button>
+                                <button onclick="resetGame()" class="btn btn-secondary">New Game</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Grade Calculator -->
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Student Grade Calculator</h3>
+                        <p>Practice with encapsulation and data validation</p>
+                    </div>
+                    <div class="demo-content" id="grade-demo">
+                        <div class="grade-interface">
+                            <div class="student-input">
+                                <h4>Add Student Grades:</h4>
+                                <div class="input-group">
+                                    <input type="text" id="student-name" placeholder="Student Name" class="form-input">
+                                    <input type="number" id="grade-1" placeholder="Grade 1 (0-100)" min="0" max="100" class="form-input">
+                                    <input type="number" id="grade-2" placeholder="Grade 2 (0-100)" min="0" max="100" class="form-input">
+                                    <input type="number" id="grade-3" placeholder="Grade 3 (0-100)" min="0" max="100" class="form-input">
+                                    <button onclick="addStudent()" class="btn btn-primary">Add Student</button>
+                                </div>
+                            </div>
+                            <div class="grade-results" id="grade-results">
+                                <h4>Student Records:</h4>
+                                <div class="students-list" id="students-list">
+                                    <p>No students added yet. Add a student to see encapsulation in action!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pet Management System -->
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <h3>Pet Management System</h3>
+                        <p>Inheritance and polymorphism with animals</p>
+                    </div>
+                    <div class="demo-content" id="pet-demo">
+                        <div class="pet-interface">
+                            <div class="pet-creation">
+                                <h4>Add a Pet:</h4>
+                                <div class="input-group">
+                                    <select id="pet-type" class="form-input">
+                                        <option value="dog">Dog</option>
+                                        <option value="cat">Cat</option>
+                                        <option value="bird">Bird</option>
+                                    </select>
+                                    <input type="text" id="pet-name" placeholder="Pet Name" class="form-input">
+                                    <input type="number" id="pet-age" placeholder="Age" min="0" max="30" class="form-input">
+                                    <button onclick="addPet()" class="btn btn-primary">Add Pet</button>
+                                </div>
+                            </div>
+                            <div class="pet-actions">
+                                <button onclick="feedAllPets()" class="btn btn-success">Feed All Pets</button>
+                                <button onclick="makeAllSounds()" class="btn btn-warning">Make All Sounds</button>
+                                <button onclick="clearPets()" class="btn btn-danger">Clear All</button>
+                            </div>
+                            <div class="pet-list" id="pet-list">
+                                <h4>My Pets:</h4>
+                                <div id="pets-display">
+                                    <p>No pets yet! Add some pets to see inheritance and polymorphism working.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basic Library System -->
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Basic Library System</h3>
+                        <p>Class relationships and basic CRUD operations</p>
+                    </div>
+                    <div class="demo-content" id="library-demo">
+                        <div class="library-interface">
+                            <div class="book-management">
+                                <h4>Manage Books:</h4>
+                                <div class="input-group">
+                                    <input type="text" id="book-title" placeholder="Book Title" class="form-input">
+                                    <input type="text" id="book-author" placeholder="Author" class="form-input">
+                                    <input type="text" id="book-isbn" placeholder="ISBN" class="form-input">
+                                    <button onclick="addBook()" class="btn btn-primary">Add Book</button>
+                                </div>
+                                <div class="library-actions">
+                                    <button onclick="searchBooks()" class="btn btn-success">Search Books</button>
+                                    <button onclick="showAllBooks()" class="btn btn-warning">Show All Books</button>
+                                    <button onclick="clearLibrary()" class="btn btn-danger">Clear Library</button>
+                                </div>
+                            </div>
+                            <div class="library-display" id="library-display">
+                                <h4>Library Catalog:</h4>
+                                <div id="books-list">
+                                    <p>Library is empty. Add some books to get started!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>My Java OOP Journey</h4>
+                    <p>Learning object-oriented programming fundamentals through practice, experimentation, and building simple projects. Still growing every day!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>What I'm Learning</h4>
+                    <ul>
+                        <li>Classes and Objects</li>
+                        <li>Encapsulation (getters/setters)</li>
+                        <li>Inheritance (extends keyword)</li>
+                        <li>Basic Polymorphism</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tools I'm Using</h4>
+                    <ul>
+                        <li>Java 8 Basics</li>
+                        <li>Eclipse/IntelliJ IDEA</li>
+                        <li>Console Applications</li>
+                        <li>Basic Testing</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 My Java Learning Portfolio. Built with curiosity and determination to learn programming!</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="main.js"></script>
+</body>
+</html>
