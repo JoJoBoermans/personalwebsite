@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Mijn Java OOP Leerreis</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <!-- Navigatie -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fab fa-java"></i>
+                <span>Java OOP Reis</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#overview" class="nav-link" onclick="closeMobileMenu()">Overzicht</a></li>
+                <li><a href="#principles" class="nav-link" onclick="closeMobileMenu()">OOP Principes</a></li>
+                <li><a href="#interactive" class="nav-link" onclick="closeMobileMenu()">Code Speeltuin</a></li>
+                <li><a href="#projects" class="nav-link" onclick="closeMobileMenu()">Mijn Projecten</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Sectie -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient-text">Objectgeoriënteerd Programmeren</span>
+                <span class="hero-subtitle">in Java</span>
+            </h1>
+            <p class="hero-description">
+                Java OOP-concepten leren door praktische voorbeelden en oefenprojecten. 
+                Ga met mij mee terwijl ik de fundamenten van objectgeoriënteerd programmeren verken!
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Kernprincipes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Maanden Leren</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Oefenprojecten</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="code-preview">
+                <div class="code-header">
+                    <span class="code-title">Animal.java</span>
+                    <div class="code-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+                <pre class="code-content"><code>// Mijn eerste Animal klasse!
+public class Animal {
+    private String naam;
+    private int leeftijd;
+    
+    public Animal(String naam, int leeftijd) {
+        this.naam = naam;
+        this.leeftijd = leeftijd;
+    }
+    
+    public void maakGeluid() {
+        System.out.println("Een algemeen dierengeluid");
+    }
+    
+    public String getNaam() {
+        return naam;
+    }
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overzicht Sectie -->
+    <section id="overview" class="section">
+        <div class="container">
+            <h2 class="section-title">OOP Fundamenten Leren</h2>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Encapsulatie</h3>
+                    <p>Leren om data te beschermen met private velden en publieke methoden. Begrijpen waarom we implementatiedetails verbergen.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>Overerving</h3>
+                    <p>Ouder- en kindklassen maken om gemeenschappelijke functionaliteit te delen. Oefenen met het extends sleutelwoord en methode-overschrijving.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shapes"></i>
+                    </div>
+                    <h3>Polymorfisme</h3>
+                    <p>Begrijpen hoe dezelfde methode zich anders kan gedragen afhankelijk van het objecttype. Interfaces en methode-overschrijving verkennen.</p>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-eye-slash"></i>
+                    </div>
+                    <h3>Abstractie</h3>
+                    <p>Leren over abstracte klassen en interfaces. Begrijpen hoe je definieert wat klassen moeten doen zonder te specificeren hoe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OOP Principes Interactieve Sectie -->
+    <section id="principles" class="section principles-section">
+        <div class="container">
+            <h2 class="section-title">Laten we samen OOP oefenen!</h2>
+            <div class="principles-container">
+                <div class="principle-tabs">
+                    <button class="tab-btn active" data-principle="encapsulation">
+                        <i class="fas fa-shield-alt"></i>
+                        Encapsulatie
+                    </button>
+                    <button class="tab-btn" data-principle="inheritance">
+                        <i class="fas fa-sitemap"></i>
+                        Overerving
+                    </button>
+                    <button class="tab-btn" data-principle="polymorphism">
+                        <i class="fas fa-shapes"></i>
+                        Polymorfisme
+                    </button>
+                    <button class="tab-btn" data-principle="abstraction">
+                        <i class="fas fa-eye-slash"></i>
+                        Abstractie
+                    </button>
+                </div>
+
+                <div class="principle-content">
+                    <!-- Encapsulatie Inhoud -->
+                    <div class="principle-panel active" id="encapsulation">
+                        <div class="principle-demo">
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span>BankRekening.java</span>
+                                </div>
+                                <pre><code class="language-java">public class BankRekening {
+    private double saldo;
+    private String rekeningNummer;
+    
+    public BankRekening(String rekeningNummer, double beginSaldo) {
+        this.rekeningNummer = rekeningNummer;
+        setSaldo(beginSaldo);
+    }
+    
+    public void stort(double bedrag) {
+        if (bedrag > 0) {
+            saldo += bedrag;
+            System.out.println("Gestort: €" + bedrag);
+        }
+    }
+    
+    public boolean neemOp(double bedrag) {
+        if (bedrag > 0 && bedrag <= saldo) {
+            saldo -= bedrag;
+            System.out.println("Opgenomen: €" + bedrag);
+            return true;
+        }
+        return false;
+    }
+    
+    public double getSaldo() {
+        return saldo;
+    }
+    
+    private void setSaldo(double saldo) {
+        this.saldo = Math.max(0, saldo);
+    }
+}</code></pre>
+                            </div>
+                            <div class="interactive-demo">
+                                <h4>Probeer het uit</h4>
+                                <div class="demo-controls">
+                                    <div class="account-info">
+                                        <p>Rekening: <span id="account-number">REK-001</span></p>
+                                        <p>Saldo: €<span id="balance">1000,00</span></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <input type="number" id="amount-input" placeholder="Voer bedrag in" min="0" step="0.01">
+                                        <button onclick="deposit()" class="btn btn-success">Storten</button>
+                                        <button onclick="withdraw()" class="btn btn-danger">Opnemen</button>
+                                    </div>
+                                    <div class="transaction-log" id="transaction-log"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Overerving Inhoud -->
+                    <div class="principle-panel" id="inheritance">
+                        <div class="principle-demo">
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span>Voertuig Hiërarchie</span>
+                                </div>
+                                <pre><code class="language-java">// Basisklasse
+public abstract class Voertuig {
+    protected String merk;
+    protected int jaar;
+    
+    public Voertuig(String merk, int jaar) {
+        this.merk = merk;
+        this.jaar = jaar;
+    }
+    
+    public abstract void start();
+    public abstract double getBrandstofVerbruik();
+    
+    public void toonInfo() {
+        System.out.println(jaar + " " + merk);
+    }
+}
+
+// Afgeleide klasse
+public class Auto extends Voertuig {
+    private int deuren;
+    
+    public Auto(String merk, int jaar, int deuren) {
+        super(merk, jaar);
+        this.deuren = deuren;
+    }
+    
+    @Override
+    public void start() {
+        System.out.println("Auto motor gestart met sleutel");
+    }
+    
+    @Override
+    public double getBrandstofVerbruik() {
+        return 8.5; // L/100km
+    }
+}
+
+// Nog een afgeleide klasse
+public class Motorfiets extends Voertuig {
+    private boolean heeftZijspan;
+    
+    public Motorfiets(String merk, int jaar, boolean heeftZijspan) {
+        super(merk, jaar);
+        this.heeftZijspan = heeftZijspan;
+    }
+    
+    @Override
+    public void start() {
+        System.out.println("Motorfiets gestart met knop");
+    }
+    
+    @Override
+    public double getBrandstofVerbruik() {
+        return 4.2; // L/100km
+    }
+}</code></pre>
+                            </div>
+                            <div class="interactive-demo">
+                                <h4>Voertuig Overerving Demo</h4>
+                                <div class="demo-controls">
+                                    <div class="vehicle-selector">
+                                        <button onclick="createVehicle('car')" class="btn btn-primary">Auto Maken</button>
+                                        <button onclick="createVehicle('motorcycle')" class="btn btn-primary">Motorfiets Maken</button>
+                                    </div>
+                                    <div class="vehicle-display" id="vehicle-display">
+                                        <p>Selecteer een voertuigtype om overerving in actie te zien!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Polymorfisme Inhoud -->
+                    <div class="principle-panel" id="polymorphism">
+                        <div class="principle-demo">
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span>Vorm Polymorfisme</span>
+                                </div>
+                                <pre><code class="language-java">public interface Tekenbaar {
+    void teken();
+    double berekenOppervlakte();
+}
+
+public class Cirkel implements Tekenbaar {
+    private double straal;
+    
+    public Cirkel(double straal) {
+        this.straal = straal;
+    }
+    
+    @Override
+    public void teken() {
+        System.out.println("Een cirkel tekenen");
+    }
+    
+    @Override
+    public double berekenOppervlakte() {
+        return Math.PI * straal * straal;
+    }
+}
+
+public class Rechthoek implements Tekenbaar {
+    private double breedte, hoogte;
+    
+    public Rechthoek(double breedte, double hoogte) {
+        this.breedte = breedte;
+        this.hoogte = hoogte;
+    }
+    
+    @Override
+    public void teken() {
+        System.out.println("Een rechthoek tekenen");
+    }
+    
+    @Override
+    public double berekenOppervlakte() {
+        return breedte * hoogte;
+    }
+}
+
+// Polymorf gebruik
+public class VormBeheerder {
+    public void verwerkVormen(Tekenbaar[] vormen) {
+        for (Tekenbaar vorm : vormen) {
+            vorm.teken(); // Polymorfe aanroep
+            System.out.println("Oppervlakte: " + vorm.berekenOppervlakte());
+        }
+    }
+}</code></pre>
+                            </div>
+                            <div class="interactive-demo">
+                                <h4>Polymorfisme Visualisatie</h4>
+                                <div class="demo-controls">
+                                    <div class="shape-controls">
+                                        <select id="shape-type">
+                                            <option value="circle">Cirkel</option>
+                                            <option value="rectangle">Rechthoek</option>
+                                            <option value="triangle">Driehoek</option>
+                                        </select>
+                                        <button onclick="addShape()" class="btn btn-primary">Vorm Toevoegen</button>
+                                        <button onclick="processAllShapes()" class="btn btn-success">Alles Verwerken</button>
+                                        <button onclick="clearShapes()" class="btn btn-danger">Wissen</button>
+                                    </div>
+                                    <div class="shapes-container" id="shapes-container">
+                                        <canvas id="shapes-canvas" width="400" height="300"></canvas>
+                                    </div>
+                                    <div class="shapes-output" id="shapes-output"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Abstractie Inhoud -->
+                    <div class="principle-panel" id="abstraction">
+                        <div class="principle-demo">
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span>Database Abstractie</span>
+                                </div>
+                                <pre><code class="language-java">// Abstracte klasse die het contract definieert
+public abstract class DatabaseVerbinding {
+    protected String verbindingsString;
+    
+    public DatabaseVerbinding(String verbindingsString) {
+        this.verbindingsString = verbindingsString;
+    }
+    
+    // Abstracte methoden - moeten geïmplementeerd worden door subklassen
+    public abstract void verbind();
+    public abstract void verbreekVerbinding();
+    public abstract boolean voerQueryUit(String query);
+    
+    // Concrete methode - gemeenschappelijk voor alle implementaties
+    public void logOperatie(String operatie) {
+        System.out.println("[" + this.getClass().getSimpleName() + "] " + operatie);
+    }
+}
+
+// Concrete implementatie voor MySQL
+public class MySQLVerbinding extends DatabaseVerbinding {
+    public MySQLVerbinding(String verbindingsString) {
+        super(verbindingsString);
+    }
+    
+    @Override
+    public void verbind() {
+        logOperatie("Verbinding maken met MySQL database...");
+        // MySQL-specifieke verbindingslogica
+    }
+    
+    @Override
+    public void verbreekVerbinding() {
+        logOperatie("Verbinding verbreken met MySQL database...");
+        // MySQL-specifieke verbreek logica
+    }
+    
+    @Override
+    public boolean voerQueryUit(String query) {
+        logOperatie("MySQL query uitvoeren: " + query);
+        return true; // Gesimuleerd succes
+    }
+}
+
+// Concrete implementatie voor PostgreSQL
+public class PostgreSQLVerbinding extends DatabaseVerbinding {
+    public PostgreSQLVerbinding(String verbindingsString) {
+        super(verbindingsString);
+    }
+    
+    @Override
+    public void verbind() {
+        logOperatie("Verbinding maken met PostgreSQL database...");
+        // PostgreSQL-specifieke verbindingslogica
+    }
+    
+    @Override
+    public void verbreekVerbinding() {
+        logOperatie("Verbinding verbreken met PostgreSQL database...");
+        // PostgreSQL-specifieke verbreek logica
+    }
+    
+    @Override
+    public boolean voerQueryUit(String query) {
+        logOperatie("PostgreSQL query uitvoeren: " + query);
+        return true; // Gesimuleerd succes
+    }
+}</code></pre>
+                            </div>
+                            <div class="interactive-demo">
+                                <h4>Database Abstractie Demo</h4>
+                                <div class="demo-controls">
+                                    <div class="db-selector">
+                                        <select id="db-type">
+                                            <option value="mysql">MySQL</option>
+                                            <option value="postgresql">PostgreSQL</option>
+                                            <option value="oracle">Oracle</option>
+                                        </select>
+                                        <button onclick="connectDatabase()" class="btn btn-primary">Verbinden</button>
+                                        <button onclick="disconnectDatabase()" class="btn btn-danger">Verbinding Verbreken</button>
+                                    </div>
+                                    <div class="query-input">
+                                        <input type="text" id="sql-query" placeholder="Voer SQL query in" value="SELECT * FROM gebruikers">
+                                        <button onclick="executeQuery()" class="btn btn-success">Uitvoeren</button>
+                                    </div>
+                                    <div class="db-log" id="db-log"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactieve Code Speeltuin -->
+    <section id="interactive" class="section playground-section">
+        <div class="container">
+            <h2 class="section-title">Java OOP Code Speeltuin</h2>
+            <div class="playground-container">
+                <div class="code-editor">
+                    <div class="editor-header">
+                        <div class="file-tabs">
+                            <div class="tab active">Main.java</div>
+                        </div>
+                        <button onclick="runCode()" class="run-btn">
+                            <i class="fas fa-play"></i> Code Uitvoeren
+                        </button>
+                    </div>
+                    <textarea id="code-editor" spellcheck="false">// Mijn Java OOP oefencode - voel je vrij om te experimenteren!
+public class Main {
+    public static void main(String[] args) {
+        // Objecten maken - dit is wat ik aan het leren ben!
+        Dier hond = new Hond("Buddy", 3);
+        Dier kat = new Kat("Whiskers", 2);
+        
+        // Een array gebruiken om verschillende dieren vast te houden
+        Dier[] huisdieren = {hond, kat};
+        
+        // Deze lus toont polymorfisme - zelfde methode, verschillende resultaten!
+        for (Dier huisdier : huisdieren) {
+            huisdier.toonInfo();
+            huisdier.maakGeluid();
+            System.out.println();
+        }
+        
+        // Mijn BankRekening klasse testen (encapsulatie oefenen)
+        BankRekening mijnRekening = new BankRekening("12345", 1000.0);
+        mijnRekening.stort(500.0);
+        mijnRekening.neemOp(200.0);
+        System.out.println("Mijn saldo: €" + mijnRekening.getSaldo());
+    }
+}
+
+// Leren over abstracte klassen - probeer dit nog steeds te begrijpen!
+abstract class Dier {
+    protected String naam;  // protected betekent dat kindklassen hier toegang toe hebben
+    protected int leeftijd;
+    
+    // Constructor - dit wordt uitgevoerd wanneer we een Dier maken
+    public Dier(String naam, int leeftijd) {
+        this.naam = naam;
+        this.leeftijd = leeftijd;
+    }
+    
+    // Abstracte methode - kindklassen MOETEN dit implementeren
+    public abstract void maakGeluid();
+    
+    // Reguliere methode - alle dieren kunnen dit gebruiken
+    public void toonInfo() {
+        System.out.println(naam + " is " + leeftijd + " jaar oud");
+    }
+}
+
+// Hond klasse extends (erft van) Dier
+class Hond extends Dier {
+    public Hond(String naam, int leeftijd) {
+        super(naam, leeftijd);  // ouder constructor aanroepen
+    }
+    
+    // De abstracte methode overschrijven
+    @Override
+    public void maakGeluid() {
+        System.out.println(naam + " zegt: Woef! Woef!");
+    }
+}
+
+// Kat klasse erft ook van Dier
+class Kat extends Dier {
+    public Kat(String naam, int leeftijd) {
+        super(naam, leeftijd);
+    }
+    
+    @Override
+    public void maakGeluid() {
+        System.out.println(naam + " zegt: Miauw! Miauw!");
+    }
+}
+
+// Eenvoudige BankRekening klasse voor encapsulatie leren
+class BankRekening {
+    private double saldo;  // private = geëncapsuleerd!
+    private String rekeningNummer;
+    
+    public BankRekening(String rekeningNummer, double beginSaldo) {
+        this.rekeningNummer = rekeningNummer;
+        this.saldo = beginSaldo;
+    }
+    
+    // Publieke methoden om toegang te krijgen tot private data
+    public void stort(double bedrag) {
+        if (bedrag > 0) {
+            saldo += bedrag;
+            System.out.println("Gestort: €" + bedrag);
+        }
+    }
+    
+    public void neemOp(double bedrag) {
+        if (bedrag > 0 && bedrag <= saldo) {
+            saldo -= bedrag;
+            System.out.println("Opgenomen: €" + bedrag);
+        }
+    }
+    
+    public double getSaldo() {
+        return saldo;  // getter methode
+    }
+}</textarea>
+                </div>
+                <div class="output-panel">
+                    <div class="output-header">
+                        <h4>Uitvoer</h4>
+                        <button onclick="clearOutput()" class="clear-btn">Wissen</button>
+                    </div>
+                    <div id="code-output" class="output-content">
+                        <pre style="margin: 0; white-space: pre-wrap; font-family: 'JetBrains Mono', monospace;">Klik op "Code Uitvoeren" om de Java code uit te voeren en de uitvoer hier te zien!
+
+// Dit zal tonen:
+// - Dierengeluiden (polymorfisme)
+// - Bankrekening operaties (encapsulatie)
+// - Leernotities over OOP concepten
+
+// TIP: Probeer diernamen, leeftijden of rekeningsaldi te veranderen!
+// De code parser is flexibel en past zich aan jouw wijzigingen aan.
+
+Klaar wanneer jij het bent! 🚀</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Projecten -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <h2 class="section-title">Mijn Leerprojecten</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Eenvoudig Tekstgebaseerd Spel 🎮</h3>
+                    <p>Mijn eerste spel met basis OOP! Verschillende karakterklassen gemaakt die overerven van een Speler klasse. Leren over constructors en methode-overschrijving.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Klassen</span>
+                        <span class="tech-tag">Overerving</span>
+                        <span class="tech-tag">Methoden</span>
+                    </div>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <small style="color: #10b981; font-weight: 500;">✅ Werkende demo hieronder beschikbaar!</small>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Student Cijfer Calculator 📊</h3>
+                    <p>Een console-app om studentencijfers te berekenen. Encapsulatie gebruikt om studentdata te beschermen en methoden gemaakt voor cijferberekeningen. Nog steeds leren over getters/setters!</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Encapsulatie</span>
+                        <span class="tech-tag">Methoden</span>
+                        <span class="tech-tag">Data Validatie</span>
+                    </div>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <small style="color: #10b981; font-weight: 500;">✅ Werkende demo hieronder beschikbaar!</small>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h3>Huisdier Beheersysteem 🐶</h3>
+                    <p>Leerproject met Hond en Kat klassen die overerven van Dier. Methode-overschrijving geoefend voor verschillende dierengeluiden. Mijn eerste poging tot polymorfisme!</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Overerving</span>
+                        <span class="tech-tag">Polymorfisme</span>
+                        <span class="tech-tag">Methode Overschrijving</span>
+                    </div>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <small style="color: #10b981; font-weight: 500;">✅ Werkende demo hieronder beschikbaar!</small>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Basis Bibliotheeksysteem 📚</h3>
+                    <p>Console-applicatie om boeken en gebruikers te beheren. Leren over klasserelaties en basis CRUD-operaties. Nog steeds bezig met het begrijpen van interfaces!</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Klassen</span>
+                        <span class="tech-tag">ArrayLists</span>
+                        <span class="tech-tag">Basis CRUD</span>
+                    </div>
+                    <div style="margin-top: 1rem; text-align: center;">
+                        <small style="color: #10b981; font-weight: 500;">✅ Werkende demo hieronder beschikbaar!</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactieve Project Demo's -->
+    <section class="section project-demos-section">
+        <div class="container">
+            <h2 class="section-title">Probeer Mijn Leerprojecten!</h2>
+            <p class="section-subtitle">Dit zijn werkende implementaties van de projecten die ik heb gebouwd tijdens het leren van Java OOP. Klik op elk project om ze uit te proberen!</p>
+            
+            <div class="project-demos-grid">
+                <!-- Eenvoudig Tekstgebaseerd Spel -->
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Eenvoudig Tekstgebaseerd Spel</h3>
+                        <p>Een basis RPG met verschillende karakterklassen</p>
+                    </div>
+                    <div class="demo-content" id="game-demo">
+                        <div class="game-interface">
+                            <div class="character-selection">
+                                <h4>Kies Je Karakter:</h4>
+                                <div class="character-buttons">
+                                    <button onclick="createCharacter('warrior')" class="btn btn-primary">Krijger</button>
+                                    <button onclick="createCharacter('mage')" class="btn btn-primary">Magiër</button>
+                                    <button onclick="createCharacter('archer')" class="btn btn-primary">Boogschutter</button>
+                                </div>
+                            </div>
+                            <div class="game-status" id="game-status">
+                                <p>Welkom bij mijn eerste OOP spel! Selecteer een karakter om te beginnen.</p>
+                            </div>
+                            <div class="game-actions" id="game-actions" style="display: none;">
+                                <button onclick="attack()" class="btn btn-danger">Aanvallen</button>
+                                <button onclick="defend()" class="btn btn-success">Verdedigen</button>
+                                <button onclick="heal()" class="btn btn-warning">Genezen</button>
+                                <button onclick="resetGame()" class="btn btn-secondary">Nieuw Spel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Cijfer Calculator -->
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Student Cijfer Calculator</h3>
+                        <p>Oefenen met encapsulatie en datavalidatie</p>
+                    </div>
+                    <div class="demo-content" id="grade-demo">
+                        <div class="grade-interface">
+                            <div class="student-input">
+                                <h4>Voeg Studentencijfers Toe:</h4>
+                                <div class="input-group">
+                                    <input type="text" id="student-name" placeholder="Studentnaam" class="form-input">
+                                    <input type="number" id="grade-1" placeholder="Cijfer 1 (0-100)" min="0" max="100" class="form-input">
+                                    <input type="number" id="grade-2" placeholder="Cijfer 2 (0-100)" min="0" max="100" class="form-input">
+                                    <input type="number" id="grade-3" placeholder="Cijfer 3 (0-100)" min="0" max="100" class="form-input">
+                                    <button onclick="addStudent()" class="btn btn-primary">Student Toevoegen</button>
+                                </div>
+                            </div>
+                            <div class="grade-results" id="grade-results">
+                                <h4>Studentenrecords:</h4>
+                                <div class="students-list" id="students-list">
+                                    <p>Nog geen studenten toegevoegd. Voeg een student toe om encapsulatie in actie te zien!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Huisdier Beheersysteem -->
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <h3>Huisdier Beheersysteem</h3>
+                        <p>Overerving en polymorfisme met dieren</p>
+                    </div>
+                    <div class="demo-content" id="pet-demo">
+                        <div class="pet-interface">
+                            <div class="pet-creation">
+                                <h4>Voeg een Huisdier Toe:</h4>
+                                <div class="input-group">
+                                    <select id="pet-type" class="form-input">
+                                        <option value="dog">Hond</option>
+                                        <option value="cat">Kat</option>
+                                        <option value="bird">Vogel</option>
+                                    </select>
+                                    <input type="text" id="pet-name" placeholder="Huisdiernaam" class="form-input">
+                                    <input type="number" id="pet-age" placeholder="Leeftijd" min="0" max="30" class="form-input">
+                                    <button onclick="addPet()" class="btn btn-primary">Huisdier Toevoegen</button>
+                                </div>
+                            </div>
+                            <div class="pet-actions">
+                                <button onclick="feedAllPets()" class="btn btn-success">Alle Huisdieren Voeren</button>
+                                <button onclick="makeAllSounds()" class="btn btn-warning">Alle Geluiden Maken</button>
+                                <button onclick="clearPets()" class="btn btn-danger">Alles Wissen</button>
+                            </div>
+                            <div class="pet-list" id="pet-list">
+                                <h4>Mijn Huisdieren:</h4>
+                                <div id="pets-display">
+                                    <p>Nog geen huisdieren! Voeg wat huisdieren toe om overerving en polymorfisme werkend te zien.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basis Bibliotheeksysteem -->
+                <div class="demo-card">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Basis Bibliotheeksysteem</h3>
+                        <p>Klasserelaties en basis CRUD-operaties</p>
+                    </div>
+                    <div class="demo-content" id="library-demo">
+                        <div class="library-interface">
+                            <div class="book-management">
+                                <h4>Boeken Beheren:</h4>
+                                <div class="input-group">
+                                    <input type="text" id="book-title" placeholder="Boektitel" class="form-input">
+                                    <input type="text" id="book-author" placeholder="Auteur" class="form-input">
+                                    <input type="text" id="book-isbn" placeholder="ISBN" class="form-input">
+                                    <button onclick="addBook()" class="btn btn-primary">Boek Toevoegen</button>
+                                </div>
+                                <div class="library-actions">
+                                    <button onclick="searchBooks()" class="btn btn-success">Boeken Zoeken</button>
+                                    <button onclick="showAllBooks()" class="btn btn-warning">Alle Boeken Tonen</button>
+                                    <button onclick="clearLibrary()" class="btn btn-danger">Bibliotheek Wissen</button>
+                                </div>
+                            </div>
+                            <div class="library-display" id="library-display">
+                                <h4>Bibliotheekcatalogus:</h4>
+                                <div id="books-list">
+                                    <p>Bibliotheek is leeg. Voeg wat boeken toe om te beginnen!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Mijn Java OOP Reis</h4>
+                    <p>Objectgeoriënteerd programmeren fundamenten leren door oefening, experimenten en het bouwen van eenvoudige projecten. Nog steeds elke dag groeiend!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Wat Ik Leer</h4>
+                    <ul>
+                        <li>Klassen en Objecten</li>
+                        <li>Encapsulatie (getters/setters)</li>
+                        <li>Overerving (extends sleutelwoord)</li>
+                        <li>Basis Polymorfisme</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tools Die Ik Gebruik</h4>
+                    <ul>
+                        <li>Java 8 Basics</li>
+                        <li>Eclipse/IntelliJ IDEA</li>
+                        <li>Console Applicaties</li>
+                        <li>Basis Testen</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mijn Java Leerportfolio. Gebouwd met nieuwsgierigheid en vastberadenheid om programmeren te leren!</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
