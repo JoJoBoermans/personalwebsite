@@ -6,8 +6,13 @@
 <title>Joshua Boermans - CV</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<style>
 
+<!-- SEO Hreflang tags for multilingual support -->
+<link rel="alternate" href="index.html" hreflang="nl">
+<link rel="alternate" href="../EN-joshuaboermans/cv-page.html" hreflang="en">
+<link rel="alternate" href="../EN-joshuaboermans/cv-page.html" hreflang="x-default">
+
+<style>
 /* **GEOPTIMALISEERDE 2-PAGINA PRINT CSS** */
 @media print {
     /* Pagina-instellingen geoptimaliseerd voor compactheid */
@@ -400,6 +405,38 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Language Switcher Styling */
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.lang-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.lang-btn:hover, .lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+}
+
 /* Mobile Navigation Header */
 .nav-header-mobile {
     display: none;
@@ -433,6 +470,42 @@ h2 {
 
 .mobile-brand:hover {
     transform: scale(1.02);
+}
+
+/* Mobile Controls Container */
+.mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Mobile Language Switcher */
+.mobile-language-switcher {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.mobile-lang-btn {
+    padding: 0.5rem 0.75rem;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+
+.mobile-lang-btn:hover, .mobile-lang-btn.active {
+    background: rgba(255,255,255,0.25);
+    color: white;
+    text-decoration: none;
+}
+
+.mobile-lang-btn.active {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
 }
 
 /* Enhanced Mobile Menu Button */
@@ -654,6 +727,11 @@ h2 {
         padding: 0.875rem 1rem;
         font-size: 0.95rem;
     }
+    
+    .mobile-lang-btn {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.75rem;
+    }
 }
 
 </style>
@@ -667,6 +745,14 @@ h2 {
         <li><a href="../personal-bio/index.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
         <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
         <li><a href="index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
+        
+        <!-- Desktop Language Switcher -->
+        <li>
+            <div class="language-switcher">
+                <a href="index.html" class="lang-btn active">🇳🇱 NL</a>
+                <a href="../EN-cv-page/cv-page.html" class="lang-btn">🇬🇧 EN</a>
+            </div>
+        </li>
     </ul>
 
     <!-- Mobile Navigation Header -->
@@ -675,10 +761,19 @@ h2 {
             <i class="fas fa-file-user"></i>
             <span>Joshua Boermans CV</span>
         </div>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-        </button>
+        
+        <div class="mobile-controls">
+            <!-- Mobile Language Switcher -->
+            <div class="mobile-language-switcher">
+                <a href="index.html" class="mobile-lang-btn active">🇳🇱</a>
+                <a href="../EN-cv-page/cv-page.html" class="mobile-lang-btn">🇬🇧</a>
+            </div>
+            
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+        </div>
     </div>
     
     <!-- Mobile menu backdrop -->
@@ -703,7 +798,7 @@ h2 {
     <!-- Left: Text content -->
     <div class="flex-1">
       <h1 class="text-4xl md:text-5xl font-bold mb-2">Joshua Boermans</h1>
-      <p class="text-xl md:text-2xl mb-2">Junior IT Professional & Software Development Trainee</p>
+      <p class="text-xl md:text-2xl mb-2">IT Professional</p>
       <p class="text-lg mb-4 opacity-90">In transitie van Technische Sales naar IT Professional</p>
 
       <div class="flex flex-wrap gap-4 text-sm">
