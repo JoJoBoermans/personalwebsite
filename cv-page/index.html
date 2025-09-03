@@ -6,31 +6,336 @@
 <title>Joshua Boermans - CV</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-
-<!-- SEO Hreflang tags for multilingual support -->
-<link rel="alternate" href="index.html" hreflang="nl">
-<link rel="alternate" href="../EN-cv-page/cv-page.html" hreflang="en">
-<link rel="alternate" href="../EN-cv-page/cv-page.html" hreflang="x-default">
-
 <style>
 
+/* **GEOPTIMALISEERDE 2-PAGINA PRINT CSS** */
 @media print {
-body { -webkit-print-color-adjust: exact; }
-* { box-sizing: border-box; }
-}
-    h2 { 
-        text-align: center;
+    /* Pagina-instellingen geoptimaliseerd voor compactheid */
+    @page {
+        size: A4 portrait;
+        margin: 6mm; /* Verkleinde marges voor meer ruimte */
+    }
+    
+    /* Basis typografie - gebalanceerd tussen compactheid en leesbaarheid */
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 8.5pt !important; /* Geoptimaliseerde balans */
+        line-height: 1.25 !important; /* Compacter maar nog leesbaar */
+        font-family: Arial, sans-serif !important;
+        color: #000 !important;
+        background: white !important;
+    }
+    
+    /* Verberg niet-essentiële elementen */
+    .nav, .nav-header-mobile, .mobile-nav-menu, .mobile-menu-backdrop,
+    footer, .fixed, br {
+        display: none !important;
+    }
+    
+    /* Behoud visuele elementen maar maak ze compacter */
+    .shadow-lg, .shadow-md, .rounded-lg {
+        box-shadow: none !important;
+        border-radius: 2pt !important;
+    }
+    
+    /* Font Awesome iconen - behouden voor visuele aantrekkelijkheid */
+    .fas, .fab, .far {
+        display: inline-block !important;
+        font-size: 8pt !important;
+        color: #4f46e5 !important;
+        margin-right: 2pt !important;
+        width: 10pt !important;
+        text-align: center !important;
+    }
+    
+    /* Header optimalisatie - prominente maar compacte weergave */
+    .gradient-bg {
+        background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%) !important;
+        color: black !important;
+        padding: 8pt 0 !important;
+        margin: 0 !important;
+        border-bottom: 2pt solid #4f46e5 !important;
+    }
+    
+    /* **GEOPTIMALISEERDE HEADER LAYOUT VOOR PRINT** */
+    .gradient-bg > .max-w-4xl {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 12pt !important;
+        padding: 0 8pt !important;
     }
 
-    .class-mb-8 {
-        text-align: center;
+    .gradient-bg h1 {
+        font-size: 18pt !important; /* Balans tussen prominentie en ruimte */
+        margin: 0 0 3pt 0 !important;
+        line-height: 1.1 !important;
+        color: #000 !important;
+        font-weight: bold !important;
     }
-.gradient-bg {
-background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+    
+    .gradient-bg p {
+        font-size: 9pt !important;
+        margin: 1.5pt 0 !important;
+        color: #000 !important;
+    }
+    
+    /* **PROFIELFOTO - GROOT EN PERFECT VIERKANT VOOR PRINT** */
+    .gradient-bg img {
+        width: 70pt !important; /* Grote afmeting voor goede zichtbaarheid */
+        height: 70pt !important; /* Perfect vierkante vorm */
+        border: 2pt solid #4f46e5 !important;
+        border-radius: 0 !important; /* VOLLEDIG VIERKANT - geen afronding */
+        object-fit: cover !important; /* Zorgt voor optimale foto-uitsnede */
+        object-position: center 10% !important; /* VERSCHUIFT FOTO NAAR BENEDEN - toont bovenkant hoofd */
+        flex-shrink: 0 !important; /* Voorkomt verkleining */
+    }
+
+    /* **TEKST CONTAINER OPTIMALISATIE** */
+    .gradient-bg .flex-1 {
+        flex: 1 !important;
+        min-width: 0 !important; /* Voorkomt overflow problemen */
+    }
+
+    /* **CONTACT INFO STYLING** */
+    .gradient-bg .flex-wrap {
+        gap: 3pt !important;
+        font-size: 8pt !important;
+        margin-top: 4pt !important;
+    }
+    
+    /* **OVERSCHRIJF MOBILE RESPONSIVE MARGINS VOOR PRINT** */
+    .gradient-bg .flex-shrink-0 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Hiërarchische typografie - geoptimaliseerd */
+    h2 {
+        font-size: 12pt !important;
+        margin: 5pt 0 3pt 0 !important;
+        line-height: 1.2 !important;
+        color: #000 !important;
+        border-bottom: 1.5pt solid #4f46e5 !important;
+        padding-bottom: 1pt !important;
+        padding-left: 3pt !important;
+        font-weight: bold !important;
+        page-break-after: avoid !important;
+        background: #f8f9ff !important;
+    }
+    
+    h3 {
+        font-size: 10pt !important;
+        margin: 3pt 0 2pt 0 !important;
+        line-height: 1.2 !important;
+        color: #000 !important;
+        font-weight: bold !important;
+    }
+    
+    h4 {
+        font-size: 9pt !important;
+        margin: 2pt 0 1pt 0 !important;
+        line-height: 1.2 !important;
+        font-weight: bold !important;
+        color: #000 !important;
+    }
+    
+    p, li, span, div {
+        font-size: 8.5pt !important;
+        line-height: 1.25 !important;
+        margin: 1.5pt 0 !important;
+        color: #000 !important;
+    }
+    
+    /* Container optimalisatie */
+    .max-w-4xl {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Sectie styling - compacter maar visueel onderscheidend */
+    section {
+        margin: 4pt 0 !important;
+        padding: 0 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+    
+    .bg-white, .bootcamp-highlight, .career-transition {
+        background: white !important;
+        color: #000 !important;
+        padding: 5pt !important;
+        margin: 2.5pt 0 !important;
+        border: 1pt solid #e5e7eb !important;
+        border-radius: 2pt !important;
+        box-shadow: none !important;
+        page-break-inside: avoid !important;
+    }
+    
+    /* Speciale sectie kleuren behouden */
+    .career-transition {
+        background: #f0f9ff !important;
+        border-left: 3pt solid #10b981 !important;
+    }
+    
+    .bootcamp-highlight {
+        background: #fffbf0 !important;
+        border-left: 3pt solid #f59e0b !important;
+    }
+    
+    /* Grid systeem geoptimaliseerd */
+    .grid {
+        gap: 3pt !important;
+        display: grid !important;
+    }
+    
+    .grid-cols-1 { grid-template-columns: 1fr !important; }
+    .grid-cols-2 { grid-template-columns: 1fr 1fr !important; }
+    .grid-cols-3 { grid-template-columns: 1fr 1fr 1fr !important; }
+    .grid-cols-4 { grid-template-columns: repeat(4, 1fr) !important; }
+    .grid-cols-5 { grid-template-columns: repeat(5, 1fr) !important; }
+    
+    /* Tech badges - compact maar leesbaar */
+    .tech-badge {
+        background: #eef2ff !important;
+        color: #1e293b !important;
+        border: 0.75pt solid #c7d2fe !important;
+        padding: 1.5pt 4pt !important;
+        margin: 1pt 1.5pt 1pt 0 !important;
+        border-radius: 2pt !important;
+        font-size: 7.5pt !important;
+        display: inline-block !important;
+        line-height: 1.2 !important;
+        white-space: nowrap;
+    }
+    
+    /* Lijsten geoptimaliseerd */
+    ul, ol {
+        margin: 2.5pt 0 !important;
+        padding-left: 12pt !important;
+    }
+    
+    li {
+        margin: 1.5pt 0 !important;
+        padding: 0 !important;
+        font-size: 8.5pt !important;
+    }
+    
+    /* Flexbox spacing */
+    .flex { 
+        gap: 2.5pt !important; 
+        display: flex !important;
+    }
+    .flex-wrap { 
+        gap: 2pt !important; 
+        flex-wrap: wrap !important;
+    }
+    
+    /* Utility classes aangepast */
+    .mb-8, .mb-6, .mb-4, .mb-3, .mb-2, .mb-1 { margin-bottom: 3pt !important; }
+    .mt-6, .mt-4, .mt-3, .mt-2, .mt-1 { margin-top: 3pt !important; }
+    .py-8, .py-6, .py-4, .py-2 { padding: 4pt 0 !important; }
+    .px-4, .px-6, .px-2 { padding: 0 3pt !important; }
+    .p-6, .p-4, .p-3, .p-2 { padding: 5pt !important; }
+    
+    /* Links behouden */
+    a {
+        color: #4f46e5 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+    }
+    
+    /* Layout optimalisaties voor specifieke secties */
+    .bootcamp-details {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 5pt !important;
+    }
+    
+    .interests-compact {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 3pt !important;
+        text-align: center !important;
+    }
+    
+    .interests-compact p {
+        font-size: 7.5pt !important;
+        margin: 0.5pt 0 !important;
+    }
+    
+    .career-goals-compact {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 5pt !important;
+        text-align: center !important;
+    }
+    
+    .career-goals-compact h3 {
+        font-size: 9pt !important;
+        margin: 2pt 0 1pt 0 !important;
+    }
+    
+    .career-goals-compact p {
+        font-size: 7.5pt !important;
+        margin: 0.5pt 0 !important;
+    }
+    
+    /* Print CV link */
+    .print-cv-link {
+        display: block !important;
+        text-align: center !important;
+        margin-top: 8pt !important;
+        padding: 4pt !important;
+        border-top: 1.5pt solid #4f46e5 !important;
+        font-size: 9pt !important;
+        font-weight: bold !important;
+        color: #4f46e5 !important;
+        background: #f8f9ff !important;
+        page-break-inside: avoid !important;
+    }
+    
+    /* Strategische page breaks - flexibel */
+    .page-break {
+        page-break-before: auto !important;
+        break-before: auto !important;
+    }
+    
+    /* Forceer zichtbaarheid van essentiële content */
+    section, .bg-white, .bootcamp-highlight, .career-transition {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
 }
+
+/* **WEBVERSIE: VERBERG PRINT LINK** */
+@media screen {
+    .print-cv-link {
+        display: none !important;
+    }
+}
+
+/* Bestaande screen styles ongewijzigd */
+h2 { 
+    text-align: center;
+}
+
+.class-mb-8 {
+    text-align: center;
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+}
+
 .tech-badge {
-background: linear-gradient(45deg, #4f46e5, #06b6d4);
-color: white;
+    background: linear-gradient(45deg, #4f46e5, #06b6d4);
+    color: white;
 }
     
 .professional-profile {
@@ -40,12 +345,13 @@ color: white;
 }
     
 .career-transition {
-background: linear-gradient(45deg, #10b981, #3b82f6);
-color: white;
+    background: linear-gradient(45deg, #10b981, #3b82f6);
+    color: white;
 }
+
 .bootcamp-highlight {
-background: linear-gradient(45deg, #f59e0b, #ef4444);
-color: white;
+    background: linear-gradient(45deg, #f59e0b, #ef4444);
+    color: white;
 }
 
 /* Enhanced Navigation Bar */
@@ -94,38 +400,6 @@ color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Language Switcher Styling */
-.language-switcher {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-}
-
-.lang-btn {
-    padding: 0.5rem 1rem;
-    background: rgba(255,255,255,0.15);
-    border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 0.5rem;
-    color: rgba(255,255,255,0.9);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    font-size: 0.9rem;
-}
-
-.lang-btn:hover, .lang-btn.active {
-    background: rgba(255,255,255,0.25);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-}
-
-.lang-btn.active {
-    border-color: rgba(255,255,255,0.4);
-    background: rgba(255,255,255,0.2);
-}
-
 /* Mobile Navigation Header */
 .nav-header-mobile {
     display: none;
@@ -159,42 +433,6 @@ color: white;
 
 .mobile-brand:hover {
     transform: scale(1.02);
-}
-
-/* Mobile Controls Container */
-.mobile-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-/* Mobile Language Switcher */
-.mobile-language-switcher {
-    display: flex;
-    gap: 0.25rem;
-}
-
-.mobile-lang-btn {
-    padding: 0.5rem 0.75rem;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 0.5rem;
-    color: rgba(255,255,255,0.9);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    font-size: 0.8rem;
-}
-
-.mobile-lang-btn:hover, .mobile-lang-btn.active {
-    background: rgba(255,255,255,0.25);
-    color: white;
-    text-decoration: none;
-}
-
-.mobile-lang-btn.active {
-    border-color: rgba(255,255,255,0.4);
-    background: rgba(255,255,255,0.2);
 }
 
 /* Enhanced Mobile Menu Button */
@@ -416,11 +654,6 @@ color: white;
         padding: 0.875rem 1rem;
         font-size: 0.95rem;
     }
-    
-    .mobile-lang-btn {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.75rem;
-    }
 }
 
 </style>
@@ -434,14 +667,6 @@ color: white;
         <li><a href="../personal-bio/index.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
         <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
         <li><a href="index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
-        
-        <!-- Desktop Language Switcher -->
-        <li>
-            <div class="language-switcher">
-                <a href="index.html" class="lang-btn active">🇳🇱 NL</a>
-                <a href="../EN-joshuaboermans/cv-page.html" class="lang-btn">🇬🇧 EN</a>
-            </div>
-        </li>
     </ul>
 
     <!-- Mobile Navigation Header -->
@@ -450,19 +675,10 @@ color: white;
             <i class="fas fa-file-user"></i>
             <span>Joshua Boermans CV</span>
         </div>
-        
-        <div class="mobile-controls">
-            <!-- Mobile Language Switcher -->
-            <div class="mobile-language-switcher">
-                <a href="index.html" class="mobile-lang-btn active">🇳🇱</a>
-                <a href="../EN-joshuaboermans/cv-page.html" class="mobile-lang-btn">🇬🇧</a>
-            </div>
-            
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
-                <i class="fas fa-bars"></i>
-                <span>Menu</span>
-            </button>
-        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+        </button>
     </div>
     
     <!-- Mobile menu backdrop -->
@@ -501,21 +717,15 @@ color: white;
         </div>
         <div class="flex items-center gap-2">
           <i class="fas fa-map-marker-alt"></i>
-          <a href="https://www.google.com/maps/place/Niemeyerstraat+40,+2132+HE+Hoofddorp/@52.2984632,4.7023382,678m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47c5e7d48675051d:0x1134a8da49e73367!8m2!3d52.2984599!4d4.7049131!16s%2Fg%2F11vy1j_9lj?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
-  <span>Hoofddorp, Netherlands</span>
-</a>
+          <span>Hoofddorp, Netherlands</span>
         </div>
         <div class="flex items-center gap-2">
           <i class="fab fa-linkedin"></i>
-          <a href="https://www.linkedin.com/in/joshuaboermans/" target="_blank" rel="noopener noreferrer" class="linkedin text-blue-300 hover:underline">
-            linkedin.com/in/joshuaboermans
-          </a>
+          <span>linkedin.com/in/joshuaboermans</span>
         </div>
         <div class="flex items-center gap-2">
           <i class="fas fa-globe"></i>
-          <a href="https://www.joshuaboermans.com" target="_blank" rel="noopener noreferrer" class="linkedin text-blue-300 hover:underline">
-            joshuaboermans.com
-          </a>
+          <span>https://joshuaboermans.com</span>
         </div>
       </div>
     </div>
@@ -526,8 +736,7 @@ color: white;
     </div>
   </div>
 </div>
-<br>
-    
+
 <div class="max-w-4xl mx-auto px-4 py-8">
 
 <!-- Professional Profile -->
@@ -536,19 +745,15 @@ color: white;
 <i class="fas fa-user-code mr-2 text-blue-500"></i>Professioneel Profiel
 </h2>
 <div class="bg-white rounded-lg shadow-md p-6">
-<div class="text-gray-700 leading-relaxed space-y-4">
-<p class="text-lg text-gray-700 text-center mb-8">Ambitieuze IT-professional in transitie met 6+ jaar ervaring in de technische sector, waaronder software development, 
+<p class="text-lg text-gray-700">Ambitieuze IT-professional in transitie met 6+ jaar ervaring in de technische sector, waaronder software development, 
 SaaS-implementaties, en IT-consultancy. Sterke technische achtergrond gecombineerd met bewezen business skills. 
-Momenteel bezig met een intensieve IT Bootcamp opleiding om mijn passie voor programeren, virtual machines, 
-en netwerkbeheer om te zetten in een volwaardige development carrière. Op zoek naar een innovatieve werkgever die talentontwikkeling hoog in het vaandel heeft en kansen biedt om te groeien binnen de IT.
+Momenteel bezig met een intensieve IT Bootcamp opleiding om mijn passie voor IT om te zetten in een 
+volwaardige development carrière. Op zoek naar een innovatieve werkgever die talentontwikkeling hoog in het 
+vaandel heeft en kansen biedt om te groeien binnen de IT.
 </p>
-</div>
 </div>
 </section>
 
-<br>
-    <br>
-    
 <!-- Career Transition Banner -->
 <section class="mb-8">
 <div class="career-transition rounded-lg shadow-lg p-6 text-center">
@@ -563,58 +768,47 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 </div>
 </section>
 
-    <br>
-    <br>
-
 <!-- Current Education -->
 <section class="mb-8">
-  <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-    <i class="fas fa-graduation-cap mr-2 text-blue-500"></i>Huidige IT Opleiding
-  </h2>
-  
-  <div class="bootcamp-highlight rounded-lg shadow-lg p-6 bg-white">
-    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
-      <div>
-        <h3 class="font-bold text-xl">BEE-4-IT Bootcamp - Software Development</h3>
-        <p class="text-lg font-semibold opacity-90">BEE Organisation</p>
-      </div>
-      <span class="text-sm mt-2 md:mt-0 opacity-90">Juni - September 2025</span>
-    </div>
-
-    <div class="mt-4 text-sm leading-relaxed opacity-90 space-y-4">
-      <p>
-        Allround IT-development training in front-end, back-end, scripting, netwerkbeheer, VM-setup en databases.
-      </p>
-
-      <ul class="list-disc list-inside space-y-1">
-        <li><strong>Front-end (HTML/CSS/JS):</strong> responsive en dynamische webstructuren</li>
-        <li><strong>Back-end & SQL:</strong> databaseontwerp, query-constructies en indexering</li>
-        <li><strong>Python scripting:</strong> automatisering scripts opgezet</li>
-        <li><strong>VM & Netwerken:</strong> virtuele omgevingen geconfigureerd, netwerk opgesplitst en beveiligd</li>
-        <li><strong>C# & .NET:</strong> console-apps gebouwd met OOP-principes</li>
-      </ul>
-
-     <div>
-  <p class="font-semibold"><strong>Projectwerk:</strong></p>
-  <ul class="list-disc list-inside space-y-1">
-    <li><strong>Websites met HTML, CSS & JavaScript – </strong>volledig gebouwd in Visual Studio Code, gehost via een hostingprovider en beheerd met GitHub voor versiebeheer</li>
-    <li><strong>Order Bestel Systeem (Python) – </strong>automatiseringsscript ontwikkeld voor het verwerken en beheren van bestellingen</li>
-    <li><strong>SQL Database – </strong>ontworpen en geïmplementeerd relationeel databasesysteem voor gegevensopslag en query's</li>
-    <li><strong>C# Applicaties – </strong>onder andere een rekenmachine-app gebouwd met objectgeoriënteerd programmeren</li>
-    <li><strong>Virtual Lab – </strong>multi-OS testomgeving opgezet met virtuele machines, inclusief netwerkconfiguratie en beveiligingsinstellingen</li>
-  </ul>
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-graduation-cap mr-2 text-blue-500"></i>Huidige IT Opleiding
+</h2>
+<div class="bootcamp-highlight rounded-lg shadow-lg p-6">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-xl">BEE-4-IT Bootcamp - Software Development</h3>
+<p class="text-lg font-semibold opacity-90">BEE Organisation</p>
+</div>
+<span class="text-sm mt-2 md:mt-0 opacity-90">Juni - Augustus 2025</span>
 </div>
 
+<div class="mt-4 text-sm leading-relaxed opacity-90 space-y-4">
+<p>Intensieve praktijkgerichte opleiding in software development, met focus op moderne programmeertalen, 
+frameworks, en ontwikkelingsmethodologieën. Hands-on projecten en real-world applicaties.</p>
 
-      <p>
-        <strong>Voortdurende ontwikkeling:</strong> skills uitbreiden in AI, cloud (AWS/Azure), mobile (React Native/Flutter), homelab.
-      </p>
-    </div>
-  </div>
+<div class="bootcamp-details">
+<div>
+<p class="font-semibold">Technische Skills:</p>
+<ul class="list-disc list-inside space-y-1">
+<li><strong>Front-end:</strong> HTML, CSS, JavaScript</li>
+<li><strong>Back-end:</strong> Python, SQL, C#/.NET</li>
+<li><strong>Infrastructure:</strong> VirtualBox, Ubuntu, Linux, Windows Server</li>
+</ul>
+</div>
+<div>
+<p class="font-semibold">Projectwerk:</p>
+<ul class="list-disc list-inside space-y-1">
+<li>Websites met HTML/CSS/JS + GitHub</li>
+<li>Python automatiseringsscripts</li>
+<li>SQL database ontwerp</li>
+<li>Virtual Lab multi-OS omgeving</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<br>
-    <br>
 <!-- Technical Skills -->
 <section class="mb-8">
 <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
@@ -628,14 +822,18 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 </h3>
 <div class="flex flex-wrap gap-2">
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Python</span>
-
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">HTML/CSS</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">JavaScript</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">C#</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">ASP.NET Core</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">API Integration</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">SQL</span>
-    <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">C#</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Mysql</span>
-    <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Microsoft Intune</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Tinkercad</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Microsoft Intune</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Usability</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Angular</span>
+
 </div>
 </div>
 
@@ -647,11 +845,13 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Virtual Machines</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Oracle VirtualBox</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Network Management</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Cloud Computing</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">DevOps Principles</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Windows Server</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Windows</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Ubuntu</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Linux</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Cloud Computing</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">DevOps Principles</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Relational Database</span>
 </div>
 </div>
 
@@ -660,9 +860,6 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <i class="fas fa-tools mr-2 text-blue-500"></i>Development Tools
 </h3>
 <div class="flex flex-wrap gap-2">
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Figma</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Zapier</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">VirtualBox</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Visual Studio Code</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Visual Studio</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">GitHub</span>
@@ -672,7 +869,9 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Azure</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Active Directory</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Microsoft Intune</span>
-    <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Microsoft 365</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Figma</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Microsoft 365</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">TypeScript</span>
 </div>
 </div>
 
@@ -686,19 +885,16 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Google Gemini</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Process Automation</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Machine Learning</span>
-    <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">N8N</span>
-    <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Google Cloud</span>
-    <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Genspark</span>
-    <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Active Pieces</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">N8N</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Google Cloud</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Genspark</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Active Pieces</span>
 </div>
 </div>
 </div>
 </section>
 
-    <br>
-    <br>
-    
-<!-- Technical Experience -->
+<!-- Work Experience -->
 <section class="mb-8">
 <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
 <i class="fas fa-briefcase mr-2 text-blue-500"></i>Werkervaring
@@ -719,6 +915,7 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <li><strong>Legacy systeem upgrades</strong> voor verbeterde performance, schaalbaarheid en beveiliging</li>
 <li><strong>AI & ML integratie</strong> in custom applicaties voor geautomatiseerde business processen</li>
 <li><strong>Technische consultancy</strong> voor softwareselectie en implementatiestrategieën</li>
+
 </ul>
 </div>
 
@@ -731,7 +928,7 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <span class="text-gray-500 text-sm mt-2 md:mt-0">Okt 2022 - Jul 2024</span>
 </div>
 <ul class="list-disc list-inside text-gray-700 space-y-2">
-<li><strong>Software escrow services</strong> en broncode verificatie</li>
+<li><strong>Software escrow services</strong> en broncode verificatie voor enterprise omgevingen</li>
 <li><strong>Technische due diligence</strong> voor software acquisities en IP-bescherming projecten</li>
 <li><strong>Collaboratie met development teams</strong> voor code reviews en compliance assessments</li>
 <li><strong>IT-juridische partnerships</strong> ontwikkeld voor software lifecycle management</li>
@@ -748,6 +945,7 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <span class="text-gray-500 text-sm mt-2 md:mt-0">Jan 2022 - Jun 2022</span>
 </div>
 <ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>E-commerce platform integraties</strong> (Shopify, WooCommerce, Magento) voor 30+ webshops</li>
 <li><strong>JavaScript widgets en CSS customizations</strong> voor client-specific implementaties</li>
 <li><strong>API-integratie projecten</strong> voor trust badge technology en security features</li>
 <li><strong>Technical troubleshooting</strong> en performance optimalisatie voor webshop omgevingen</li>
@@ -763,86 +961,20 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <span class="text-gray-500 text-sm mt-2 md:mt-0">Jan 2019 - Jan 2022</span>
 </div>
 <ul class="list-disc list-inside text-gray-700 space-y-2">
-<li><strong>Cloud-native architectuur</strong> oplossingen voor microservices en containerisatie projecten</li>
+<li><strong>DevOps pipeline consultancy</strong> voor continuous integration/delivery implementaties</li>
+<li><strong>Cloud-native architectuur</strong> advies voor microservices en containerisatie projecten</li>
 <li><strong>Kubernetes management platforms</strong> evaluatie en implementatie ondersteuning</li>
 <li><strong>Database DevOps oplossingen</strong> voor Agile development en Continuous Delivery</li>
 <li><strong>CI/CD platforms</strong> implementatie voor geautomatiseerde QA processen</li>
-<li><strong>Inwerken en begeleiden van juniors</strong> in cloud-native technologieën en best practices</li>
-<li><strong>Product demonstraties</strong> uitgevoerd over cloud-native development en DevOps</li>
-<li><strong>Paralel filesystems</strong> voor high-performance computing </li>
+<li><strong>Junior developer mentoring</strong> in cloud-native technologieën en best practices</li>
+<li><strong>Resultaat:</strong> 9 startups ondersteund</li>
 </ul>
 </div>
 </div>
 </section>
 
-    <br>
-    <br>
-<!-- Certifications & Learning -->
-<section class="mb-8">
-<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2 text-center">
-<a href="https://www.linkedin.com/in/joshuaboermans/details/certifications/" target="_blank" class="flex items-center justify-center text-blue-500 hover:underline mx-auto">
-  <i class="fas fa-certificate mr-2"></i>
-  Certificaten & Continue Ontwikkeling
-</a>
-</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="bg-white rounded-lg shadow-md p-4">
-<h3 class="font-bold text-gray-800 mb-2">
-<i class="fas fa-brain mr-2 text-green-500"></i>What Is Generative AI?
-</h3>
-<p class="text-gray-600 text-sm">AI/ML fundamentals en praktische toepassingen</p>
-</div>
-<div class="bg-white rounded-lg shadow-md p-4">
-<h3 class="font-bold text-gray-800 mb-2">
-<i class="fas fa-cloud mr-2 text-blue-500"></i>Learning Cloud Computing: Application Migration
-</h3>
-<p class="text-gray-600 text-sm">Cloud infrastructure en migratie strategieën</p>
-</div>
-<div class="bg-white rounded-lg shadow-md p-4">
-<h3 class="font-bold text-gray-800 mb-2">
-<i class="fas fa-chart-line mr-2 text-purple-500"></i>Sales Strategies in New World of Selling
-</h3>
-<p class="text-gray-600 text-sm">Moderne business development methodologieën</p>
-</div>
-<div class="bg-white rounded-lg shadow-md p-4">
-<h3 class="font-bold text-gray-800 mb-2">
-<i class="fas fa-heart mr-2 text-red-500"></i>Mindfulness & Compassion Essentials
-</h3>
-<p class="text-gray-600 text-sm">Leadership en team collaboration skills</p>
-</div>
-</div>
-</section>
-
-
-    <br>
-    <br>
-    
-<!-- Formal Education -->
-<section class="mb-8">
-<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-<i class="fas fa-university mr-2 text-blue-500"></i>Opleidingen
-</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div class="bg-white rounded-lg shadow-md p-6">
-<h3 class="font-bold text-lg text-gray-800">Facility Management</h3>
-<p class="text-blue-600 font-semibold">Haagse Hogeschool</p>
-<p class="text-gray-500">2020</p>
-<p class="text-sm text-gray-600 mt-2">Focus op procesoptimalisatie, leiderschap en projectmanagement</p>
-</div>
-<div class="bg-white rounded-lg shadow-md p-6">
-<h3 class="font-bold text-lg text-gray-800">MBO4 Facilitair Leidinggevende</h3>
-<p class="text-blue-600 font-semibold">MBO College Airport</p>
-<p class="text-gray-500">2015</p>
-<p class="text-sm text-gray-600 mt-2">Leiderschaps- en organisatievaardigheden in technische omgevingen</p>
-</div>
-</div>
-</section>
-
-    <br>
-    <br>
-    
-<!-- Why Internal Training -->
-<section class="mb-8">
+<!-- Why Internal Training Programs -->
+<section class="mb-8 page-break">
 <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
 <i class="fas fa-target mr-2 text-blue-500"></i>Waarom Interne Training Programs?
 </h2>
@@ -855,8 +987,9 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <ul class="list-disc list-inside text-gray-700 space-y-2">
 <li><strong>Business & Technical Balance:</strong> Unieke combinatie van technische skills en business inzicht</li>
 <li><strong>Snelle Leerder:</strong> Bewezen track record in het snel oppikken van nieuwe technologieën</li>
-<li><strong>Praktijkervaring:</strong> 6+ jaar ervaring binnen de IT</li>
+<li><strong>Praktijkervaring:</strong> 6+ jaar ervaring binnen de IT-sector</li>
 <li><strong>Team Collaboration:</strong> Ervaring met mentoring en cross-functioneel teamwork</li>
+<li><strong>Klantgerichtheid:</strong> Sterke communicatieve vaardigheden voor gebruikersondersteuning</li>
 </ul>
 </div>
 <div>
@@ -868,13 +1001,34 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <li><strong>Mentorship Mogelijkheden:</strong> Ervaren developers die kennis willen delen</li>
 <li><strong>Real-world Projecten:</strong> Directe bijdrage aan productieve IT-projecten</li>
 <li><strong>Growth Path:</strong> Duidelijk carrièrepad van trainee naar full developer</li>
+<li><strong>Leeromgeving:</strong> Cultuur van continue verbetering en kennisdeling</li>
 </ul>
 </div>
 </div>
 </div>
 </section>
 
-    <br>
+<!-- Formal Education -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-university mr-2 text-blue-500"></i>Formele Opleidingen
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white rounded-lg shadow-md p-6">
+<h3 class="font-bold text-lg text-gray-800">Bachelor Facility Management</h3>
+<p class="text-blue-600 font-semibold">Haagse Hogeschool</p>
+<p class="text-gray-500">2020</p>
+<p class="text-sm text-gray-600 mt-2">Focus op procesoptimalisatie, leiderschap, projectmanagement en technische systemen</p>
+</div>
+<div class="bg-white rounded-lg shadow-md p-6">
+<h3 class="font-bold text-lg text-gray-800">MBO4 Facilitair Leidinggevende</h3>
+<p class="text-blue-600 font-semibold">MBO College Airport</p>
+<p class="text-gray-500">2015</p>
+<p class="text-sm text-gray-600 mt-2">Leiderschaps- en organisatievaardigheden in technische omgevingen</p>
+</div>
+</div>
+</section>
+
 <!-- Languages & Additional Skills -->
 <section class="mb-8">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -921,27 +1075,24 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 </div>
 <div class="flex items-center gap-2">
 <i class="fas fa-check-circle text-green-500"></i>
-<span>Team Collaboration</span>
+<span>Team Collaboration & Mentoring</span>
 </div>
 </div>
 </div>
 </div>
 </section>
 
-    <br>
-    <br>
-    
 <!-- Career Goals -->
 <section class="mb-8">
 <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
 <i class="fas fa-compass mr-2 text-blue-500"></i>Carrière Doelstellingen
 </h2>
 <div class="bg-white rounded-lg shadow-md p-6">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="career-goals-compact">
 <div class="text-center">
 <i class="fas fa-code text-3xl text-blue-500 mb-3"></i>
-<h3 class="font-bold text-lg mb-2">2025: Junior Developer, Netwerkbeheerder of Software Tester</h3>
-<p class="text-sm text-gray-600">Start als trainee software developer/tester of trainee netwerkbeheer</p>
+<h3 class="font-bold text-lg mb-2">2025: Junior Developer</h3>
+<p class="text-sm text-gray-600">Start als trainee software developer, tester of netwerkbeheerder</p>
 </div>
 <div class="text-center">
 <i class="fas fa-server text-3xl text-green-500 mb-3"></i>
@@ -951,22 +1102,19 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 <div class="text-center">
 <i class="fas fa-rocket text-3xl text-purple-500 mb-3"></i>
 <h3 class="font-bold text-lg mb-2">2029+: Technical Lead</h3>
-<p class="text-sm text-gray-600">Groei naar senior ontwikkelaar</p>
+<p class="text-sm text-gray-600">Groei naar senior ontwikkelaar met teamleiding</p>
 </div>
 </div>
 </div>
 </section>
 
-<br>
-    <br>
-    
 <!-- Interests -->
 <section class="mb-8">
 <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
 <i class="fas fa-heart mr-2 text-blue-500"></i>Persoonlijke Interesses
 </h2>
 <div class="bg-white rounded-lg shadow-md p-6">
-<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+<div class="interests-compact">
 <div class="text-center">
 <i class="fas fa-bicycle text-2xl text-blue-500 mb-2"></i>
 <p class="text-sm font-semibold">Wielrennen</p>
@@ -981,7 +1129,7 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 </div>
 <div class="text-center">
 <i class="fas fa-tools text-2xl text-blue-500 mb-2"></i>
-<p class="text-sm font-semibold">Software </p>
+<p class="text-sm font-semibold">Software</p>
 </div>
 <div class="text-center">
 <i class="fas fa-plane text-2xl text-blue-500 mb-2"></i>
@@ -1001,69 +1149,49 @@ Actief bezig met de overstap van Technische Sales naar Softwareontwikkeling via 
 Ik ben enthousiast over de mogelijkheid om mijn technische passie en business ervaring 
 in te zetten bij een vooruitstrevend bedrijf dat investeert in talent ontwikkeling.
 </p>
-<div class="flex flex-wrap justify-center gap-4 text-sm">
-<div class="flex items-center gap-2">
-</div>
-</div>
+<p class="text-sm opacity-90">
+Beschikbaar per 1 september 2025 • Remote/Hybrid/Amsterdam gebied • 32-40 uur per week
+</p>
 </div>
 </section>
+
 </div>
 
+<!-- **CV WEBVERSIE LINK - ALLEEN ZICHTBAAR IN PRINT** -->
+<div class="print-cv-link">
+Mijn volledige CV is te vinden op <a href="https://joshuaboermans.com/cv-page/index.html" target="_blank" rel="noopener noreferrer">https://joshuaboermans.com</a>
+</div>
 
-
-<!-- Footer with Contact Information -->
+<!-- Footer (verborgen in print) -->
 <footer class="gradient-bg text-white py-8 mt-12">
   <div class="max-w-4xl mx-auto px-4">
-    
-    <!-- Contact Information Section -->
     <div class="text-center mb-6">
       <h3 class="text-xl font-bold mb-4">Contact Informatie</h3>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
-        
         <div class="flex items-center justify-center gap-2">
           <i class="fas fa-phone text-blue-200"></i>
-          <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">
-            +31 6 36546524
-          </a>
+          <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">+31 6 36546524</a>
         </div>
-        
         <div class="flex items-center justify-center gap-2">
           <i class="fas fa-envelope text-blue-200"></i>
-          <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">
-            joshuaboermans@gmail.com
-          </a>
+          <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">joshuaboermans@gmail.com</a>
         </div>
-        
         <div class="flex items-center justify-center gap-2">
           <i class="fas fa-map-marker-alt text-blue-200"></i>
           <span>Hoofddorp, Netherlands</span>
         </div>
-        
         <div class="flex items-center justify-center gap-2">
           <i class="fab fa-linkedin text-blue-200"></i>
-          <a href="https://www.linkedin.com/in/joshuaboermans/" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             class="hover:text-blue-200 transition-colors">
-            linkedin.com/in/joshuaboermans
-          </a>
+          <a href="https://www.linkedin.com/in/joshuaboermans/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-200 transition-colors">linkedin.com/in/joshuaboermans</a>
         </div>
-        
-        
       </div>
     </div>
-    
-    <!-- Copyright and Design Credit Section -->
     <div class="text-center pt-4 border-t border-white border-opacity-20">
       <p class="text-sm text-white text-opacity-80 mb-1">
-        <i class="fas fa-code mr-2"></i>
-        Website ontworpen en ontwikkeld door Joshua Boermans
+        <i class="fas fa-code mr-2"></i>Website ontworpen en ontwikkeld door Joshua Boermans
       </p>
-      <p class="text-xs text-white text-opacity-60">
-        © 2025 Joshua Boermans - Alle rechten voorbehouden
-      </p>
+      <p class="text-xs text-white text-opacity-60">© 2025 Joshua Boermans - Alle rechten voorbehouden</p>
     </div>
-    
   </div>
 </footer>
 
@@ -1092,10 +1220,8 @@ function openMobileMenu() {
     btnIcon.className = 'fas fa-times';
     btnText.textContent = 'Sluiten';
     
-    // Prevent body scroll when menu is open
     document.body.style.overflow = 'hidden';
     
-    // Focus management for accessibility
     setTimeout(() => {
         const firstLink = menu.querySelector('a');
         if (firstLink) firstLink.focus();
@@ -1113,34 +1239,28 @@ function closeMobileMenu() {
     btnIcon.className = 'fas fa-bars';
     btnText.textContent = 'Menu';
     
-    // Restore body scroll
     document.body.style.overflow = '';
 }
 
-// Enhanced event listeners for better UX
 document.addEventListener('DOMContentLoaded', function() {
-    // Close menu when clicking on menu links
     document.querySelectorAll('.mobile-nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
             closeMobileMenu();
         });
     });
     
-    // Close menu on escape key
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             closeMobileMenu();
         }
     });
     
-    // Handle window resize
     window.addEventListener('resize', function() {
         if (window.innerWidth > 767) {
             closeMobileMenu();
         }
     });
     
-    // Keyboard navigation within menu
     document.getElementById('mobile-nav-menu').addEventListener('keydown', function(event) {
         const links = this.querySelectorAll('a');
         const currentIndex = Array.from(links).indexOf(document.activeElement);
@@ -1157,7 +1277,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Close menu when clicking outside
 document.addEventListener('click', function(event) {
     const mobileMenu = document.getElementById('mobile-nav-menu');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -1175,5 +1294,3 @@ document.addEventListener('click', function(event) {
 
 </body>
 </html>
-
-
