@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack Project Showcase - API Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Full-Stack Showcase</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link" onclick="closeMobileMenu()">← Back to API Demo</a></li>
+                <li><a href="#overview" class="nav-link" onclick="closeMobileMenu()">Project Overview</a></li>
+                <li><a href="#frontend" class="nav-link" onclick="closeMobileMenu()">Frontend Demo</a></li>
+                <li><a href="#backend" class="nav-link" onclick="closeMobileMenu()">Backend Integration</a></li>
+                <li><a href="#automation" class="nav-link" onclick="closeMobileMenu()">Live Workflow</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Full-Stack Business Automation</span>
+                    <span class="hero-subtitle">Project Showcase</span>
+                </h1>
+                <p class="hero-description">
+                    A comprehensive business process automation tool demonstrating end-to-end development capabilities. 
+                    From responsive UI/UX design to backend API integration, showcasing the complete development lifecycle.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">Frontend</span>
+                        <span class="stat-label">React-like UI</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Backend</span>
+                        <span class="stat-label">API Integration</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Full-Stack</span>
+                        <span class="stat-label">End-to-End</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-preview">
+                    <div class="code-header">
+                        <span class="code-title">WorkflowAutomation.py</span>
+                        <div class="code-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <pre class="code-content"><code># Business Process Automation Engine
+class WorkflowEngine:
+    def __init__(self):
+        self.workflows = []
+        self.api_client = APIClient()
+        self.notification_service = NotificationService()
+    
+    async def process_lead(self, lead_data):
+        """Automated lead qualification pipeline"""
+        try:
+            # Score the lead using ML model
+            score = await self.score_lead(lead_data)
+            
+            # Route based on score
+            if score >= 80:
+                await self.assign_to_sales_rep(lead_data)
+                await self.send_priority_notification(lead_data)
+            elif score >= 60:
+                await self.add_to_nurture_campaign(lead_data)
+            
+            return {"status": "processed", "score": score}
+        except Exception as e:
+            await self.handle_error(e, lead_data)
+    
+    async def generate_report(self, period="monthly"):
+        """Generate automated business reports"""
+        data = await self.fetch_analytics_data(period)
+        report = await self.create_report(data)
+        await self.distribute_report(report)
+        return report</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <h2 class="section-title">Project Overview</h2>
+            <p class="section-subtitle">
+                A comprehensive business process automation platform inspired by experience at UNIT, 
+                demonstrating full-stack development capabilities from UI design to backend implementation.
+            </p>
+
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Frontend Excellence</h3>
+                    <p>Responsive React-style UI with modern design patterns, component-based architecture, form validation, and seamless user experience.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend Integration</h3>
+                    <p>Python-based API services with Flask/FastAPI, database integration, authentication, and real-time data processing capabilities.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Process Automation</h3>
+                    <p>Intelligent workflow automation with lead scoring, automated notifications, report generation, and business intelligence dashboards.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics & Reporting</h3>
+                    <p>Real-time analytics, automated report generation, data visualization, and business intelligence insights for decision making.</p>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div style="margin-top: 4rem;">
+                <h3 style="text-align: center; font-size: 1.8rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-primary);">Technology Stack</h3>
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <i class="fab fa-html5" style="color: #e34f26;"></i>
+                        <h4>HTML5 & CSS3</h4>
+                        <p>Semantic markup, CSS Grid, Flexbox, animations</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-js-square" style="color: #f7df1e;"></i>
+                        <h4>Modern JavaScript</h4>
+                        <p>ES6+, async/await, modules, component architecture</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-python" style="color: #3776ab;"></i>
+                        <h4>Python Backend</h4>
+                        <p>Flask/FastAPI, SQLAlchemy, async processing</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-database" style="color: #336791;"></i>
+                        <h4>PostgreSQL</h4>
+                        <p>Relational database, complex queries, optimization</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-chart-bar" style="color: #ff6384;"></i>
+                        <h4>Chart.js</h4>
+                        <p>Data visualization, real-time charts, analytics</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-shield-alt" style="color: #28a745;"></i>
+                        <h4>Security</h4>
+                        <p>JWT authentication, input validation, HTTPS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frontend Demo Section -->
+    <section id="frontend" class="section" style="background: var(--background-light);">
+        <div class="container">
+            <h2 class="section-title">Frontend Development Showcase</h2>
+            <p class="section-subtitle">
+                Interactive demonstration of modern frontend development with responsive design, 
+                form validation, and dynamic user interfaces.
+            </p>
+
+            <!-- Lead Management Interface -->
+            <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin-bottom: 3rem;">
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-primary); text-align: center;">Lead Management Dashboard</h3>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="dashboard-grid">
+                    <!-- Lead Entry Form -->
+                    <div style="background: var(--background-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                        <h4 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--primary-color);">
+                            <i class="fas fa-user-plus" style="margin-right: 0.5rem;"></i>New Lead Entry
+                        </h4>
+                        
+                        <form id="leadForm" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;" class="form-grid">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Company Name *</label>
+                                    <input type="text" id="companyName" class="form-input" placeholder="Enter company name" required>
+                                    <div class="validation-message" id="companyNameError"></div>
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Contact Person *</label>
+                                    <input type="text" id="contactPerson" class="form-input" placeholder="Enter contact name" required>
+                                    <div class="validation-message" id="contactPersonError"></div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;" class="form-grid">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Email Address *</label>
+                                    <input type="email" id="email" class="form-input" placeholder="contact@company.com" required>
+                                    <div class="validation-message" id="emailError"></div>
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Phone Number</label>
+                                    <input type="tel" id="phone" class="form-input" placeholder="+1 (555) 123-4567">
+                                    <div class="validation-message" id="phoneError"></div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;" class="form-grid">
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Industry</label>
+                                    <select id="industry" class="form-input">
+                                        <option value="">Select Industry</option>
+                                        <option value="technology">Technology</option>
+                                        <option value="healthcare">Healthcare</option>
+                                        <option value="finance">Finance</option>
+                                        <option value="manufacturing">Manufacturing</option>
+                                        <option value="retail">Retail</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Company Size</label>
+                                    <select id="companySize" class="form-input">
+                                        <option value="">Select Size</option>
+                                        <option value="startup">Startup (1-10)</option>
+                                        <option value="small">Small (11-50)</option>
+                                        <option value="medium">Medium (51-200)</option>
+                                        <option value="large">Large (201-1000)</option>
+                                        <option value="enterprise">Enterprise (1000+)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Budget Range</label>
+                                <select id="budget" class="form-input">
+                                    <option value="">Select Budget Range</option>
+                                    <option value="under-10k">Under $10,000</option>
+                                    <option value="10k-50k">$10,000 - $50,000</option>
+                                    <option value="50k-100k">$50,000 - $100,000</option>
+                                    <option value="100k-500k">$100,000 - $500,000</option>
+                                    <option value="over-500k">Over $500,000</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Project Description</label>
+                                <textarea id="description" class="form-textarea" rows="3" placeholder="Describe the project requirements..."></textarea>
+                            </div>
+                            
+                            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                <button type="submit" class="btn btn-primary" style="flex: 1;">
+                                    <i class="fas fa-plus" style="margin-right: 0.5rem;"></i>Add Lead
+                                </button>
+                                <button type="button" class="btn btn-secondary" onclick="clearForm()">
+                                    <i class="fas fa-times" style="margin-right: 0.5rem;"></i>Clear
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Live Lead Scoring -->
+                    <div style="background: var(--background-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                        <h4 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--success-color);">
+                            <i class="fas fa-chart-line" style="margin-right: 0.5rem;"></i>Live Lead Scoring
+                        </h4>
+                        
+                        <div id="leadScoreDisplay" style="text-align: center; margin-bottom: 2rem;">
+                            <div style="font-size: 3rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 0.5rem;">--</div>
+                            <div style="color: var(--text-secondary);">Lead Score (0-100)</div>
+                            <div id="leadScoreBar" style="width: 100%; height: 10px; background: var(--background-dark); border-radius: 5px; margin-top: 1rem; overflow: hidden;">
+                                <div id="leadScoreProgress" style="height: 100%; width: 0%; background: linear-gradient(135deg, #10b981, #059669); transition: width 0.5s ease;"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="scoringFactors" style="display: none;">
+                            <h5 style="font-weight: 600; margin-bottom: 1rem; color: var(--text-primary);">Scoring Factors:</h5>
+                            <div id="factorsList" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+                        </div>
+                        
+                        <div id="recommendedActions" style="display: none; margin-top: 1.5rem; padding: 1rem; background: var(--background-dark); border-radius: 8px; border-left: 4px solid var(--primary-color);">
+                            <h5 style="font-weight: 600; margin-bottom: 0.75rem; color: var(--primary-color);">Recommended Actions:</h5>
+                            <div id="actionsList"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Leads Table -->
+                <div style="margin-top: 2rem; background: var(--background-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                        <h4 style="font-size: 1.2rem; font-weight: 600; color: var(--text-primary);">
+                            <i class="fas fa-list" style="margin-right: 0.5rem;"></i>Recent Leads
+                        </h4>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button class="btn btn-secondary" onclick="exportLeads()">
+                                <i class="fas fa-download" style="margin-right: 0.5rem;"></i>Export
+                            </button>
+                            <button class="btn btn-warning" onclick="refreshLeads()">
+                                <i class="fas fa-sync-alt" style="margin-right: 0.5rem;"></i>Refresh
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div style="overflow-x: auto;">
+                        <table id="leadsTable" style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: var(--background-dark); color: var(--text-primary);">
+                                    <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Company</th>
+                                    <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Contact</th>
+                                    <th style="padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color);">Industry</th>
+                                    <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Score</th>
+                                    <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Status</th>
+                                    <th style="padding: 1rem; text-align: center; border-bottom: 1px solid var(--border-color);">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsTableBody">
+                                <tr>
+                                    <td colspan="6" style="padding: 2rem; text-align: center; color: var(--text-secondary);">
+                                        No leads yet. Add your first lead using the form above!
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frontend Features Highlight -->
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Form Validation</h3>
+                    <p>Real-time client-side validation with custom error messages, regex patterns, and user-friendly feedback.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Mobile-first approach with CSS Grid, Flexbox, and breakpoint optimization for all device sizes.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Interactive UI</h3>
+                    <p>Dynamic components, real-time updates, smooth animations, and intuitive user experience patterns.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Modern Design</h3>
+                    <p>Clean aesthetics, consistent design system, accessibility compliance, and professional UI components.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Backend Integration Section -->
+    <section id="backend" class="section">
+        <div class="container">
+            <h2 class="section-title">Backend Integration & API Design</h2>
+            <p class="section-subtitle">
+                Demonstrating backend development skills with Python/Flask, database integration, 
+                API design, and real-time data processing capabilities.
+            </p>
+
+            <!-- API Architecture Diagram -->
+            <div class="architecture-diagram" style="margin-bottom: 3rem;">
+                <h3 style="text-align: center; font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-primary);">Backend Architecture</h3>
+                <div class="architecture-flow">
+                    <div class="arch-component">
+                        <div class="arch-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h4>Frontend UI</h4>
+                        <p>React-style Components</p>
+                    </div>
+                    
+                    <div class="arch-arrow hidden md:block">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="arch-component">
+                        <div class="arch-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h4>Python API</h4>
+                        <p>Flask/FastAPI Server</p>
+                    </div>
+                    
+                    <div class="arch-arrow hidden md:block">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="arch-component">
+                        <div class="arch-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>ML Engine</h4>
+                        <p>Lead Scoring AI</p>
+                    </div>
+                    
+                    <div class="arch-arrow hidden md:block">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    
+                    <div class="arch-component">
+                        <div class="arch-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>PostgreSQL</h4>
+                        <p>Data Storage</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Examples -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;" class="code-examples-grid">
+                <!-- Python API Code -->
+                <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden;">
+                    <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 1.5rem;">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem;">Python API Service</h3>
+                        <p style="opacity: 0.9;">Flask-based REST API with lead processing</p>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <pre style="background: var(--background-light); color: var(--text-primary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.5; white-space: pre; word-wrap: normal; max-width: 100%;"><code># app.py - Flask API Server
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+import joblib
+import numpy as np
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/leads'
+db = SQLAlchemy(app)
+
+# Load pre-trained ML model for lead scoring
+lead_scoring_model = joblib.load('models/lead_scorer.pkl')
+
+class Lead(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    company_name = db.Column(db.String(200), nullable=False)
+    contact_person = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    industry = db.Column(db.String(50))
+    company_size = db.Column(db.String(20))
+    budget = db.Column(db.String(20))
+    score = db.Column(db.Integer, default=0)
+    status = db.Column(db.String(20), default='new')
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+@app.route('/api/leads', methods=['POST'])
+def create_lead():
+    try:
+        data = request.get_json()
+        
+        # Validate required fields
+        required_fields = ['company_name', 'contact_person', 'email']
+        for field in required_fields:
+            if not data.get(field):
+                return jsonify({'error': f'{field} is required'}), 400
+        
+        # Create new lead
+        lead = Lead(
+            company_name=data['company_name'],
+            contact_person=data['contact_person'],
+            email=data['email'],
+            industry=data.get('industry'),
+            company_size=data.get('company_size'),
+            budget=data.get('budget')
+        )
+        
+        # Calculate lead score using ML model
+        features = extract_features(data)
+        lead.score = int(lead_scoring_model.predict([features])[0])
+        
+        # Auto-assign status based on score
+        if lead.score >= 80:
+            lead.status = 'hot'
+            send_priority_notification(lead)
+        elif lead.score >= 60:
+            lead.status = 'warm'
+        else:
+            lead.status = 'cold'
+        
+        db.session.add(lead)
+        db.session.commit()
+        
+        return jsonify({
+            'id': lead.id,
+            'score': lead.score,
+            'status': lead.status,
+            'message': 'Lead created successfully'
+        }), 201
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+def extract_features(data):
+    """Extract features for ML model"""
+    # Industry scoring
+    industry_scores = {
+        'technology': 90, 'finance': 85, 'healthcare': 80,
+        'manufacturing': 70, 'retail': 60, 'other': 50
+    }
+    
+    # Company size scoring
+    size_scores = {
+        'enterprise': 100, 'large': 80, 'medium': 60,
+        'small': 40, 'startup': 20
+    }
+    
+    # Budget scoring
+    budget_scores = {
+        'over-500k': 100, '100k-500k': 80, '50k-100k': 60,
+        '10k-50k': 40, 'under-10k': 20
+    }
+    
+    features = [
+        industry_scores.get(data.get('industry'), 50),
+        size_scores.get(data.get('company_size'), 30),
+        budget_scores.get(data.get('budget'), 30),
+        len(data.get('description', '')) / 10,  # Description quality
+        1 if '@' in data.get('email', '') else 0  # Email validity
+    ]
+    
+    return np.array(features)
+
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)</code></pre>
+                    </div>
+                </div>
+
+                <!-- Database Schema -->
+                <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden;">
+                    <div style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; padding: 1.5rem;">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem;">Database Schema</h3>
+                        <p style="opacity: 0.9;">PostgreSQL tables and relationships</p>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <pre style="background: var(--background-light); color: var(--text-primary); padding: 1rem; border-radius: 8px; overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.5; white-space: pre; word-wrap: normal; max-width: 100%;"><code>-- Database Schema Design
+-- leads.sql
+
+CREATE TABLE leads (
+    id SERIAL PRIMARY KEY,
+    company_name VARCHAR(200) NOT NULL,
+    contact_person VARCHAR(100) NOT NULL,
+    email VARCHAR(120) NOT NULL UNIQUE,
+    phone VARCHAR(20),
+    industry VARCHAR(50),
+    company_size VARCHAR(20),
+    budget VARCHAR(20),
+    description TEXT,
+    score INTEGER DEFAULT 0 CHECK (score >= 0 AND score <= 100),
+    status VARCHAR(20) DEFAULT 'new' CHECK (status IN ('new', 'cold', 'warm', 'hot', 'converted', 'lost')),
+    assigned_to INTEGER REFERENCES users(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_contacted TIMESTAMP,
+    conversion_date TIMESTAMP
+);
+
+CREATE TABLE lead_activities (
+    id SERIAL PRIMARY KEY,
+    lead_id INTEGER REFERENCES leads(id) ON DELETE CASCADE,
+    activity_type VARCHAR(50) NOT NULL,
+    description TEXT,
+    performed_by INTEGER REFERENCES users(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE lead_scoring_factors (
+    id SERIAL PRIMARY KEY,
+    lead_id INTEGER REFERENCES leads(id) ON DELETE CASCADE,
+    factor_name VARCHAR(100) NOT NULL,
+    factor_value DECIMAL(5,2),
+    weight DECIMAL(3,2),
+    contribution INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE automation_workflows (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    trigger_event VARCHAR(100) NOT NULL,
+    conditions JSONB,
+    actions JSONB,
+    is_active BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_executed TIMESTAMP
+);
+
+-- Indexes for performance
+CREATE INDEX idx_leads_score ON leads(score DESC);
+CREATE INDEX idx_leads_status ON leads(status);
+CREATE INDEX idx_leads_industry ON leads(industry);
+CREATE INDEX idx_leads_created_at ON leads(created_at DESC);
+CREATE INDEX idx_lead_activities_lead_id ON lead_activities(lead_id);
+CREATE INDEX idx_lead_activities_type ON lead_activities(activity_type);
+
+-- Triggers for automatic timestamp updates
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+CREATE TRIGGER update_leads_updated_at 
+    BEFORE UPDATE ON leads 
+    FOR EACH ROW 
+    EXECUTE FUNCTION update_updated_at_column();
+
+-- Views for analytics
+CREATE VIEW lead_summary AS
+SELECT 
+    DATE_TRUNC('day', created_at) as date,
+    COUNT(*) as total_leads,
+    AVG(score) as avg_score,
+    COUNT(CASE WHEN status = 'hot' THEN 1 END) as hot_leads,
+    COUNT(CASE WHEN status = 'warm' THEN 1 END) as warm_leads,
+    COUNT(CASE WHEN status = 'cold' THEN 1 END) as cold_leads,
+    COUNT(CASE WHEN status = 'converted' THEN 1 END) as converted_leads
+FROM leads
+GROUP BY DATE_TRUNC('day', created_at)
+ORDER BY date DESC;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backend Features -->
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>REST API Design</h3>
+                    <p>RESTful endpoints with proper HTTP methods, status codes, error handling, and JSON responses following OpenAPI standards.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Database Integration</h3>
+                    <p>SQLAlchemy ORM, PostgreSQL optimization, database migrations, relationships, and complex query handling.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning</h3>
+                    <p>Lead scoring algorithm, feature extraction, model training, prediction API, and continuous learning implementation.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security & Validation</h3>
+                    <p>Input validation, SQL injection prevention, authentication middleware, rate limiting, and secure coding practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Workflow Automation Section -->
+    <section id="automation" class="section" style="background: var(--background-light);">
+        <div class="container">
+            <h2 class="section-title">Live Workflow Automation</h2>
+            <p class="section-subtitle">
+                Experience the complete business process automation in action with real-time analytics, 
+                automated workflows, and intelligent decision making.
+            </p>
+
+            <!-- Analytics Dashboard -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-bottom: 3rem;" class="analytics-grid">
+                <!-- Chart Area -->
+                <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-primary);">
+                        <i class="fas fa-chart-line" style="margin-right: 0.5rem; color: var(--primary-color);"></i>Lead Generation Analytics
+                    </h3>
+                    <div style="height: 300px;">
+                        <canvas id="leadChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- KPI Cards -->
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; text-align: center;">
+                        <div id="totalLeads" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">0</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Total Leads</div>
+                    </div>
+                    
+                    <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; text-align: center;">
+                        <div id="avgScore" style="font-size: 2.5rem; font-weight: 700; color: var(--success-color); margin-bottom: 0.5rem;">0</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Avg Score</div>
+                    </div>
+                    
+                    <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; text-align: center;">
+                        <div id="hotLeads" style="font-size: 2.5rem; font-weight: 700; color: var(--warning-color); margin-bottom: 0.5rem;">0</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Hot Leads</div>
+                    </div>
+                    
+                    <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; text-align: center;">
+                        <div id="conversionRate" style="font-size: 2.5rem; font-weight: 700; color: var(--danger-color); margin-bottom: 0.5rem;">0%</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem;">Conversion Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automation Workflows -->
+            <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; margin-bottom: 3rem;">
+                <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 2rem; color: var(--text-primary);">
+                    <i class="fas fa-robot" style="margin-right: 0.5rem; color: var(--success-color);"></i>Automated Workflows
+                </h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <!-- Workflow 1: High Score Assignment -->
+                    <div style="background: var(--background-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--success-color); margin-right: 0.75rem;"></div>
+                            <h4 style="color: var(--text-primary); font-weight: 600;">High-Score Lead Assignment</h4>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                            Automatically assigns leads with score ≥80 to senior sales representatives and sends priority notifications.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Triggered: <span id="highScoreCount">0</span> times</span>
+                            <span style="background: var(--success-color); color: white; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Active</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Workflow 2: Email Sequences -->
+                    <div style="background: var(--background-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary-color); margin-right: 0.75rem;"></div>
+                            <h4 style="color: var(--text-primary); font-weight: 600;">Nurture Email Sequences</h4>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                            Warm leads (60-79 score) are automatically enrolled in targeted email nurture campaigns based on industry.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Triggered: <span id="nurtureCount">0</span> times</span>
+                            <span style="background: var(--primary-color); color: white; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Active</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Workflow 3: Reporting -->
+                    <div style="background: var(--background-light); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--warning-color); margin-right: 0.75rem;"></div>
+                            <h4 style="color: var(--text-primary); font-weight: 600;">Weekly Reports</h4>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                            Generates and distributes weekly performance reports to stakeholders with key metrics and trends.
+                        </p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                            <span style="color: var(--text-secondary);">Next run: <span id="nextReport">Sunday 9:00 AM</span></span>
+                            <span style="background: var(--warning-color); color: white; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem;">Scheduled</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Log -->
+            <div style="background: var(--background-dark); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary);">
+                        <i class="fas fa-history" style="margin-right: 0.5rem; color: var(--secondary-color);"></i>Real-time Activity Log
+                    </h3>
+                    <button class="btn btn-secondary" onclick="clearActivityLog()">
+                        <i class="fas fa-trash" style="margin-right: 0.5rem;"></i>Clear Log
+                    </button>
+                </div>
+                
+                <div id="activityLog" style="max-height: 300px; overflow-y: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.6;">
+                    <div style="color: var(--text-secondary); text-align: center; padding: 2rem;">
+                        Activity log will appear here as you interact with the system...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--background-dark); border-top: 1px solid var(--border-color); padding: 3rem 0 1rem;">
+        <div class="container">
+            <div style="text-align: center;">
+                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                    <i class="fas fa-layer-group" style="color: var(--primary-color); font-size: 1.5rem; margin-right: 0.75rem;"></i>
+                    <span style="font-size: 1.2rem; font-weight: 600; color: var(--text-primary);">Full-Stack Showcase</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    Demonstrating end-to-end development capabilities from frontend UI to backend automation, 
+                    showcasing business process optimization through technology.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="index.html" class="btn btn-primary">
+                        <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i>Back to API Demo
+                    </a>
+                    <a href="database-design.html" class="btn btn-secondary">
+                        <i class="fas fa-database" style="margin-right: 0.5rem;"></i>Database Design
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include common functionality first -->
+    <script src="js/common.js"></script>
+    <script src="js/fullstack-demo.js"></script>
+</body>
+</html>
