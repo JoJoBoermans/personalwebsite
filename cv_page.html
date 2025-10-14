@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joshua Boermans - CV</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* **MODERN VISUAL DESIGN FOR SCREEN** */
+:root {
+    --primary-blue: #4f46e5;
+    --secondary-blue: #3b82f6;
+    --accent-blue: #60a5fa;
+    --success-green: #10b981;
+    --text-dark: #1f2937;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Modern Typography */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+/* Enhanced Header */
+.gradient-bg {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.gradient-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+.profile-image {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.profile-image:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+
+.profile-image img {
+    border: 4px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Contact Items */
+.contact-item {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 6px 12px;
+    margin: 3px 6px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+    color: white;
+}
+
+.contact-item i {
+    margin-right: 6px;
+    opacity: 0.9;
+}
+
+/* Enhanced Section Headers */
+.section-header {
+    display: flex;
+    align-items: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.section-header::after {
+    content: '';
+    flex: 1;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-blue), transparent);
+    margin-left: 1rem;
+    border-radius: 2px;
+}
+
+.section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    border-radius: 8px;
+    margin-right: 0.75rem;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* Enhanced Cards */
+.enhanced-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.enhanced-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.enhanced-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.enhanced-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Enhanced Tech Badges */
+.tech-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    color: var(--primary-blue);
+    border: 1px solid #bfdbfe;
+    padding: 6px 12px;
+    margin: 3px 6px 3px 0;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.tech-badge:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    border-color: var(--primary-blue);
+}
+
+.tech-badge:hover::before {
+    left: 100%;
+}
+
+/* Enhanced Work Experience */
+.work-experience-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--primary-blue);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.work-experience-item:hover {
+    transform: translateX(4px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+/* Enhanced CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--text-dark) 0%, #374151 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(79, 70, 229, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.3) 0%, transparent 50%);
+}
+
+/* **ULTRA-OPTIMIZED 2-PAGE PRINT CSS** */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 3mm; /* Minimale marges voor maximale ruimte */
+    }
+    
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 6.2pt !important; /* Ultra-compact voor gegarandeerde 2 pagina's */
+        line-height: 1.05 !important;
+        font-family: Arial, sans-serif !important;
+        color: #000 !important;
+        background: white !important;
+    }
+    
+    /* Verberg alle decoratieve elementen */
+    .print-hide, footer, .fas, .fab, .far, .section-icon, .gradient-bg::before, 
+    .enhanced-card::before, .cta-section::before, .profile-image:hover {
+        display: none !important;
+    }
+    
+    /* Neutraliseer Tailwind grote tekstklassen */
+    .text-lg, .text-xl, .text-2xl, .text-3xl, .text-4xl, .text-5xl, .text-6xl {
+        font-size: inherit !important;
+    }
+    
+    /* Ultra-compacte header */
+    .gradient-bg {
+        background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%) !important;
+        color: black !important;
+        padding: 3pt 0 !important;
+        margin: 0 !important;
+        border-bottom: 1pt solid var(--primary-blue) !important;
+    }
+    
+    .gradient-bg > .max-w-4xl, .gradient-bg > .max-w-6xl {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 5pt !important;
+        padding: 0 3pt !important;
+    }
+
+    .gradient-bg h1 {
+        font-size: 12pt !important;
+        margin: 0 0 1pt 0 !important;
+        line-height: 1 !important;
+        color: #000 !important;
+        font-weight: bold !important;
+    }
+    
+    .gradient-bg p {
+        font-size: 6.2pt !important;
+        margin: 0.5pt 0 !important;
+        color: #000 !important;
+    }
+    
+    /* Kleine profielfoto */
+    .profile-image img {
+        width: 42pt !important;
+        height: 42pt !important;
+        border: 1pt solid var(--primary-blue) !important;
+        border-radius: 0 !important;
+        object-fit: cover !important;
+        object-position: center 10% !important;
+    }
+    
+    /* Compacte contactinfo met bullets */
+    .contact-item {
+        display: inline !important;
+        background: none !important;
+        border: none !important;
+        color: #000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 6pt !important;
+    }
+    
+    .contact-item:not(:last-child)::after {
+        content: " • " !important;
+        color: var(--primary-blue) !important;
+        font-weight: bold !important;
+        margin: 0 2pt !important;
+    }
+    
+    /* Ultra-compacte typografie */
+    h2 {
+        font-size: 8.5pt !important;
+        margin: 2pt 0 1pt 0 !important;
+        line-height: 1 !important;
+        color: #000 !important;
+        border-bottom: 0.75pt solid var(--primary-blue) !important;
+        padding: 1pt 2pt !important;
+        font-weight: bold !important;
+        background: #f8f9ff !important;
+    }
+    
+    .section-header {
+        font-size: 8.5pt !important;
+        margin: 2pt 0 1pt 0 !important;
+        border-bottom: 0.75pt solid var(--primary-blue) !important;
+        padding: 1pt 2pt !important;
+        background: #f8f9ff !important;
+    }
+    
+    .section-header::after {
+        display: none !important;
+    }
+    
+    h3 {
+        font-size: 7pt !important;
+        margin: 1pt 0 0.5pt 0 !important;
+        line-height: 1 !important;
+        color: #000 !important;
+        font-weight: bold !important;
+    }
+    
+    h4 {
+        font-size: 6.5pt !important;
+        margin: 0.5pt 0 !important;
+        line-height: 1 !important;
+        font-weight: bold !important;
+        color: #000 !important;
+    }
+    
+    p, li, span, div {
+        font-size: 6.2pt !important;
+        line-height: 1.05 !important;
+        margin: 0.5pt 0 !important;
+        color: #000 !important;
+    }
+    
+    /* Compacte containers */
+    .max-w-4xl, .max-w-6xl {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Ultra-compacte secties */
+    section {
+        margin: 1.5pt 0 !important;
+        padding: 0 !important;
+        page-break-inside: avoid !important;
+    }
+    
+    .enhanced-card, .work-experience-item, .competency-card {
+        background: white !important;
+        color: #000 !important;
+        padding: 2pt !important;
+        margin: 1pt 0 !important;
+        border: 0.5pt solid #e5e7eb !important;
+        border-left: 1.5pt solid var(--primary-blue) !important;
+        border-radius: 1pt !important;
+        box-shadow: none !important;
+    }
+
+    .career-transition {
+        background: #f0f9ff !important;
+        border-left: 1.5pt solid var(--success-green) !important;
+    }
+    
+    /* Ultra-compacte tech badges */
+    .tech-badge {
+        background: #eef2ff !important;
+        color: #1e293b !important;
+        border: 0.25pt solid #c7d2fe !important;
+        padding: 0.5pt 1.5pt !important;
+        margin: 0.25pt 0.5pt 0.25pt 0 !important;
+        border-radius: 1pt !important;
+        font-size: 5.8pt !important;
+        line-height: 1 !important;
+        display: inline-block !important;
+    }
+    
+    /* Compacte lijsten */
+    ul, ol {
+        margin: 1pt 0 !important;
+        padding-left: 6pt !important;
+    }
+    
+    li {
+        margin: 0.5pt 0 !important;
+        padding: 0 !important;
+        font-size: 6.2pt !important;
+    }
+
+    /* Compacte grids */
+    .grid {
+        gap: 1pt !important;
+        display: grid !important;
+    }
+    
+    .grid-cols-1 { grid-template-columns: 1fr !important; }
+    .grid-cols-2 { grid-template-columns: 1fr 1fr !important; }
+    .grid-cols-3 { grid-template-columns: 1fr 1fr 1fr !important; }
+    
+    /* Compacte CTA */
+    .cta-section {
+        background: #f8f9ff !important;
+        color: #000 !important;
+        border: 1pt solid var(--primary-blue) !important;
+        padding: 4pt !important;
+        margin: 2pt 0 !important;
+    }
+    
+    /* Strategische page break */
+    .page-break-before {
+        page-break-before: always !important;
+    }
+    
+    /* Compacte Tailwind spacing overrides */
+    .mb-8, .mb-12 { margin-bottom: 2pt !important; }
+    .mt-12, .mt-16 { margin-top: 2pt !important; }
+    .py-8, .py-12 { padding-top: 2pt !important; padding-bottom: 2pt !important; }
+    .px-4 { padding-left: 2pt !important; padding-right: 2pt !important; }
+    .p-6, .p-8 { padding: 2pt !important; }
+    .space-y-6 > * + *, .space-y-12 > * + * { margin-top: 1pt !important; }
+    .space-y-2 > * + * { margin-top: 0.5pt !important; }
+    .gap-4, .gap-6, .gap-8 { gap: 1pt !important; }
+}
+
+/* Bestaande scherm styles */
+h2 { text-align: center; }
+.career-transition { background: linear-gradient(45deg, #10b981, #3b82f6); color: white; }
+.bootcamp-highlight { background: linear-gradient(45deg, #f59e0b, #ef4444); color: white; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-item { font-size: 0.8rem; padding: 4px 8px; }
+    .section-header { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-blue-50 text-gray-800">
+
+<!-- Enhanced Header Section -->
+<div class="gradient-bg text-white py-8 px-4">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    
+    <!-- Links: Tekstinhoud -->
+    <div class="flex-1">
+      <h1 class="text-4xl md:text-5xl font-bold mb-2">Joshua Boermans</h1>
+      <p class="text-xl md:text-2xl mb-2">Technical Business Professional</p>
+      <p class="text-lg mb-4 opacity-90">SaaS Sales Expert & Technisch Consultant</p>
+
+      <div class="flex flex-wrap gap-1 text-sm">
+        <a href="tel:+31636546524" class="contact-item">
+          <i class="fas fa-phone"></i>
+          +31 6 36 54 65 24
+        </a>
+        <a href="mailto:joshuaboermans@gmail.com" class="contact-item">
+          <i class="fas fa-envelope"></i>
+          joshuaboermans@gmail.com
+        </a>
+        <span class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          Hoofddorp, Nederland
+        </span>
+        <span class="contact-item">
+          <i class="fas fa-car"></i>
+          Rijbewijs B
+        </span>
+        <a href="https://www.linkedin.com/in/joshuaboermans/" target="_blank" rel="noopener noreferrer" class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          linkedin.com/in/joshuaboermans
+        </a>
+      </div>
+    </div>
+
+    <!-- Rechts: Profielfoto -->
+    <div class="profile-image">
+      <img src="../cv-page/Profiel foto.jpg" alt="Profielfoto" class="w-40 h-auto rounded-full border-4 border-white shadow-lg">
+    </div>
+  </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-4 py-8">
+
+<!-- Professioneel Profiel -->
+<section class="mb-8">
+<h2 class="section-header">
+<span class="section-icon">
+<i class="fas fa-user-tie"></i>
+</span>
+Professioneel Profiel
+</h2>
+<div class="enhanced-card p-6">
+<p class="text-lg text-gray-700">
+Sales professional met meer dan zes jaar ervaring in B2B-sales en SaaS-oplossingen. Gedreven door nieuwsgierigheid naar techniek en innovatie, haal ik energie uit het helpen van klanten bij het vinden van slimme, toekomstgerichte oplossingen. Met een proactieve en oplossingsgerichte aanpak bouw ik langdurige relaties op en weet ik nieuwe zakelijke kansen te creëren. Ik vind het leuk om klantbehoeften écht te doorgronden, mee te denken over technische mogelijkheden en projecten van idee tot implementatie succesvol te begeleiden.
+</p>
+</div>
+</section>
+
+<!-- Kerncompetenties -->
+<section class="mb-8">
+<div class="career-transition rounded-lg shadow-lg p-6 text-center">
+<h2 class="text-2xl font-bold mb-3">
+<i class="fas fa-star mr-2"></i>Kerncompetenties
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mt-4">
+<div>
+<i class="fas fa-users text-3xl mb-2 opacity-90"></i>
+<h3 class="font-bold text-lg">Klantrelatiebeheer</h3>
+<p class="text-sm opacity-90">Opbouwen & onderhouden van relaties</p>
+</div>
+<div>
+<i class="fas fa-cog text-3xl mb-2 opacity-90"></i>
+<h3 class="font-bold text-lg">Technische Expertise</h3>
+<p class="text-sm opacity-90">Vertaling tussen techniek en business</p>
+</div>
+<div>
+<i class="fas fa-chart-line text-3xl mb-2 opacity-90"></i>
+<h3 class="font-bold text-lg">Groei & Expansie</h3>
+<p class="text-sm opacity-90">Account uitbreiding en klantacquisitie</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Vaardigheden -->
+<section class="mb-8">
+<h2 class="section-header">
+<span class="section-icon">
+<i class="fas fa-tools"></i>
+</span>
+Technical Account Management Vaardigheden
+</h2>
+
+
+
+<div class="enhanced-card p-6">
+<h4 class="font-semibold text-md mt-4 mb-2 text-gray-800">
+<i class="fas fa-toolbox mr-2 text-blue-500"></i>Tools & Platforms
+</h4>
+<div class="flex flex-wrap gap-2">
+<span class="tech-badge">Salesforce</span>
+<span class="tech-badge">HubSpot</span>
+<span class="tech-badge">Pipedrive</span>
+<span class="tech-badge">Cognism</span>
+<span class="tech-badge">LinkedIn Sales Navigator</span>
+<span class="tech-badge">Zoominfo</span>
+<span class="tech-badge">RocketReach</span>
+<span class="tech-badge">Snov.io</span>
+<span class="tech-badge">Lusha</span>
+<span class="tech-badge">Circleloop</span>
+<span class="tech-badge">Vidyard</span>
+<span class="tech-badge">Salesloft</span>
+<span class="tech-badge">Zapier</span>
+<span class="tech-badge">Expandi</span>
+<span class="tech-badge">ChatGPT</span>
+<span class="tech-badge">Google Gemini</span>
+<span class="tech-badge">Claude</span>
+<span class="tech-badge">Bhuman</span>
+<span class="tech-badge">Python</span>
+<span class="tech-badge">Word</span>
+<span class="tech-badge">Excel</span>
+<span class="tech-badge">PowerPoint</span>
+<span class="tech-badge">Prezi</span>
+</div>
+</div>
+
+<div class="enhanced-card p-6">
+<h3 class="font-semibold text-lg mb-3 text-gray-800">
+<i class="fas fa-users-cog mr-2 text-blue-500"></i>Vaardigheden
+</h3>
+<div class="flex flex-wrap gap-2">
+<span class="tech-badge">Communicatieve vaardigheden</span>
+<span class="tech-badge">Relatiebeheer</span>
+<span class="tech-badge">Onderhandelingsvaardigheden</span>
+<span class="tech-badge">Commercieel inzicht</span>
+<span class="tech-badge">Team Coördinatie</span>
+<span class="tech-badge">Probleemoplossend vermogen</span>
+<span class="tech-badge">Luistervaardigheden</span>
+<span class="tech-badge">Klantgerichtheid</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Werkervaring -->
+<section class="mb-8">
+<h2 class="section-header">
+<span class="section-icon">
+<i class="fas fa-briefcase"></i>
+</span>
+Werkervaring
+</h2>
+
+<div class="space-y-6">
+<div class="work-experience-item">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Mede-oprichter - Strategische Samenwerkingen & Groei</h3>
+<p class="text-blue-600 font-semibold">UNIT</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">December 2024 - heden</span>
+</div>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Strategische samenwerkingen:</strong> Opbouw en onderhoud van partnerships</li>
+<li><strong>Groeistrategie:</strong> Ontwikkeling en uitvoering van plannen voor bedrijfsgroei en marktuitbreiding</li>
+<li><strong>Klantbegeleiding:</strong> Samenwerking met klanten om hun doelen te begrijpen en passende oplossingen te leveren</li>
+<li><strong>Resultaat:</strong> Opgezet van UNIT's online aanwezigheid door ontwikkeling website samen met mede-eigenaar en creatie van een uitgebreid businessplan. Succesvol 3 nieuwe klanten verworven, wat resulteerde in een totale omzet van €180.000</li>
+</ul>
+</div>
+
+<div class="work-experience-item">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Sales Development Representative B2B</h3>
+<p class="text-blue-600 font-semibold">NCC Group - Escode</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">October 2022 - Juli 2024</span>
+</div>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Klantportfolio uitgebreid</strong> en duurzame klantrelaties onderhouden</li>
+<li><strong>Upselling en cross-selling</strong> toegepast voor maximale waardecreatie</li>
+<li><strong>Markttrends geanalyseerd</strong> ter optimalisatie van verkoopstrategieën</li>
+<li><strong>Strategische partnerschappen opgebouwd</strong> met IT-juristen</li>
+<li><strong>Resultaat:</strong> Een strategisch initiatief geïmplementeerd gericht op advocatenkantoren, waarmee wederzijds voordelige relaties werden opgebouwd</li>
+</ul>
+</div>
+
+<div class="work-experience-item">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Account Executive B2B</h3>
+<p class="text-blue-600 font-semibold">Trusted Shops</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Januari 2022 - Juni 2022</span>
+</div>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Klantportfolio uitgebreid</strong> door gerichte acquisitiestrategieën</li>
+<li><strong>Productdemonstraties uitgevoerd</strong> voor potentiële klanten</li>
+<li><strong>Relaties onderhouden</strong> met bestaande klanten voor langdurige samenwerking</li>
+<li><strong>Verkoopdoelen en KPI's behaald en overtroffen</strong></li>
+<li><strong>Resultaat:</strong> 30 nieuwe klanten verworven voor Trusted Shops wat resulteerde in een jaarlijkse terugkerende omzet (ARR) van ~€80.000</li>
+</ul>
+</div>
+
+<div class="work-experience-item">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Business Development Representative</h3>
+<p class="text-blue-600 font-semibold">XcellerateLabs Nottingham</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Januari 2019 - Januari 2022</span>
+</div>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Contact gelegd</strong> met IT-professionals en executives</li>
+<li><strong>Leads gekwalificeerd</strong> en salespipeline geoptimaliseerd</li> 
+<li><strong>Strategieën ontwikkeld</strong> met sales- en marketingteams</li>
+<li><strong>Europese marktpositie</strong> van XcellerateLabs en hun partners versterkt</li>
+<li><strong>Junior teamleden gementord</strong> in cloud-native oplossingen & sales Strategieën</li>
+<li><strong>Resultaat:</strong> Assisteerde start-ups bij het verkrijgen van financieringsrondes en overnamekansen door snelle groei in klantenbestand en omzet te realiseren. 3 start-ups zijn overgenomen en 2 hebben financieringsrondes ontvangen boven de €500.000,-</li>
+</ul>
+</div> 
+
+<div class="work-experience-item">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Accountmanager B2B</h3>
+<p class="text-blue-600 font-semibold">Wagenaar & Van Dijke, Utrecht</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Februari 2017 - Juli 2017</span>
+</div>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Verkoopproces beheerd</strong> van prospectie tot contractafsluiting</li>
+<li><strong>Succesvolle onderhandeling</strong> en klanttevredenheid gewaarborgd</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- Unieke Waardepropositie -->
+<section class="mb-8 page-break">
+<h2 class="section-header">
+<span class="section-icon">
+<i class="fas fa-trophy"></i>
+</span>
+Waarom voor mij kiezen?
+</h2>
+<div class="enhanced-card p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<h3 class="font-bold text-lg mb-3 text-gray-800">
+<i class="fas fa-rocket mr-2 text-green-500"></i>Bewezen staat van dienst
+</h3>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Ruim 6 jaar technische verkoopervaring</strong> in SaaS- en bedrijfssoftwareoplossingen</li>
+<li><strong>Consistente accountgroei</strong> en klantbehoud in alle voorgaande functies</li>
+<li><strong>Diepgaande technische kennis</strong> gecombineerd met zakelijk inzicht voor volledige verantwoordelijkheid over oplossingen</li>
+<li><strong>Brede ervaring</strong> van startups tot multinationals</li>
+<li><strong>Bewezen implementatiesucces</strong> met meetbaar rendement op investering en hoge klanttevredenheid</li>
+</ul>
+</div>
+<div>
+<h3 class="font-bold text-lg mb-3 text-gray-800">
+<i class="fas fa-lightbulb mr-2 text-yellow-500"></i>Unieke onderscheidende eigenschappen
+</h3>
+<ul class="list-disc list-inside text-gray-700 space-y-2">
+<li><strong>Technische én zakelijke expertise</strong> voor volledig belanghebbersbeheer</li>
+<li><strong>Praktische technische achtergrond</strong> voor geloofwaardige technische gesprekken</li>
+<li><strong>Ondernemende instelling</strong> voor proactieve accountontwikkeling</li>
+<li><strong>Internationale ervaring</strong> en cultureel aanpassingsvermogen</li>
+<li><strong>Toewijding aan voortdurend leren</strong> zoals recent getoond met het afronden van een IT cursus</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Page Break for Print -->
+<div class="page-break-before"></div>
+
+<!-- Opleidingen -->
+<section class="mb-8">
+<h2 class="section-header">
+<span class="section-icon">
+<i class="fas fa-university"></i>
+</span>
+Opleidingen
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="enhanced-card p-6">
+<h3 class="font-bold text-lg text-gray-800">IT Bootcamp</h3>
+<p class="text-blue-600 font-semibold">BEE-Organisation</p>
+<p class="text-gray-500">Juni - September 2025</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="enhanced-card p-6">
+<h3 class="font-bold text-lg text-gray-800">Bachelor Facility Management</h3>
+<p class="text-blue-600 font-semibold">Haagse Hogeschool</p>
+<p class="text-gray-500">2019 - 2020</p>
+</div>
+<div class="enhanced-card p-6">
+<h3 class="font-bold text-lg text-gray-800">MBO4 Facilitair Leidinggevende</h3>
+<p class="text-blue-600 font-semibold">MBO College Airport</p>
+<p class="text-gray-500">2013 - 2015</p>
+</div>
+</div>
+</section>
+
+<!-- Persoonlijke Eigenschappen -->
+<section class="mb-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="enhanced-card p-6">
+<h2 class="text-xl font-bold text-gray-800 mb-4">
+<i class="fas fa-language mr-2 text-blue-500"></i>Talen
+</h2>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="font-semibold">Nederlands</span>
+<span class="text-green-600 font-bold">Moedertaal</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-semibold">Engels</span>
+<span class="text-green-600 font-bold">Moedertaal</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-semibold">Russisch</span>
+<span class="text-yellow-600">In Ontwikkeling</span>
+</div>
+</div>
+</div>
+
+<div class="enhanced-card p-6 print-hide">
+<h2 class="text-xl font-bold text-gray-800 mb-4">
+<i class="fas fa-heart mr-2 text-blue-500"></i>Persoonlijke Interesses
+</h2>
+<div class="grid grid-cols-2 gap-4 text-center">
+<div>
+<i class="fas fa-bicycle text-xl text-blue-500 mb-1"></i>
+<p class="text-sm font-semibold">Wielrennen/Hardlopen</p>
+</div>
+<div>
+<i class="fas fa-chart-line text-xl text-blue-500 mb-1"></i>
+<p class="text-sm font-semibold">Handelen</p>
+</div>
+<div>
+<i class="fas fa-guitar text-xl text-blue-500 mb-1"></i>
+<p class="text-sm font-semibold">Gitaar spelen</p>
+</div>
+<div>
+<i class="fas fa-tools text-xl text-blue-500 mb-1"></i>
+<p class="text-sm font-semibold">Klussen</p>
+</div>
+<div>
+<i class="fas fa-plane text-xl text-blue-500 mb-1"></i>
+<p class="text-sm font-semibold">Reizen</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Call to Action -->
+<section class="mb-8">
+<div class="cta-section">
+<h2 class="text-2xl font-bold mb-4">
+<i class="fas fa-handshake mr-2"></i>Klaar voor Technical Account Management Excellence
+</h2>
+<p class="text-lg leading-relaxed mb-4 relative z-10">
+Combinatie van bewezen sales track record, technische expertise en strategic account management ervaring. 
+Klaar om klantrelaties naar een hoger niveau te tillen en impact te creëren.
+</p>
+<p class="text-sm opacity-90 relative z-10">
+Per direct beschikbaar • Reisbereid 30 KM • Flexibel qua sector en bedrijfsgrootte
+</p>
+</div>
+</section>
+
+</div>
+
+<!-- Footer (verborgen bij printen) -->
+<footer class="gradient-bg text-white py-8 mt-12">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="text-center mb-6">
+      <h3 class="text-xl font-bold mb-4">Contactgegevens</h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-phone text-blue-200"></i>
+          <a href="tel:+31636546524" class="hover:text-blue-200 transition-colors">+31 6 36546524</a>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-envelope text-blue-200"></i>
+          <a href="mailto:joshuaboermans@gmail.com" class="hover:text-blue-200 transition-colors">joshuaboermans@gmail.com</a>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i class="fas fa-map-marker-alt text-blue-200"></i>
+          <span>Hoofddorp, Nederland</span>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <i class="fab fa-linkedin text-blue-200"></i>
+          <a href="https://www.linkedin.com/in/joshuaboermans/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-200 transition-colors">linkedin.com/in/joshuaboermans</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center pt-4 border-t border-white border-opacity-20">
+      <p class="text-sm text-white text-opacity-80 mb-1">
+        <i class="fas fa-code mr-2"></i>Website ontworpen en ontwikkeld door Joshua Boermans
+      </p>
+      <p class="text-xs text-white text-opacity-60">© 2025 Joshua Boermans - Alle rechten voorbehouden</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
