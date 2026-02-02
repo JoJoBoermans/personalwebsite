@@ -204,6 +204,7 @@
     .grid-cols-3 { grid-template-columns: 1fr 1fr 1fr !important; }
     .grid-cols-4 { grid-template-columns: repeat(4, 1fr) !important; }
     .grid-cols-5 { grid-template-columns: repeat(5, 1fr) !important; }
+    .grid-cols-6 { grid-template-columns: repeat(6, 1fr) !important; }
     
     /* Tech badges - compact but readable */
     .tech-badge {
@@ -264,7 +265,7 @@
     
     .interests-compact {
         display: grid !important;
-        grid-template-columns: repeat(5, 1fr) !important;
+        grid-template-columns: repeat(6, 1fr) !important;
         gap: 3pt !important;
         text-align: center !important;
     }
@@ -744,13 +745,13 @@ h2 {
         <li><a href="../achievements-page/index.html"><i class="fas fa-trophy mr-2"></i>Achievements</a></li>
         <li><a href="../personal-bio/index.html"><i class="fas fa-user mr-2"></i>My Bio</a></li>
         <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase mr-2"></i>My Portfolio</a></li>
-        <li><a href="index.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
+        <li><a href="cv-page.html"><i class="fas fa-file-alt mr-2"></i>CV Page</a></li>
         
         <!-- Desktop Language Switcher -->
         <li>
             <div class="language-switcher">
                 <a href="../cv-page/index.html" class="lang-btn">🇳🇱 NL</a>
-                <a href="../EN-joshuaboermans/cv-page.html" class="lang-btn active">🇬🇧 EN</a>
+                <a href="cv-page.html" class="lang-btn active">🇬🇧 EN</a>
             </div>
         </li>
     </ul>
@@ -765,8 +766,8 @@ h2 {
         <div class="mobile-controls">
             <!-- Mobile Language Switcher -->
             <div class="mobile-language-switcher">
-                <a href="index.html" class="mobile-lang-btn">🇳🇱</a>
-                <a href="../EN-joshuaboermans/cv-page.html" class="mobile-lang-btn active">🇬🇧</a>
+                <a href="../cv-page/index.html" class="mobile-lang-btn">🇳🇱</a>
+                <a href="cv-page.html" class="mobile-lang-btn active">🇬🇧</a>
             </div>
             
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
@@ -786,7 +787,7 @@ h2 {
             <li><a href="../achievements-page/index.html"><i class="fas fa-trophy"></i>Achievements</a></li>
             <li><a href="../personal-bio/index.html"><i class="fas fa-user"></i>My Bio</a></li>
             <li><a href="../my-portfolio/index.html"><i class="fas fa-briefcase"></i>My Portfolio</a></li>
-            <li><a href="index.html"><i class="fas fa-file-alt"></i>CV Page</a></li>
+            <li><a href="cv-page.html"><i class="fas fa-file-alt"></i>CV Page</a></li>
         </ul>
     </div>
 </nav>
@@ -798,8 +799,8 @@ h2 {
     <!-- Left: Text content -->
     <div class="flex-1">
       <h1 class="text-4xl md:text-5xl font-bold mb-2">Joshua Boermans</h1>
-      <p class="text-xl md:text-2xl mb-2">IT Professional</p>
-      <p class="text-lg mb-4 opacity-90">Transitioning from Technical Sales to IT</p>
+      <p class="text-xl md:text-2xl mb-2">B2B Sales & Business Development Professional</p>
+      <p class="text-lg mb-4 opacity-90">IT Bootcamp Graduate | Ready for IT Career</p>
 
       <div class="flex flex-wrap gap-4 text-sm">
         <div class="flex items-center gap-2">
@@ -815,24 +816,23 @@ h2 {
           <span>Hoofddorp, Netherlands</span>
         </div>
         <div class="flex items-center gap-2">
-  <i class="fab fa-linkedin"></i>
-  <a href="https://www.linkedin.com/in/joshuaboermans/" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     class="hover:text-blue-200 transition-colors">
-    linkedin.com/in/joshuaboermans
-  </a>
-</div>
-<div class="flex items-center gap-2">
-  <i class="fas fa-globe"></i>
-  <a href="https://joshuaboermans.com" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     class="hover:text-blue-200 transition-colors">
-    joshuaboermans.com
-  </a>
-</div>
-
+          <i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/joshuaboermans/" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="hover:text-blue-200 transition-colors">
+            linkedin.com/in/joshuaboermans
+          </a>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-globe"></i>
+          <a href="https://joshuaboermans.com" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="hover:text-blue-200 transition-colors">
+            joshuaboermans.com
+          </a>
+        </div>
       </div>
     </div>
 
@@ -848,50 +848,229 @@ h2 {
 <!-- Professional Profile -->
 <section class="mb-8">
 <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-<i class="fas fa-user-code mr-2 text-blue-500"></i>Professional Profile
+<i class="fas fa-user-tie mr-2 text-blue-500"></i>Professional Profile
 </h2>
 <div class="bg-white rounded-lg shadow-md p-6">
-<p class="text-lg text-gray-700">Ambitious IT professional in transition with 6+ years of experience in the technical sector, including software development, 
-SaaS implementations, and IT consultancy. Strong technical background combined with proven business skills. 
-Currently engaged in an intensive IT Bootcamp program to transform my passion for IT into a 
-career within the technical domain.
+<p class="text-lg text-gray-700">
+Commercial B2B professional and co-founder with 6+ years of experience in SaaS, IT services, and business development. 
+Specialized in lead generation, account management, and strategic partnerships within startups and scale-ups. 
+Proven track record in achieving revenue growth (ARR up to €180K), customer retention, and market expansion in Europe. 
+Combines sales expertise with technical knowledge through completed IT bootcamp and hands-on experience in software development.
 </p>
 </div>
 </section>
 
-<!-- Career Transition Banner -->
-<section class="mb-8">
-<div class="career-transition rounded-lg shadow-lg p-6 text-center">
-<h2 class="text-2xl font-bold mb-3">
-<i class="fas fa-rocket mr-2"></i>Career Transition to IT
-</h2>
-<p class="text-lg leading-relaxed">
-Actively transitioning from Technical Sales to IT through an intensive IT bootcamp.
- Seeking an organization to kickstart my IT career with a company that values dedication, 
- technical curiosity, and proven business insight.
-</p>
-</div>
-</section>
-
-<!-- Current Education -->
+<!-- Completed Education -->
 <section class="mb-8">
 <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-<i class="fas fa-graduation-cap mr-2 text-blue-500"></i>Current IT Education
+<i class="fas fa-graduation-cap mr-2 text-blue-500"></i>Completed IT Education
 </h2>
 <div class="bootcamp-highlight rounded-lg shadow-lg p-6">
 <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
 <div>
-<h3 class="font-bold text-xl">BEE-4-IT Bootcamp - Software Development</h3>
+<h3 class="font-bold text-xl">IT Bootcamp - Full Stack Development</h3>
 <p class="text-lg font-semibold opacity-90">BEE Organisation</p>
 </div>
-<span class="text-sm mt-2 md:mt-0 opacity-90">June - August 2025</span>
+<span class="text-sm mt-2 md:mt-0 opacity-90">2025</span>
 </div>
 
 <div class="mt-4 text-sm leading-relaxed opacity-90 space-y-4">
-<p>Intensive hands-on training in software development, focusing on modern programming languages, 
-frameworks, and development methodologies. Hands-on projects and real-world applications.</p>
+<p><strong>Skills:</strong> Full-stack development, network management and security, systems administration</p>
+<p><strong>Practical experience:</strong> Software development and IT projects applied to real-life scenarios</p>
+</div>
+</div>
+</section>
 
+<!-- Work Experience -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-briefcase mr-2 text-blue-500"></i>Work Experience
+</h2>
 
+<div class="space-y-6">
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Co-founder - Strategic Partnerships & B2B Growth</h3>
+<p class="text-blue-600 font-semibold">UNIT</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Dec 2024 - Present</span>
+</div>
+<p class="text-gray-700 mb-3">Co-founder of an IT service provider specialized in custom software and digital solutions for businesses.</p>
+<div class="mb-3">
+<h4 class="font-semibold text-gray-800 mb-2">Responsibilities:</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1">
+<li>Responsible for business development, sales, and strategic partnerships</li>
+<li>Developing growth strategies and commercial propositions</li>
+<li>Intensive collaboration with clients to translate needs into technical solutions</li>
+<li>Setup of website, positioning, and commercial processes</li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-gray-800 mb-2">Results & Impact:</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1">
+<li><strong>3 new clients</strong> acquired</li>
+<li><strong>€180,000 revenue</strong> realized</li>
+<li>Successful market introduction and positioning of UNIT</li>
+</ul>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">B2B Sales Development Representative</h3>
+<p class="text-blue-600 font-semibold">NCC Group - Escode</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Oct 2022 - Jul 2024</span>
+</div>
+<p class="text-gray-700 mb-3">International cybersecurity and software escrow organization focused on enterprise and mid-market clients.</p>
+<div class="mb-3">
+<h4 class="font-semibold text-gray-800 mb-2">Responsibilities:</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1">
+<li>Building and managing a B2B client portfolio</li>
+<li>Identifying upsell and cross-sell opportunities</li>
+<li>Analyzing market trends and client needs</li>
+<li>Building strategic collaborations with IT lawyers and partners</li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-gray-800 mb-2">Results & Impact:</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1">
+<li>Structural expansion of client portfolio</li>
+<li>Established new partner channels within legal sector</li>
+<li>Improved sales strategies through market and client analysis</li>
+</ul>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">B2B Account Executive</h3>
+<p class="text-blue-600 font-semibold">Trusted Shops</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Jan 2022 - Jun 2022</span>
+</div>
+<p class="text-gray-700 mb-3">SaaS solution for e-commerce businesses focused on trust, reviews, and conversion optimization.</p>
+<div class="mb-3">
+<h4 class="font-semibold text-gray-800 mb-2">Responsibilities:</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1">
+<li>Conducting product demonstrations and commercial presentations</li>
+<li>Managing and expanding existing client relationships</li>
+<li>Achieving and exceeding sales KPIs</li>
+<li>Responsible for complete sales process from lead to closing</li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-gray-800 mb-2">Results & Impact:</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1">
+<li><strong>30 new clients</strong> acquired</li>
+<li><strong>~€80,000 annual recurring revenue (ARR)</strong> realized</li>
+</ul>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">B2B Business Development Representative</h3>
+<p class="text-blue-600 font-semibold">XcellerateLabs Nottingham</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Jan 2019 - Jan 2022</span>
+</div>
+<p class="text-gray-700 mb-3">Cloud-native consultancy specialized in digital transformation for enterprise clients.</p>
+<div class="mb-3">
+<h4 class="font-semibold text-gray-800 mb-2">Responsibilities:</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1">
+<li>Generating and qualifying leads within the European market</li>
+<li>Optimizing sales pipeline in collaboration with sales & marketing</li>
+<li>Maintaining contact with IT professionals and C-level executives</li>
+<li>Supporting and coaching junior team members</li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-gray-800 mb-2">Results & Impact:</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1">
+<li>Strengthening XcellerateLabs' European market position and their clients</li>
+<li>Contributed to multiple growth trajectories at startups</li>
+<li>Support in successful acquisitions and financing rounds (>€500K)</li>
+</ul>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
+<div>
+<h3 class="font-bold text-lg text-gray-800">Facility Officer</h3>
+<p class="text-blue-600 font-semibold">Randstad Amsterdam</p>
+</div>
+<span class="text-gray-500 text-sm mt-2 md:mt-0">Feb 2016 - Jan 2019</span>
+</div>
+<p class="text-gray-700 mb-3">Operational role within catering and facility services.</p>
+<div class="mb-3">
+<h4 class="font-semibold text-gray-800 mb-2">Responsibilities:</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1">
+<li>Ensuring customer satisfaction and service quality</li>
+<li>Complaint handling and solution-oriented approach</li>
+<li>Development of presentation and communication skills</li>
+</ul>
+</div>
+<div>
+<h4 class="font-semibold text-gray-800 mb-2">Results & Impact:</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1">
+<li>Gained experience with process discipline and customer interaction</li>
+<li>Developed strong foundation in service-oriented work</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Achievements -->
+<section class="mb-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
+<i class="fas fa-trophy mr-2 text-blue-500"></i>Achievements
+</h2>
+<div class="bg-white rounded-lg shadow-md p-6">
+<p class="text-gray-700 mb-4">
+Throughout my career, I have demonstrably contributed to commercial growth, market expansion, and strategic collaborations 
+within B2B, SaaS, and IT environments. In various roles, ranging from Business Development and Account Executive to co-founder, 
+I have successfully tapped new clients and markets and built sustainable client relationships.
+</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-blue-50 rounded-lg p-4">
+<h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-chart-line mr-2 text-blue-500"></i>Revenue Growth</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+<li>€180,000 revenue realized at UNIT as co-founder</li>
+<li>€80,000 ARR generated at Trusted Shops</li>
+<li>Contributed to financing rounds >€500K at startups</li>
+</ul>
+</div>
+<div class="bg-green-50 rounded-lg p-4">
+<h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-users mr-2 text-green-500"></i>Client Acquisition</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+<li>30+ new clients acquired at Trusted Shops</li>
+<li>3 strategic clients within 3 months at UNIT</li>
+<li>Multiple startups supported in growth trajectories</li>
+</ul>
+</div>
+<div class="bg-purple-50 rounded-lg p-4">
+<h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-handshake mr-2 text-purple-500"></i>Partnerships</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+<li>Partner channels established within legal sector</li>
+<li>Strategic collaborations with IT lawyers</li>
+<li>Strengthening European market position at XcellerateLabs</li>
+</ul>
+</div>
+<div class="bg-yellow-50 rounded-lg p-4">
+<h4 class="font-bold text-gray-800 mb-2"><i class="fas fa-rocket mr-2 text-yellow-600"></i>Business Impact</h4>
+<ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+<li>3 startups successfully acquired</li>
+<li>2 organizations successfully financed</li>
+<li>Market introduction and positioning of UNIT</li>
+</ul>
+</div>
 </div>
 </div>
 </section>
@@ -912,33 +1091,8 @@ frameworks, and development methodologies. Hands-on projects and real-world appl
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">HTML/CSS</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">JavaScript</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">C#</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">ASP.NET Core</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">API Integration</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">SQL</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Mysql</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Tinkercad</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Microsoft Intune</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Usability</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Angular</span>
-
-</div>
-</div>
-
-<div class="bg-white rounded-lg shadow-md p-6">
-<h3 class="font-semibold text-lg mb-3 text-gray-800">
-<i class="fas fa-server mr-2 text-blue-500"></i>Infrastructure & Systems
-</h3>
-<div class="flex flex-wrap gap-2">
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Virtual Machines</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Oracle VirtualBox</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Network Management</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Windows Server</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Windows</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Ubuntu</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Linux</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Cloud Computing</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">DevOps Principles</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Relational Database</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Arduino</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">MySQL</span>
 </div>
 </div>
 
@@ -948,17 +1102,33 @@ frameworks, and development methodologies. Hands-on projects and real-world appl
 </h3>
 <div class="flex flex-wrap gap-2">
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Visual Studio Code</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Visual Studio</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">GitHub</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Git</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Flutter</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">FlutterFlow</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Azure</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Active Directory</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Microsoft Intune</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Figma</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Microsoft 365</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">TypeScript</span>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<h3 class="font-semibold text-lg mb-3 text-gray-800">
+<i class="fas fa-chart-line mr-2 text-blue-500"></i>CRM & Sales Tools
+</h3>
+<div class="flex flex-wrap gap-2">
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Salesforce</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">HubSpot</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Pipedrive</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">SalesLoft</span>
+</div>
+</div>
+
+<div class="bg-white rounded-lg shadow-md p-6">
+<h3 class="font-semibold text-lg mb-3 text-gray-800">
+<i class="fas fa-search mr-2 text-blue-500"></i>Prospecting Tools
+</h3>
+<div class="flex flex-wrap gap-2">
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">LinkedIn Sales Navigator</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Cognism</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">ZoomInfo</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">RocketReach</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Lusha</span>
 </div>
 </div>
 
@@ -969,126 +1139,78 @@ frameworks, and development methodologies. Hands-on projects and real-world appl
 <div class="flex flex-wrap gap-2">
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">ChatGPT</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Claude</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Google Gemini</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Process Automation</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Machine Learning</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">N8N</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Google Cloud</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Gemini</span>
 <span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Genspark</span>
-<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Active Pieces</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">Zapier</span>
+<span class="tech-badge px-3 py-1 rounded-full text-sm font-semibold">N8N</span>
 </div>
 </div>
 </div>
 </section>
 
-<!-- Work Experience -->
+<!-- Commercial Skills -->
 <section class="mb-8">
 <h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-<i class="fas fa-briefcase mr-2 text-blue-500"></i>Work Experience
+<i class="fas fa-handshake mr-2 text-blue-500"></i>Commercial Skills
 </h2>
 
-<div class="space-y-6">
 <div class="bg-white rounded-lg shadow-md p-6">
-<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
-<div>
-<h3 class="font-bold text-lg text-gray-800">Head of Growth</h3>
-<p class="text-blue-600 font-semibold">UNIT - Software Development & Business Solutions</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Listening Skills</span>
 </div>
-<span class="text-gray-500 text-sm mt-2 md:mt-0">Dec 2024 - Present</span>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Communication</span>
 </div>
-<ul class="list-disc list-inside text-gray-700 space-y-2">
-<li><strong>Low-code app development</strong> with Flutter, FlutterFlow for web and mobile applications</li>
-<li><strong>Full-stack development</strong>: UI/UX design, front-end, back-end implementation and API integrations</li>
-<li><strong>AI & ML integration</strong> in custom applications for automated business processes</li>
-<li><strong>Technical consultancy</strong> for software selection and implementation strategies</li>
-
-</ul>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Service-Oriented</span>
 </div>
-
-<div class="bg-white rounded-lg shadow-md p-6">
-<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
-<div>
-<h3 class="font-bold text-lg text-gray-800">Technical Sales Development Representative</h3>
-<p class="text-blue-600 font-semibold">NCC Group (Escode) - Software Assurance & Security</p>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Relationship Management</span>
 </div>
-<span class="text-gray-500 text-sm mt-2 md:mt-0">Oct 2022 - Jul 2024</span>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Lead Qualification</span>
 </div>
-<ul class="list-disc list-inside text-gray-700 space-y-2">
-<li><strong>Software escrow services</strong> and source code verification for enterprise environments</li>
-<li><strong>Technical due diligence</strong> for software acquisitions and IP protection projects</li>
-<li><strong>Collaboration with development teams</strong> for code reviews and compliance assessments</li>
-<li><strong>Developed IT-legal partnerships</strong> for software lifecycle management</li>
-<li><strong>Prepared technical documentation</strong> for complex software implementations</li>
-</ul>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Commercial Insight</span>
 </div>
-
-<div class="bg-white rounded-lg shadow-md p-6">
-<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
-<div>
-<h3 class="font-bold text-lg text-gray-800">Account Executive E-commerce Technology</h3>
-<p class="text-blue-600 font-semibold">Trusted Shops - Integration & Implementation</p>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Analytical Thinking</span>
 </div>
-<span class="text-gray-500 text-sm mt-2 md:mt-0">Jan 2022 - Jun 2022</span>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Problem Solving</span>
 </div>
-<ul class="list-disc list-inside text-gray-700 space-y-2">
-<li><strong>E-commerce platform integrations</strong> (Shopify, WooCommerce, Magento) for 30+ webshops</li>
-<li><strong>JavaScript widgets and CSS customizations</strong> for client-specific implementations</li>
-<li><strong>API integration projects</strong> for trust badge technology and security features</li>
-<li><strong>Technical troubleshooting</strong> and performance optimization for webshop environments</li>
-</ul>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Presenting</span>
 </div>
-
-<div class="bg-white rounded-lg shadow-md p-6">
-<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-3">
-<div>
-<h3 class="font-bold text-lg text-gray-800">Cloud-Native Technical Sales Lead</h3>
-<p class="text-blue-600 font-semibold">XcellerateLabs - SaaS & DevOps Solutions</p>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Storytelling</span>
 </div>
-<span class="text-gray-500 text-sm mt-2 md:mt-0">Jan 2019 - Jan 2022</span>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Customer-Focused</span>
 </div>
-<ul class="list-disc list-inside text-gray-700 space-y-2">
-<li><strong>DevOps pipeline consultancy</strong> for continuous integration/delivery implementations</li>
-<li><strong>Cloud-native architecture</strong> advice for microservices and containerization projects</li>
-<li><strong>Kubernetes management platforms</strong> evaluation and implementation support</li>
-<li><strong>Database DevOps solutions</strong> for Agile development and Continuous Delivery</li>
-<li><strong>CI/CD platforms</strong> implementation for automated QA processes</li>
-<li><strong>Junior developer mentoring</strong> in cloud-native technologies and best practices</li>
-<li><strong>Result:</strong> Supported 9 startups</li>
-</ul>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Objection Handling</span>
 </div>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Negotiating</span>
 </div>
-</section>
-
-<!-- What Sets Me Apart -->
-<section class="mb-8 page-break">
-<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-<i class="fas fa-target mr-2 text-blue-500"></i>What Sets Me Apart
-</h2>
-<div class="bg-white rounded-lg shadow-md p-6">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div>
-<h3 class="font-bold text-lg mb-3 text-gray-800">
-<i class="fas fa-rocket mr-2 text-green-500"></i>My Strengths
-</h3>
-<ul class="list-disc list-inside text-gray-700 space-y-2">
-<li><strong>Business & Technical Balance:</strong> Unique combination of technical skills and business insight</li>
-<li><strong>Fast Learner:</strong> Proven track record in quickly adopting new technologies</li>
-<li><strong>Practical Experience:</strong> 6+ years of experience within the IT sector</li>
-<li><strong>Team Collaboration:</strong> Experience with mentoring and cross-functional teamwork</li>
-<li><strong>Customer Focus:</strong> Strong communication skills for user support</li>
-</ul>
-</div>
-<div>
-<h3 class="font-bold text-lg mb-3 text-gray-800">
-<i class="fas fa-lightbulb mr-2 text-yellow-500"></i>What I'm Looking For
-</h3>
-<ul class="list-disc list-inside text-gray-700 space-y-2">
-<li><strong>Structured Development:</strong> Companies that invest in talent development</li>
-<li><strong>Mentorship Opportunities:</strong> Experienced developers willing to share knowledge</li>
-<li><strong>Real-world Projects:</strong> Direct contribution to productive IT projects</li>
-<li><strong>Growth Path:</strong> Clear career path from trainee to full developer</li>
-<li><strong>Learning Environment:</strong> Culture of continuous improvement and knowledge sharing</li>
-</ul>
+<div class="flex items-center gap-2">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Contract Closing</span>
 </div>
 </div>
 </div>
@@ -1104,7 +1226,7 @@ frameworks, and development methodologies. Hands-on projects and real-world appl
 <h3 class="font-bold text-lg text-gray-800">Bachelor Facility Management</h3>
 <p class="text-blue-600 font-semibold">The Hague University of Applied Sciences</p>
 <p class="text-gray-500">2020</p>
-<p class="text-sm text-gray-600 mt-2">Focus on process optimization, leadership, project management and technical systems</p>
+<p class="text-sm text-gray-600 mt-2">Focus on leadership, process optimization, and team coordination. Broad insight into facility management, operational processes, and organizational management.</p>
 </div>
 <div class="bg-white rounded-lg shadow-md p-6">
 <h3 class="font-bold text-lg text-gray-800">MBO4 Facility Management Leadership</h3>
@@ -1115,7 +1237,7 @@ frameworks, and development methodologies. Hands-on projects and real-world appl
 </div>
 </section>
 
-<!-- Languages & Additional Skills -->
+<!-- Languages & Interests -->
 <section class="mb-8">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="bg-white rounded-lg shadow-md p-6">
@@ -1140,86 +1262,33 @@ frameworks, and development methodologies. Hands-on projects and real-world appl
 
 <div class="bg-white rounded-lg shadow-md p-6">
 <h2 class="text-xl font-bold text-gray-800 mb-4">
-<i class="fas fa-user-cog mr-2 text-blue-500"></i>Soft Skills
+<i class="fas fa-heart mr-2 text-blue-500"></i>Interests & Hobbies
 </h2>
-<div class="space-y-2">
+<div class="grid grid-cols-2 gap-3">
 <div class="flex items-center gap-2">
-<i class="fas fa-check-circle text-green-500"></i>
-<span>Analytical Thinking</span>
-</div>
-<div class="flex items-center gap-2">
-<i class="fas fa-check-circle text-green-500"></i>
-<span>Problem Solving</span>
+<i class="fas fa-bicycle text-blue-500"></i>
+<span>Cycling</span>
 </div>
 <div class="flex items-center gap-2">
-<i class="fas fa-check-circle text-green-500"></i>
-<span>Technical Communication</span>
+<i class="fas fa-chart-line text-blue-500"></i>
+<span>Trading</span>
 </div>
 <div class="flex items-center gap-2">
-<i class="fas fa-check-circle text-green-500"></i>
-<span>Project Management</span>
+<i class="fas fa-guitar text-blue-500"></i>
+<span>Guitar Playing</span>
 </div>
 <div class="flex items-center gap-2">
-<i class="fas fa-check-circle text-green-500"></i>
-<span>Team Collaboration & Mentoring</span>
+<i class="fas fa-tools text-blue-500"></i>
+<span>DIY Projects</span>
 </div>
+<div class="flex items-center gap-2">
+<i class="fas fa-plane text-blue-500"></i>
+<span>Travel</span>
 </div>
+<div class="flex items-center gap-2">
+<i class="fas fa-laptop-code text-blue-500"></i>
+<span>Software</span>
 </div>
-</div>
-</section>
-
-<!-- Career Goals -->
-<section class="mb-8">
-<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-<i class="fas fa-compass mr-2 text-blue-500"></i>Career Goals
-</h2>
-<div class="bg-white rounded-lg shadow-md p-6">
-<div class="career-goals-compact">
-<div class="text-center">
-<i class="fas fa-code text-3xl text-blue-500 mb-3"></i>
-<h3 class="font-bold text-lg mb-2">2025: Junior Developer</h3>
-<p class="text-sm text-gray-600">Start as trainee software developer, tester or network administrator</p>
-</div>
-<div class="text-center">
-<i class="fas fa-server text-3xl text-green-500 mb-3"></i>
-<h3 class="font-bold text-lg mb-2">2027: System Specialist</h3>
-<p class="text-sm text-gray-600">Development towards infrastructure and network management expertise</p>
-</div>
-<div class="text-center">
-<i class="fas fa-rocket text-3xl text-purple-500 mb-3"></i>
-<h3 class="font-bold text-lg mb-2">2029+: Technical Lead</h3>
-<p class="text-sm text-gray-600">Growth to senior developer with team leadership</p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Interests -->
-<section class="mb-8">
-<h2 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-blue-500 pb-2">
-<i class="fas fa-heart mr-2 text-blue-500"></i>Personal Interests
-</h2>
-<div class="bg-white rounded-lg shadow-md p-6">
-<div class="interests-compact">
-<div class="text-center">
-<i class="fas fa-bicycle text-2xl text-blue-500 mb-2"></i>
-<p class="text-sm font-semibold">Cycling</p>
-</div>
-<div class="text-center">
-<i class="fas fa-chart-line text-2xl text-blue-500 mb-2"></i>
-<p class="text-sm font-semibold">Trading</p>
-</div>
-<div class="text-center">
-<i class="fas fa-guitar text-2xl text-blue-500 mb-2"></i>
-<p class="text-sm font-semibold">Guitar Playing</p>
-</div>
-<div class="text-center">
-<i class="fas fa-tools text-2xl text-blue-500 mb-2"></i>
-<p class="text-sm font-semibold">Software</p>
-</div>
-<div class="text-center">
-<i class="fas fa-plane text-2xl text-blue-500 mb-2"></i>
-<p class="text-sm font-semibold">Travel</p>
 </div>
 </div>
 </div>
@@ -1232,11 +1301,22 @@ frameworks, and development methodologies. Hands-on projects and real-world appl
 <i class="fas fa-handshake mr-2"></i>Ready for the Next Step
 </h2>
 <p class="text-lg leading-relaxed mb-4">
-
+Ambitious professional with 6+ years of B2B experience and completed IT education, 
+ready to deploy my commercial expertise and technical knowledge for your organization.
 </p>
 <p class="text-sm opacity-90">
-Available immediately • Remote/Hybrid/Amsterdam area • 32-40 hours per week
+Available immediately • Amsterdam/Hoofddorp area • 32-40 hours per week
 </p>
+</div>
+</section>
+
+<!-- References -->
+<section class="mb-8">
+<div class="bg-white rounded-lg shadow-md p-6 text-center">
+<h2 class="text-xl font-bold text-gray-800 mb-2">
+<i class="fas fa-user-check mr-2 text-blue-500"></i>References
+</h2>
+<p class="text-gray-700">References available upon request</p>
 </div>
 </section>
 
