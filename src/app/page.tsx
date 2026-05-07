@@ -1,0 +1,368 @@
+import { Nav } from '@/components/Nav';
+import { Footer } from '@/components/Footer';
+import { Button } from '@/components/Button';
+import { Container } from '@/components/Container';
+import { Section } from '@/components/Section';
+import { Reveal } from '@/components/Reveal';
+import { CalendlyEmbed } from '@/components/CalendlyEmbed';
+
+const services = [
+  {
+    title: 'Cold Outreach',
+    desc: 'Personalized messaging that earns replies without sounding like a template.'
+  },
+  {
+    title: 'Appointment Setting',
+    desc: 'Consistent meeting volume with clean handoff and calendar discipline.'
+  },
+  {
+    title: 'Lead Sourcing',
+    desc: 'ICP-first lists with intent, enrichment, and quality control baked in.'
+  },
+  {
+    title: 'CRM Automations',
+    desc: 'Routing, follow-ups, and reporting that keep pipeline reliable.'
+  },
+  {
+    title: 'Outbound Systems',
+    desc: 'A repeatable outbound engine: tools, sequences, data, and governance.'
+  },
+  {
+    title: 'Funnel Building',
+    desc: 'Offer + positioning + landing assets that convert meetings to revenue.'
+  }
+] as const;
+
+const faqs = [
+  {
+    q: 'How quickly can we start?',
+    a: 'Typically within 7–14 days. We align on ICP, set infrastructure, and ship the first sequences.'
+  },
+  {
+    q: 'Which industries do you work with?',
+    a: 'B2B software and services. If you sell to teams (not consumers), it’s usually a fit.'
+  },
+  {
+    q: 'Do you work internationally?',
+    a: 'Yes. We run outbound across EU/UK/US time zones with channel-specific constraints.'
+  },
+  {
+    q: 'Is this fully outsourced?',
+    a: 'It can be. I can run the system end-to-end, or build it with your team and transfer execution.'
+  },
+  {
+    q: 'Do you help build internal outbound systems?',
+    a: 'Yes. Infrastructure, playbooks, sequence design, CRM hygiene, and reporting — built to operate without me.'
+  },
+  {
+    q: 'Which outreach channels do you use?',
+    a: 'Email, LinkedIn, and selective calling — based on ICP, market norms, and deliverability constraints.'
+  }
+] as const;
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-bg-900">
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-radial-fade" />
+      <div className="pointer-events-none fixed inset-0 -z-10 opacity-60 grid-bg" />
+
+      <Nav />
+
+      {/* HERO */}
+      <main>
+        <section className="relative overflow-hidden pb-6 pt-12 sm:pt-16">
+          <Container>
+            <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+              <div>
+                <Reveal>
+                  <p className="inline-flex items-center gap-2 rounded-full bg-white/[0.05] px-4 py-2 text-xs font-semibold text-text-secondary ring-1 ring-border">
+                    Outbound infrastructure for B2B start-ups & scale-ups
+                    <span className="h-1 w-1 rounded-full bg-accent-500" />
+                    AI-enhanced multi-channel execution
+                  </p>
+                </Reveal>
+
+                <Reveal delay={0.05}>
+                  <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight text-text-primary sm:text-5xl lg:text-6xl">
+                    AI-Powered Outbound Systems That Generate Consistent B2B Meetings
+                  </h1>
+                </Reveal>
+
+                <Reveal delay={0.1}>
+                  <p className="mt-6 max-w-xl text-base leading-relaxed text-text-secondary sm:text-lg">
+                    We help B2B start-ups and scale-ups generate consistent, high-quality meetings through AI-powered multi-channel outbound.
+                  </p>
+                </Reveal>
+
+                <Reveal delay={0.15}>
+                  <div className="mt-8 flex flex-wrap items-center gap-3">
+                    <Button href="#book">Book a Call</Button>
+                    <Button href="/services/" variant="secondary">
+                      View Services
+                    </Button>
+                  </div>
+                </Reveal>
+
+                <Reveal delay={0.2}>
+                  <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                    {[
+                      { k: '7+ yrs', v: 'sales experience' },
+                      { k: '60/mo', v: 'meetings booked' },
+                      { k: 'B2B', v: 'startups & scale-ups' },
+                      { k: 'Multi', v: 'channel outreach' }
+                    ].map((m) => (
+                      <div
+                        key={m.k}
+                        className="rounded-2xl bg-white/[0.04] px-4 py-4 ring-1 ring-border shadow-card"
+                      >
+                        <div className="font-display text-xl font-semibold tracking-tight">
+                          {m.k}
+                        </div>
+                        <div className="mt-1 text-xs font-medium text-text-secondary">
+                          {m.v}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </Reveal>
+
+                {/* Floating UI cards */}
+                <div className="relative mt-10 hidden max-w-xl sm:block">
+                  <div className="absolute -left-2 top-0 h-24 w-44 rotate-[-2deg] rounded-2xl bg-white/[0.04] ring-1 ring-border shadow-card" />
+                  <div className="absolute left-32 top-10 h-20 w-56 rotate-[2deg] rounded-2xl bg-gradient-to-br from-accent-500/10 to-violet-500/10 ring-1 ring-border shadow-card" />
+                  <div className="absolute left-10 top-16 h-16 w-40 rotate-[0deg] rounded-2xl bg-white/[0.03] ring-1 ring-border shadow-card" />
+                  <div className="relative h-32" />
+                </div>
+              </div>
+
+              <Reveal delay={0.1}>
+                <div id="book" className="scroll-mt-24">
+                  <div className="mb-4">
+                    <p className="text-sm font-semibold text-text-primary">Book a call</p>
+                    <p className="mt-1 text-sm text-text-secondary">
+                      20 minutes. We’ll map your ICP, channels, and the fastest path to consistent meetings.
+                    </p>
+                  </div>
+                  <CalendlyEmbed />
+                  <p className="mt-3 text-xs text-text-secondary">
+                    Prefer email? Reply at <span className="text-text-primary">hello@joshuaboermans.com</span>
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+          </Container>
+        </section>
+
+        {/* TRUST / PROOF */}
+        <Section
+          eyebrow="Proof"
+          title="Built for founders who want predictable pipeline"
+          subtitle="The goal is simple: consistent, qualified meetings — produced by a system, not luck."
+        >
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: 'Startup & scale-up execution',
+                desc: 'Operator mindset: fast iteration, clean reporting, and tight feedback loops.'
+              },
+              {
+                title: 'Acquisition & growth experience',
+                desc: 'Outbound that supports real revenue motion — not vanity metrics.'
+              },
+              {
+                title: 'Up to 60 meetings in one month',
+                desc: 'When ICP, deliverability, and messaging align — volume follows.'
+              }
+            ].map((c, i) => (
+              <Reveal key={c.title} delay={i * 0.05}>
+                <div className="h-full rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card">
+                  <div className="font-display text-lg font-semibold">{c.title}</div>
+                  <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                    {c.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
+        {/* SERVICES */}
+        <Section
+          eyebrow="Services"
+          title="Outbound that looks like infrastructure"
+          subtitle="Modular capabilities you can start with now — and expand as you scale."
+          className="bg-bg-850/30"
+        >
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((s, i) => (
+              <Reveal key={s.title} delay={i * 0.03}>
+                <div className="group h-full rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card transition hover:bg-white/[0.06]">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="font-display text-lg font-semibold">
+                      {s.title}
+                    </div>
+                    <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-accent-500/20 to-violet-500/10 ring-1 ring-border transition group-hover:shadow-glow" />
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                    {s.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
+        {/* PROCESS */}
+        <Section
+          eyebrow="Process"
+          title="A systemized outbound timeline"
+          subtitle="Designed to be measurable, repeatable, and resilient — not dependent on heroics."
+        >
+          <div className="grid gap-6 md:grid-cols-2">
+            {[
+              'Strategy',
+              'Infrastructure',
+              'Lead Sourcing',
+              'Multi-Channel Outreach',
+              'Meeting Generation',
+              'Optimization'
+            ].map((step, idx) => (
+              <Reveal key={step} delay={idx * 0.04}>
+                <div className="relative rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.05] ring-1 ring-border font-display text-sm font-semibold text-text-primary">
+                      {String(idx + 1).padStart(2, '0')}
+                    </div>
+                    <div>
+                      <div className="font-display text-lg font-semibold">{step}</div>
+                      <div className="mt-1 text-sm text-text-secondary">
+                        {idx === 0 && 'ICP definition, offer, constraints, and reporting.'}
+                        {idx === 1 && 'Tooling, deliverability, domains, tracking, CRM.'}
+                        {idx === 2 && 'List building, enrichment, validation, QA.'}
+                        {idx === 3 && 'Email + LinkedIn sequences; human QA; follow-ups.'}
+                        {idx === 4 && 'Qualification, booking, handoff, feedback loops.'}
+                        {idx === 5 && 'Iteration based on reply quality and revenue outcomes.'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
+        {/* FOUNDER */}
+        <Section
+          eyebrow="Founder"
+          title="Joshua Boermans"
+          subtitle="Outbound systems expertise built in high-pace B2B environments."
+          className="bg-bg-850/30"
+        >
+          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <Reveal>
+              <div className="rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card">
+                <div className="font-display text-lg font-semibold">Capabilities</div>
+                <ul className="mt-4 space-y-3 text-sm text-text-secondary">
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />7+ years in B2B sales and outbound execution</li>
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Sequence design + deliverability systems</li>
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />CRM hygiene, automation, and pipeline reporting</li>
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Startup scaling experience and sales process optimization</li>
+                </ul>
+              </div>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <div className="rounded-2xl bg-gradient-to-br from-accent-500/10 to-violet-500/10 p-6 ring-1 ring-border shadow-card">
+                <div className="font-display text-lg font-semibold">What you get</div>
+                <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                  A technical outbound system that produces meetings with clear inputs and outputs —
+                  messaging, lead quality, deliverability, and channel mix managed as a single pipeline.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Button href="#book">Book a Call</Button>
+                  <Button href="/about/" variant="secondary">Read more</Button>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </Section>
+
+        {/* PLACEHOLDERS */}
+        <Section
+          eyebrow="Ready to activate later"
+          title="Testimonials, logos, and case studies"
+          subtitle="This site is wired for proof. When you have it, we’ll turn it on — without redesigning anything."
+        >
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { t: 'Testimonials', d: 'Short, specific outcomes. No fluff.' },
+              { t: 'Company logos', d: 'Low-key trust, displayed like a SaaS footer.' },
+              { t: 'Case studies', d: 'Inputs → outputs → learnings. Built for scanning.' }
+            ].map((x, i) => (
+              <Reveal key={x.t} delay={i * 0.05}>
+                <div className="rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card">
+                  <div className="font-display text-lg font-semibold">{x.t}</div>
+                  <p className="mt-3 text-sm text-text-secondary">{x.d}</p>
+                  <div className="mt-6 h-10 rounded-xl bg-white/[0.04] ring-1 ring-border" />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
+        {/* FAQ */}
+        <Section
+          eyebrow="FAQ"
+          title="Questions founders ask before they commit"
+          subtitle="Direct answers. Clear constraints. No sales theatre."
+          className="bg-bg-850/30"
+        >
+          <div className="mx-auto max-w-3xl divide-y divide-white/10 rounded-2xl bg-white/[0.04] ring-1 ring-border shadow-card">
+            {faqs.map((f, i) => (
+              <Reveal key={f.q} delay={i * 0.03}>
+                <details className="group px-6 py-5">
+                  <summary className="cursor-pointer list-none font-medium text-text-primary">
+                    <span className="mr-2 text-accent-500">+</span>
+                    {f.q}
+                  </summary>
+                  <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                    {f.a}
+                  </p>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+
+        {/* FINAL CTA */}
+        <section className="py-16 sm:py-20">
+          <Container>
+            <div className="rounded-3xl bg-gradient-to-br from-accent-500/12 to-violet-500/10 p-6 ring-1 ring-border shadow-card sm:p-10">
+              <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-text-secondary">
+                    Final CTA
+                  </p>
+                  <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+                    Build a Predictable Outbound Pipeline
+                  </h2>
+                  <p className="mt-4 text-base leading-relaxed text-text-secondary">
+                    If you want consistent meetings without building a large internal outbound team, let’s map the system.
+                  </p>
+                  <div className="mt-8 flex gap-3">
+                    <Button href="#book">Book a Call</Button>
+                    <Button href="/contact/" variant="secondary">Contact</Button>
+                  </div>
+                </div>
+                <div>
+                  <CalendlyEmbed />
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
