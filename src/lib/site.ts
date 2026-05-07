@@ -9,7 +9,7 @@ export const site = {
     url: 'https://calendly.com/joshuaboermans/30min'
   },
   socials: {
-    linkedin: 'https://www.linkedin.com/in/your-handle',
-    email: 'hello@joshuaboermans.com'
+    linkedin: 'https://www.linkedin.com/in/joshuaboermans/',
+    email: 'joshuaboermans@gmail.com'
   }
 } as const;
