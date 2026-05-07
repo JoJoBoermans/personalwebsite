@@ -5,31 +5,39 @@ import { Container } from '@/components/Container';
 import { Section } from '@/components/Section';
 import { Reveal } from '@/components/Reveal';
 import { CalendlyEmbed } from '@/components/CalendlyEmbed';
+import { StatCard } from '@/components/StatCard';
+import { IconBolt, IconLayers, IconShield, IconSignal } from '@/components/Icons';
 
 const services = [
   {
     title: 'Cold Outreach',
-    desc: 'Personalized messaging that earns replies without sounding like a template.'
+    desc: 'Personalized messaging that earns replies without sounding like a template.',
+    icon: IconSignal
   },
   {
     title: 'Appointment Setting',
-    desc: 'Consistent meeting volume with clean handoff and calendar discipline.'
+    desc: 'Consistent meeting volume with clean handoff and calendar discipline.',
+    icon: IconBolt
   },
   {
     title: 'Lead Sourcing',
-    desc: 'ICP-first lists with intent, enrichment, and quality control baked in.'
+    desc: 'ICP-first lists with intent, enrichment, and quality control baked in.',
+    icon: IconLayers
   },
   {
     title: 'CRM Automations',
-    desc: 'Routing, follow-ups, and reporting that keep pipeline reliable.'
+    desc: 'Routing, follow-ups, and reporting that keep pipeline reliable.',
+    icon: IconShield
   },
   {
     title: 'Outbound Systems',
-    desc: 'A repeatable outbound engine: tools, sequences, data, and governance.'
+    desc: 'A repeatable outbound engine: tools, sequences, data, and governance.',
+    icon: IconLayers
   },
   {
     title: 'Funnel Building',
-    desc: 'Offer + positioning + landing assets that convert meetings to revenue.'
+    desc: 'Offer + positioning + landing assets that convert meetings to revenue.',
+    icon: IconSignal
   }
 ] as const;
 
@@ -104,33 +112,23 @@ export default function HomePage() {
                 </Reveal>
 
                 <Reveal delay={0.2}>
-                  <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                    {[
-                      { k: '7+ yrs', v: 'sales experience' },
-                      { k: '60/mo', v: 'meetings booked' },
-                      { k: 'B2B', v: 'startups & scale-ups' },
-                      { k: 'Multi', v: 'channel outreach' }
-                    ].map((m) => (
-                      <div
-                        key={m.k}
-                        className="rounded-2xl bg-white/[0.04] px-4 py-4 ring-1 ring-border shadow-card"
-                      >
-                        <div className="font-display text-xl font-semibold tracking-tight">
-                          {m.k}
-                        </div>
-                        <div className="mt-1 text-xs font-medium text-text-secondary">
-                          {m.v}
-                        </div>
-                      </div>
-                    ))}
+                  <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <StatCard label="Experience" value="7+ years" hint="B2B sales + outbound systems" tone="blue" />
+                    <StatCard label="Peak month" value="20–30 meetings" hint="booked per month (avg)" tone="violet" />
+                    <StatCard label="Delivery" value="Multi-channel" hint="Email + LinkedIn + selective calling" tone="neutral" />
+                    <StatCard label="Focus" value="Reply quality" hint="ICP, deliverability, conversion" tone="blue" />
                   </div>
                 </Reveal>
 
-                {/* Floating UI cards */}
+                {/* Visual / "empty space" fill */}
                 <div className="relative mt-10 hidden max-w-xl sm:block">
                   <div className="absolute -left-2 top-0 h-24 w-44 rotate-[-2deg] rounded-2xl bg-white/[0.04] ring-1 ring-border shadow-card" />
                   <div className="absolute left-32 top-10 h-20 w-56 rotate-[2deg] rounded-2xl bg-gradient-to-br from-accent-500/10 to-violet-500/10 ring-1 ring-border shadow-card" />
                   <div className="absolute left-10 top-16 h-16 w-40 rotate-[0deg] rounded-2xl bg-white/[0.03] ring-1 ring-border shadow-card" />
+
+                  <div className="absolute -right-8 -top-6 h-44 w-56 rounded-3xl bg-gradient-to-br from-accent-500/14 to-transparent blur-2xl" />
+                  <div className="absolute -left-10 top-10 h-44 w-56 rounded-3xl bg-gradient-to-br from-violet-500/12 to-transparent blur-2xl" />
+
                   <div className="relative h-32" />
                 </div>
               </div>
@@ -144,9 +142,6 @@ export default function HomePage() {
                     </p>
                   </div>
                   <CalendlyEmbed />
-                  <p className="mt-3 text-xs text-text-secondary">
-                    Prefer email? Reply at <span className="text-text-primary">hello@joshuaboermans.com</span>
-                  </p>
                 </div>
               </Reveal>
             </div>
@@ -170,7 +165,7 @@ export default function HomePage() {
                 desc: 'Outbound that supports real revenue motion — not vanity metrics.'
               },
               {
-                title: 'Up to 60 meetings in one month',
+                title: 'Up to 60 meetings in a single month',
                 desc: 'When ICP, deliverability, and messaging align — volume follows.'
               }
             ].map((c, i) => (
@@ -194,21 +189,26 @@ export default function HomePage() {
           className="bg-bg-850/30"
         >
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.03}>
-                <div className="group h-full rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card transition hover:bg-white/[0.06]">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="font-display text-lg font-semibold">
-                      {s.title}
+            {services.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <Reveal key={s.title} delay={i * 0.03}>
+                  <div className="group h-full rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card transition hover:bg-white/[0.06]">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="font-display text-lg font-semibold">
+                        {s.title}
+                      </div>
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent-500/16 to-violet-500/10 ring-1 ring-border transition group-hover:shadow-glow">
+                        <Icon className="h-5 w-5 text-text-primary/90" />
+                      </div>
                     </div>
-                    <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-accent-500/20 to-violet-500/10 ring-1 ring-border transition group-hover:shadow-glow" />
+                    <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                      {s.desc}
+                    </p>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                    {s.desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </Section>
 
@@ -228,8 +228,12 @@ export default function HomePage() {
               'Optimization'
             ].map((step, idx) => (
               <Reveal key={step} delay={idx * 0.04}>
-                <div className="relative rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card">
-                  <div className="flex items-center gap-4">
+                <div className="relative overflow-hidden rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card">
+                  <div className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]">
+                    <div className="absolute -top-10 left-10 h-28 w-28 rounded-full bg-accent-500/10 blur-2xl" />
+                    <div className="absolute -bottom-12 right-10 h-28 w-28 rounded-full bg-violet-500/10 blur-2xl" />
+                  </div>
+                  <div className="relative flex items-center gap-4">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.05] ring-1 ring-border font-display text-sm font-semibold text-text-primary">
                       {String(idx + 1).padStart(2, '0')}
                     </div>
@@ -283,29 +287,6 @@ export default function HomePage() {
                 </div>
               </div>
             </Reveal>
-          </div>
-        </Section>
-
-        {/* PLACEHOLDERS */}
-        <Section
-          eyebrow="Ready to activate later"
-          title="Testimonials, logos, and case studies"
-          subtitle="This site is wired for proof. When you have it, we’ll turn it on — without redesigning anything."
-        >
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              { t: 'Testimonials', d: 'Short, specific outcomes. No fluff.' },
-              { t: 'Company logos', d: 'Low-key trust, displayed like a SaaS footer.' },
-              { t: 'Case studies', d: 'Inputs → outputs → learnings. Built for scanning.' }
-            ].map((x, i) => (
-              <Reveal key={x.t} delay={i * 0.05}>
-                <div className="rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card">
-                  <div className="font-display text-lg font-semibold">{x.t}</div>
-                  <p className="mt-3 text-sm text-text-secondary">{x.d}</p>
-                  <div className="mt-6 h-10 rounded-xl bg-white/[0.04] ring-1 ring-border" />
-                </div>
-              </Reveal>
-            ))}
           </div>
         </Section>
 
