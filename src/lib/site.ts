@@ -10,6 +10,6 @@ export const site = {
   },
   socials: {
     linkedin: 'https://www.linkedin.com/in/joshuaboermans/',
-    email: 'joshuoboermans@gmail.com'
+    email: 'joshuaboermans@gmail.com'
   }
 } as const;
