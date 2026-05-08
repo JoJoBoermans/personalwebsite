@@ -40,6 +40,7 @@ const blocks = [
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-bg-900">
+      <div className="aurora" />
       <div className="pointer-events-none fixed inset-0 -z-10 bg-radial-fade" />
       <div className="pointer-events-none fixed inset-0 -z-10 opacity-60 grid-bg" />
       <Nav />
