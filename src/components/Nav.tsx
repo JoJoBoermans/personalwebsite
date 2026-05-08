@@ -18,7 +18,7 @@ export function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg-900/70 backdrop-blur supports-[backdrop-filter]:bg-bg-900/50">
-      <Container className="flex h-16 items-center justify-between">
+      <Container className="relative flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <div className="relative h-8 w-8 overflow-hidden rounded-lg bg-white/[0.03] ring-1 ring-border shadow-glow">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -32,7 +32,8 @@ export function Nav() {
           </div>
           <span className="font-display text-sm font-semibold tracking-tight">Joshua Boermans</span>
         </Link>
-        <nav className="hidden items-center gap-6 md:flex">
+        {/* Desktop nav centered */}
+        <nav className="hidden md:flex md:absolute md:left-1/2 md:-translate-x-1/2 items-center gap-6">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -42,8 +43,12 @@ export function Nav() {
               {item.label}
             </Link>
           ))}
-          <Button href="/book">Book a Call</Button>
         </nav>
+
+        {/* Desktop CTA on right */}
+        <div className="hidden md:flex items-center">
+          <Button href="/book">Book a Call</Button>
+        </div>
 
         <div className="flex items-center gap-3 md:hidden">
           <MobileNav items={nav} onBook={() => (window.location.href = '/book')} />
