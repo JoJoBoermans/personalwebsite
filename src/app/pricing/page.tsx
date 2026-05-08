@@ -144,7 +144,7 @@ export default function PricingPage() {
                 threshold="Threshold: 5 attended"
                 whoItsFor="For SaaS teams who want consistent meetings without overcomplicating targeting or messaging."
                 highlights={[
-                  'Expandi execution (LinkedIn + light email)',
+                  'Outreach execution (LinkedIn + email follow-up)',
                   'Sequence build + weekly iteration',
                   'Basic qualification + booking',
                   'Weekly updates + next-step plan'
@@ -192,7 +192,7 @@ export default function PricingPage() {
                 </div>
                 <div className="mt-1 font-display text-2xl font-semibold text-text-primary">€2,500 one-time</div>
                 <p className="mt-2 text-sm text-text-secondary">
-                  Week 1–2: ICP + exclusions, offer angles, messaging foundations, Expandi setup/QA, reporting template, and qualification/handoff flow.
+                  Week 1–2: ICP + exclusions, offer angles, messaging foundations, outreach setup/QA, reporting template, and qualification/handoff flow.
                 </p>
               </div>
               <div className="mt-4 sm:mt-0">
@@ -244,26 +244,27 @@ export default function PricingPage() {
             </Reveal>
 
             <Reveal delay={0.15}>
-              <Foldout title="Lead sourcing (add-on)">
+              <Foldout title="Lead lists (included when I run outreach)">
                 <p>
-                  By default, clients provide leads. If you want Joshua to build the list:
+                  Lead lists are included in the monthly pricing <b>when I’m running the outreach</b>.
+                  If your team prefers to run outreach internally, you can purchase lead lists separately.
                 </p>
                 <ul className="mt-3 list-disc pl-5">
                   <li><b>€1,000 per 2,000 contacts</b> (minimum 2,000)</li>
                   <li>Includes verified emails + core enrichment (name, title, company, LinkedIn URLs)</li>
-                  <li>Tools are included in the price</li>
                 </ul>
               </Foldout>
             </Reveal>
 
             <Reveal delay={0.2}>
-              <Foldout title="Separate email campaigns (add-on)">
+              <Foldout title="Email campaigns (add-on)">
                 <p>
-                  Expandi includes light email as part of the multi-channel flow. Separate, dedicated email campaigns are available as an add-on:
+                  The core delivery includes LinkedIn outreach with email follow-up.
+                  If you want separate, dedicated email campaigns (additional segments, offers, or testing):
                 </p>
                 <ul className="mt-3 list-disc pl-5">
-                  <li><b>€750/mo</b> — 1 additional campaign (build + manage + iterate)</li>
-                  <li><b>€1,250/mo</b> — 2 additional campaigns</li>
+                  <li><b>€750/mo</b> — 1 additional email campaign (build + manage + iterate)</li>
+                  <li><b>€1,250/mo</b> — 2 additional email campaigns</li>
                 </ul>
               </Foldout>
             </Reveal>
