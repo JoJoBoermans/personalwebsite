@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/Button';
@@ -6,6 +9,7 @@ import { Section } from '@/components/Section';
 import { Reveal } from '@/components/Reveal';
 import { CalendlyEmbed } from '@/components/CalendlyEmbed';
 import { StatCard } from '@/components/StatCard';
+import { Modal } from '@/components/Modal';
 import { IconBolt, IconLayers, IconShield, IconSignal } from '@/components/Icons';
 
 const services = [
@@ -69,6 +73,8 @@ const faqs = [
 ] as const;
 
 export default function HomePage() {
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-bg-900">
       <div className="pointer-events-none fixed inset-0 -z-10 bg-radial-fade" />
@@ -105,18 +111,17 @@ export default function HomePage() {
                 <Reveal delay={0.15}>
                   <div className="mt-8 flex flex-wrap items-center gap-3">
                     <Button href="#book">Book a Call</Button>
-                    <Button href="/services/" variant="secondary">
+                    <Button href="/services/" variant="ghost" className="ring-1 ring-border bg-white/[0.03] hover:bg-white/[0.05]">
                       View Services
                     </Button>
                   </div>
                 </Reveal>
 
-                <Reveal delay={0.2}>
-                  <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    <StatCard label="Experience" value="7+ years" hint="B2B sales + outbound systems" tone="blue" />
-                    <StatCard label="Peak month" value="20–30 meetings" hint="booked per month (avg)" tone="violet" />
-                    <StatCard label="Delivery" value="Multi-channel" hint="Email + LinkedIn + selective calling" tone="neutral" />
-                    <StatCard label="Focus" value="Reply quality" hint="ICP, deliverability, conversion" tone="blue" />
+                <Reveal delay={0.19}>
+                  <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    <StatCard label="Meetings delivered" value="~30/mo" hint="when ICP + messaging align" tone="blue" />
+                    <StatCard label="Pipeline managed" value="€300K" hint="enterprise account motion" tone="violet" />
+                    <StatCard label="Peak month" value="60" hint="meetings booked (best month)" tone="neutral" />
                   </div>
                 </Reveal>
 
@@ -141,7 +146,32 @@ export default function HomePage() {
                       20 minutes. We’ll map your ICP, channels, and the fastest path to consistent meetings.
                     </p>
                   </div>
-                  <CalendlyEmbed />
+
+                  {/* Desktop: embed inline. Mobile: open embed in modal to reduce above-the-fold friction. */}
+                  <div className="hidden sm:block">
+                    <CalendlyEmbed lazy />
+                  </div>
+
+                  <div className="sm:hidden">
+                    <button
+                      type="button"
+                      onClick={() => setIsCalendlyOpen(true)}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-accent-500 to-accent-600 px-5 py-3 text-sm font-semibold text-white shadow-glow transition will-change-transform hover:translate-y-[-1px] hover:shadow-[0_0_0_1px_rgba(59,130,246,.35),0_0_60px_rgba(59,130,246,.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/60"
+                    >
+                      Book a Call
+                    </button>
+                    <p className="mt-3 text-xs leading-relaxed text-text-secondary">
+                      Opens the scheduler. No forms.
+                    </p>
+                  </div>
+
+                  <Modal
+                    open={isCalendlyOpen}
+                    onClose={() => setIsCalendlyOpen(false)}
+                    title="Book a call"
+                  >
+                    <CalendlyEmbed height={760} lazy={false} />
+                  </Modal>
                 </div>
               </Reveal>
             </div>
@@ -295,7 +325,7 @@ export default function HomePage() {
                 </div>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Button href="#book">Book a Call</Button>
-                  <Button href="/about/" variant="secondary">Read more</Button>
+                  <Button href="/about/" variant="ghost" className="ring-1 ring-border bg-white/[0.03] hover:bg-white/[0.05]">Read more</Button>
                 </div>
               </div>
             </Reveal>
@@ -313,8 +343,10 @@ export default function HomePage() {
             {faqs.map((f, i) => (
               <Reveal key={f.q} delay={i * 0.03}>
                 <details className="group px-6 py-5">
-                  <summary className="cursor-pointer list-none font-medium text-text-primary">
-                    <span className="mr-2 text-accent-500">+</span>
+                  <summary className="-mx-2 cursor-pointer list-none rounded-xl px-2 py-2 font-medium text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/60">
+                    <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-lg bg-white/[0.04] text-accent-500 ring-1 ring-border transition group-open:rotate-45">
+                      +
+                    </span>
                     {f.q}
                   </summary>
                   <p className="mt-3 text-sm leading-relaxed text-text-secondary">
@@ -343,7 +375,7 @@ export default function HomePage() {
                   </p>
                   <div className="mt-8 flex gap-3">
                     <Button href="#book">Book a Call</Button>
-                    <Button href="/contact/" variant="secondary">Contact</Button>
+                    <Button href="/contact/" variant="ghost" className="ring-1 ring-border bg-white/[0.03] hover:bg-white/[0.05]">Contact</Button>
                   </div>
                 </div>
                 <div>
