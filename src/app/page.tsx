@@ -365,9 +365,6 @@ export default function HomePage() {
                     <Button href="/contact/" variant="ghost" className="ring-1 ring-border bg-white/[0.03] hover:bg-white/[0.05]">Contact</Button>
                   </div>
                 </div>
-                <div className="hidden lg:block">
-                  <CalendlyEmbed />
-                </div>
               </div>
             </div>
           </Container>
