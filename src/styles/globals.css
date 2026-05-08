@@ -39,61 +39,6 @@ body {
   mask-image: radial-gradient(ellipse at top, rgba(0,0,0,1), rgba(0,0,0,0));
 }
 
-/* Radial fade overlay used by pages */
-.bg-radial-fade {
-  background:
-    radial-gradient(900px circle at 18% 0%, rgba(59,130,246,0.20), transparent 62%),
-    radial-gradient(820px circle at 90% 10%, rgba(139,92,246,0.18), transparent 60%),
-    radial-gradient(720px circle at 50% 100%, rgba(16,185,129,0.10), transparent 60%);
-}
-
-/* Animated aurora blobs: subtle motion, premium, non-distracting */
-.aurora {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -10;
-  overflow: hidden;
-}
-
-.aurora::before,
-.aurora::after {
-  content: '';
-  position: absolute;
-  width: 920px;
-  height: 920px;
-  border-radius: 9999px;
-  filter: blur(60px);
-  opacity: 0.22;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  mix-blend-mode: screen;
-}
-
-.aurora::before {
-  left: -260px;
-  top: -320px;
-  background: radial-gradient(circle at 30% 30%, rgba(59,130,246,0.95), transparent 60%);
-  animation: auroraFloat 18s ease-in-out infinite;
-}
-
-.aurora::after {
-  right: -300px;
-  top: -260px;
-  background: radial-gradient(circle at 30% 30%, rgba(139,92,246,0.90), transparent 60%);
-  animation: auroraFloat2 22s ease-in-out infinite;
-}
-
-@keyframes auroraFloat {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(120px, 140px, 0) scale(1.08); }
-}
-
-@keyframes auroraFloat2 {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(-140px, 180px, 0) scale(1.06); }
-}
-
 /* Additional aesthetic: subtle animated glow "sheen" */
 .sheen {
   position: relative;
@@ -125,11 +70,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .sheen::after {
-    animation: none !important;
-  }
-
-  .aurora::before,
-  .aurora::after {
     animation: none !important;
   }
 
