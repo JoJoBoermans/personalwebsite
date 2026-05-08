@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Container } from '@/components/Container';
 import { Button } from '@/components/Button';
+import { MobileNav } from '@/components/MobileNav';
 
 const nav = [
   { href: '/', label: 'Home' },
@@ -26,22 +27,20 @@ export function Nav() {
           </div>
           <span className="font-display text-sm font-semibold tracking-tight">Joshua Boermans</span>
         </Link>
-        <nav className="hidden items-center gap-6 md:flex">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm text-text-secondary transition hover:text-text-primary"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
         <div className="flex items-center gap-3">
-          <Button href="#book" className="hidden sm:inline-flex">Book a Call</Button>
-          <Button href="/services/" variant="secondary" className="sm:hidden">
-            Services
-          </Button>
+          <nav className="hidden items-center gap-6 md:flex">
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm text-text-secondary transition hover:text-text-primary"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <Button href="/#book" className="hidden sm:inline-flex">Book a Call</Button>
+          <MobileNav items={nav} />
         </div>
       </Container>
     </header>

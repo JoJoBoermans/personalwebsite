@@ -149,7 +149,7 @@ export default function HomePage() {
 
                   {/* Desktop: embed inline. Mobile: open embed in modal to reduce above-the-fold friction. */}
                   <div className="hidden sm:block">
-                    <CalendlyEmbed lazy />
+                    <CalendlyEmbed lazy={false} />
                   </div>
 
                   <div className="sm:hidden">
@@ -354,9 +354,6 @@ export default function HomePage() {
             <div className="rounded-3xl bg-gradient-to-br from-accent-500/12 to-violet-500/10 p-6 ring-1 ring-border shadow-card sm:p-10">
               <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-start">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-text-secondary">
-                    Final CTA
-                  </p>
                   <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
                     Build a Predictable Outbound Pipeline
                   </h2>
