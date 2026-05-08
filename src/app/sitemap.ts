@@ -4,7 +4,7 @@ export const dynamic = 'force-static';
 
 export default function sitemap() {
   const now = new Date();
-  const routes = ['/', '/services/', '/pricing/', '/about/', '/contact/'];
+  const routes = ['/', '/services/', '/pricing/', '/about/', '/contact/', '/book/', '/llm/'];
 
   return routes.map((path) => ({
     url: `${site.url}${path}`,

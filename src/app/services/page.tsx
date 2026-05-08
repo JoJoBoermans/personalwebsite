@@ -3,12 +3,28 @@ import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { Section } from '@/components/Section';
 import { Reveal } from '@/components/Reveal';
+import { site } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Outbound infrastructure services: cold outreach, appointment setting, lead lists, CRM automation, funnel building, and outbound systems.'
+    'Outbound meeting generation for B2B SaaS: LinkedIn-first outreach with email follow-up, qualification, lead lists, and optimization.'
 };
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Outbound meeting generation',
+  provider: {
+    '@type': 'Person',
+    name: site.name,
+    url: site.url
+  },
+  areaServed: 'Worldwide',
+  serviceType: 'B2B outbound and appointment setting',
+  description:
+    'LinkedIn-first outreach with email follow-up, qualification, lead list support, and weekly optimization to generate qualified meetings attended.'
+} as const;
 
 const blocks = [
   {
@@ -43,6 +59,12 @@ export default function ServicesPage() {
       <div className="pointer-events-none fixed inset-0 -z-10 bg-radial-fade" />
       <div className="pointer-events-none fixed inset-0 -z-10 opacity-60 grid-bg" />
       <Nav />
+
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <Section
         eyebrow="Services"

@@ -41,6 +41,43 @@ function Foldout({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
+const offerCatalogJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  name: 'Outbound pricing',
+  url: 'https://joshuaboermans.com/pricing/',
+  itemListElement: [
+    {
+      '@type': 'Offer',
+      name: 'Core',
+      priceCurrency: 'EUR',
+      price: '2500',
+      category: 'Monthly retainer'
+    },
+    {
+      '@type': 'Offer',
+      name: 'Growth',
+      priceCurrency: 'EUR',
+      price: '3750',
+      category: 'Monthly retainer'
+    },
+    {
+      '@type': 'Offer',
+      name: 'Scale',
+      priceCurrency: 'EUR',
+      price: '5500',
+      category: 'Monthly retainer'
+    },
+    {
+      '@type': 'Offer',
+      name: 'Setup',
+      priceCurrency: 'EUR',
+      price: '2500',
+      category: 'One-time'
+    }
+  ]
+} as const;
+
 function PricingCard({
   name,
   price,
@@ -131,6 +168,12 @@ export default function PricingPage() {
       <Nav />
 
       <main>
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(offerCatalogJsonLd) }}
+        />
+
         <Section
           eyebrow="Pricing"
           title="Clear pricing. Clear scope."

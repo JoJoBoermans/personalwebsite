@@ -197,6 +197,19 @@ export default function HomePage() {
           subtitle="Modular capabilities you can start with now — and expand as you scale."
           className="bg-bg-850/30"
         >
+          <div className="mb-8 flex flex-wrap items-center gap-3">
+            <Button
+              href="/pricing/"
+              variant="ghost"
+              className="ring-1 ring-border bg-white/[0.03] hover:bg-white/[0.05]"
+            >
+              See pricing
+            </Button>
+            <p className="text-sm text-text-secondary">
+              Clear scope, inclusions, and the incentive structure.
+            </p>
+          </div>
+
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => {
               const Icon = s.icon;

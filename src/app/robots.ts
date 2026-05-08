@@ -9,6 +9,7 @@ export default function robots() {
       allow: '/',
       disallow: ['/blog', '/resources', '/cases']
     },
-    sitemap: `${site.url}/sitemap.xml`
+    sitemap: `${site.url}/sitemap.xml`,
+    host: site.url
   };
 }
