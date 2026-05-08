@@ -56,7 +56,11 @@ export function Modal({
             Close
           </button>
         </div>
-        <div className="p-4 sm:p-5">{children}</div>
+        <div className="p-4 sm:p-5">
+          <div className="max-h-[80vh] overflow-auto [-webkit-overflow-scrolling:touch]">
+            {children}
+          </div>
+        </div>
       </div>
     </div>
   );

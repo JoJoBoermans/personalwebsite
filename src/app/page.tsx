@@ -170,7 +170,7 @@ export default function HomePage() {
                     onClose={() => setIsCalendlyOpen(false)}
                     title="Book a call"
                   >
-                    <CalendlyEmbed height={760} lazy={false} />
+                    <CalendlyEmbed height={720} lazy={false} />
                   </Modal>
                 </div>
               </Reveal>
