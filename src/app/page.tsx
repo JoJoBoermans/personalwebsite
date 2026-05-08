@@ -113,7 +113,7 @@ export default function HomePage() {
 
                 <Reveal delay={0.19}>
                   <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                    <StatCard label="Avg month" value="20–30" hint="depends on market + offer" tone="blue" />
+                    <StatCard label="Average meetings booked" value="20–30" hint="per month (market + offer dependent)" tone="blue" />
                     <StatCard label="Peak month" value="60" hint="meetings booked (best month)" tone="violet" />
                     <StatCard label="Delivery" value="Multi-channel" hint="Email + LinkedIn + selective calling" tone="neutral" />
                   </div>
@@ -137,7 +137,7 @@ export default function HomePage() {
                   <div className="mb-4">
                     <p className="text-sm font-semibold text-text-primary">Book a call</p>
                     <p className="mt-1 text-sm text-text-secondary">
-                      20 minutes. We’ll map your ICP, channels, and the fastest path to consistent meetings.
+                      30 minutes. We’ll map your ICP, channels, and the fastest path to consistent meetings.
                     </p>
                   </div>
 

@@ -29,8 +29,11 @@ export function CalendlyEmbed({
   const rootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    // Calendly widgets can fail to initialize on first paint on some mobile browsers
+    // unless the script is already present; load it eagerly regardless of lazy mode.
+    ensureCalendlyScriptLoaded();
+
     if (!lazy) {
-      ensureCalendlyScriptLoaded();
       return;
     }
 
