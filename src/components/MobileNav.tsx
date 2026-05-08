@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { Button } from '@/components/Button';
 
 export function MobileNav({
-  items
+  items,
+  onBook
 }: {
   items: Array<{ href: string; label: string }>;
+  onBook?: () => void;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -67,7 +69,20 @@ export function MobileNav({
               ))}
             </div>
             <div className="border-t border-white/10 p-3">
-              <Button href="/#book" className="w-full">Book a Call</Button>
+              {onBook ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpen(false);
+                    onBook();
+                  }}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-accent-500 to-accent-600 px-5 py-3 text-sm font-semibold text-white shadow-glow transition will-change-transform hover:translate-y-[-1px] hover:shadow-[0_0_0_1px_rgba(59,130,246,.35),0_0_60px_rgba(59,130,246,.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/60"
+                >
+                  Book a Call
+                </button>
+              ) : (
+                <Button href="/" className="w-full">Book a Call</Button>
+              )}
             </div>
           </div>
         </div>

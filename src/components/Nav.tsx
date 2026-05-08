@@ -1,3 +1,6 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Container } from '@/components/Container';
 import { Button } from '@/components/Button';
@@ -11,6 +14,8 @@ const nav = [
 ];
 
 export function Nav() {
+  const pathname = usePathname();
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg-900/70 backdrop-blur supports-[backdrop-filter]:bg-bg-900/50">
       <Container className="flex h-16 items-center justify-between">
@@ -27,20 +32,24 @@ export function Nav() {
           </div>
           <span className="font-display text-sm font-semibold tracking-tight">Joshua Boermans</span>
         </Link>
-        <div className="flex items-center gap-3">
-          <nav className="hidden items-center gap-6 md:flex">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm text-text-secondary transition hover:text-text-primary"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <Button href="/#book" className="hidden sm:inline-flex">Book a Call</Button>
-          <MobileNav items={nav} />
+        <nav className="hidden items-center gap-6 md:flex">
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm text-text-secondary transition hover:text-text-primary"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Button href="/#book">Book a Call</Button>
+        </nav>
+
+        <div className="flex items-center gap-3 md:hidden">
+          <MobileNav
+            items={nav}
+            onBook={pathname === '/' ? () => document.getElementById('book')?.scrollIntoView({ behavior: 'smooth' }) : undefined}
+          />
         </div>
       </Container>
     </header>
