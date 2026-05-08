@@ -119,9 +119,9 @@ export default function HomePage() {
 
                 <Reveal delay={0.19}>
                   <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-                    <StatCard label="Meetings delivered" value="~30/mo" hint="when ICP + messaging align" tone="blue" />
-                    <StatCard label="Pipeline managed" value="€300K" hint="enterprise account motion" tone="violet" />
-                    <StatCard label="Peak month" value="60" hint="meetings booked (best month)" tone="neutral" />
+                    <StatCard label="Avg month" value="20–30" hint="depends on market + offer" tone="blue" />
+                    <StatCard label="Peak month" value="60" hint="meetings booked (best month)" tone="violet" />
+                    <StatCard label="Delivery" value="Multi-channel" hint="Email + LinkedIn + selective calling" tone="neutral" />
                   </div>
                 </Reveal>
 
@@ -180,7 +180,6 @@ export default function HomePage() {
 
         {/* TRUST / PROOF */}
         <Section
-          eyebrow="Proof"
           title="Built for founders who want predictable pipeline"
           subtitle="The goal is simple: consistent, qualified meetings — produced by a system, not luck."
         >
@@ -289,40 +288,31 @@ export default function HomePage() {
         <Section
           eyebrow="Founder"
           title="Joshua Boermans"
-          subtitle="B2B SaaS & IT sales operator — outbound systems, pipeline, and revenue execution."
+          subtitle="I care about turning good products into real revenue — with outreach that’s clear, respectful, and measurable."
           className="bg-bg-850/30"
         >
-          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
             <Reveal>
               <div className="rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card">
-                <div className="font-display text-lg font-semibold">Relevant experience</div>
-                <ul className="mt-4 space-y-3 text-sm text-text-secondary">
-                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />6+ years in B2B SaaS and IT sales (full-cycle + outbound)</li>
-                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Generated pipeline through high-volume outbound (350+ activities/week, ~30 meetings/month)</li>
-                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Managed enterprise pipeline (~€300K) and closed 30 new clients</li>
-                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Contributed to €180K revenue across 3 B2B clients in a software delivery environment</li>
-                </ul>
+                <div className="font-display text-lg font-semibold">What drives me</div>
+                <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                  I’m at my best when I can take a complex offer, make it easy to understand, and build an outbound engine
+                  that creates momentum week after week.
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-text-secondary">
+                  I like clean inputs and outputs: the right ICP, a list you’d stand behind, messaging that sounds human,
+                  and a follow-up system that doesn’t rely on luck.
+                </p>
               </div>
             </Reveal>
             <Reveal delay={0.06}>
               <div className="rounded-2xl bg-gradient-to-br from-accent-500/10 to-violet-500/10 p-6 ring-1 ring-border shadow-card">
-                <div className="font-display text-lg font-semibold">How I help</div>
-                <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                  I turn complex products into clear outbound that founders can measure: targeting, lists, messaging,
-                  deliverability, and follow-up built into one system — so meetings show up consistently.
-                </p>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-xl bg-white/[0.04] p-4 ring-1 ring-border">
-                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-text-secondary">Output</div>
-                    <div className="mt-2 text-sm font-medium text-text-primary">Meetings you can forecast</div>
-                    <div className="mt-1 text-sm text-text-secondary">Qualified calls booked through multi-channel sequences.</div>
-                  </div>
-                  <div className="rounded-xl bg-white/[0.04] p-4 ring-1 ring-border">
-                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-text-secondary">System</div>
-                    <div className="mt-2 text-sm font-medium text-text-primary">Infrastructure + iteration</div>
-                    <div className="mt-1 text-sm text-text-secondary">CRM hygiene, automation, and reporting loops.</div>
-                  </div>
-                </div>
+                <div className="font-display text-lg font-semibold">How I help companies succeed</div>
+                <ul className="mt-4 space-y-3 text-sm text-text-secondary">
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Translate technical value into clear outbound positioning</li>
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Build multi-channel sequences that earn replies (not spam)</li>
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Keep execution tight with tracking, iteration, and feedback loops</li>
+                </ul>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Button href="#book">Book a Call</Button>
                   <Button href="/about/" variant="ghost" className="ring-1 ring-border bg-white/[0.03] hover:bg-white/[0.05]">Read more</Button>
