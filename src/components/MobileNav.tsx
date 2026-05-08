@@ -81,7 +81,7 @@ export function MobileNav({
                   Book a Call
                 </button>
               ) : (
-                <Button href="/" className="w-full">Book a Call</Button>
+                <Button href="/book" className="w-full">Book a Call</Button>
               )}
             </div>
           </div>

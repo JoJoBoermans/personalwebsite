@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/Button';
@@ -9,7 +6,6 @@ import { Section } from '@/components/Section';
 import { Reveal } from '@/components/Reveal';
 import { CalendlyEmbed } from '@/components/CalendlyEmbed';
 import { StatCard } from '@/components/StatCard';
-import { Modal } from '@/components/Modal';
 import { IconBolt, IconLayers, IconShield, IconSignal } from '@/components/Icons';
 
 const services = [
@@ -73,8 +69,6 @@ const faqs = [
 ] as const;
 
 export default function HomePage() {
-  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-bg-900">
       <div className="pointer-events-none fixed inset-0 -z-10 bg-radial-fade" />
@@ -147,31 +141,17 @@ export default function HomePage() {
                     </p>
                   </div>
 
-                  {/* Desktop: embed inline. Mobile: open embed in modal to reduce above-the-fold friction. */}
+                  {/* Desktop: embed inline. Mobile: route to dedicated booking page for reliability. */}
                   <div className="hidden sm:block">
                     <CalendlyEmbed lazy={false} />
                   </div>
 
                   <div className="sm:hidden">
-                    <button
-                      type="button"
-                      onClick={() => setIsCalendlyOpen(true)}
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-accent-500 to-accent-600 px-5 py-3 text-sm font-semibold text-white shadow-glow transition will-change-transform hover:translate-y-[-1px] hover:shadow-[0_0_0_1px_rgba(59,130,246,.35),0_0_60px_rgba(59,130,246,.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/60"
-                    >
-                      Book a Call
-                    </button>
+                    <Button href="/book" className="w-full">Book a Call</Button>
                     <p className="mt-3 text-xs leading-relaxed text-text-secondary">
                       Opens the scheduler. No forms.
                     </p>
                   </div>
-
-                  <Modal
-                    open={isCalendlyOpen}
-                    onClose={() => setIsCalendlyOpen(false)}
-                    title="Book a call"
-                  >
-                    <CalendlyEmbed height={720} lazy={false} />
-                  </Modal>
                 </div>
               </Reveal>
             </div>

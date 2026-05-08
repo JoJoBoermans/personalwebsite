@@ -42,14 +42,11 @@ export function Nav() {
               {item.label}
             </Link>
           ))}
-          <Button href="/#book">Book a Call</Button>
+          <Button href="/book">Book a Call</Button>
         </nav>
 
         <div className="flex items-center gap-3 md:hidden">
-          <MobileNav
-            items={nav}
-            onBook={pathname === '/' ? () => document.getElementById('book')?.scrollIntoView({ behavior: 'smooth' }) : undefined}
-          />
+          <MobileNav items={nav} onBook={() => (window.location.href = '/book')} />
         </div>
       </Container>
     </header>
