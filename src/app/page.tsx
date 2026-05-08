@@ -302,6 +302,52 @@ export default function HomePage() {
           </div>
         </Section>
 
+        {/* TESTIMONIALS */}
+        <Section
+          eyebrow="Testimonials"
+          title="Proof from real execution"
+          subtitle="Short, specific feedback from teams we’ve supported."
+        >
+          <div className="grid gap-6 md:grid-cols-3">
+            <Reveal>
+              <div className="h-full rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card">
+                <p className="text-sm leading-relaxed text-text-secondary">
+                  “We weren’t struggling with product — we were struggling with predictable meetings. Joshua helped us tighten our ICP, improve list quality, and ship outbound sequences that sounded human. Within weeks we were averaging around 25 meetings per month, and the process was structured enough that we could keep iterating without chaos.”
+                </p>
+                <div className="mt-6 flex items-center justify-between gap-4">
+                  <div>
+                    <div className="text-sm font-semibold text-text-primary">Alex</div>
+                    <div className="mt-1 text-xs text-text-secondary">CTO @ Autok (exclusive fuel discounts)</div>
+                  </div>
+                  <div className="rounded-xl bg-gradient-to-br from-accent-500/16 to-violet-500/10 px-3 py-2 text-xs font-semibold text-text-primary ring-1 ring-border">
+                    ~25 meetings/mo
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Ready to activate later: additional testimonials / logos / case studies */}
+            <div className="hidden md:block">
+              <div className="h-full rounded-2xl bg-white/[0.02] p-6 ring-1 ring-border/60 shadow-card">
+                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-text-secondary">Ready to activate later</div>
+                <div className="mt-3 text-sm font-medium text-text-primary">Logos + cases</div>
+                <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                  Add company logos and short case studies when you’re ready.
+                </p>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <div className="h-full rounded-2xl bg-white/[0.02] p-6 ring-1 ring-border/60 shadow-card">
+                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-text-secondary">Ready to activate later</div>
+                <div className="mt-3 text-sm font-medium text-text-primary">More testimonials</div>
+                <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                  Drop in 2–3 more quotes to build immediate trust.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Section>
+
         {/* FAQ */}
         <Section
           eyebrow="FAQ"
