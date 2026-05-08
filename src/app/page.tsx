@@ -317,7 +317,7 @@ export default function HomePage() {
                 <div className="mt-6 flex items-center justify-between gap-4">
                   <div>
                     <div className="text-sm font-semibold text-text-primary">Alex</div>
-                    <div className="mt-1 text-xs text-text-secondary">CTO @ Autok (exclusive fuel discounts)</div>
+                    <div className="mt-1 text-xs text-text-secondary">CTO @ Autok</div>
                   </div>
                   <div className="rounded-xl bg-gradient-to-br from-accent-500/16 to-violet-500/10 px-3 py-2 text-xs font-semibold text-text-primary ring-1 ring-border">
                     ~25 meetings/mo
