@@ -20,21 +20,21 @@ export default function AboutPage() {
       <Section
         eyebrow="About"
         title="Technical outbound. Measured outcomes."
-        subtitle="I build outbound systems that behave like infrastructure: defined inputs, observable outputs, and continuous iteration."
+        subtitle="We build outbound systems that behave like infrastructure: defined inputs, observable outputs, and continuous iteration."
       >
         <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
           <Reveal>
             <div className="rounded-2xl bg-white/[0.04] p-7 ring-1 ring-border shadow-card">
               <h3 className="font-display text-xl font-semibold">Positioning</h3>
               <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                I help B2B start-ups and scale-ups generate consistent, high-quality meetings through AI-powered multi-channel outbound.
+                We help B2B start-ups and scale-ups generate consistent, high-quality meetings through AI-powered multi-channel outbound.
                 The focus is quality and repeatability — not spam volume.
               </p>
             </div>
           </Reveal>
           <Reveal delay={0.05}>
             <div className="rounded-2xl bg-white/[0.04] p-7 ring-1 ring-border shadow-card">
-              <h3 className="font-display text-xl font-semibold">What I optimize</h3>
+              <h3 className="font-display text-xl font-semibold">What we optimize</h3>
               <ul className="mt-4 space-y-3 text-sm text-text-secondary">
                 <li>Deliverability + domain strategy</li>
                 <li>Lead quality and enrichment</li>

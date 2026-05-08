@@ -13,9 +13,10 @@ html, body {
 body {
   @apply text-text-primary antialiased;
   background:
-    radial-gradient(1200px circle at 18% 0%, rgba(59,130,246,0.22), transparent 55%),
-    radial-gradient(900px circle at 90% 18%, rgba(139,92,246,0.18), transparent 52%),
-    linear-gradient(180deg, #050816 0%, #060a18 55%, #050816 100%);
+    radial-gradient(1200px circle at 16% -10%, rgba(59,130,246,0.30), transparent 60%),
+    radial-gradient(900px circle at 92% 10%, rgba(139,92,246,0.26), transparent 58%),
+    radial-gradient(700px circle at 40% 95%, rgba(16,185,129,0.10), transparent 55%),
+    linear-gradient(180deg, #060a1a 0%, #070b1b 40%, #050818 100%);
 }
 
 /* Soft noise overlay */

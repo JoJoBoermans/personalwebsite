@@ -34,7 +34,7 @@ export default function ContactPage() {
               </p>
             </div>
             <p className="mt-6 text-sm text-text-secondary">
-              If you share your ICP and a few example accounts, I’ll come prepared with a channel + sequence recommendation.
+              If you share your ICP and a few example accounts, we’ll come prepared with a channel + sequence recommendation.
             </p>
           </div>
           <div>

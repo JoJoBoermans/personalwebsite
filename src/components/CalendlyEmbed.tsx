@@ -20,7 +20,7 @@ export function CalendlyEmbed({ url = site.calendly.url }: { url?: string }) {
       <div
         className="calendly-inline-widget"
         data-url={url}
-        style={{ minWidth: '320px', height: '700px' }}
+        style={{ width: '100%', minWidth: '320px', height: '700px' }}
       />
     </div>
   );

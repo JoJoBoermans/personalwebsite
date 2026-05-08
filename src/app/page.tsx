@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     q: 'Is this fully outsourced?',
-    a: 'It can be. I can run the system end-to-end, or build it with your team and transfer execution.'
+    a: 'It can be. We can run the system end-to-end, or build it with your team and transfer execution.'
   },
   {
     q: 'Do you help build internal outbound systems?',
@@ -165,7 +165,7 @@ export default function HomePage() {
                 desc: 'Outbound that supports real revenue motion — not vanity metrics.'
               },
               {
-                title: 'Up to 60 meetings in a single month',
+                title: 'On average 20 meetings a month',
                 desc: 'When ICP, deliverability, and messaging align — volume follows.'
               }
             ].map((c, i) => (
@@ -259,28 +259,40 @@ export default function HomePage() {
         <Section
           eyebrow="Founder"
           title="Joshua Boermans"
-          subtitle="Outbound systems expertise built in high-pace B2B environments."
+          subtitle="B2B SaaS & IT sales operator — outbound systems, pipeline, and revenue execution."
           className="bg-bg-850/30"
         >
           <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
             <Reveal>
               <div className="rounded-2xl bg-white/[0.04] p-6 ring-1 ring-border shadow-card">
-                <div className="font-display text-lg font-semibold">Capabilities</div>
+                <div className="font-display text-lg font-semibold">Relevant experience</div>
                 <ul className="mt-4 space-y-3 text-sm text-text-secondary">
-                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />7+ years in B2B sales and outbound execution</li>
-                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Sequence design + deliverability systems</li>
-                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />CRM hygiene, automation, and pipeline reporting</li>
-                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Startup scaling experience and sales process optimization</li>
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />6+ years in B2B SaaS and IT sales (full-cycle + outbound)</li>
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Generated pipeline through high-volume outbound (350+ activities/week, ~30 meetings/month)</li>
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Managed enterprise pipeline (~€300K) and closed 30 new clients</li>
+                  <li className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent-500" />Contributed to €180K revenue across 3 B2B clients in a software delivery environment</li>
                 </ul>
               </div>
             </Reveal>
             <Reveal delay={0.06}>
               <div className="rounded-2xl bg-gradient-to-br from-accent-500/10 to-violet-500/10 p-6 ring-1 ring-border shadow-card">
-                <div className="font-display text-lg font-semibold">What you get</div>
+                <div className="font-display text-lg font-semibold">How I help</div>
                 <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                  A technical outbound system that produces meetings with clear inputs and outputs —
-                  messaging, lead quality, deliverability, and channel mix managed as a single pipeline.
+                  I turn complex products into clear outbound that founders can measure: targeting, lists, messaging,
+                  deliverability, and follow-up built into one system — so meetings show up consistently.
                 </p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-xl bg-white/[0.04] p-4 ring-1 ring-border">
+                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-text-secondary">Output</div>
+                    <div className="mt-2 text-sm font-medium text-text-primary">Meetings you can forecast</div>
+                    <div className="mt-1 text-sm text-text-secondary">Qualified calls booked through multi-channel sequences.</div>
+                  </div>
+                  <div className="rounded-xl bg-white/[0.04] p-4 ring-1 ring-border">
+                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-text-secondary">System</div>
+                    <div className="mt-2 text-sm font-medium text-text-primary">Infrastructure + iteration</div>
+                    <div className="mt-1 text-sm text-text-secondary">CRM hygiene, automation, and reporting loops.</div>
+                  </div>
+                </div>
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Button href="#book">Book a Call</Button>
                   <Button href="/about/" variant="secondary">Read more</Button>
