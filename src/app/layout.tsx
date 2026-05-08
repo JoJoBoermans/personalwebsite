@@ -2,6 +2,19 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { site } from '@/lib/site';
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.url,
+  description: site.description,
+  publisher: {
+    '@type': 'Person',
+    name: site.name,
+    url: site.url
+  }
+} as const;
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -50,12 +63,19 @@ export default function RootLayout({
           type="application/ld+json"
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd)
+          }}
+        />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: site.name,
               url: site.url,
-              jobTitle: 'B2B Outbound Lead Generation Expert',
+              jobTitle: 'B2B outbound and meeting generation',
               sameAs: [site.socials.linkedin]
             })
           }}

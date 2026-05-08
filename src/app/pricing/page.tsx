@@ -8,7 +8,8 @@ import { Reveal } from '@/components/Reveal';
 
 export const metadata: Metadata = {
   title: 'Pricing',
-  description: 'Clear pricing and scope for Joshua Boermans outbound services.'
+  description:
+    'Pricing for outbound meeting generation: Core (€2,500/mo), Growth (€3,750/mo), Scale (€5,500/mo) + €2,500 setup. LinkedIn + email follow-up, qualification, and weekly optimization.'
 };
 
 function InfoRow({ label, value }: { label: string; value: string }) {
