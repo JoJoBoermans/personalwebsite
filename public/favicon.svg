@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">ShelfSketch</title>
+  <rect width="64" height="64" rx="16" fill="#22352f"/>
+  <rect x="13" y="15" width="38" height="34" rx="5" fill="#f6f1e7"/>
+  <path d="M13 32h38" stroke="#22352f" stroke-width="4"/>
+  <rect x="18" y="20" width="12" height="9" rx="2" fill="#e6a66b"/>
+  <rect x="33" y="20" width="13" height="9" rx="2" fill="#9ec0ad"/>
+  <rect x="18" y="36" width="17" height="8" rx="2" fill="#c7b6d8"/>
+  <rect x="38" y="36" width="8" height="8" rx="2" fill="#e8c766"/>
+</svg>

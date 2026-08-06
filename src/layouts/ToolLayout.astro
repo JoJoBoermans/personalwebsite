@@ -1,0 +1,15 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/astro/Breadcrumbs.astro';
+interface Props { title: string; description: string; canonicalPath: string; structuredData?: Record<string, unknown> | Array<Record<string, unknown>>; }
+const { title, description, canonicalPath, structuredData } = Astro.props;
+---
+<BaseLayout {title} {description} {canonicalPath} {structuredData}>
+  <Breadcrumbs items={[{label:'Home', href:'/'},{label:title}]} />
+  <header class="page-hero site-shell">
+    <span class="eyebrow">Private by default</span>
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </header>
+  <div class="site-shell"><slot /></div>
+</BaseLayout>

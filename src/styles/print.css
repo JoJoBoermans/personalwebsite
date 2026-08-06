@@ -1,0 +1,24 @@
+.print-layout-report { display: none; }
+
+@media print {
+  @page { size: auto; margin: 12mm; }
+  html, body { background: white !important; color: black !important; }
+  body * { visibility: hidden !important; }
+  .print-layout-report, .print-layout-report * { visibility: visible !important; }
+  .print-layout-report { display: block !important; position: absolute; inset: 0 auto auto 0; width: 100%; color: #111; font-family: Arial, Helvetica, sans-serif; }
+  .print-layout-report header { padding-bottom: 5mm; border-bottom: 1px solid #777; }
+  .print-layout-report h1 { margin: 1mm 0 2mm; font-size: 22pt; }
+  .print-layout-report h2 { margin: 7mm 0 3mm; font-size: 13pt; }
+  .print-layout-report p { margin: 1mm 0; }
+  .print-brand { font-size: 9pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .print-layout-report svg { display: block; width: 100%; max-height: 125mm; margin: 7mm 0; }
+  .print-layout-report dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin: 0; }
+  .print-layout-report dl div { padding: 3mm; border: 1px solid #999; }
+  .print-layout-report dt { font-size: 8pt; color: #444; }
+  .print-layout-report dd { margin: 1mm 0 0; font-weight: 700; }
+  .print-layout-report table { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+  .print-layout-report th, .print-layout-report td { padding: 2.5mm; border: 1px solid #888; text-align: left; vertical-align: top; }
+  .print-layout-report th { background: #eee !important; }
+  .print-layout-report footer { margin-top: 6mm; padding-top: 4mm; border-top: 1px solid #777; font-size: 8pt; color: #333; }
+  .site-header, .site-footer, .skip-link, .no-print { display: none !important; }
+}

@@ -1,0 +1,141 @@
+---
+const measurementId = import.meta.env.PUBLIC_GA4_ID ?? '';
+---
+<div class="consent-shell" data-consent-manager data-measurement-id={measurementId}>
+  <section class="consent-banner" data-consent-banner hidden aria-labelledby="consent-title">
+    <div>
+      <strong id="consent-title">Optional analytics</strong>
+      <p>ShelfSketch can use privacy-conscious analytics to understand whether the planner works. Exact measurements, project names, item labels and files are never sent.</p>
+    </div>
+    <div class="consent-actions">
+      <button type="button" class="button button-secondary" data-consent-reject>Reject analytics</button>
+      <button type="button" class="button button-primary" data-consent-accept>Accept analytics</button>
+      <button type="button" class="text-button" data-consent-manage>Manage preferences</button>
+    </div>
+  </section>
+
+  <dialog class="consent-dialog" data-consent-dialog aria-labelledby="preferences-title">
+    <form method="dialog">
+      <header>
+        <span class="eyebrow">Privacy controls</span>
+        <h2 id="preferences-title">Analytics preferences</h2>
+        <p>ShelfSketch always uses functional browser storage when you ask it to save a project. Analytics is separate and optional.</p>
+      </header>
+      <div class="preference-card">
+        <div>
+          <strong>Functional storage</strong>
+          <p>Keeps your project, selected unit and consent choice on this device. It is required for requested local-save features.</p>
+        </div>
+        <span class="status-pill">Always available</span>
+      </div>
+      <div class="preference-card">
+        <div>
+          <strong>Analytics</strong>
+          <p>Loads Google Analytics only after consent. Events use broad categories and exclude exact project data.</p>
+        </div>
+        <span class="status-pill" data-current-consent>Not chosen</span>
+      </div>
+      <div class="consent-dialog-actions">
+        <button type="button" class="button button-secondary" data-dialog-reject>Reject analytics</button>
+        <button type="button" class="button button-primary" data-dialog-accept>Accept analytics</button>
+        <button type="submit" class="text-button">Close</button>
+      </div>
+    </form>
+  </dialog>
+</div>
+
+<script define:vars={{ measurementId }}>
+  const STORAGE_KEY = 'shelfsketch.analytics-consent.v1';
+  const root = document.querySelector('[data-consent-manager]');
+  const banner = root?.querySelector('[data-consent-banner]');
+  const dialog = root?.querySelector('[data-consent-dialog]');
+  const currentConsent = root?.querySelector('[data-current-consent]');
+  let gaLoaded = false;
+  let lastFocused = null;
+
+  const readConsent = () => {
+    try {
+      const value = localStorage.getItem(STORAGE_KEY);
+      return value === 'granted' || value === 'denied' ? value : 'unset';
+    } catch {
+      return 'unset';
+    }
+  };
+
+  const writeConsent = (value) => {
+    try { localStorage.setItem(STORAGE_KEY, value); } catch { /* Storage can be unavailable. */ }
+  };
+
+  const ensureDataLayer = () => {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || ((...args) => { window.dataLayer?.push(args); });
+  };
+
+  const loadAnalytics = () => {
+    if (!measurementId || gaLoaded) return;
+    gaLoaded = true;
+    ensureDataLayer();
+    window.gtag?.('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    window.gtag?.('js', new Date());
+    window.gtag?.('config', measurementId, {
+      anonymize_ip: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+      send_page_view: true,
+    });
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+    document.head.appendChild(script);
+  };
+
+  const updateLabel = (value) => {
+    if (!currentConsent) return;
+    currentConsent.textContent = value === 'granted' ? 'Accepted' : value === 'denied' ? 'Rejected' : 'Not chosen';
+  };
+
+  const applyConsent = (value) => {
+    writeConsent(value);
+    updateLabel(value);
+    if (banner) banner.hidden = true;
+    if (value === 'granted') {
+      loadAnalytics();
+      window.gtag?.('consent', 'update', { analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    } else if (gaLoaded) {
+      window.gtag?.('consent', 'update', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    }
+    if (dialog?.open) dialog.close();
+    lastFocused?.focus?.();
+    document.dispatchEvent(new CustomEvent('shelfsketch:consent-changed', { detail: { value } }));
+  };
+
+  const openPreferences = () => {
+    if (!dialog) return;
+    lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    updateLabel(readConsent());
+    dialog.showModal();
+  };
+
+  window.shelfSketchAnalytics = {
+    getConsent: readConsent,
+    openPreferences,
+    track(eventName, parameters = {}) {
+      if (readConsent() !== 'granted' || !measurementId) return;
+      loadAnalytics();
+      ensureDataLayer();
+      window.gtag?.('event', eventName, parameters);
+    },
+  };
+
+  root?.querySelector('[data-consent-accept]')?.addEventListener('click', () => applyConsent('granted'));
+  root?.querySelector('[data-consent-reject]')?.addEventListener('click', () => applyConsent('denied'));
+  root?.querySelector('[data-consent-manage]')?.addEventListener('click', openPreferences);
+  root?.querySelector('[data-dialog-accept]')?.addEventListener('click', () => applyConsent('granted'));
+  root?.querySelector('[data-dialog-reject]')?.addEventListener('click', () => applyConsent('denied'));
+  document.addEventListener('shelfsketch:open-cookie-settings', openPreferences);
+
+  const initial = readConsent();
+  updateLabel(initial);
+  if (initial === 'granted') loadAnalytics();
+  if (initial === 'unset' && banner) banner.hidden = false;
+</script>

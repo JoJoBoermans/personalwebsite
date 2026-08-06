@@ -1,0 +1,53 @@
+{
+  "name": "shelfsketch",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "validate:phase1": "node scripts/validate-phase1.mjs",
+    "validate:phase2": "node scripts/validate-phase2.mjs",
+    "validate:phase3": "node scripts/validate-phase3.mjs",
+    "test": "vitest run",
+    "test:packing": "vitest run src/lib/packing/__tests__/engine.test.ts",
+    "test:phase3-runtime": "node scripts/run-phase3-tests.mjs",
+    "validate:phase4": "node scripts/validate-phase4.mjs",
+    "test:editor": "vitest run src/lib/editor/__tests__/operations.test.ts",
+    "test:phase4-runtime": "node scripts/run-phase4-tests.mjs",
+    "validate:phase5": "node scripts/validate-phase5.mjs",
+    "test:io": "vitest run src/lib/io/__tests__/io.test.ts",
+    "test:phase5-runtime": "node scripts/run-phase5-tests.mjs",
+    "validate:phase6": "node scripts/validate-phase6.mjs",
+    "validate:phase7": "node scripts/validate-phase7.mjs",
+    "test:e2e": "playwright test",
+    "test:a11y": "playwright test tests/e2e/accessibility.spec.ts",
+    "test:all": "npm run validate:phase7 && npm run test && npm run test:e2e",
+    "qa": "npm run check && npm run build && npm run check:dist && npm run test:all",
+    "lighthouse": "node scripts/run-lighthouse.mjs",
+    "check:dist": "node scripts/check-built-site.mjs",
+    "test:e2e:chromium": "playwright test --project=chromium-desktop"
+  },
+  "dependencies": {
+    "@astrojs/react": "6.0.1",
+    "astro": "7.1.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.9",
+    "@axe-core/playwright": "4.12.1",
+    "@playwright/test": "1.62.0",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "chrome-launcher": "1.2.1",
+    "lighthouse": "13.4.1",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10"
+  }
+}

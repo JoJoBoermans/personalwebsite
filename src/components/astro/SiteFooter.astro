@@ -1,0 +1,29 @@
+<footer class="site-footer">
+  <div class="site-shell footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="/">ShelfSketch</a>
+      <p class="text-muted">A private, browser-based planner for testing which boxes and storage bins fit your existing shelf or cabinet.</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="/tool/">Tool</a>
+      <a href="/guides/">Guides</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/cookies/">Cookies</a>
+      <button class="footer-cookie-button" type="button" data-open-cookie-settings>Cookie settings</button>
+      <a href="/contact/">Contact</a>
+      <a href="/changelog/">Changelog</a>
+    </nav>
+  </div>
+  <div class="site-shell footer-bottom">
+    <span>© {new Date().getFullYear()} ShelfSketch</span>
+    <span>Built to work without an account or product catalogue.</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-open-cookie-settings]').forEach((button) => {
+    button.addEventListener('click', () => document.dispatchEvent(new CustomEvent('shelfsketch:open-cookie-settings')));
+  });
+</script>

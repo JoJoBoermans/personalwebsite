@@ -1,0 +1,37 @@
+---
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/tool/', label: 'Tool' },
+  { href: '/how-it-works/', label: 'How it works' },
+  { href: '/guides/', label: 'Guides' },
+  { href: '/about/', label: 'About' },
+];
+const isCurrent = (href: string) => href === '/' ? path === '/' : path.startsWith(href);
+---
+<header class="site-header">
+  <div class="site-shell header-inner">
+    <a class="brand" href="/" aria-label="ShelfSketch home">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <rect width="48" height="48" rx="13" fill="#22352f"/>
+        <rect x="9" y="11" width="30" height="26" rx="4" fill="#fffdf8"/>
+        <path d="M9 24h30" stroke="#22352f" stroke-width="3"/>
+        <rect x="13" y="15" width="10" height="6" rx="1.5" fill="#e6a66b"/>
+        <rect x="26" y="15" width="9" height="6" rx="1.5" fill="#9ec0ad"/>
+        <rect x="13" y="28" width="13" height="5" rx="1.5" fill="#c7b6d8"/>
+        <rect x="29" y="28" width="6" height="5" rx="1.5" fill="#e8c766"/>
+      </svg>
+      <span>ShelfSketch</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {nav.map((item) => <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>)}
+      <a class="button button-primary button-small" href="/tool/">Start planning</a>
+    </nav>
+    <details class="mobile-nav">
+      <summary>Menu</summary>
+      <nav class="mobile-panel" aria-label="Mobile navigation">
+        {nav.map((item) => <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>)}
+        <a class="button button-primary" href="/tool/">Start planning</a>
+      </nav>
+    </details>
+  </div>
+</header>

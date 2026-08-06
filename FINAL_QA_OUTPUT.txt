@@ -1,0 +1,41 @@
+
+> shelfsketch@1.0.0 validate:phase7
+> node scripts/validate-phase7.mjs
+
+Phase 1 source validation passed: 29 required files, 17 Astro routes, internal links, JSON files, and deployment configuration checked.
+Phase 2 source validation passed: 14 required implementation files, relative imports, planner wiring, local storage, and validation limits checked.
+✓ exact fit
+✓ depth excess
+✓ rotation
+✓ rotation disabled
+✓ partial quantity
+✓ horizontal gap
+✓ 0.1 cm oversize
+✓ unit equivalence
+✓ nothing fits
+✓ identical instances
+✓ instance safety limit
+✓ invalid item
+✓ non-stackable base
+✓ stackable base
+✓ deterministic equal efficiency
+✓ example project generates all modes
+✓ generated layouts stay inside the space without overlap
+Phase 3 executable engine checks passed.
+Phase 3 source validation passed: 14 implementation/test files, planner wiring, local-only engine, imports, and executable engine scenarios checked.
+✓ valid nudge
+✓ boundary rejection
+✓ collision rejection
+✓ gap rejection
+✓ base rotation
+✓ rotation depth rejection
+✓ rotation disabled
+✓ non-stackable protection
+✓ remove undo redo
+✓ coordinate snapping
+Phase 4 editor runtime checks passed.
+Phase 4 source validation passed: 13 implementation/test files, SVG interaction contracts, imports, TSX syntax, local-only editor, and runtime editing scenarios checked.
+Phase 5 runtime checks passed: project import/export, measurement copy text, standalone SVG, filename safety, full local session persistence, restoration, and deletion.
+Phase 5 source validation passed: 13 implementation/test files, safe project schema, local session persistence, SVG/PNG/print/export controls, imports, strict planner TypeScript, and runtime I/O scenarios checked.
+Phase 6 source validation passed: 15 required files, substantive content, consent gating, analytics contracts, structured data, sitemap, robots and strict planner TypeScript checked.
+Phase 7 source QA passed: 15 final QA files, release scripts, motion behavior, strict local restoration, security headers, metadata, social assets, consent/privacy configuration and colour contrast checked.

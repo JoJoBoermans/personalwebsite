@@ -1,0 +1,17 @@
+{
+  "name": "ShelfSketch",
+  "short_name": "ShelfSketch",
+  "description": "A visual storage-bin fit planner for shelves and cabinets.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f5ee",
+  "theme_color": "#22352f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
