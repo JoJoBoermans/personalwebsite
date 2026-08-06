@@ -1,8 +1,0 @@
-.next
-out
-node_modules
-.DS_Store
-.env*
--e .deploy_key
-.deploy_key.pub
-.ssh_config_deploy
