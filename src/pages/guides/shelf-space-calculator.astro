@@ -1,0 +1,37 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+<GuideLayout title="Shelf Space Calculator" description="Understand why usable front area, depth, rotation and access matter more than a single volume number." canonicalPath="/guides/shelf-space-calculator/" eyebrow="Planning guide">
+  <p>A shelf can have plenty of theoretical volume and still fail to hold the boxes you want. Volume ignores shape. A 60-litre cavity and a 60-litre collection of containers may be geometrically incompatible because the widths, heights and depths do not divide neatly.</p>
+
+  <h2>Start with usable dimensions, not litres</h2>
+  <p>Multiply width, height and depth only when you need a rough capacity comparison. For actual fit, keep the three measurements separate. ShelfSketch uses the front-facing width and height to arrange rectangles and checks depth as a hard requirement.</p>
+
+  <h2>Why front area matters</h2>
+  <p>The visible opening determines how many items can stand next to or above one another. Two boxes may have the same volume but very different front faces. A tall narrow box can use vertical space that a low wide box leaves empty. A mixed set can sometimes fill the opening better than identical containers.</p>
+
+  <h2>Depth can change after rotation</h2>
+  <p>When a rectangular bin rotates on its base, its width and depth exchange places. That can solve a width problem but create a depth problem. For example, a bin that is 34 cm wide and 28 cm deep becomes 28 cm wide and 34 cm deep after rotation. The second orientation only works when the shelf is at least 34 cm deep.</p>
+
+  <h2>Clearance reduces theoretical capacity</h2>
+  <p>If three 20 cm boxes are placed on a 60 cm shelf, the arithmetic says they fit exactly. In practice, manufacturing tolerances and finger access can make that arrangement inconvenient. Adding two 5 mm gaps requires 61 cm. A planner should therefore distinguish between exact geometric fit and a usable fit.</p>
+
+  <h2>Accessibility is not the same as density</h2>
+  <p>A tightly packed layout may require removing one box to reach another. It may also leave no room to lift a lidded container. ShelfSketch’s Easy Access mode can prefer more clearance and priority placement, while Compact is useful when density matters most.</p>
+
+  <h2>A simple manual calculation</h2>
+  <ol>
+    <li>Subtract fixed side margins from the shelf width.</li>
+    <li>Subtract fixed vertical margins from the shelf height.</li>
+    <li>Reject every item that exceeds the available depth in all allowed orientations.</li>
+    <li>Test how many widths plus gaps fit in each row.</li>
+    <li>Test whether another row fits above.</li>
+  </ol>
+  <p>This works for one box size. Mixed sizes quickly become harder, which is where a visual layout generator is useful.</p>
+
+  <h2>Example</h2>
+  <p>Suppose a shelf is 80 cm wide, 42 cm high and 36 cm deep. Two bins are 32 × 20 × 34 cm and three are 22 × 18 × 30 cm. A simple width calculation misses the possibility of combining sizes in different rows. It also misses whether rotating one bin creates a better front footprint without exceeding 36 cm depth.</p>
+
+  <div class="notice"><strong>Do not rely on utilization alone.</strong><br/>A high percentage can still produce an awkward layout. Compare the visual arrangement and the access notes before choosing a result.</div>
+  <p><a class="button button-primary" href="/tool/">Calculate a shelf layout</a></p>
+</GuideLayout>

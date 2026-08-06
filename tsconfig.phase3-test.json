@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": ".phase3-test-build",
+    "rootDir": ".",
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true
+  },
+  "include": [
+    "src/types/domain.ts",
+    "src/data/example-project.ts",
+    "src/lib/project.ts",
+    "src/lib/units.ts",
+    "src/lib/packing/**/*.ts"
+  ],
+  "exclude": ["src/lib/packing/__tests__/**"]
+}

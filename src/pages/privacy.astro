@@ -1,0 +1,60 @@
+---
+import GuideLayout from '../layouts/GuideLayout.astro';
+const operatorName = import.meta.env.PUBLIC_OPERATOR_NAME?.trim() || 'Operator details pending configuration';
+const operatorAddress = import.meta.env.PUBLIC_OPERATOR_ADDRESS?.trim() || 'Address pending configuration';
+const registrationNumber = import.meta.env.PUBLIC_REGISTRATION_NUMBER?.trim() || 'Not configured';
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL?.trim() || 'Contact address pending configuration';
+const privacyEmail = import.meta.env.PUBLIC_PRIVACY_EMAIL?.trim() || contactEmail;
+const hasLegalDetails = Boolean(import.meta.env.PUBLIC_OPERATOR_NAME?.trim() && import.meta.env.PUBLIC_OPERATOR_ADDRESS?.trim() && import.meta.env.PUBLIC_CONTACT_EMAIL?.trim());
+---
+<GuideLayout title="Privacy" description="How ShelfSketch handles local project data, optional analytics and contact information." canonicalPath="/privacy/" eyebrow="Privacy notice">
+  <div class="policy-meta"><strong>Last updated:</strong> 6 August 2026. {hasLegalDetails ? 'Operator details are loaded from the public build configuration.' : 'Operator details are not configured. Set the required public environment variables before launch.'}</div>
+
+  <h2>Who operates ShelfSketch</h2>
+  <p>ShelfSketch is operated by <strong>{operatorName}</strong>, located at <strong>{operatorAddress}</strong>. Contact: <strong>{contactEmail}</strong>. Registration or company number: <strong>{registrationNumber}</strong>.</p>
+
+  <h2>Project measurements stay on the device</h2>
+  <p>The core planner runs in the browser. Shelf dimensions, item dimensions, project names, generated layouts and manual edits are not submitted to a ShelfSketch server. They remain in the open browser session unless the user explicitly saves them locally or exports a file.</p>
+
+  <h2>Local browser storage</h2>
+  <p>When requested, ShelfSketch uses local browser storage for the current project, generated layouts, the selected unit, the current planner step and the analytics-consent choice. This data is stored on the device and browser profile in use. It may be lost when browser data is cleared, private browsing ends or device settings block storage.</p>
+  <p>Users can remove ShelfSketch project data through the planner’s “Delete local ShelfSketch data” action. The cookie-settings choice can be changed from the footer.</p>
+
+  <h2>Files and exports</h2>
+  <p>JSON imports are read and validated in the browser. SVG, PNG, JSON and print exports are generated locally. ShelfSketch does not automatically upload the contents of imported or exported files. Users are responsible for where downloaded files are stored or shared.</p>
+
+  <h2>Optional analytics</h2>
+  <p>Google Analytics is loaded only after the user accepts analytics through the consent interface and only when a valid public measurement ID has been configured by the site operator. Rejecting analytics does not disable the planner.</p>
+  <p>Analytics events are limited to broad product-use information such as whether the tool was started, a layout was generated, an alternative mode was viewed or an export type was used. ShelfSketch must not send:</p>
+  <ul>
+    <li>exact shelf or object dimensions;</li>
+    <li>project names or item labels;</li>
+    <li>free-text content;</li>
+    <li>imported or exported file contents;</li>
+    <li>contact details entered elsewhere;</li>
+    <li>a persistent ShelfSketch user account identifier.</li>
+  </ul>
+
+  <h2>Technical request data</h2>
+  <p>Like most hosted websites, the hosting provider may process technical request information required to deliver pages securely, such as an IP address, requested URL, timestamp, browser information and security logs. The final public operator must describe the selected hosting provider and retention settings here before launch.</p>
+
+  <h2>Contact</h2>
+  <p>The contact page does not submit a form to a ShelfSketch backend. When a public contact address is configured and a user chooses its email link, their email provider processes the message under that provider’s own terms.</p>
+
+  <h2>Legal bases and retention</h2>
+  <p>The final operator must complete this section based on the real launch setup and applicable law. Functional local storage is used to provide features requested by the user. Optional analytics is based on consent. Retention periods for hosting logs and analytics must be configured and documented before public launch.</p>
+
+  <h2>Recipients and international transfers</h2>
+  <p>Before launch, list the real hosting, analytics and email service providers here, including where relevant their role, processing locations and safeguards. The current code does not include advertising, customer accounts, a project database or product-data integrations.</p>
+
+  <h2>User choices and rights</h2>
+  <p>Users can reject analytics, reopen cookie settings, delete local project data and avoid using the optional contact channel. Requests concerning data processed by the public site operator should be sent to <strong>{privacyEmail}</strong>.</p>
+
+  <h2>Children</h2>
+  <p>ShelfSketch is a general household planning tool and is not designed to collect information from children. The core planner does not require an age, name, account or contact details.</p>
+
+  <h2>Changes</h2>
+  <p>Material privacy changes should be recorded in the <a href="/changelog/">changelog</a> and reflected by updating the date at the top of this notice.</p>
+
+  <div class="notice"><strong>Launch requirement</strong><br/>Configure all operator and contact environment variables and have the final policy reviewed against the real operator, hosting, analytics and contact configuration.</div>
+</GuideLayout>

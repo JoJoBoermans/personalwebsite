@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": ".phase5-test-build",
+    "rootDir": ".",
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"]
+  },
+  "include": [
+    "src/types/domain.ts",
+    "src/data/example-project.ts",
+    "src/lib/project.ts",
+    "src/lib/validation.ts",
+    "src/lib/units.ts",
+    "src/lib/storage.ts",
+    "src/lib/packing/**/*.ts",
+    "src/lib/editor/**/*.ts",
+    "src/lib/io/*.ts"
+  ],
+  "exclude": [
+    "src/lib/packing/__tests__/**",
+    "src/lib/editor/__tests__/**",
+    "src/lib/io/__tests__/**"
+  ]
+}

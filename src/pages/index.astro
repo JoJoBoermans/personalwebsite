@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroDemo from '../components/astro/HeroDemo.astro';
+import GuideCard from '../components/astro/GuideCard.astro';
+const structuredData = {
+  '@context':'https://schema.org', '@type':'WebSite', name:'ShelfSketch', url:new URL('/', Astro.site ?? Astro.url).href,
+  description:'A visual storage-bin fit planner for existing shelves and cabinets.'
+};
+---
+<BaseLayout title="ShelfSketch" description="See which storage bins and boxes fit your shelf or cabinet before you buy." canonicalPath="/" {structuredData}>
+  <section class="hero">
+    <div class="site-shell hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">A practical little space planner</span>
+        <h1>See what fits before you buy.</h1>
+        <p>Enter your shelf and storage-bin dimensions. ShelfSketch finds practical layouts and shows what fits, what does not, and how much space remains.</p>
+        <div class="action-row"><a class="button button-primary" href="/tool/">Start planning</a><a class="button button-secondary" href="/example/">Try an example</a></div>
+        <div class="trust-row"><span>No account</span><span>Measurements stay local</span><span>Made for real shelves</span></div>
+      </div>
+      <div class="hero-visual"><HeroDemo /></div>
+    </div>
+  </section>
+  <section class="section section-muted">
+    <div class="site-shell">
+      <div class="section-heading"><span class="eyebrow">How it works</span><h2>Measure once. Compare before committing.</h2><p>A focused workflow replaces mental arithmetic and paper cut-outs with a clear, scaled preview.</p></div>
+      <div class="card-grid three">
+        <article class="card"><span class="number-chip">1</span><h3>Measure your space</h3><p>Use the inside width, height and depth of the shelf or cabinet opening.</p></article>
+        <article class="card"><span class="number-chip">2</span><h3>Add your bins</h3><p>Enter the outside dimensions, quantity and whether each item may rotate.</p></article>
+        <article class="card"><span class="number-chip">3</span><h3>Compare layouts</h3><p>Review compact, balanced and easy-access arrangements before shopping.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="site-shell">
+      <div class="section-heading"><span class="eyebrow">Useful in more than one room</span><h2>One simple geometry problem, many everyday uses.</h2></div>
+      <div class="card-grid four">
+        {['Pantry shelves','Bedroom closets','Bathroom cabinets','Toy storage'].map((title) => <article class="card use-case-card"><div><h3>{title}</h3><p>Test several box sizes without building a retailer-specific catalogue.</p></div><span class="use-case-swatch" aria-hidden="true"></span></article>)}
+      </div>
+    </div>
+  </section>
+  <section class="section section-muted">
+    <div class="site-shell">
+      <div class="section-heading"><span class="eyebrow">Designed around the decision</span><h2>Enough detail to be useful, without becoming interior-design software.</h2></div>
+      <div class="card-grid three">
+        <article class="card"><h3>Avoid the wrong size</h3><p>Check external product dimensions against the usable inside space.</p></article>
+        <article class="card"><h3>Compare several layouts</h3><p>See how rotation and clearances change the result, not only the total volume.</p></article>
+        <article class="card"><h3>Keep measurements private</h3><p>The MVP is designed to calculate and save projects in your browser.</p></article>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="site-shell">
+      <div class="section-heading"><span class="eyebrow">Start with the measurements</span><h2>Guides that make the calculation more reliable.</h2></div>
+      <div class="card-grid three">
+        <GuideCard title="Measure a shelf correctly" description="Find the usable inside dimensions and account for lips, doors and handles." href="/measurement-guide/" />
+        <GuideCard title="Shelf space calculator" description="Understand why volume alone does not tell you what will fit." href="/guides/shelf-space-calculator/" />
+        <GuideCard title="Storage-bin size guide" description="Check lids, handles and tapered walls before relying on a product listing." href="/guides/storage-bin-size-guide/" />
+      </div>
+    </div>
+  </section>
+  <section class="section"><div class="site-shell callout"><div><h2>Ready to sketch your shelf?</h2><p>Enter your shelf and item dimensions, compare three layout styles, adjust the result and save or export the plan without creating an account.</p></div><a class="button button-secondary" href="/tool/">Open the planner</a></div></section>
+</BaseLayout>

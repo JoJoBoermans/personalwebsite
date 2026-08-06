@@ -1,0 +1,36 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import PlannerApp from '../components/planner/PlannerApp';
+const pageUrl = new URL('/tool/', Astro.site ?? Astro.url).toString();
+const homeUrl = new URL('/', Astro.site ?? Astro.url).toString();
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': ['WebApplication', 'SoftwareApplication'],
+    name: 'ShelfSketch Storage Bin Fit Calculator',
+    applicationCategory: 'DesignApplication',
+    operatingSystem: 'Any modern web browser',
+    url: pageUrl,
+    description: 'A private browser-based planner for testing which rectangular storage bins and boxes fit an existing shelf or cabinet opening.',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    featureList: ['Three layout modes', 'Depth checks', 'Base rotation', 'Local project storage', 'SVG and PNG export'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: 'Storage Bin Fit Calculator', item: pageUrl },
+    ],
+  },
+];
+---
+<ToolLayout title="Storage Bin Fit Calculator" description="Plan a shelf or cabinet with your own inside dimensions and storage-bin sizes." canonicalPath="/tool/" {structuredData}>
+  <PlannerApp client:only="react" />
+  <section class="prose planner-support-copy" aria-labelledby="calculator-guidance">
+    <h2 id="calculator-guidance">Use outside product dimensions and inside furniture dimensions</h2>
+    <p>ShelfSketch compares the clear opening you can actually use with the widest external dimensions of each box or bin. Include handles, lids, feet and rims. Reserve a small clearance when a technically exact fit would be hard to lift, slide or remove.</p>
+    <p>The layouts are practical heuristic candidates rather than a guarantee of the only or mathematically perfect arrangement. Read the <a href="/measurement-guide/">measurement guide</a> and <a href="/how-it-works/">calculation explanation</a> before buying large quantities of organizers.</p>
+  </section>
+  <p class="text-small text-muted">ShelfSketch is a planning aid. Always verify the physical space and product dimensions before purchasing or installing anything.</p>
+</ToolLayout>

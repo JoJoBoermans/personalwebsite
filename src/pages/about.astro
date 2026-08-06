@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/astro/Breadcrumbs.astro';
+---
+<BaseLayout title="About ShelfSketch" description="Why ShelfSketch focuses on private, practical storage-layout planning without a product catalogue or account." canonicalPath="/about/">
+  <Breadcrumbs items={[{label:'Home',href:'/'},{label:'About'}]} />
+  <header class="page-hero narrow-shell"><span class="eyebrow">About ShelfSketch</span><h1>A focused tool for one awkward measuring problem.</h1><p>ShelfSketch helps users test rectangular storage arrangements before buying organizers or reorganizing an existing shelf.</p></header>
+  <article class="narrow-shell prose">
+    <h2>Why this tool exists</h2>
+    <p>Product pages list dimensions, furniture has fixed internal space, and users are left to combine the numbers manually. Simple volume calculations do not show whether mixed sizes form a usable arrangement. ShelfSketch turns those measurements into several visible candidates.</p>
+
+    <h2>What the MVP prioritizes</h2>
+    <ul><li>outside product dimensions and inside furniture dimensions;</li><li>depth checks and base rotation;</li><li>three different layout priorities;</li><li>manual edits that preserve boundaries and clearances;</li><li>local project storage and portable exports;</li><li>keyboard, touch and pointer access.</li></ul>
+
+    <h2>Privacy by architecture</h2>
+    <p>The core calculation does not require an account, server-side project database or retailer integration. Measurements and project files remain in the browser unless the user exports and shares them. Optional analytics is separate and consent-controlled.</p>
+
+    <h2>What ShelfSketch deliberately avoids</h2>
+    <p>The validated MVP does not scrape products, show live prices, recommend a retailer, scan a room with a camera or claim a mathematically perfect layout. These exclusions keep the tool more independent, maintainable and transparent.</p>
+
+    <h2>Current status</h2>
+    <p>ShelfSketch is being built in explicit phases. The <a href="/changelog/">changelog</a> records implemented capabilities, while the source README documents build requirements and known limitations.</p>
+
+    <div class="notice"><strong>Operator details pending.</strong><br/>The public company or operator name, address and contact channels must be inserted before launch.</div>
+  </article>
+</BaseLayout>

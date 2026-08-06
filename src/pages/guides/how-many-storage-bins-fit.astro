@@ -1,0 +1,40 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+<GuideLayout title="How Many Storage Bins Fit on a Shelf?" description="Work out quantities using width, height, depth, rotation and clearance instead of volume alone." canonicalPath="/guides/how-many-storage-bins-fit/" eyebrow="Fit guide">
+  <p>The answer depends on more than dividing shelf width by bin width. A useful calculation must include height, depth, gaps, rotation and whether bins may be stacked.</p>
+
+  <h2>One row of identical bins</h2>
+  <p>For a simple row, subtract any side margins from the shelf width. Then divide by the bin width plus the intended gap. Remember that the final bin may not need a gap after it, so a precise calculation is:</p>
+  <p><code>quantity × bin width + (quantity − 1) × gap ≤ usable shelf width</code></p>
+  <p>Always check depth and height separately.</p>
+
+  <h2>Multiple rows or stacks</h2>
+  <p>When bins are stackable, repeat the same logic vertically using height and vertical clearance. A stacking permission in ShelfSketch does not certify physical stacking safety. It only tells the layout model whether one rectangle may appear above another.</p>
+
+  <h2>Rotation can help—or hurt</h2>
+  <p>A quarter-turn can reduce the front width when a bin is deeper than it is wide. However, the new depth becomes the old width. A shelf may therefore fit more bins across the front but fail the depth check.</p>
+
+  <h2>Mixed bin sizes create a packing problem</h2>
+  <p>When large and small bins share a shelf, the best arrangement may involve several rows or uneven columns. Testing one size at a time can overestimate how much empty space remains usable. A visual packing tool is better suited to trying different orders and orientations.</p>
+
+  <h2>Worked example</h2>
+  <p>A shelf is 76 cm wide. Each bin is 24.5 cm wide and you want 1 cm between bins. Three bins require 75.5 cm:</p>
+  <p><code>3 × 24.5 + 2 × 1 = 75.5 cm</code></p>
+  <p>The row fits with 0.5 cm left. That is geometrically valid but may be too tight if the shelf sides are uneven or the bin dimensions are rounded. Reducing the quantity to two or choosing a smaller gap-free product may be more practical.</p>
+
+  <h2>Why litres are not enough</h2>
+  <p>Capacity measures what a container holds. It does not describe the exact rectangular footprint, lid overhang or tapered walls. Two 15-litre containers can have different widths and depths, so use their external dimensions.</p>
+
+  <h2>Checklist before trusting the answer</h2>
+  <ul>
+    <li>Have you measured the narrowest usable opening?</li>
+    <li>Are the product dimensions external and complete?</li>
+    <li>Does the depth work in every used orientation?</li>
+    <li>Have you included the gaps you need?</li>
+    <li>Can the containers still be lifted or pulled out?</li>
+    <li>Have you physically verified one unit before buying many?</li>
+  </ul>
+
+  <p><a class="button button-primary" href="/tool/">Generate three layout options</a></p>
+</GuideLayout>

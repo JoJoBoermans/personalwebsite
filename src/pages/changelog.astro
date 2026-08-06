@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/astro/Breadcrumbs.astro';
+---
+<BaseLayout title="Changelog" description="Development milestones and public changes to ShelfSketch." canonicalPath="/changelog/">
+  <Breadcrumbs items={[{label:'Home',href:'/'},{label:'Changelog'}]} />
+  <header class="page-hero narrow-shell"><span class="eyebrow">Changelog</span><h1>Building ShelfSketch in deliberate phases.</h1><p>Major capabilities and limitations are recorded so users can see what changed and what remains outside the MVP.</p></header>
+  <section class="narrow-shell prose">
+    <article class="changelog-entry"><h2>0.6.0 — Content, consent and technical SEO</h2><p><strong>6 August 2026</strong></p><ul><li>Substantive measurement, sizing, pantry, shelf-space and cabinet-planning guides.</li><li>WebApplication, SoftwareApplication, Article and breadcrumb structured data.</li><li>Consent-controlled GA4 loader and broad product events.</li><li>Detailed privacy and browser-storage notices.</li><li>Cookie-preference interface with equal accept and reject access.</li><li>Static sitemap endpoint, updated robots rules, contact guidance and current changelog.</li></ul></article>
+    <article class="changelog-entry"><h2>0.5.0 — Local projects and exports</h2><p><strong>6 August 2026</strong></p><ul><li>Full local planner sessions with current layouts and manual edits.</li><li>Validated JSON import and portable project export.</li><li>SVG, PNG, print and copied-measurement outputs.</li><li>Local data deletion and safer import error handling.</li></ul></article>
+    <article class="changelog-entry"><h2>0.4.0 — Visual layout editor</h2><p><strong>6 August 2026</strong></p><ul><li>Scale-based SVG view with labels and measurement lines.</li><li>Pointer, touch, keyboard and button-based movement.</li><li>Rotation, removal, undo, redo and per-mode reset.</li><li>Collision, boundary, clearance, depth and stacking checks.</li></ul></article>
+    <article class="changelog-entry"><h2>0.3.0 — Packing engine</h2><p><strong>6 August 2026</strong></p><ul><li>Compact, Easy Access and Balanced layout modes.</li><li>Multiple deterministic orders and packing heuristics.</li><li>Depth and base-rotation checks.</li><li>Concrete explanations for unplaced objects.</li></ul></article>
+    <article class="changelog-entry"><h2>0.2.0 — Project input</h2><p><strong>6 August 2026</strong></p><ul><li>Space, item, preference and review steps.</li><li>Centimetre and inch display with millimetre normalization.</li><li>Field-level validation and example project.</li><li>Local project restore foundation.</li></ul></article>
+    <article class="changelog-entry"><h2>0.1.0 — Project foundation</h2><p><strong>6 August 2026</strong></p><ul><li>Astro static architecture and React planner island.</li><li>Homepage, navigation, required routes and responsive design system.</li><li>Baseline SEO, Netlify configuration and accessibility contracts.</li></ul></article>
+  </section>
+</BaseLayout>

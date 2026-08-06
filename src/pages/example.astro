@@ -1,0 +1,8 @@
+---
+import ToolLayout from '../layouts/ToolLayout.astro';
+import PlannerApp from '../components/planner/PlannerApp';
+---
+<ToolLayout title="Example Pantry Shelf" description="Explore and edit a prefilled ShelfSketch project with large, medium and small storage bins." canonicalPath="/example/">
+  <PlannerApp example client:only="react" />
+  <div class="notice"><strong>Editable example</strong><br/>Shelf: 80 × 42 × 36 cm. Change any measurement or item setting to explore the complete project setup flow.</div>
+</ToolLayout>

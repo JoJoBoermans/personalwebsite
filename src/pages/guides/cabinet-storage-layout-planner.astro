@@ -1,0 +1,37 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro';
+---
+<GuideLayout title="Cabinet Storage Layout Planner" description="Plan boxes and organizers for an existing cabinet without redesigning the furniture or relying on a retailer catalogue." canonicalPath="/guides/cabinet-storage-layout-planner/" eyebrow="Cabinet guide">
+  <p>A cabinet planner should begin with the opening that already exists. ShelfSketch does not design doors, shelves or joinery. It helps compare rectangular objects inside one measured cabinet or shelf section.</p>
+
+  <h2>Measure the opening and the cavity</h2>
+  <p>A face frame or door hinge can make the front opening narrower than the space behind it. Because containers must pass through the opening, use the smallest usable width and height unless you know an item can be inserted at an angle safely.</p>
+
+  <h2>Account for hinges and door hardware manually</h2>
+  <p>The MVP does not draw hinge obstacles. Represent them conservatively by reducing the usable width or depth. If a hinge occupies 3 cm on the right side, subtract that area from the dimension rather than assuming a box can overlap it.</p>
+
+  <h2>Choose the correct viewing direction</h2>
+  <p>Shelf and cabinet mode views the opening from the front. Width runs left to right and height runs bottom to top. Depth is checked but not shown as a full 3D scene. This works well for boxes that stand upright with a rectangular footprint.</p>
+
+  <h2>Set clearance according to cabinet use</h2>
+  <p>A display cabinet may tolerate close spacing. A kitchen or bathroom cabinet generally needs more space for hands and frequent removal. A high shelf may require additional vertical clearance because the user pulls a bin downward at an angle.</p>
+
+  <h2>Compare the three layout modes</h2>
+  <ul>
+    <li><strong>Compact:</strong> useful for rarely accessed seasonal or archive storage.</li>
+    <li><strong>Easy Access:</strong> useful for everyday toiletries, pantry items or cleaning supplies.</li>
+    <li><strong>Balanced:</strong> a practical first choice when both density and access matter.</li>
+  </ul>
+
+  <h2>Use manual editing for real routines</h2>
+  <p>The engine does not know that one person prefers medicines on the left or that cleaning products should remain separated from towels. After generating a candidate, move priority objects to positions that match the household routine. Invalid movements are rejected when they cross boundaries or collide.</p>
+
+  <h2>Print or export before shopping</h2>
+  <p>The exported plan includes cabinet dimensions, object sizes and the current edited arrangement. Keep it with the product page or take the image to a shop. Recheck physical products before purchasing multiples.</p>
+
+  <h2>When not to use this mode</h2>
+  <p>The current tool is not suitable for corner cabinets, circular lazy Susans, diagonal walls, pipes or irregular under-sink spaces. Those shapes need an obstacle-aware or three-dimensional model that is outside the validated MVP.</p>
+
+  <div class="notice"><strong>Conservative planning is safer.</strong><br/>When a hinge, frame or door sweep is difficult to model, reduce the usable dimensions rather than ignoring it.</div>
+  <p><a class="button button-primary" href="/tool/">Plan a cabinet opening</a></p>
+</GuideLayout>

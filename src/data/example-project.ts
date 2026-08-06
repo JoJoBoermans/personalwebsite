@@ -1,0 +1,56 @@
+import type { ShelfSketchProject } from '../types/domain';
+
+export const EXAMPLE_PROJECT: ShelfSketchProject = {
+  schemaVersion: 1,
+  id: 'example-pantry-shelf',
+  name: 'Example pantry shelf',
+  displayUnit: 'cm',
+  space: {
+    widthMm: 800,
+    heightMm: 420,
+    depthMm: 360,
+    horizontalGapMm: 5,
+    verticalGapMm: 5,
+  },
+  items: [
+    {
+      id: 'large-bin',
+      label: 'Large bin',
+      widthMm: 320,
+      heightMm: 200,
+      depthMm: 340,
+      quantity: 2,
+      allowBaseRotation: true,
+      stackable: true,
+      accessPriority: 'normal',
+    },
+    {
+      id: 'medium-bin',
+      label: 'Medium bin',
+      widthMm: 220,
+      heightMm: 180,
+      depthMm: 300,
+      quantity: 3,
+      allowBaseRotation: true,
+      stackable: true,
+      accessPriority: 'important',
+    },
+    {
+      id: 'small-box',
+      label: 'Small box',
+      widthMm: 150,
+      heightMm: 120,
+      depthMm: 240,
+      quantity: 2,
+      allowBaseRotation: true,
+      stackable: true,
+      accessPriority: 'normal',
+    },
+  ],
+  preferences: {
+    defaultMode: 'balanced',
+    reducedMotionOverride: 'system',
+  },
+  createdAt: '2026-08-06T00:00:00.000Z',
+  updatedAt: '2026-08-06T00:00:00.000Z',
+};

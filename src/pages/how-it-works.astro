@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/astro/Breadcrumbs.astro';
+const pageUrl = new URL('/how-it-works/', Astro.site ?? Astro.url).toString();
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'How ShelfSketch Works',
+  description: 'How ShelfSketch checks depth, generates candidate layouts and explains why objects fit or do not fit.',
+  mainEntityOfPage: pageUrl,
+  datePublished: '2026-08-06',
+  dateModified: '2026-08-06',
+  author: { '@type': 'Organization', name: 'ShelfSketch' },
+};
+---
+<BaseLayout title="How ShelfSketch Works" description="Learn how ShelfSketch checks depth, generates practical candidates and explains why objects fit or do not fit." canonicalPath="/how-it-works/" {structuredData}>
+  <Breadcrumbs items={[{label:'Home',href:'/'},{label:'How it works'}]} />
+  <header class="page-hero narrow-shell"><span class="eyebrow">Transparent by design</span><h1>How ShelfSketch works</h1><p>The planner treats the front opening as a two-dimensional packing space and checks depth separately before any object is placed.</p></header>
+  <article class="narrow-shell prose">
+    <div class="content-summary"><strong>In brief:</strong> measurements are normalized, invalid orientations are removed, several deterministic packing strategies are tried, and the best candidates are scored for compactness and access.</div>
+
+    <h2>1. Measurements are normalized</h2>
+    <p>Users may work in centimetres or inches. ShelfSketch converts those values to integer millimetres internally. That keeps comparisons stable around small differences such as a box being 1 mm too deep or 0.1 cm too wide.</p>
+
+    <h2>2. The usable area is calculated</h2>
+    <p>Horizontal and vertical margins reduce the front-facing area available for objects. Width and height create the rectangle shown in the SVG editor. Depth remains a separate hard condition: an object whose required depth exceeds the available depth is rejected before packing.</p>
+
+    <h2>3. Allowed orientations are created</h2>
+    <p>Every item has a normal orientation. If base rotation is enabled, width and depth may exchange places. Height does not exchange with either dimension, because the MVP does not assume that a container can safely be laid on its side or turned upside down.</p>
+
+    <h2>4. Requested quantities become individual instances</h2>
+    <p>If a user requests three identical bins, the engine creates three individual instances. This makes it possible to place two and explain why the third remains unplaced. Each instance keeps a link to its original item settings, including easy-access and stacking preferences.</p>
+
+    <h2>5. Multiple packing candidates are generated</h2>
+    <p>The engine tries different item orders and two packing families. Some candidates prioritize large objects first; others prioritize height, width, area or easy-access objects. Trying several deterministic approaches reduces the risk that one arbitrary order produces a poor result.</p>
+
+    <h2>6. Each candidate is scored for a purpose</h2>
+    <h3>Compact</h3>
+    <p>Compact strongly rewards the number of placed objects and front-area use. It prefers arrangements that leave fewer fragmented gaps.</p>
+    <h3>Easy Access</h3>
+    <p>Easy Access gives more weight to user-marked priority objects, usable clearance and less obstructive stacking. It may accept lower density when that improves practical handling.</p>
+    <h3>Balanced</h3>
+    <p>Balanced combines the two approaches. It is the default starting point when the user wants both reasonable density and access.</p>
+
+    <h2>7. Similar layouts are filtered</h2>
+    <p>Candidate fingerprints describe positions, orientations and object identities. The planner uses them to avoid showing three visually identical results when different valid candidates exist.</p>
+
+    <h2>8. Non-fit reasons are classified</h2>
+    <p>An unplaced object is not reported with a generic error alone. ShelfSketch distinguishes between depth, width, height, disabled rotation, quantity limits and a lack of remaining rectangular space. The message can therefore say that a bin is 18 mm too deep rather than merely saying that it does not fit.</p>
+
+    <h2>9. Manual edits are checked again</h2>
+    <p>Dragging, keyboard nudging and rotation do not bypass safety checks. An edit is accepted only when the object remains within the usable area, preserves the configured gaps, does not overlap another object and respects stacking and depth rules. Undo and redo operate separately for each layout mode.</p>
+
+    <h2>What ShelfSketch does not prove</h2>
+    <p>Two-dimensional rectangle packing is a model, not a physical inspection. ShelfSketch does not guarantee the global mathematical optimum, structural safety or perfect real-world clearance. Product handles, flexible walls, rounded corners, warped shelves and incorrect retailer dimensions can all affect the result.</p>
+    <div class="notice"><strong>Use the output as a planning aid.</strong><br/>Always verify the actual furniture and products before purchasing, drilling, installing or discarding anything.</div>
+  </article>
+</BaseLayout>

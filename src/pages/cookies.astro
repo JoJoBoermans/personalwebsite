@@ -1,0 +1,41 @@
+---
+import GuideLayout from '../layouts/GuideLayout.astro';
+---
+<GuideLayout title="Cookies and Browser Storage" description="Manage optional analytics and understand the local storage used by ShelfSketch." canonicalPath="/cookies/" eyebrow="Cookie settings">
+  <div class="policy-meta"><strong>Last updated:</strong> 6 August 2026.</div>
+
+  <h2>Open your preferences</h2>
+  <p>Use the button below to accept or reject optional analytics. Rejecting analytics does not affect the calculator, local saves, project files or exports.</p>
+  <p><button class="button button-primary" type="button" data-open-cookie-settings>Manage cookie settings</button></p>
+
+  <h2>Functional browser storage</h2>
+  <p>ShelfSketch uses browser storage when necessary to deliver requested local features. This is not an advertising profile and is not synchronized to a ShelfSketch account.</p>
+  <div class="data-table-wrapper">
+    <table class="data-table">
+      <thead><tr><th>Storage</th><th>Purpose</th><th>Typical duration</th><th>Optional?</th></tr></thead>
+      <tbody>
+        <tr><td>ShelfSketch project/session keys</td><td>Store project inputs, generated layouts, manual edits, selected unit and planner progress on this device.</td><td>Until deleted by the user or browser.</td><td>The site works without saving, but local-save features require it.</td></tr>
+        <tr><td><code>shelfsketch.analytics-consent.v1</code></td><td>Remember whether analytics was accepted or rejected.</td><td>Until deleted or changed.</td><td>The choice itself is needed to respect the preference.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Optional analytics storage</h2>
+  <p>When analytics is accepted and a GA4 measurement ID is configured, Google Analytics may set or read identifiers used to measure website activity. The code requests privacy-restrictive settings and does not send exact project data. The final operator must verify the real Google configuration and list the resulting cookie names and retention periods before launch.</p>
+
+  <h2>No advertising cookies in the MVP</h2>
+  <p>ShelfSketch does not include display advertising, retargeting, affiliate tracking pixels or personalized-advertising scripts in this version.</p>
+
+  <h2>Changing or deleting data</h2>
+  <ul>
+    <li>Use “Manage cookie settings” to change analytics consent.</li>
+    <li>Use “Delete local ShelfSketch data” in the planner to remove saved projects and layouts.</li>
+    <li>Use browser settings to remove all site storage.</li>
+    <li>Downloaded JSON, SVG and PNG files must be removed from the device separately.</li>
+  </ul>
+
+  <h2>What happens after rejection</h2>
+  <p>The analytics script is not loaded. Broad analytics events are ignored. The static pages, packing calculations, local save, import, export and print functions remain available.</p>
+
+  <div class="notice"><strong>Configuration note</strong><br/>When no <code>PUBLIC_GA4_ID</code> is configured, accepting analytics stores the preference but no analytics library can be loaded.</div>
+</GuideLayout>

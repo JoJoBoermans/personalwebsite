@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/astro/Breadcrumbs.astro';
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL?.trim() || '';
+const privacyEmail = import.meta.env.PUBLIC_PRIVACY_EMAIL?.trim() || contactEmail;
+const contactLabel = contactEmail || 'Contact address pending configuration';
+const privacyLabel = privacyEmail || 'Privacy address pending configuration';
+---
+<BaseLayout title="Contact" description="Contact ShelfSketch about planner feedback, accessibility, privacy or a technical problem." canonicalPath="/contact/">
+  <Breadcrumbs items={[{label:'Home',href:'/'},{label:'Contact'}]} />
+  <header class="page-hero narrow-shell"><span class="eyebrow">Contact</span><h1>Help make the planner clearer.</h1><p>Report a reproducible problem, suggest a practical use case or ask about accessibility and privacy.</p></header>
+  <section class="narrow-shell section" style="padding-top:0">
+    <div class="contact-options">
+      <article class="card"><h2>Product feedback</h2><p>Describe the type of shelf, the general object shape and the step where the result became unclear. Do not include private household details.</p></article>
+      <article class="card"><h2>Accessibility</h2><p>Include the browser, input method or assistive technology used and the action that could not be completed.</p></article>
+      <article class="card"><h2>Privacy</h2><p>Use the privacy channel for questions about analytics, hosting data or the local-storage design.</p></article>
+    </div>
+    <div class="card" style="margin-top:1.25rem">
+      <h2 style="font-size:2rem">Email</h2>
+      <p>Public contact address: <strong>{contactLabel}</strong></p>
+      <p>Privacy address: <strong>{privacyLabel}</strong></p>
+      <p>{contactEmail ? 'No backend contact form is included, so ShelfSketch does not collect messages or attachments through this website.' : 'Configure the public email variables before launch. No backend contact form is included, so ShelfSketch does not collect messages or attachments through this website.'}</p>
+      {contactEmail ? <p><a class="button button-primary" href={`mailto:${contactEmail}?subject=ShelfSketch%20feedback`}>Open an email draft</a></p> : <p class="notice"><strong>Email disabled until configured.</strong><br/>Set <code>PUBLIC_CONTACT_EMAIL</code> before launch.</p>}
+    </div>
+    <div class="notice" style="margin-top:1rem"><strong>Do not send sensitive information.</strong><br/>A useful bug report can use generic example measurements. Never send access codes, home addresses, personal documents or photographs containing private details.</div>
+  </section>
+</BaseLayout>
